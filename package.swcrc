@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "exclude": ["\\.(stories)\\.[jt]sx?$"],
+  "module": {
+    "type": "es6"
+  },
+  "jsc": {
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "enums/*": ["./src/enums/*"],
+      "helpers/*": ["./src/helpers/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "icons/*": ["./src/icons/*"],
+    },
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic"
+      }
+    },
+    "target": "es2015",
+    "experimental": {
+      "cacheRoot": "node_modules/.cache/swc",
+      "plugins": [
+        [
+          "swc-plugin-css-modules",
+          {
+            "generate_scoped_name": "tgui.[hash]",
+          }
+        ],
+        [
+          "swc-plugin-transform-remove-imports",
+          {
+            "test": "\\.css$"
+          }
+        ],
+      ]
+    }
+  }
+}

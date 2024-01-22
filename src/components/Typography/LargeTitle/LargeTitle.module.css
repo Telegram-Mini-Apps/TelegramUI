@@ -1,0 +1,4 @@
+.wrapper {
+  font-size: var(--tgui--large_title--font_size);
+  line-height: var(--tgui--large_title--line_height);
+}

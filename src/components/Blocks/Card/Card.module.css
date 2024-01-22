@@ -1,0 +1,10 @@
+.wrapper {
+  border-radius: 20px;
+  box-shadow:
+      0 32px 64px 0 rgba(0, 0, 0, .04),
+      0 0 2px 1px rgba(0, 0, 0, .02);
+}
+
+.wrapper--ambient {
+  background: linear-gradient(0deg, #212121 0%, #212121 100%), var(--tgui--plain_foreground);
+}

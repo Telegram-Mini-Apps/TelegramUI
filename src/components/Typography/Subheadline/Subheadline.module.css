@@ -1,0 +1,9 @@
+.wrapper--1 {
+  font-size: var(--tgui--subheadline1--font_size);
+  line-height: var(--tgui--subheadline1--line_height);
+}
+
+.wrapper--2 {
+  font-size: var(--tgui--subheadline2--font_size);
+  line-height: var(--tgui--subheadline2--line_height);
+}

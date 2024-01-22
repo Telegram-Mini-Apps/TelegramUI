@@ -1,0 +1,97 @@
+{
+  "name": "@xelene/tgui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "yarn run -T concurrently 'yarn:build:*'",
+    "build:types": "yarn run -T concurrently 'yarn:tsc:*'",
+    "build:js-css": "yarn run -T concurrently 'yarn:swc:*' 'yarn:postcss'",
+    "postcss": "yarn run -T webpack --config webpack.styles.config.js",
+    "swc-base": "yarn run -T cross-env NODE_ENV=production swc src/ --config-file package.swcrc --extensions .tsx,.jsx,.ts,.js",
+    "swc:es6": "yarn swc-base -d dist -s",
+    "swc:cjs": "yarn swc-base -d dist/cjs -s -C module.type=commonjs",
+    "tsc:es6": "yarn run -T cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration -p tsconfig.dist.json",
+    "tsc:cjs": "yarn run -T cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration --outDir dist/cjs/ -p tsconfig.dist.json",
+    "dev": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "storybook:publish": "rsync ./storybook-static/ xelene:/var/www/tgui.xelene.me -avz --exclude .git/ --exclude .yarn/ --exclude node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/XeleneStudio/TelegramUI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XeleneStudio/TelegramUI/issues"
+  },
+  "homepage": "https://github.com/XeleneStudio/TelegramUI#readme",
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.7",
+    "@storybook/addon-interactions": "^7.6.7",
+    "@storybook/addon-links": "^7.6.7",
+    "@storybook/addons": "^7.6.10",
+    "@storybook/react": "^7.6.7",
+    "@storybook/react-webpack5": "^7.6.7",
+    "@svgr/webpack": "^8.1.0",
+    "@swc/cli": "^0.1.63",
+    "@swc/core": "^1.3.105",
+    "@types/eslint": "^8",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "6.18.0",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "cssnano": "^6.0.3",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.7.7",
+    "postcss": "^8.4.33",
+    "postcss-gap-properties": "^5.0.1",
+    "postcss-import": "^16.0.0",
+    "postcss-loader": "^8.0.0",
+    "postcss-modules": "^6.0.0",
+    "prettier": "^3.1.1",
+    "remove-files-webpack-plugin": "^1.5.0",
+    "storybook": "^7.6.7",
+    "svgr-plugin-swc": "^0.1.1",
+    "swc-loader": "^0.2.3",
+    "swc-plugin-auto-css-modules": "^1.5.0",
+    "swc-plugin-css-modules": "^0.1.7",
+    "swc-plugin-transform-remove-imports": "^1.10.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "packageManager": "yarn@3.1.0",
+  "dependencies": {
+    "@swc/helpers": "^0.5.3",
+    "postcss-logical": "^7.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "resolutions": {
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0"
+  }
+}

@@ -1,0 +1,23 @@
+.wrapper {
+  font-family: var(--tgui--font-family);
+}
+
+.wrapper--plain {
+  margin: 0;
+}
+
+.wrapper--weight-1 {
+  font-weight: var(--tgui--font_weight--accent1);
+}
+
+.wrapper--weight-2 {
+  font-weight: var(--tgui--font_weight--accent2);
+}
+
+.wrapper--weight-3 {
+  font-weight: var(--tgui--font_weight--accent3);
+}
+
+.wrapper--caps {
+  text-transform: uppercase;
+}

@@ -1,0 +1,32 @@
+.wrapper {
+  display: inline-flex;
+  border-radius: 12px;
+  border: none;
+  padding: 8px;
+}
+
+.wrapper--s {
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.wrapper--bezeled {
+  color: var(--tgui--link_color);
+  background: var(--tgui--secondary_fill);
+}
+
+.wrapper--plain {
+  color: var(--tgui--link_color);
+  background: transparent;
+}
+
+.wrapper--gray {
+  color: var(--tgui--plain_foreground);
+  background: var(--tgui--plain_background);
+}
+
+.wrapper--outline {
+  color: var(--tgui--plain_foreground);
+  background: inherit;
+  box-shadow: 0 0 0 1px var(--tgui--outline);
+}

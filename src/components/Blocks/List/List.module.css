@@ -1,0 +1,7 @@
+.wrapper > :not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.wrapper--ios {
+  padding: 10px 18px;
+}

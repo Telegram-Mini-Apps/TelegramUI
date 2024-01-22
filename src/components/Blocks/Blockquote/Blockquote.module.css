@@ -1,0 +1,20 @@
+.wrapper {
+  position: relative;
+  padding: 6px 28px 8px 12px;
+
+  border-left: 3px solid var(--tgui--link_color);
+  border-radius: 4px;
+  background: var(--tgui--secondary_fill);
+}
+
+.text {
+  color: var(--tgui--text_color)
+}
+
+.topRightIcon {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+
+  display: block;
+}

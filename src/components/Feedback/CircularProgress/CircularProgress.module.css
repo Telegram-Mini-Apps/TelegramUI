@@ -1,0 +1,4 @@
+.wrapper {
+  stroke: var(--tgui--link_color);
+  transform: rotate(-90deg);
+}

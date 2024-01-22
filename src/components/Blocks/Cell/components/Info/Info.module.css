@@ -1,0 +1,16 @@
+.wrapper--text {
+  text-align: right;
+}
+
+.wrapper--avatarStack {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--tgui--secondary_hint_color);
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: var(--tgui--hint_color);
+}

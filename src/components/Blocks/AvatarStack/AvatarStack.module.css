@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+}
+
+.wrapper > :not(:first-child) {
+  margin-left: -12px;
+}
+
+.wrapper > * {
+  box-shadow: 0 0 0 3px var(--tgui--bg_color);
+}

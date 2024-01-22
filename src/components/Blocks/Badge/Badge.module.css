@@ -1,0 +1,55 @@
+.wrapper--number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 20px;
+  min-width: 20px;
+
+  margin: 0 6px;
+  padding: 0 5px;
+
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.wrapper--large {
+  height: 24px;
+  padding: 0 6px;
+}
+
+.wrapper--dot {
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  margin: 7px;
+  border-radius: 50%;
+}
+
+.wrapper--primary {
+  color: var(--tgui--button_text_color);
+  background: var(--tgui--button_color);
+}
+
+.wrapper--critical {
+  color: var(--tgui--button_text_color);
+  background: var(--tgui--destructive_text_color);
+}
+
+.wrapper--secondary {
+  color: var(--tgui--link_color);
+  background: var(--tgui--secondary_fill);
+}
+
+.wrapper--gray {
+  color: var(--tgui--plain_foreground);
+  background: var(--tgui--plain_background);
+}
+
+.wrapper--white {
+  color: var(--tgui--link_color);
+  background: var(--tgui--white);
+}
+

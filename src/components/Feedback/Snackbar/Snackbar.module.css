@@ -1,0 +1,65 @@
+.wrapper {
+  position: absolute;
+  user-select: none;
+
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+
+  box-sizing: border-box;
+
+  animation: verticalIntro 340ms cubic-bezier(.3, .3, .5, 1);
+  transition: transform 320ms cubic-bezier(.3, .3, .5, 1);
+}
+
+.body {
+  position: sticky;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px 10px 10px;
+
+  border-radius: 10px;
+  backdrop-filter: blur(28px);
+  background: var(--tgui--surface_dark);
+}
+
+.wrapper--closing {
+  transform: translate3d(0, 140%, 0);
+}
+
+.wrapper--ios .body {
+  border-radius: 14px;
+}
+
+.before,
+.after {
+  display: flex;
+  align-items: center;
+
+  color: var(--tgui--toast_accent_color);
+}
+
+.middle {
+  flex: 1 1 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  color: var(--tgui--white);
+}
+
+@keyframes verticalIntro {
+  from {
+    transform: translate3d(0, 140%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}

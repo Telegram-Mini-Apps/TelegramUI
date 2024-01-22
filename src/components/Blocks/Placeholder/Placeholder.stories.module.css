@@ -1,0 +1,18 @@
+.placeholderWrapper {
+  width: 400px;
+}
+
+.sticker {
+  display: block;
+  width: 144px;
+  height: 144px;
+}
+
+@keyframes logoShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}

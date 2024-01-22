@@ -1,0 +1,14 @@
+.wrapper--1 {
+  font-size: var(--tgui--title1--font_size);
+  line-height: var(--tgui--title1--line_height);
+}
+
+.wrapper--2 {
+  font-size: var(--tgui--title2--font_size);
+  line-height: var(--tgui--title2--line_height);
+}
+
+.wrapper--3 {
+  font-size: var(--tgui--title3--font_size);
+  line-height: var(--tgui--title3--line_height);
+}

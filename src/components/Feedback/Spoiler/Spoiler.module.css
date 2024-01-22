@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+  display: table
+}
+
+.wrapper::before {
+  position: absolute;
+  content: '';
+  inset: 0;
+  background-color: var(--tgui--bg_color);
+  background-image: url('./icons/spoiler.svg');
+  z-index: 1;
+  transition: .4s ease;
+}
+
+.wrapper--visible::before {
+  opacity: 0;
+}

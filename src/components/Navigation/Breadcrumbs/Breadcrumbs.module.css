@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 20px;
+
+  margin: 0 -6px;
+  color: var(--tgui--divider);
+}
+
+.chevron {
+  color: var(--tgui--link_color);
+}

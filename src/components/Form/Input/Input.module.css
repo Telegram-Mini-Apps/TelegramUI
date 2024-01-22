@@ -1,0 +1,24 @@
+.input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  resize: none;
+  background: transparent;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  color: var(--tgui--text_color);
+}
+
+.input[disabled] {
+  opacity: .35;
+}
+
+.input::placeholder {
+  color: var(--tgui--secondary_hint_color);
+}
+
+.wrapper--ios .input {
+  padding: 13px 16px;
+}

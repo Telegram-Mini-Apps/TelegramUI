@@ -1,0 +1,43 @@
+.wrapper {
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.wrapper--elevated {
+  background: var(--tgui--surface_primary);
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, .05);
+}
+
+.wrapper--mono {
+  background: var(--tgui--plain_background);
+}
+
+.wrapper--outline {
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px var(--tgui--outline);
+}
+
+.text {
+  flex: 1 1 0;
+  color: var(--tgui--plain_foreground);
+}
+
+.before {
+  margin-right: 2px;
+}
+
+.after {
+  display: flex;
+  align-items: center;
+
+  /* Visually centering icons, because of line-height */
+  margin-top: 1.5px;
+  color: var(--tgui--secondary_hint_color);
+}

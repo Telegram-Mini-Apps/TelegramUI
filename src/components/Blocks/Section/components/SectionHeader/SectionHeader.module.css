@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 20px 24px 4px 22px;
+  color: var(--tgui--link_color);
+}
+
+.wrapper--large {
+  padding-left: 24px;
+  color: var(--tgui--text_color);
+}
+
+.wrapper--ios {
+  padding: 16px 16px 8px 16px;
+  color: var(--tgui--section_header_text_color);
+}
+
+.wrapper--ios.wrapper--large {
+  padding: 0 0 12px;
+  color: var(--tgui--text_color);
+}

@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+  transition: opacity .15s ease-out;
+}
+
+.wrapper[disabled] {
+  cursor: default;
+  opacity: .35;
+}
+
+.wrapper--opacity:hover,
+.wrapper--ios:hover {
+  opacity: .85;
+}
+
+.wrapper--opacity:active,
+.wrapper--ios:active {
+  opacity: .65;
+}

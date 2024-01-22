@@ -1,0 +1,26 @@
+.wrapper {
+  cursor: pointer;
+  position: relative;
+}
+
+.wrapper--disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+.icon {
+  display: block;
+  color: var(--tgui--outline);
+}
+
+.checkedIcon {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  color: var(--tgui--link_color);
+  transition: opacity .15s ease-out;
+}
+
+.input:checked ~ .checkedIcon {
+  opacity: 1;
+}

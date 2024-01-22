@@ -1,0 +1,38 @@
+# Builds
+dist/
+storybook-static/
+
+# Dependency directory
+node_modules/
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Caches
+.cache
+tmp/
+
+# CI
+.env
+.lfs-assets-id
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# SWC cache
+.swc
+
+# yarn specific
+# see https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

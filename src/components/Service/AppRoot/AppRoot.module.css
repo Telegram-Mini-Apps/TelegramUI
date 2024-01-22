@@ -1,0 +1,137 @@
+.wrapper {
+  --tgui--font-family: system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Apple Color Emoji", "Helvetica Neue", sans-serif;
+
+  --tgui--font_weight--accent1: 700;
+  --tgui--font_weight--accent2: 600;
+  --tgui--font_weight--accent3: 400;
+
+  --tgui--large_title--font_size: 34px;
+  --tgui--large_title--line_height: 42px;
+
+  --tgui--title1--font_size: 28px;
+  --tgui--title1--line_height: 36px;
+  --tgui--title2--font_size: 24px;
+  --tgui--title2--line_height: 32px;
+  --tgui--title3--font_size: 20px;
+  --tgui--title3--line_height: 24px;
+
+  --tgui--headline--font_size: 19px;
+  --tgui--headline--line_height: 28px;
+
+  --tgui--text--font_size: 17px;
+  --tgui--text--line_height: 26px;
+
+  --tgui--subheadline1--font_size: 16px;
+  --tgui--subheadline1--line_height: 24px;
+  --tgui--subheadline2--font_size: 15px;
+  --tgui--subheadline2--line_height: 22px;
+
+  --tgui--caption1--font_size: 13px;
+  --tgui--caption1--line_height: 20px;
+  --tgui--caption2--font_size: 11px;
+  --tgui--caption2--line_height: 16px;
+
+  --tgui--border--width: 1px;
+  --tgui--base--section--box_shadow: 0 1px 2px 0 rgba(0, 0, 0, .10);
+
+  /** Native tokens */
+  --tgui--bg_color: var(--tg-theme-bg-color, #FFFFFF);
+  --tgui--text_color: var(--tg-theme-text-color, #000000);
+  --tgui--hint_color: var(--tg-theme-hint-color, #707579);
+  --tgui--link_color: var(--tg-theme-link-color, #007AFF);
+  --tgui--button_color: var(--tg-theme-button-color, #007AFF);
+  --tgui--button_text_color:var(--tg-theme-button-text-color, #FFFFFF);
+  --tgui--secondary_bg_color: var(--tg-theme-secondary-bg-color, #EFEFF4);
+  --tgui--header_bg_color: var(--tg-theme-header-bg-color, #FFFFFF);
+  --tgui--accent_text_color: var(--tg-theme-accent-text-color, #007AFF);
+  --tgui--section_bg_color: var(--tg-theme-section-bg-color, #FFFFFF);
+  --tgui--section_header_text_color: var(--tg-theme-section-header-text-color, #707579);
+  --tgui--subtitle_text_color: var(--tg-theme-subtitle-text-color, #707579);
+  --tgui--destructive_text_color: var(--tg-theme-destructive-text-color, #E53935);
+  /** End of native tokens */
+
+  /* Custom lib tokens */
+  --tgui--skeleton: rgba(255, 255, 255, .03);
+  --tgui--divider: rgba(0, 0, 0, .15);
+  --tgui--outline: rgba(0, 0, 0, .05);
+  --tgui--surface_primary: rgba(255, 255, 255, .95);
+  --tgui--surface_dark: rgba(37, 37, 37, .85);
+  --tgui--tertiary_bg_color: #F4F4F7;
+  --tgui--quartenary_bg_color: #F6F6FA;
+  --tgui--card_bg_color: #FFFFFF;
+  --tgui--secondary_hint_color: #A2ACB0;
+  --tgui--secondary_fill: rgba(67, 120, 255, .10);
+  --tgui--green: #31D158;
+  --tgui--destructive_background: #E53935;
+  --tgui--primary_code_highlight: #4378FF;
+  --tgui--secondary_code_highlight: #B00FB4;
+  --tgui--tertiary_code_highlight: #3A9F20;
+  --tgui--plain_background: rgba(0, 0, 0, .04);
+  --tgui--plain_foreground: rgba(0, 0, 0, .8);
+  --tgui--toast_accent_color: #55A6FF;
+  --tgui--white: #FFFFFF;
+  --tgui--black: #000000;
+  /* End of custom lib tokens */
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+
+  color: var(--tgui--text_color);
+}
+
+.wrapper--ios {
+  --tgui--large_title--line_height: 41px;
+  --tgui--title1--line_height: 34px;
+  --tgui--title2--line_height: 28px;
+  --tgui--title3--line_height: 25px;
+  --tgui--headline--line_height: 24px;
+  --tgui--text--line_height: 22px;
+  --tgui--subheadline1--line_height: 21px;
+  --tgui--subheadline2--line_height: 20px;
+  --tgui--caption1--line_height: 16px;
+  --tgui--caption2--line_height: 13px;
+}
+
+.wrapper--dark {
+  /* Native tokens */
+  --tgui--bg_color: var(--tg-theme-bg-color, #212121);
+  --tgui--text_color: var(--tg-theme-text-color, #FFFFFF);
+  --tgui--hint_color: var(--tg-theme-hint-color, #AAAAAA);
+  --tgui--link_color: var(--tg-theme-link-color, #2990FF);
+  --tgui--button_color: var(--tg-theme-button-color, #2990FF);
+  --tgui--button_text_color:var(--tg-theme-button-text-color, #FFFFFF);
+  --tgui--secondary_bg_color: var(--tg-theme-secondary-bg-color, #0F0F0F);
+  --tgui--header_bg_color: var(--tg-theme-header-bg-color, #212121);
+  --tgui--accent_text_color: var(--tg-theme-accent-text-color, #007AFF);
+  --tgui--section_bg_color: var(--tg-theme-section-bg-color, #212121);
+  --tgui--section_header_text_color: var(--tg-theme-section-header-text-color, #AAAAAA);
+  --tgui--subtitle_text_color: var(--tg-theme-subtitle-text-color, #AAAAAA);
+  --tgui--destructive_text_color: var(--tg-theme-destructive-text-color, #E53935);
+  /** End of native tokens */
+
+  /* Custom lib tokens */
+  --tgui--skeleton: rgba(255, 255, 255, .03);
+  --tgui--divider: rgba(255, 255, 255, .05);
+  --tgui--outline: rgba(255, 255, 255, .10);
+  --tgui--surface_primary: rgba(23, 23, 23, .95);
+  --tgui--surface_dark: rgba(37, 37, 37, .85);
+  --tgui--tertiary_bg_color: #222222;
+  --tgui--quartenary_bg_color: #2F2F2F;
+  --tgui--card_bg_color: #242424;
+  --tgui--secondary_hint_color: #78797E;
+  --tgui--secondary_fill: rgba(41, 144, 255, .15);
+  --tgui--green: #32E55E;
+  --tgui--destructive_background: rgba(255, 35, 35, .02);
+  --tgui--primary_code_highlight: #2990FF;
+  --tgui--secondary_code_highlight: #E937ED;
+  --tgui--tertiary_code_highlight: #5AE536;
+  --tgui--plain_background: rgba(255, 255, 255, .08);
+  --tgui--plain_foreground: rgba(255, 255, 255, .95);
+  /* End of custom lib tokens */
+}
+
+@media (min-resolution: 2dppx) {
+  .wrapper {
+    --tgui--border--width: .5px;
+  }
+}

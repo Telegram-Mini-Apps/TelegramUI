@@ -1,0 +1,23 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+  height: 48px;
+  padding: 10px 24px;
+
+  color: var(--tgui--link_color);
+  border: none;
+  background: transparent;
+}
+
+.wrapper--destructive {
+  color: var(--tgui--destructive_text_color);
+}
+
+.wrapper--ios {
+  gap: 18px;
+  height: 44px;
+  padding: 8px 18px;
+}

@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--tgui--hint_color);
+}

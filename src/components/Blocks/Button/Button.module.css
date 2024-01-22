@@ -1,0 +1,86 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+
+  max-inline-size: 100%;
+  min-inline-size: 80px;
+}
+
+.wrapper--stretched {
+  inline-size: 100%;
+  flex-grow: 1;
+}
+
+.before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.wrapper--s {
+  height: 36px;
+  min-width: 34px;
+  gap: 6px;
+
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+.wrapper--m {
+  height: 42px;
+  min-width: 42px;
+  gap: 8px;
+  padding: 8px 14px;
+}
+
+.wrapper--l {
+  height: 50px;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.wrapper--filled {
+  color: var(--tgui--button_text_color);
+  background: var(--tgui--button_color);
+}
+
+.wrapper--bezeled {
+  color: var(--tgui--link_color);
+  background: var(--tgui--secondary_fill);
+}
+
+.wrapper--plain {
+  color: var(--tgui--link_color);
+  background: transparent;
+}
+
+.wrapper--gray {
+  color: var(--tgui--plain_foreground);
+  background: var(--tgui--plain_background);
+}
+
+.wrapper--outline {
+  color: var(--tgui--plain_foreground);
+  background: inherit;
+  box-shadow: 0 0 0 1px var(--tgui--outline);
+}
+
+.wrapper--white {
+  background: var(--tgui--white);
+}
+
+.wrapper--ios.wrapper--m {
+  border-radius: 12px;
+}
+

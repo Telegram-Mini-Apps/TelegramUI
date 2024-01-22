@@ -1,0 +1,20 @@
+.wrapper {
+  padding: 12px 24px;
+}
+
+.wrapper--ios {
+  padding: 8px 16px 0;
+}
+
+.wrapper--centered {
+  padding: 16px 24px 20px;
+  text-align: center;
+}
+
+.wrapper--ios.wrapper--centered {
+  padding: 16px 16px 0;
+}
+
+.text {
+  color: var(--tgui--section_header_text_color);
+}

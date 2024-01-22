@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 24px;
+  padding: 32px;
+}
+
+.fields {
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  color: var(--tgui--hint_color);
+}
+
+.description:not(:first-child) {
+  margin-top: 8px;
+}

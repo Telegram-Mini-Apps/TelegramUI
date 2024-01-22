@@ -1,0 +1,9 @@
+.wrapper {
+  overflow: hidden;
+  background: var(--tgui--bg_color);
+}
+
+.body {
+  margin-block-start: -100%;
+  transition: margin-top 100ms ease-in-out;
+}

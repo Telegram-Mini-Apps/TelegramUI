@@ -1,0 +1,8 @@
+.wrapper {
+  border-radius: 50%;
+}
+
+.wrapper--withAcronym.wrapper--withAcronym {
+  background-color: var(--tgui--secondary_fill);
+  color: var(--tgui--link_color);
+}

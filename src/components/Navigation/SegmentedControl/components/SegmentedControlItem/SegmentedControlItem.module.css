@@ -1,0 +1,8 @@
+.wrapper {
+  flex: 1 1 0;
+  padding: 6px 20px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  z-index: 1;
+}

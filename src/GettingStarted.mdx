@@ -1,0 +1,32 @@
+# Getting Started
+
+Welcome! Check out our design here: [Figma](https://www.figma.com/file/AwAi6qE11mQllHa1sOROYp/Telegram-Mini-Apps-Library-%C2%B7%C2%A0Beta?type=design&node-id=26-1081&mode=design&t=ltO243PjntJxW0Tc-0).
+
+## Installation
+
+```
+yarn add @xelene/tgui
+```
+
+## Development
+
+Follow these steps to start development
+
+### Import styles
+
+```
+import '@xelene/tgui/dist/styles.css';
+```
+
+### Wrap your app with `AppRoot`
+
+```jsx
+import { AppRoot } from '@xelene/tgui';
+
+ReactDOM.render(
+  <AppRoot>
+    <App />
+  </AppRoot>,
+  document.getElementById('root')
+);
+```
