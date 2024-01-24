@@ -2,6 +2,7 @@ import { HTMLAttributes } from 'react';
 import styles from './SegmentedControlItem.module.css';
 
 import { classNames } from 'helpers/classNames';
+import { usePlatform } from 'hooks/usePlatform';
 
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Caption } from 'components/Typography/Caption/Caption';
@@ -16,13 +17,20 @@ export const SegmentedControlItem = ({
   className,
   children,
   ...restProps
-}: SegmentedControlItemProps) => (
-  <Tappable
-    role="tab"
-    Component="button"
-    className={classNames(styles.wrapper, className)}
-    {...restProps}
-  >
-    <Caption weight={selected ? '2' : '3'}>{children}</Caption>
-  </Tappable>
-);
+}: SegmentedControlItemProps) => {
+  const platform = usePlatform();
+  return (
+    <Tappable
+      role="tab"
+      Component="button"
+      className={classNames(
+        styles.wrapper,
+        platform === 'ios' && styles['wrapper--ios'],
+        className,
+      )}
+      {...restProps}
+    >
+      <Caption weight={selected ? '2' : '3'}>{children}</Caption>
+    </Tappable>
+  );
+};

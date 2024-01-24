@@ -13,16 +13,24 @@ const componentBySize = {
   l: IconBig,
 };
 
+const rotateCenterBySize = {
+  s: 12,
+  m: 18,
+  l: 22,
+};
+
 export const BaseSpinner = ({ size }: BaseSpinnerProps) => {
   const Component = componentBySize[size];
+  const rotateCenter = rotateCenterBySize[size];
+
   return (
     <Component>
       <animateTransform
         attributeName="transform"
         attributeType="XML"
         type="rotate"
-        from="0 0 0"
-        to="360 0 0"
+        from={`0 ${rotateCenter} ${rotateCenter}`}
+        to={`360 ${rotateCenter} ${rotateCenter}`}
         dur="0.7s"
         repeatCount="indefinite"
       />

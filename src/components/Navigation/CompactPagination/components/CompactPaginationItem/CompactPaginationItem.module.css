@@ -1,0 +1,19 @@
+.wrapper {
+  cursor: pointer;
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  transition: opacity .15s ease-in-out;
+  opacity: var(--tgui--compact_pagination--dot--opacity--selected, .25);
+  background: var(--tgui--compact_pagination--dot--background--selected, var(--tgui--link_color));
+}
+
+.wrapper--selected {
+  opacity: 1;
+}

@@ -9,8 +9,11 @@ import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
 export interface InfoProps extends HTMLAttributes<HTMLDivElement> {
+  /** Info type */
   type: 'text' | 'avatarStack';
+  /** Text content, only applicable with type="text" */
   subtitle?: string;
+  /** AvatarStack component, only applicable with type="avatarStack" */
   avatarStack?: ReactElement<AvatarStackProps>;
 }
 

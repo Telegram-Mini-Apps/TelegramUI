@@ -1,0 +1,29 @@
+.wrapper {
+  --tgui--compact_pagination--dot--opacity--selected: .1;
+  --tgui--compact_pagination--dot--background--selected: var(--tgui--link_color);
+
+  display: inline-flex;
+  gap: 8px;
+  padding: 4px;
+}
+
+.wrapper--ambient {
+  --tgui--compact_pagination--dot--opacity--selected: .25;
+  --tgui--compact_pagination--dot--background--selected: var(--tgui--white);
+
+  padding: 8px 9px;
+  gap: 6px;
+  border-radius: 28px;
+  background: rgba(0, 0, 0, .25);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(28px);
+}
+
+.wrapper--white {
+  --tgui--compact_pagination--dot--opacity--selected: .25;
+  --tgui--compact_pagination--dot--background--selected: var(--tgui--white);
+
+  gap: 6px;
+  padding: 0;
+}
+

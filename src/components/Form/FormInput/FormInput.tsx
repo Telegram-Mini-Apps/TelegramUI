@@ -10,7 +10,7 @@ import { FormInputTitle } from './components/FormInputTitle';
 export interface FormPublicProps {
   /** Form status, higher priority than automatic */
   status?: 'default' | 'error' | 'focused';
-  /** Form header, will be shown only for "base" platform */
+  /** Form header will be shown only for "base" platform */
   header?: ReactNode;
   /** Content before the Form */
   before?: ReactNode;

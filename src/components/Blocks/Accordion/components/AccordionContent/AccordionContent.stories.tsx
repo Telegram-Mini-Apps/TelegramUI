@@ -6,7 +6,7 @@ import { Accordion } from '../../Accordion';
 import { AccordionContent, AccordionContentProps } from './AccordionContent';
 
 const meta = {
-  title: 'Blocks/Accordion/AccordionContent',
+  title: 'Blocks/Accordion/Accordion.Content',
   component: AccordionContent,
 } satisfies Meta<typeof AccordionContent>;
 

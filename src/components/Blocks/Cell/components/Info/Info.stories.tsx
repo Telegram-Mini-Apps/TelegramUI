@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { hideControls } from 'storybook/controls';
 
 import { Avatar } from 'components/Blocks/Avatar/Avatar';
 import { AvatarStack } from 'components/Blocks/AvatarStack/AvatarStack';
@@ -10,6 +11,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: hideControls('avatarStack'),
 } satisfies Meta<typeof Info>;
 
 export default meta;

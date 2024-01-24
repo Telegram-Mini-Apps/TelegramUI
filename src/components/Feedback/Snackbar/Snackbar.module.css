@@ -24,6 +24,7 @@
   padding: 10px 16px 10px 10px;
 
   border-radius: 10px;
+  -webkit-backdrop-filter: blur(28px);
   backdrop-filter: blur(28px);
   background: var(--tgui--surface_dark);
 }

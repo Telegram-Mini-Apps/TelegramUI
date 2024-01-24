@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.wrapper--disabled {
+  opacity: .35;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  min-width: 44px;
+  height: 44px;
+
+  color: var(--tgui--hint_color);
+  padding: 0 10px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.button--selected {
+  color: var(--textColor);
+  background: var(--tgui--tertiary_bg_color);
+}
+
+.button--disabled {
+  cursor: default;
+  opacity: .35;
+}
+
+.button--ellipsis {
+  opacity: 1;
+}
+
+.icon {
+  color: var(--tgui--link_color);
+}

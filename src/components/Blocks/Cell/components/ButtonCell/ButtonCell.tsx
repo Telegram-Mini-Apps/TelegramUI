@@ -10,9 +10,13 @@ import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
 interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
+  /** Cell type, influence only on color */
   type?: 'default' | 'destructive';
+  /** Content before the text */
   before?: ReactNode;
+  /** Content after the text */
   after?: ReactNode;
+  /** DOM node, button by default */
   Component?: ElementType;
 }
 

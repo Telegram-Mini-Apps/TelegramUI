@@ -54,7 +54,7 @@ export const WithAction: Story = {
 
 export const HeaderAndDescription: Story = {
   args: {
-    children: Playground.args?.header,
+    children: Playground.args?.children,
     description: 'Only you can see archived stories unless you choose to post them to your profile.',
   },
   render: Playground.render,

@@ -97,7 +97,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['./src/icons/**/*.tsx'],
+      files: ['**/icons/**/*.tsx'],
       rules: {
         'max-len': 'off',
       },

@@ -4,7 +4,7 @@ import { setControlsTypes } from 'storybook/controls';
 import { SectionFooter } from './SectionFooter';
 
 const meta = {
-  title: 'Blocks/Section/SectionFooter',
+  title: 'Blocks/Section/Section.Footer',
   component: SectionFooter,
   argTypes: setControlsTypes(['children'], 'text'),
 } satisfies Meta<typeof SectionFooter>;

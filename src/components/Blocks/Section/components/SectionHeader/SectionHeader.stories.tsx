@@ -4,7 +4,7 @@ import { setControlsTypes } from 'storybook/controls';
 import { SectionHeader } from './SectionHeader';
 
 const meta = {
-  title: 'Blocks/Section/SectionHeader',
+  title: 'Blocks/Section/Section.Header',
   component: SectionHeader,
   argTypes: setControlsTypes(['children'], 'text'),
 } satisfies Meta<typeof SectionHeader>;

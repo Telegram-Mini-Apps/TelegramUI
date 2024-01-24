@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Icon28AddCircle } from 'icons/28/add_circle';
 import { Icon32ProfileColoredSquare } from 'icons/32/profile_colored_square';
+import { hideControls } from 'storybook/controls';
 
 import { Cell } from 'components/Blocks/Cell/Cell';
 import { List } from 'components/Blocks/List/List';
@@ -13,6 +14,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: hideControls('before', 'after', 'Component'),
 } satisfies Meta<typeof ButtonCell>;
 
 export default meta;

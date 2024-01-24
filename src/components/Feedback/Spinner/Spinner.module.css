@@ -1,3 +1,7 @@
+.wrapper {
+  color: var(--tgui--link_color);
+}
+
 .wrapper--s {
   width: 24px;
   height: 24px;

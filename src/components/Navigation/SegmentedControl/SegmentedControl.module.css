@@ -7,8 +7,8 @@
   padding: 2px;
   box-sizing: border-box;
 
-  border-radius: 9px;
-  background: var(--tgui--tertiary_bg_color);
+  border-radius: 44px;
+  background: var(--tgui--secondary_bg_color);
 }
 
 .body {
@@ -28,14 +28,10 @@
   position: absolute;
   inset: 0;
   transition: transform 150ms;
-  border-radius: inherit;
+  border-radius: 40px;
   z-index: 1;
   box-sizing: border-box;
-  border: var(--tgui--border--width) solid rgba(0, 0, 0, .04);
   background: var(--tgui--bg_color);
-  box-shadow:
-      0 3px 1px 0 rgba(0, 0, 0, .04),
-      0 3px 8px 0 rgba(0, 0, 0, .12);
 }
 
 .divider {
@@ -45,4 +41,17 @@
   border-radius: 1px;
   background: var(--tgui--divider);
   z-index: 0;
+}
+
+.wrapper--ios {
+  border-radius: 9px;
+  background: var(--tgui--tertiary_bg_color);
+}
+
+.wrapper--ios .slider {
+  border: var(--tgui--border--width) solid rgba(0, 0, 0, .04);
+  border-radius: inherit;
+  box-shadow:
+      0 3px 1px 0 rgba(0, 0, 0, .04),
+      0 3px 8px 0 rgba(0, 0, 0, .12);
 }
