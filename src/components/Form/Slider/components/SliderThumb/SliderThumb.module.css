@@ -1,0 +1,21 @@
+.wrapper {
+  position: absolute;
+  width: var(--tgui--slider--thumb--size);
+  height: var(--tgui--slider--thumb--size);
+  border-radius: 50%;
+  background: var(--tgui--button_color);
+  user-select: none;
+  inset-block-start: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.wrapper--ios {
+  background: var(--tgui--bg_color);
+  box-shadow: 0 6px 6.5px rgba(0, 0, 0, .12), 0 .5px 2px rgba(0, 0, 0, .12);
+}
+
+.input {
+  inline-size: 100%;
+  block-size: 100%;
+}

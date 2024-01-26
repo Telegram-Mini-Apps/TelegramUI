@@ -1,0 +1,78 @@
+.wrapper {
+  --tgui--slider--thumb--size: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 16px 24px;
+  box-sizing: border-box;
+  min-height: 52px;
+}
+
+.slider {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+
+  border-radius: 8px;
+  block-size: var(--tgui--slider--thumb--size);
+}
+
+.wrapper--disabled {
+  cursor: default;
+  opacity: .35;
+}
+
+.track,
+.trackFilled {
+  position: absolute;
+  margin-top: -1px;
+  inset-block-start: 50%;
+  inset-inline-start: 0;
+  block-size: 3px;
+  border-radius: inherit;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  inline-size: 100%;
+  background-color: var(--tgui--tertiary_bg_color);
+}
+
+.trackFilled {
+  inline-size: auto;
+  background: var(--tgui--button_color);
+}
+
+.thumbs {
+  isolation: isolate;
+  position: relative;
+  margin-inline: calc(var(--tgui--slider--thumb--size) / 10);
+  block-size: 100%;
+  z-index: 1;
+}
+
+.before,
+.after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3px;
+}
+
+.wrapper--ios {
+  --tgui--slider--thumb--size: 24px;
+  gap: 20px;
+  padding: 20px;
+}
+
+.wrapper--ios .track,
+.wrapper--ios .trackFilled {
+  margin-top: -2px;
+  block-size: 4px;
+}

@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   gap: 8px;
+  padding: 16px;
 }
 
 .wrapper--disabled {

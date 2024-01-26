@@ -10,5 +10,7 @@ export type { RadioProps } from './Radio/Radio';
 export { Radio } from './Radio/Radio';
 export type { SelectableProps } from './Selectable/Selectable';
 export { Selectable } from './Selectable/Selectable';
+export type { SliderProps } from './Slider/Slider';
+export { Slider } from './Slider/Slider';
 export type { SwitchProps } from './Switch/Switch';
 export { Switch } from './Switch/Switch';

@@ -1,9 +1,11 @@
-import { useCallback, useLayoutEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
+
+import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 
 export const useTimeout = (callbackFunction: () => void, duration: number) => {
   const options = useRef({ callbackFunction, duration });
 
-  useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     options.current.callbackFunction = callbackFunction;
     options.current.duration = duration;
   }, [callbackFunction, duration]);

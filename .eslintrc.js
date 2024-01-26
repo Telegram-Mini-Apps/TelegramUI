@@ -45,6 +45,7 @@ module.exports = {
       },
     ],
 
+    '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true }],
     'brace-style': ['error', '1tbs', { allowSingleLine: true }],
     'camelcase': ['error', { properties: 'never', ignoreDestructuring: true }],
     'func-call-spacing': ['error', 'never'],

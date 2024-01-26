@@ -1,0 +1,39 @@
+.step {
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+  background: var(--tgui--secondary_hint_color);
+}
+
+.step--passed {
+  opacity: .35;
+  background: var(--tgui--secondary_hint_color);
+}
+
+.step--ios {
+  width: 4px;
+  height: 20px;
+
+  border-radius: 3px;
+  background: var(--tgui--tertiary_bg_color);
+}
+
+.step--ios.step--passed {
+  opacity: 1;
+  background: var(--tgui--button_color);
+}
+
+.step:not(.step--ios):first-child {
+  transform: translateX(50%);
+}
+
+.step:last-child {
+  transform: translateX(-150%);
+}
+
+.step--ios:last-child {
+  transform: translateX(-100%);
+}
