@@ -2,6 +2,5 @@
 
 TODO-s:
 - Overlays: Popover, Tooltip, Modal
-- Form: PinInput, Select, Multiselect, ColorPicker, FileInput
+- Form: PinInput, Select, Multiselect, FileInput
 - Block: Timeline, Rating
-- Layout: Tabbar, FixedLayout (?)

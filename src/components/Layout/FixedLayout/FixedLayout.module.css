@@ -1,0 +1,13 @@
+.wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.wrapper--top {
+  top: env(safe-area-inset-top, 0px);
+}
+
+.wrapper--bottom {
+  bottom: env(safe-area-inset-bottom, 0px);
+}

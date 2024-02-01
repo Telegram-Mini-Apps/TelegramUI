@@ -50,7 +50,6 @@ export const FormInput = ({
         styles.wrapper,
         platformStyles[platform],
         formStatusStyles[formStatus],
-        className,
       )}
     >
       {hasReactNode(header) && platform === 'base' && (
@@ -62,9 +61,17 @@ export const FormInput = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       >
-        {hasReactNode(before) && before}
+        {hasReactNode(before) && (
+          <div className={styles.before}>
+            {before}
+          </div>
+        )}
         {children}
-        {hasReactNode(after) && after}
+        {hasReactNode(after) && (
+          <div className={styles.after}>
+            {after}
+          </div>
+        )}
       </label>
     </div>
   );

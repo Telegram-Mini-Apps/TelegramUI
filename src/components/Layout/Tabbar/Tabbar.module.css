@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-items: stretch;
+
+  box-shadow: 0 -1px 0 var(--tgui--divider);
+  background: var(--tgui--surface_primary);
+  padding: 0 16px;
+}
+
+.wrapper--ios {
+  padding: 0;
+}

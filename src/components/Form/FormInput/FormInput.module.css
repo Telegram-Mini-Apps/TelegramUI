@@ -18,11 +18,18 @@
 
 .body {
   display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.before,
+.after {
+  display: flex;
 }
 
 .wrapper--base .body {
   border-radius: 14px;
-  border: 2px solid var(--tgui--outline);
+  box-shadow: 0 0 0 2px var(--tgui--outline);
 }
 
 .wrapper--base.wrapper--error .title {
@@ -30,7 +37,7 @@
 }
 
 .wrapper--base.wrapper--error .body {
-  border-color: var(--tgui--destructive_text_color);
+  box-shadow: 0 0 0 2px var(--tgui--destructive_text_color);
 }
 
 .wrapper--base.wrapper--focused .title {
@@ -38,7 +45,7 @@
 }
 
 .wrapper--base.wrapper--focused .body {
-  border-color: var(--tgui--link_color);
+  box-shadow: 0 0 0 2px var(--tgui--link_color);
 }
 
 .wrapper--ios .body {
@@ -47,5 +54,5 @@
 }
 
 .wrapper--ios.wrapper--error .body {
-  border: 1.5px solid var(--tgui--destructive_text_color);
+  box-shadow: 0 0 0 1.5px var(--tgui--destructive_text_color);
 }

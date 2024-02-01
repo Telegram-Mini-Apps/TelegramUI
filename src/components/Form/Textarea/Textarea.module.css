@@ -1,0 +1,17 @@
+.textarea {
+  padding: 12px 16px;
+  min-height: 80px;
+
+  width: 100%;
+  resize: none;
+
+  outline: none;
+  border: none;
+  border-radius: inherit;
+}
+
+.wrapper--ios .textarea {
+  padding: 16px;
+  min-height: 84px;
+}
+

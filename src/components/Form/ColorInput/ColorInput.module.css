@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+
+  min-height: 48px;
+  padding: 10px 12px 10px 16px;
+}
+
+.wrapper--ios {
+  padding: 10px 16px;
+  min-height: 50px;
+}
+
+.circle {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    #0C28FF 0deg,
+    #03FFFF 60deg,
+    #24D627 120deg,
+    #FDFF22 180deg,
+    #FF2227 240deg,
+    #FE2DF6 300deg,
+    #7122FF 360deg
+  );
+}
+
+.circleColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.circleColor::before,
+.circleColor::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+
+.circleColor::before {
+  inset: 2px;
+  background: var(--tgui--bg_color);
+}
+
+.circleColor::after {
+  inset: 4px;
+  background: inherit;
+}
+
+.text {
+  flex: 1 1 0;
+}

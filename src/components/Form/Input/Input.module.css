@@ -1,14 +1,28 @@
+.wrapper {
+  padding: 12px 16px;
+  gap: 12px;
+}
+
+.wrapper--ios {
+  min-height: 48px;
+}
+
 .input {
   display: block;
   width: 100%;
   margin: 0;
   border: 0;
   outline: 0;
+  padding: 0;
   resize: none;
   background: transparent;
   box-sizing: border-box;
-  padding: 12px 16px;
   color: var(--tgui--text_color);
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 .input[disabled] {
@@ -17,8 +31,4 @@
 
 .input::placeholder {
   color: var(--tgui--secondary_hint_color);
-}
-
-.wrapper--ios .input {
-  padding: 13px 16px;
 }

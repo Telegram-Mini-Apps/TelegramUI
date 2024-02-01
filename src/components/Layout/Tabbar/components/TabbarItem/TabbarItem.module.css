@@ -1,0 +1,51 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+
+  flex: 1 0 0;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+
+  padding: 12px 16px 16px;
+  margin: 0;
+  border: none;
+  background: transparent;
+
+  transition: .15s ease-out;
+  color: var(--tgui--secondary_hint_color);
+}
+
+.wrapper--ios {
+  padding: 8px 12px 4px;
+  gap: 4px;
+}
+
+.wrapper--selected {
+  color: var(--tgui--link_color);
+}
+
+.wrapper--selected:not(.wrapper--ios) .icon {
+  background: var(--tgui--secondary_fill);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  min-width: 64px;
+  padding: 2px 10px;
+  border-radius: 35px;
+}
+
+.wrapper--ios .icon {
+  padding: 0;
+}
+
+.text {
+  white-space: nowrap;
+  max-inline-size: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
