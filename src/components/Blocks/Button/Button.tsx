@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -35,7 +35,7 @@ const sizeStyles = {
   l: styles['wrapper--l'],
 };
 
-export const Button = ({
+export const Button = forwardRef(({
   type,
   size = 'm',
   before,
@@ -45,11 +45,12 @@ export const Button = ({
   className,
   mode = 'filled',
   ...restProps
-}: ButtonProps) => {
+}: ButtonProps, ref) => {
   const platform = usePlatform();
 
   return (
     <Tappable
+      ref={ref}
       type={type || 'button'}
       Component="button"
       className={classNames(
@@ -71,4 +72,4 @@ export const Button = ({
       {after}
     </Tappable>
   );
-};
+});

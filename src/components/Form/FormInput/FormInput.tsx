@@ -57,9 +57,9 @@ export const FormInput = ({
       )}
       <label
         className={classNames(styles.body, className)}
-        {...restProps}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        {...restProps}
       >
         {hasReactNode(before) && (
           <div className={styles.before}>

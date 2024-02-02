@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import styles from './Card.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -8,12 +8,13 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   type?: 'plain' | 'ambient';
 }
 
-export const Card = ({
+export const Card = forwardRef<HTMLDivElement, CardProps>(({
   type = 'plain',
   className,
   ...restProps
-}: CardProps) => (
+}, ref) => (
   <div
+    ref={ref}
     className={classNames(
       styles.wrapper,
       type === 'ambient' && styles['wrapper--ambient'],
@@ -21,4 +22,4 @@ export const Card = ({
     )}
     {...restProps}
   />
-);
+));

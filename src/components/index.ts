@@ -4,5 +4,6 @@ export * from './Form';
 export * from './Layout';
 export * from './Misc';
 export * from './Navigation';
+export * from './Overlays';
 export * from './Service';
 export * from './Typography';

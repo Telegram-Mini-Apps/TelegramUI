@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ElementType } from 'react';
+import { AllHTMLAttributes, ElementType, forwardRef } from 'react';
 import styles from './Tappable.module.css';
 
 import { Platform } from 'enums/Platform';
@@ -14,18 +14,19 @@ export interface TappableProps extends AllHTMLAttributes<HTMLElement> {
   interactiveAnimation?: 'opacity' | 'background';
 }
 
-export const Tappable = ({
+export const Tappable = forwardRef(({
   Component,
   children,
   className,
   interactiveAnimation = 'background',
   ...restProps
-}: TappableProps) => {
+}: TappableProps, ref) => {
   const platform = usePlatform();
   const { clicks, onPointerCancel, onPointerDown } = useRipple();
 
   return (
     <Component
+      ref={ref}
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
@@ -40,4 +41,4 @@ export const Tappable = ({
       {children}
     </Component>
   );
-};
+});

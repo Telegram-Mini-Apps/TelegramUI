@@ -1,6 +1,6 @@
 {
   "name": "@xelene/tgui",
-  "version": "1.0.3",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
@@ -69,13 +69,12 @@
     "postcss-gap-properties": "^5.0.1",
     "postcss-import": "^16.0.0",
     "postcss-loader": "^8.0.0",
+    "postcss-logical": "^7.0.1",
     "postcss-modules": "^6.0.0",
     "prettier": "^3.1.1",
     "remove-files-webpack-plugin": "^1.5.0",
     "storybook": "^7.6.7",
-    "svgr-plugin-swc": "^0.1.1",
     "swc-loader": "^0.2.3",
-    "swc-plugin-auto-css-modules": "^1.5.0",
     "swc-plugin-css-modules": "^0.1.7",
     "swc-plugin-transform-remove-imports": "^1.10.0",
     "ts-loader": "^9.5.1",
@@ -85,8 +84,8 @@
   },
   "packageManager": "yarn@3.1.0",
   "dependencies": {
+    "@floating-ui/react-dom": "^2.0.8",
     "@swc/helpers": "^0.5.3",
-    "postcss-logical": "^7.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

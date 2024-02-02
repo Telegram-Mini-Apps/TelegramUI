@@ -1,0 +1,26 @@
+.wrapper {
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--tgui--black);
+  background: var(--tgui--white);
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .10);
+}
+
+.wrapper--dark {
+  box-shadow: none;
+  color: var(--tgui--white);
+  background: var(--tooltip_background_dark);
+}
+
+.wrapper .arrow {
+  color: var(--tgui--white);
+}
+
+.wrapper--dark .arrow {
+  color: var(--tooltip_background_dark);
+}
+
+.wrapper--ios .wrapper--dark {
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+}

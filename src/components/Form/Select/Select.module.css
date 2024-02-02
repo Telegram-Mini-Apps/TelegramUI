@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+}
+
+.select {
+  appearance: none;
+
+  padding: 12px 58px 12px 16px;
+
+  width: 100%;
+  border: none;
+
+  outline: none;
+  border-radius: inherit;
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: var(--tgui--secondary_hint_color);
+  pointer-events: none;
+}
+

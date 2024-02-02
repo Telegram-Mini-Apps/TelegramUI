@@ -55,7 +55,6 @@
   --tgui--divider: rgba(0, 0, 0, .15);
   --tgui--outline: rgba(0, 0, 0, .05);
   --tgui--surface_primary: rgba(255, 255, 255, .95);
-  --tgui--surface_dark: rgba(37, 37, 37, .85);
   --tgui--tertiary_bg_color: #F4F4F7;
   --tgui--quartenary_bg_color: #F6F6FA;
   --tgui--card_bg_color: #FFFFFF;
@@ -69,9 +68,13 @@
   --tgui--plain_background: rgba(0, 0, 0, .04);
   --tgui--plain_foreground: rgba(0, 0, 0, .8);
   --tgui--toast_accent_color: #55A6FF;
+  /* End of custom lib tokens */
+
+  /** Non-theme tokens */
+  --tgui--surface_dark: rgba(56, 56, 56, .85);
+  --tooltip_background_dark: rgba(0, 0, 0, .85);
   --tgui--white: #FFFFFF;
   --tgui--black: #000000;
-  /* End of custom lib tokens */
 
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
@@ -114,7 +117,6 @@
   --tgui--divider: rgba(255, 255, 255, .05);
   --tgui--outline: rgba(255, 255, 255, .10);
   --tgui--surface_primary: rgba(23, 23, 23, .95);
-  --tgui--surface_dark: rgba(37, 37, 37, .85);
   --tgui--tertiary_bg_color: #222222;
   --tgui--quartenary_bg_color: #2F2F2F;
   --tgui--card_bg_color: #242424;
