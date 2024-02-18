@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactElement } from 'react';
 import styles from './Info.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { hasReactNode } from 'helpers/react/node';
 
 import { AvatarStackProps } from 'components/Blocks/AvatarStack/AvatarStack';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';

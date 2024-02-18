@@ -1,0 +1,55 @@
+.wrapper {
+  --tgui--multiselect--gap: 8px;
+
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-wrap: wrap;
+  gap: var(--tgui--multiselect--gap);
+  max-inline-size: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+
+  margin: 0;
+}
+
+.chip {
+  max-inline-size: calc(100% - var(--tgui--multiselect--gap));
+  padding: 6px 12px;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 8px;
+  position: relative;
+  inline-size: 100%;
+  color: var(--tgui--text_color);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  appearance: none;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--tgui--secondary_hint_color);
+}
+
+.input[readonly] {
+  cursor: default;
+}
+
+.wrapper--withPlaceholder .input {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.closeIcon {
+  display: flex;
+  color: var(--tgui--hint_color);
+}

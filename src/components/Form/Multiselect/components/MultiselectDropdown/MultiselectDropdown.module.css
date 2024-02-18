@@ -1,0 +1,27 @@
+.wrapper {
+  overflow-y: scroll;
+  border-radius: 12px;
+  background: var(--tgui--bg_color);
+
+  margin-top: 8px;
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-height: 160px;
+
+  box-shadow:
+      0 32px 64px 0 rgba(0, 0, 0, .04),
+      0 0 2px 1px rgba(0, 0, 0, .02);
+}
+
+.empty {
+  color: var(--tgui--hint_color);
+}
+
+.option {
+  height: 48px;
+  padding: 0 16px;
+}
+
+.selectedIcon {
+  color: var(--tgui--link_color);
+}

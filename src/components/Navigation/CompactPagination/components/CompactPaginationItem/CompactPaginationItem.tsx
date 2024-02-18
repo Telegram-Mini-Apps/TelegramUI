@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react';
 import styles from './CompactPaginationItem.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { hasReactNode } from 'helpers/react/node';
 
 import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 

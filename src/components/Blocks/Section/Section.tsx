@@ -2,7 +2,7 @@ import { Children, HTMLAttributes, ReactNode } from 'react';
 import styles from './Section.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { isPrimitiveReactNode } from 'helpers/react';
+import { isPrimitiveReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Divider } from 'components/Misc/Divider/Divider';

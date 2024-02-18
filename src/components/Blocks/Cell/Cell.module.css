@@ -9,6 +9,10 @@
   gap: 16px;
 }
 
+.wrapper--hovered {
+  background: var(--tgui--secondary_bg_color);
+}
+
 .before,
 .after {
   display: flex;

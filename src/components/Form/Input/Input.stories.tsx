@@ -39,6 +39,11 @@ export const Playground: Story = {
           placeholder="I am focused input, are u focused on me?"
         />
         <Input
+          disabled
+          header="Input"
+          placeholder="I am disabled input"
+        />
+        <Input
           status="focused"
           header="Input"
           placeholder="Write and clean me"

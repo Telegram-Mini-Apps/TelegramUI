@@ -19,11 +19,13 @@ export const Tappable = forwardRef(({
   children,
   className,
   interactiveAnimation = 'background',
+  readOnly,
   ...restProps
 }: TappableProps, ref) => {
   const platform = usePlatform();
   const { clicks, onPointerCancel, onPointerDown } = useRipple();
 
+  const hasRippleEffect = platform === Platform.Base && interactiveAnimation === 'background' && !readOnly;
   return (
     <Component
       ref={ref}
@@ -35,9 +37,10 @@ export const Tappable = forwardRef(({
       )}
       onPointerCancel={onPointerCancel}
       onPointerDown={onPointerDown}
+      readOnly={readOnly}
       {...restProps}
     >
-      {platform === Platform.Base && interactiveAnimation === 'background' && <Ripple clicks={clicks} />}
+      {hasRippleEffect && <Ripple clicks={clicks} />}
       {children}
     </Component>
   );

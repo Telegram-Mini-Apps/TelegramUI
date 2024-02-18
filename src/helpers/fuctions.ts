@@ -2,6 +2,11 @@
 
 import { canUseDOM } from 'helpers/dom';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function isFunction(value: unknown): value is Function {
+  return typeof value === 'function';
+}
+
 export function throttle<T extends any[]>(
   fn: (...args: T) => unknown,
   threshold = 50,

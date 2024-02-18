@@ -1,4 +1,4 @@
-import React, { Children, HTMLAttributes, ReactElement } from 'react';
+import { Children, HTMLAttributes, isValidElement, ReactElement } from 'react';
 import styles from './SegmentedControl.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -20,7 +20,7 @@ export const SegmentedControl = ({
 
   const childrenAsArray = Children.toArray(children);
   const checkedIndex = childrenAsArray.findIndex((option) => {
-    return React.isValidElement(option) && option.props.selected;
+    return isValidElement(option) && option.props.selected;
   });
 
   const translateX = `translateX(${100 * checkedIndex}%)`;
@@ -34,10 +34,7 @@ export const SegmentedControl = ({
       )}
       {...restProps}
     >
-      <div className={classNames(
-        styles.body,
-        childrenAsArray.length > 2 && styles['body--withSeparators'],
-      )}>
+      <div className={styles.body}>
         {checkedIndex > -1 && (
           <div
             aria-hidden

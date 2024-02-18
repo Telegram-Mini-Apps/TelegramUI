@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import styles from './Navigation.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Icon16Chevron } from 'icons/16/chevron';

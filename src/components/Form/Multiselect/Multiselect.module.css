@@ -1,0 +1,18 @@
+.wrapper {
+  --tgui--multiselect--min-height: 52px;
+
+  position: relative;
+  width: 100%;
+  min-height: var(--tgui--multiselect--min-height);
+}
+
+.base.base {
+  min-height: var(--tgui--multiselect--min-height);
+  padding-right: 48px;
+}
+
+.chevron {
+  position: absolute;
+  right: 16px;
+  color: var(--tgui--secondary_hint_color);
+}

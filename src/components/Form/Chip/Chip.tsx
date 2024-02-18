@@ -1,14 +1,14 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { AllHTMLAttributes, ReactNode } from 'react';
 import styles from './Chip.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 
-export interface ChipProps extends HTMLAttributes<HTMLDivElement> {
+export interface ChipProps extends AllHTMLAttributes<HTMLDivElement> {
   /** Changes the appearance of the component */
   mode?: 'elevated' | 'mono' | 'outline';
   /** Content before the text */

@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './TabbarItem.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Tappable } from 'components/Service/Tappable/Tappable';

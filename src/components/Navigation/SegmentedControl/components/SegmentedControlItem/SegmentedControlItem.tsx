@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import styles from './SegmentedControlItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -7,7 +7,7 @@ import { usePlatform } from 'hooks/usePlatform';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Caption } from 'components/Typography/Caption/Caption';
 
-export interface SegmentedControlItemProps extends HTMLAttributes<HTMLInputElement> {
+export interface SegmentedControlItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Sets item selected state, will be checked by parent (SegmentedControl) */
   selected?: boolean;
 }

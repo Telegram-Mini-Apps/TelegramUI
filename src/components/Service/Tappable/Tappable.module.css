@@ -5,6 +5,10 @@
   transition: opacity .15s ease-out;
 }
 
+.wrapper[readonly] {
+  cursor: default;
+}
+
 .wrapper[disabled] {
   cursor: default;
   opacity: .35;

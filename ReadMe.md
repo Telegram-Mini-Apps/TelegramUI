@@ -2,5 +2,5 @@
 
 TODO-s:
 - Overlays: Modal
-- Form: PinInput, Select, Multiselect, FileInput
+- Form: PinInput, FileInput
 - Block: Timeline, Rating

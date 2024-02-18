@@ -34,15 +34,6 @@
   background: var(--tgui--bg_color);
 }
 
-.divider {
-  height: 12px;
-  width: 1px;
-
-  border-radius: 1px;
-  background: var(--tgui--divider);
-  z-index: 0;
-}
-
 .wrapper--ios {
   border-radius: 9px;
   background: var(--tgui--tertiary_bg_color);

@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactElement, ReactNode, useEffect, useState } from 're
 import styles from './Snackbar.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 import { useTimeout } from 'hooks/useTimeout';
 

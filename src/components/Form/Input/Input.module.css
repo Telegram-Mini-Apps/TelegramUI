@@ -25,10 +25,6 @@
   -webkit-appearance: none;
 }
 
-.input[disabled] {
-  opacity: .35;
-}
-
 .input::placeholder {
   color: var(--tgui--secondary_hint_color);
 }

@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ElementType } from 'react';
+import { AllHTMLAttributes, ElementType, forwardRef } from 'react';
 import styles from './Typography.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -20,15 +20,16 @@ export interface TypographyProps extends AllHTMLAttributes<HTMLElement> {
   plain?: boolean;
 }
 
-export const Typography = ({
+export const Typography = forwardRef(({
   weight = '3',
   Component = 'span',
   plain = true,
   caps,
   className,
   ...restProps
-}: TypographyProps) => (
+}: TypographyProps, ref) => (
   <Component
+    ref={ref}
     className={classNames(
       styles.wrapper,
       plain && styles['wrapper--plain'],
@@ -38,4 +39,4 @@ export const Typography = ({
     )}
     {...restProps}
   />
-);
+));

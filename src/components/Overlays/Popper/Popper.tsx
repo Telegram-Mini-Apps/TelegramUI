@@ -1,7 +1,8 @@
-import { ElementType, HTMLAttributes, RefObject, useState } from 'react';
+import { ElementType, forwardRef, HTMLAttributes, RefObject, useState } from 'react';
 import styles from './Popper.module.css';
 
 import { classNames } from 'helpers/classNames';
+import { multipleRef } from 'helpers/react/refs';
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 
 import { useFloating, VirtualElement } from '@floating-ui/react-dom';
@@ -9,6 +10,7 @@ import { useFloating, VirtualElement } from '@floating-ui/react-dom';
 import { RootRenderer } from 'components/Service/RootRenderer/RootRenderer';
 import { FloatingArrow, FloatingArrowProps } from './components/FloatingArrow/FloatingArrow';
 import { DEFAULT_ARROW_HEIGHT, DEFAULT_ARROW_PADDING, DefaultIcon } from './components/FloatingArrow/icons/arrow';
+import { autoUpdateFloatingElement } from './helpers/autoUpdateFloatingElement';
 import { useFloatingMiddlewares, UseFloatingMiddlewaresOptions } from './hooks/useFloatingMiddlewares';
 
 export interface PopperProps extends
@@ -27,9 +29,11 @@ export interface PopperProps extends
   ArrowIcon?: FloatingArrowProps['Icon'];
   /** The component type to render as the Popper's root element. */
   Component?: ElementType;
+  /** Whether the Popper should automatically update its position when the target element is resized. */
+  autoUpdateOnTargetResize?: boolean;
 }
 
-export const Popper = ({
+export const Popper = forwardRef(({
   // UseFloatingMiddlewaresOptions
   placement = 'auto',
   sameWidth,
@@ -37,6 +41,9 @@ export const Popper = ({
   offsetByCrossAxis = 0,
   withArrow,
   customMiddlewares,
+
+  // UseFloatingProps
+  autoUpdateOnTargetResize = false,
 
   // ArrowProps
   arrowProps,
@@ -48,7 +55,7 @@ export const Popper = ({
   className,
   children,
   ...restProps
-}: PopperProps) => {
+}: PopperProps, ref) => {
   const [arrowRef, setArrowRef] = useState<HTMLDivElement | null>(null);
 
   const { strictPlacement, middlewares } = useFloatingMiddlewares({
@@ -71,6 +78,11 @@ export const Popper = ({
   } = useFloating({
     placement: strictPlacement,
     middleware: middlewares,
+    whileElementsMounted(...args) {
+      return autoUpdateFloatingElement(...args, {
+        elementResize: autoUpdateOnTargetResize,
+      });
+    },
   });
 
   useEnhancedEffect(() => {
@@ -81,7 +93,7 @@ export const Popper = ({
     <RootRenderer>
       <Component
         {...restProps}
-        ref={refs.setFloating}
+        ref={multipleRef(ref, refs.setFloating)}
         style={{ ...style, ...floatingStyles }}
         className={classNames(styles.wrapper, className)}
       >
@@ -98,4 +110,4 @@ export const Popper = ({
       </Component>
     </RootRenderer>
   );
-};
+});

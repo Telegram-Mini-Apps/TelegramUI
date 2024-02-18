@@ -1,8 +1,9 @@
-import { HTMLAttributes, ReactNode, useState } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode, useState } from 'react';
 import styles from './FormInput.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { callMultiple } from 'helpers/function';
+import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { FormInputTitle } from './components/FormInputTitle';
@@ -16,6 +17,8 @@ export interface FormPublicProps {
   before?: ReactNode;
   /** Content after the Form */
   after?: ReactNode;
+  /** Is form disabled */
+  disabled?: boolean;
 }
 
 export interface FormInputProps extends FormPublicProps, HTMLAttributes<HTMLLabelElement> {}
@@ -31,34 +34,48 @@ const formStatusStyles = {
   focused: styles['wrapper--focused'],
 };
 
-export const FormInput = ({
+export const FormInput = forwardRef<HTMLDivElement, FormInputProps>(({
   status,
   header,
   before,
   after,
+  disabled,
   children,
   className,
+  onFocus: onFocusProp,
+  onBlur: onBlurProp,
   ...restProps
-}: FormInputProps) => {
+}, ref) => {
   const platform = usePlatform();
   const [isFocused, setIsFocused] = useState(false);
 
   const formStatus = status || (isFocused ? 'focused' : 'default');
+
+  const onFocus = callMultiple(onFocusProp, () => {
+    if (disabled) {
+      return;
+    }
+
+    setIsFocused(true);
+  });
+  const onBlur = callMultiple(onBlurProp, () => setIsFocused(false));
+
   return (
     <div
+      ref={ref}
       className={classNames(
         styles.wrapper,
         platformStyles[platform],
         formStatusStyles[formStatus],
+        disabled && styles['wrapper--disabled'],
       )}
+      aria-disabled={disabled}
     >
-      {hasReactNode(header) && platform === 'base' && (
-        <FormInputTitle className={styles.title}>{header}</FormInputTitle>
-      )}
       <label
+        aria-disabled={disabled}
         className={classNames(styles.body, className)}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onFocus={onFocus}
+        onBlur={onBlur}
         {...restProps}
       >
         {hasReactNode(before) && (
@@ -73,6 +90,9 @@ export const FormInput = ({
           </div>
         )}
       </label>
+      {hasReactNode(header) && platform === 'base' && (
+        <FormInputTitle className={styles.title}>{header}</FormInputTitle>
+      )}
     </div>
   );
-};
+});

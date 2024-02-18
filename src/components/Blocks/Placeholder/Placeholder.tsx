@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode } from 'react';
 import styles from './Placeholder.module.css';
 
 import { classNames } from 'helpers/classNames';
-import { hasReactNode } from 'helpers/react';
+import { hasReactNode } from 'helpers/react/node';
 
 import { Text } from 'components/Typography/Text/Text';
 import { Title } from 'components/Typography/Title/Title';

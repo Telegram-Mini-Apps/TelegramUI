@@ -1,0 +1,21 @@
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+}
+
+.slider {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 3px;
+  transition: transform 125ms;
+  border-radius: 4px 4px 1px 1px;
+  background: var(--tgui--button_color);
+}

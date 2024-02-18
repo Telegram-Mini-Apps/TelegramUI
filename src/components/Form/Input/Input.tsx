@@ -17,6 +17,7 @@ export const Input = ({
   after,
   status,
   className,
+  disabled,
   ...restProps
 }: InputProps) => {
   const platform = usePlatform();
@@ -28,6 +29,7 @@ export const Input = ({
       before={before}
       after={after}
       status={status}
+      disabled={disabled}
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
@@ -38,6 +40,7 @@ export const Input = ({
         Component="input"
         className={styles.input}
         type={type}
+        disabled={disabled}
         {...restProps}
       />
     </FormInput>
