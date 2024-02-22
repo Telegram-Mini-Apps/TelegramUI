@@ -1,4 +1,4 @@
-import { ElementType, ReactNode } from 'react';
+import { ElementType, forwardRef, ReactNode } from 'react';
 import styles from './ButtonCell.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -11,7 +11,7 @@ import { Text } from 'components/Typography/Text/Text';
 
 interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
   /** Cell type, influence only on color */
-  type?: 'default' | 'destructive';
+  mode?: 'default' | 'destructive';
   /** Content before the text */
   before?: ReactNode;
   /** Content after the text */
@@ -20,24 +20,25 @@ interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
   Component?: ElementType;
 }
 
-export const ButtonCell = ({
-  type = 'default',
+export const ButtonCell = forwardRef(({
+  mode = 'default',
   before,
   after,
   className,
   children,
   Component,
   ...restProps
-}: ButtonCellProps) => {
+}: ButtonCellProps, ref) => {
   const platform = usePlatform();
   const Typography = platform === 'ios' ? Subheadline : Text;
 
   return (
     <Tappable
+      ref={ref}
       Component={Component || 'button'}
       className={classNames(
         styles.wrapper,
-        type === 'destructive' && styles['wrapper--destructive'],
+        mode === 'destructive' && styles['wrapper--destructive'],
         platform === 'ios' && styles['wrapper--ios'],
         className,
       )}
@@ -48,4 +49,4 @@ export const ButtonCell = ({
       {hasReactNode(after) && after}
     </Tappable>
   );
-};
+});

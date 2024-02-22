@@ -1,0 +1,91 @@
+.wrapper {
+  overflow: hidden;
+
+  position: fixed;
+  inset: 0;
+  padding: 32px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  background: var(--tgui--bg_color);
+}
+
+.header {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  max-inline-size: 100%;
+  flex: 1 1 0;
+}
+
+.wrapper--ios .header {
+  flex: unset;
+}
+
+.header,
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.title {
+  text-align: center;
+}
+
+.cellsWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.buttonWrapper {
+  --tgui--pin_input--buttons-gap: 12px;
+  --tgui--pin_input--button-width: 33.3%;
+
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--tgui--pin_input--buttons-gap);
+  margin-top: 52px;
+}
+
+.wrapper--ios .buttonWrapper {
+  --tgui--pin_input--button-width: 76px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: var(--tgui--pin_input--buttons-gap);
+}
+
+.row:last-child {
+  margin-left: calc(var(--tgui--pin_input--buttons-gap) * 2);
+  justify-content: flex-end;
+}
+
+.wrapper--ios .row:last-child {
+  margin-left: calc(var(--tgui--pin_input--button-width) + var(--tgui--pin_input--buttons-gap));
+  justify-content: center;
+}
+
+.backspaceIcon {
+  display: block;
+  margin: auto;
+  color: var(--tgui--link_color);
+}

@@ -1,0 +1,18 @@
+.wrapper {
+  width: var(--tgui--pin_input--button-width);
+  height: 56px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 16px;
+  color: var(--tgui--text_color);
+  background: var(--tgui--tertiary_bg_color);
+}
+
+.wrapper--ios {
+  width: 76px;
+  height: 76px;
+
+  border-radius: 50%;
+}
