@@ -30,3 +30,5 @@ export type { SectionProps } from './Section/Section';
 export { Section } from './Section/Section';
 export type { StepsProps } from './Steps/Steps';
 export { Steps } from './Steps/Steps';
+export type { TimelineProps } from './Timeline/Timeline';
+export { Timeline } from './Timeline/Timeline';

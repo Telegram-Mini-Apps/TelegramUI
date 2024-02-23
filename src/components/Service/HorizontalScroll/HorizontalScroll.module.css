@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  overflow-x: scroll;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.HorizontalScroll__in::-webkit-scrollbar {
+  display: none;
+}

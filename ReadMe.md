@@ -2,4 +2,3 @@
 
 TODO-s:
 - Overlays: Modal
-- Block: Timeline, Rating

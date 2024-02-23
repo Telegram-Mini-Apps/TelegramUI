@@ -1,0 +1,28 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  padding: 12px;
+}
+
+.element {
+  position: relative;
+  color: var(--tgui--tertiary_bg_color);
+}
+
+.element:focus-visible {
+  outline: 2px solid var(--tgui--link_color);
+}
+
+.element--picked {
+  position: absolute;
+  color: var(--tgui--link_color);
+}
+
+.input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  opacity: 0;
+}

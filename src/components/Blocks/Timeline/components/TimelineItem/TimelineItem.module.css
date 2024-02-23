@@ -1,0 +1,106 @@
+.wrapper {
+  --tgui--timeline--item--thickness: 4px;
+  --tgui--timeline--item--size: 12px;
+
+  display: flex;
+  gap: 32px;
+}
+
+.wrapper:last-child .line {
+  display: none;
+}
+
+.side {
+  position: relative;
+  min-width: var(--tgui--timeline--item--size);
+}
+
+.dot {
+  position: absolute;
+
+  top: 4px;
+  left: 0;
+
+  width: var(--tgui--timeline--item--size);
+  height: var(--tgui--timeline--item--size);
+
+  border-radius: 50%;
+  background: var(--tgui--quartenary_bg_color);
+}
+
+.line {
+  position: absolute;
+
+  top: 24px;
+  bottom: 0;
+  left: 50%;
+
+  height: calc(100% - 4px);
+  width: var(--tgui--timeline--item--thickness);
+
+  border-radius: 2px;
+  transform: translateX(-50%);
+  background: var(--tgui--quartenary_bg_color);
+}
+
+.fields {
+  overflow: hidden;
+}
+
+.title {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.description {
+  color: var(--tgui--hint_color);
+}
+
+.wrapper--active .line,
+.wrapper--active .dot {
+  background: var(--tgui--link_color);
+}
+
+.wrapper--preActive .dot {
+  background: var(--tgui--link_color);
+}
+
+.wrapper--ios .side {
+  --tgui--timeline--item--size: 16px;
+}
+
+.wrapper--ios .dot {
+  top: 6px;
+}
+
+.wrapper--ios .line {
+  top: 6px;
+  height: calc(100% + 26px);
+}
+
+.wrapper--horizontal {
+  gap: 24px;
+  flex-direction: column;
+}
+
+.wrapper--horizontal .side {
+  height: var(--tgui--timeline--item--size);
+  display: flex;
+  align-items: center;
+}
+
+.wrapper--horizontal .dot {
+  top: 0;
+}
+
+.wrapper--horizontal .line {
+  top: 50%;
+  left: 0;
+  height: var(--tgui--timeline--item--thickness);
+  width: calc(100% + 36px);
+  transform: translateY(-50%);
+}
+
+.wrapper--horizontal .title {
+  white-space: nowrap;
+}

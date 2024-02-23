@@ -16,6 +16,8 @@ export type { PinInputProps } from './PinInput/PinInput';
 export { PinInput } from './PinInput/PinInput';
 export type { RadioProps } from './Radio/Radio';
 export { Radio } from './Radio/Radio';
+export type { RatingProps } from './Rating/Rating';
+export { Rating } from './Rating/Rating';
 export type { SelectableProps } from './Selectable/Selectable';
 export { Selectable } from './Selectable/Selectable';
 export type { SliderProps } from './Slider/Slider';

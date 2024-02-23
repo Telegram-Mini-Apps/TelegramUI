@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 44px;
+  margin: 0;
+}
+
+.wrapper--horizontal {
+  flex-direction: row;
+}
