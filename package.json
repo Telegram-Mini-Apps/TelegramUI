@@ -9,21 +9,22 @@
     "./dist"
   ],
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=7.0.0"
   },
   "scripts": {
-    "build": "yarn run -T concurrently 'yarn:build:*'",
-    "build:types": "yarn run -T concurrently 'yarn:tsc:*'",
-    "build:js-css": "yarn run -T concurrently 'yarn:swc:*' 'yarn:postcss'",
-    "postcss": "yarn run -T webpack --config webpack.styles.config.js",
-    "swc-base": "yarn run -T cross-env NODE_ENV=production swc src/ --config-file package.swcrc --extensions .tsx,.jsx,.ts,.js",
-    "swc:es6": "yarn swc-base -d dist -s",
-    "swc:cjs": "yarn swc-base -d dist/cjs -s -C module.type=commonjs",
-    "tsc:es6": "yarn run -T cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration -p tsconfig.dist.json",
-    "tsc:cjs": "yarn run -T cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration --outDir dist/cjs/ -p tsconfig.dist.json",
+    "build": "concurrently \"npm run build:types\" \"npm run build:js-css\"",
+    "build:types": "concurrently 'npm run tsc:*'",
+    "build:js-css": "concurrently \"npm run swc:*\" \"npm run postcss\"",
+    "postcss": "webpack --config webpack.styles.config.js",
+    "swc-base": "cross-env NODE_ENV=production swc src/ --config-file package.swcrc --extensions .tsx,.jsx,.ts,.js",
+    "swc:es6": "npm run swc-base -- -d dist -s",
+    "swc:cjs": "npm run swc-base -- -d dist/cjs -s -C module.type=commonjs",
+    "tsc:es6": "cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration -p tsconfig.dist.json && tsc-alias",
+    "tsc:cjs": "cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration --outDir dist/cjs/ -p tsconfig.dist.json && tsc-alias",
     "dev": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "storybook:publish": "rsync ./storybook-static/ xelene:/var/www/tgui.xelene.me -avz --exclude .git/ --exclude .yarn/ --exclude node_modules/"
+    "storybook:publish": "rsync ./storybook-static/ xelene:/var/www/tgui.xelene.me -avz --exclude .git/ --exclude node_modules/"
   },
   "repository": {
     "type": "git",
@@ -84,9 +85,9 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "tsc-alias": "^1.8.8"
   },
-  "packageManager": "yarn@3.1.0",
   "dependencies": {
     "@floating-ui/react-dom": "^2.0.8",
     "@swc/helpers": "^0.5.3",

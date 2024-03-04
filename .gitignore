@@ -26,13 +26,3 @@ tmp/
 
 # SWC cache
 .swc
-
-# yarn specific
-# see https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
