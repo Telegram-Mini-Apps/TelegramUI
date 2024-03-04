@@ -9,20 +9,20 @@ export const useTypographyCellComponents = () => {
   const platform = usePlatform();
   const isIOS = platform === 'ios';
 
-  const Title = ({ children, ...restProps }: TypographyProps) => {
+  const Title = (props: TypographyProps) => {
     if (isIOS) {
-      return <Text weight="3" {...restProps}>{children}</Text>;
+      return <Text {...props} />;
     }
 
-    return <Subheadline weight="3" level="1" {...restProps}>{children}</Subheadline>;
+    return <Subheadline level="1" {...props} />;
   };
 
-  const Description = ({ children, ...restProps }: TypographyProps) => {
+  const Description = (props: TypographyProps) => {
     if (isIOS) {
-      return <Caption weight="3" {...restProps}>{children}</Caption>;
+      return <Caption {...props} />;
     }
 
-    return <Subheadline weight="3" level="2" {...restProps}>{children}</Subheadline>;
+    return <Subheadline level="2" {...props} />;
   };
 
   return {

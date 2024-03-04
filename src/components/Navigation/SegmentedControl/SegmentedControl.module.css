@@ -8,7 +8,7 @@
   box-sizing: border-box;
 
   border-radius: 44px;
-  background: var(--tgui--secondary_bg_color);
+  background: var(--tgui--tertiary_bg_color);
 }
 
 .body {
@@ -31,7 +31,7 @@
   border-radius: 40px;
   z-index: 1;
   box-sizing: border-box;
-  background: var(--tgui--bg_color);
+  background: var(--tgui--segmented_control_active_bg);
 }
 
 .wrapper--ios {

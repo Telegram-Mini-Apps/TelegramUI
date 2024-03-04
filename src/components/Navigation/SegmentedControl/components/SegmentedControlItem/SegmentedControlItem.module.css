@@ -9,6 +9,7 @@
   border-radius: inherit;
   background: transparent;
   z-index: 1;
+  color: var(--tgui--text_color);
 }
 
 .wrapper--ios {

@@ -15,7 +15,21 @@
   flex-grow: 1;
 }
 
-.before {
+.wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .15s ease-out;
+  background: var(--tgui--bg_color);
+}
+
+.wrapper:hover::after {
+  opacity: var(--tgui--button--hovered-opacity);
+}
+
+.before,
+.after {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +40,21 @@
   text-overflow: ellipsis;
   overflow: hidden;
   z-index: 1;
+}
+
+.spinner.spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: auto;
+  background: inherit;
+  border-radius: inherit;
+  color: var(--tgui--white);
 }
 
 .wrapper--s {
@@ -51,32 +80,38 @@
 }
 
 .wrapper--filled {
+  --tgui--button--hovered-opacity: .15;
   color: var(--tgui--button_text_color);
   background: var(--tgui--button_color);
 }
 
 .wrapper--bezeled {
+  --tgui--button--hovered-opacity: .07;
   color: var(--tgui--link_color);
   background: var(--tgui--secondary_fill);
 }
 
 .wrapper--plain {
+  --tgui--button--hovered-opacity: .03;
   color: var(--tgui--link_color);
   background: transparent;
 }
 
 .wrapper--gray {
+  --tgui--button--hovered-opacity: .5;
   color: var(--tgui--plain_foreground);
   background: var(--tgui--plain_background);
 }
 
 .wrapper--outline {
+  --tgui--button--hovered-opacity: .5;
   color: var(--tgui--plain_foreground);
   background: inherit;
   box-shadow: 0 0 0 1px var(--tgui--outline);
 }
 
 .wrapper--white {
+  --tgui--button--hovered-opacity: .5;
   background: var(--tgui--white);
 }
 
@@ -84,3 +119,6 @@
   border-radius: 12px;
 }
 
+.wrapper--ios::after {
+  content: unset;
+}

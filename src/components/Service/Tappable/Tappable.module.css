@@ -7,6 +7,7 @@
 
 .wrapper[readonly] {
   cursor: default;
+  pointer-events: visible;
 }
 
 .wrapper[disabled] {

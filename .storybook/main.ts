@@ -39,7 +39,15 @@ const config: StorybookConfig = {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop) => {
-        return prop.parent?.fileName.includes('src/components') || false;
+        if (prop.parent) {
+          return prop.parent.fileName.includes('src/components');
+        }
+
+        if (!prop.declarations || prop.declarations.length === 0) {
+          return false;
+        }
+
+        return prop.declarations[0].fileName.includes('src/components');
       },
     },
   },

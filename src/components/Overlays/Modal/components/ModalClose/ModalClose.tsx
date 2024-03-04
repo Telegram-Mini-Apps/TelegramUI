@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { Drawer } from 'vaul';
 
-interface ModalCloseProps {
+export interface ModalCloseProps {
   children?: ReactNode;
 }
 

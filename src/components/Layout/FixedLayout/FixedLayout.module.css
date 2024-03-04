@@ -5,9 +5,10 @@
 }
 
 .wrapper--top {
-  top: env(safe-area-inset-top, 0px);
+  top: 0;
 }
 
 .wrapper--bottom {
-  bottom: env(safe-area-inset-bottom, 0px);
+  padding-bottom: var(--tgui--safe_area_inset_bottom);
+  bottom: 0;
 }

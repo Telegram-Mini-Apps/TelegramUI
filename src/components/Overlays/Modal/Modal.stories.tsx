@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Decorator, Meta, StoryObj } from '@storybook/react';
 import { Icon28Close } from 'icons/28/close';
+import { hideControls } from 'storybook/controls';
 
 import { Button, Placeholder } from 'components';
 import { Modal, ModalProps } from './Modal';
@@ -9,6 +10,7 @@ import { Modal, ModalProps } from './Modal';
 const meta = {
   title: 'Overlays/Modal',
   component: Modal,
+  argTypes: hideControls('header', 'trigger', 'children', 'overlayComponent', 'snapPoints', 'fadeFromIndex'),
 } satisfies Meta<typeof Modal>;
 
 export default meta;
@@ -99,9 +101,12 @@ export const Controlled: Story = {
   },
   render: (args) => {
     const [isOpen, setIsOpen] = useState(args.open);
+    const [isFetching, setIsFetching] = useState(false);
 
-    const handleClose = () => {
+    const fetchAndClose = () => {
+      setIsFetching(true);
       setTimeout(() => {
+        setIsFetching(false);
         setIsOpen(false);
       }, 1000);
     };
@@ -118,7 +123,15 @@ export const Controlled: Story = {
           open={isOpen}
           onOpenChange={setIsOpen}
         >
-          <Placeholder action={<Button size="m" onClick={handleClose}>Fetch data and close</Button>} />
+          <Placeholder action={(
+            <Button
+              size="m"
+              loading={isFetching}
+              onClick={fetchAndClose}
+            >
+              Fetch data and close
+            </Button>
+          )} />
         </Modal>
       </Placeholder>
     );

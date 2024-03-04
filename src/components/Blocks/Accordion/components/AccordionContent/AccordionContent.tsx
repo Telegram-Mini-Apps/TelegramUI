@@ -4,7 +4,7 @@ import styles from './AccordionContent.module.css';
 import { classNames } from 'helpers/classNames';
 
 import { AccordionContext } from 'components/Blocks/Accordion/AccordionContext';
-import { useAccordionStyles } from './hooks/useAccordionStyles';
+import { calcMaxHeight } from './helpers/calcMaxHeight';
 
 export interface AccordionContentProps
   extends HTMLAttributes<HTMLDivElement> {}
@@ -16,7 +16,6 @@ export const AccordionContent = ({
 }: AccordionContentProps) => {
   const bodyRef = useRef(null);
   const { expanded, labelId, contentId } = useContext(AccordionContext);
-  const bodyStyles = useAccordionStyles(expanded, bodyRef);
 
   return (
     <div
@@ -30,7 +29,9 @@ export const AccordionContent = ({
       <div
         ref={bodyRef}
         className={styles.body}
-        style={bodyStyles}
+        style={{
+          maxHeight: calcMaxHeight(expanded, bodyRef.current),
+        }}
       >
         {children}
       </div>

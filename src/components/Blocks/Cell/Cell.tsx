@@ -51,7 +51,6 @@ export const Cell = forwardRef(({
   const { Title, Description } = useTypographyCellComponents();
 
   const hasTitle = hasReactNode(children) || hasReactNode(hint) || hasReactNode(titleBadge);
-
   return (
     <Tappable
       ref={ref}

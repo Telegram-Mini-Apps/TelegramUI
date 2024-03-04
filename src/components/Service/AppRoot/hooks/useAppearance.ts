@@ -19,5 +19,9 @@ export const useAppearance = (appearanceProp?: AppRootContextInterface['appearan
     return telegramData.colorScheme;
   }
 
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+
   return 'light';
 };

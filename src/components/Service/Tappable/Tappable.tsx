@@ -10,12 +10,12 @@ import { Ripple } from './components/Ripple/Ripple';
 
 export interface TappableProps extends AllHTMLAttributes<HTMLElement> {
   /** HTML Tag */
-  Component: ElementType;
+  Component?: ElementType;
   interactiveAnimation?: 'opacity' | 'background';
 }
 
 export const Tappable = forwardRef(({
-  Component,
+  Component = 'div',
   children,
   className,
   interactiveAnimation = 'background',

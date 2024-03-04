@@ -1,10 +1,14 @@
 .wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
   border-radius: 20px;
   box-shadow:
       0 32px 64px 0 rgba(0, 0, 0, .04),
       0 0 2px 1px rgba(0, 0, 0, .02);
+  background: var(--tgui--tertiary_bg_color);
 }
 
 .wrapper--ambient {
-  background: linear-gradient(0deg, #212121 0%, #212121 100%), var(--tgui--plain_foreground);
+  background: var(--tgui--plain_foreground);
 }

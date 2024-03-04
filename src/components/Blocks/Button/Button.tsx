@@ -2,8 +2,10 @@ import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 import { classNames } from 'helpers/classNames';
+import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
+import { Spinner } from 'components';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { ButtonTypography } from './components/ButtonTypography/ButtonTypography';
 
@@ -18,6 +20,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   stretched?: boolean;
   /** Button mode, only background and color are changing */
   mode?: 'filled' | 'bezeled' | 'plain' | 'gray' | 'outline' | 'white';
+  /** Is button loading */
+  loading?: boolean;
+  /** Is button disabled */
+  disabled?: boolean;
 }
 
 const modeStyles = {
@@ -44,6 +50,7 @@ export const Button = forwardRef(({
   children,
   className,
   mode = 'filled',
+  loading,
   ...restProps
 }: ButtonProps, ref) => {
   const platform = usePlatform();
@@ -63,13 +70,18 @@ export const Button = forwardRef(({
       )}
       {...restProps}
     >
-      {before && (
+      {loading && <Spinner className={styles.spinner} size="s" />}
+      {hasReactNode(before) && (
         <div className={styles.before}>
           {before}
         </div>
       )}
       <ButtonTypography size={size}>{children}</ButtonTypography>
-      {after}
+      {hasReactNode(after) && (
+        <div className={styles.after}>
+          {after}
+        </div>
+      )}
     </Tappable>
   );
 });

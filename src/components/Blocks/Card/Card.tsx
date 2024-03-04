@@ -1,25 +1,49 @@
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, ForwardRefExoticComponent, HTMLAttributes, RefAttributes } from 'react';
 import styles from './Card.module.css';
 
 import { classNames } from 'helpers/classNames';
+import { useObjectMemo } from 'hooks/useObjectMemo';
 
-export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+import { CardCell } from './components/CardCell/CardCell';
+import { CardChip } from './components/CardChip/CardChip';
+import { CardContext, CardContextInterface } from './CardContext';
+
+export interface CardProps extends HTMLAttributes<HTMLElement> {
   /** Card type, plain by default */
-  type?: 'plain' | 'ambient';
+  type?: CardContextInterface['type'];
 }
+
+type CardWithComponents = ForwardRefExoticComponent<CardProps & RefAttributes<HTMLDivElement>> & {
+  Cell: typeof CardCell;
+  Chip: typeof CardChip;
+};
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(({
   type = 'plain',
   className,
+  children,
   ...restProps
-}, ref) => (
-  <div
-    ref={ref}
-    className={classNames(
-      styles.wrapper,
-      type === 'ambient' && styles['wrapper--ambient'],
-      className,
-    )}
-    {...restProps}
-  />
-));
+}, ref) => {
+  const contextValue = useObjectMemo({
+    type,
+  });
+
+  return (
+    <CardContext.Provider value={contextValue}>
+      <article
+        ref={ref}
+        className={classNames(
+          styles.wrapper,
+          type === 'ambient' && styles['wrapper--ambient'],
+          className,
+        )}
+        {...restProps}
+      >
+        {children}
+      </article>
+    </CardContext.Provider>
+  );
+}) as CardWithComponents;
+
+Card.Cell = CardCell;
+Card.Chip = CardChip;

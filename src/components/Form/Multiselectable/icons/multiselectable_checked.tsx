@@ -1,9 +1,11 @@
 import { Icon } from 'types/Icon';
 
 export const IconMultiselectableChecked = ({ ...restProps }: Icon) => (
-  <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" {...restProps}>
+  <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" {...restProps}>
     <path fillRule="evenodd" clipRule="evenodd"
-      d="M12 24a12 12 0 1 0 0-24 12 12 0 0 0 0 24Zm4.78-17.1a1 1 0 0 1 .32 1.38l-5.63 9a1 1 0 0 1-1.62.1l-3.37-4.12a1 1 0 1 1 1.54-1.27l2.5 3.05 4.88-7.82a1 1 0 0 1 1.38-.32Z"
-      fill="currentColor" />
+      d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10Z" fill="currentColor" />
+    <path fillRule="evenodd" clipRule="evenodd"
+      d="M15.375 6.56a1 1 0 0 1-.036 1.415l-6.31 6a1 1 0 0 1-1.416-.037l-2.84-3a1 1 0 0 1 1.453-1.375l2.15 2.272 5.585-5.31a1 1 0 0 1 1.414.036Z"
+      fill="#fff" />
   </svg>
 );

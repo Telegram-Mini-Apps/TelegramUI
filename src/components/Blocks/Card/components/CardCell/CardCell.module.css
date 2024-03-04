@@ -1,0 +1,32 @@
+.wrapper {
+  --tgui--cell--middle--padding: 16px 0;
+  padding: 0 20px;
+  background: var(--tgui--card_bg_color);
+}
+
+.wrapper--ambient {
+  --tgui--text_color: var(--tgui--white);
+  --tgui--hint_color: rgba(255, 255, 255, .75);
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 48px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--tgui--black) 100%);
+}
+
+.subtitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: break-spaces;
+}
+
+.header {
+  font-weight: var(--tgui--font_weight--accent2);
+}
+
+.wrapper--ambient .header {
+  color: var(--tgui--white);
+}
