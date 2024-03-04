@@ -1,42 +1,42 @@
-import { HTMLAttributes, RefObject, useEffect, useRef, useState } from 'react';
+import { forwardRef, HTMLAttributes, useEffect, useState } from 'react';
 import styles from './AppRoot.module.css';
 
-import { Platform } from 'enums/Platform';
 import { classNames } from 'helpers/classNames';
+import { multipleRef } from 'helpers/react/refs';
 import { getTelegramData } from 'helpers/telegram';
 import { useObjectMemo } from 'hooks/useObjectMemo';
 
-import { AppRootContext } from 'components/Service/AppRoot/AppRootContext';
-import { getInitialPlatform } from './helpers/getInitialPlatform';
+import { AppRootContext, AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
+import { useAppearance } from 'components/Service/AppRoot/hooks/useAppearance';
+import { usePlatform } from './hooks/usePlatform';
+import { usePortalContainer } from './hooks/usePortalContainer';
 
 export interface AppRootProps extends HTMLAttributes<HTMLDivElement> {
   /** Application platform, determined automatically if nothing passed */
-  platform?: Platform;
+  platform?: AppRootContextInterface['platform'];
   /** Application appearance, determined automatically if nothing passed */
-  appearance?: 'light' | 'dark';
-  /** Disable portal rendering, element will be shown in child container */
-  disablePortal?: boolean;
+  appearance?: AppRootContextInterface['appearance'];
   /** Rewriting portal container for rendering, AppRoot container as default */
-  portalContainer?: RefObject<HTMLElement>;
+  portalContainer?: AppRootContextInterface['portalContainer'];
 }
 
-export const AppRoot = ({
+export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(({
   platform: platformProp,
   appearance: appearanceProp,
-  portalContainer,
+  portalContainer: portalContainerProp,
   children,
   className,
-  disablePortal,
   ...restProps
-}: AppRootProps) => {
-  const appRootContainer = useRef(null);
-  const [appearance, setAppearance] = useState(appearanceProp);
-  const platform = platformProp || getInitialPlatform();
+}, ref) => {
+  const [appearance, setAppearance] = useState(useAppearance(appearanceProp));
+  const portalContainer = usePortalContainer(portalContainerProp);
+  const platform = usePlatform(platformProp);
 
   const contextValue = useObjectMemo({
     platform,
     appearance,
-    portalContainer: portalContainer || appRootContainer,
+    portalContainer,
+    isRendered: true,
   });
 
   const onHandleChangeTheme = () => {
@@ -59,12 +59,12 @@ export const AppRoot = ({
   }, []);
 
   useEffect(() => {
-    setAppearance(appearanceProp);
+    appearanceProp && setAppearance(appearanceProp);
   }, [appearanceProp]);
 
   return (
     <div
-      ref={appRootContainer}
+      ref={multipleRef(ref, portalContainer)}
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
@@ -78,4 +78,4 @@ export const AppRoot = ({
       </AppRootContext.Provider>
     </div>
   );
-};
+});

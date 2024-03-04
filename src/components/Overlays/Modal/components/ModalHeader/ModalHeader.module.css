@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+  box-sizing: border-box;
+
+  padding: 16px;
+}
+
+.wrapper::before {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  content: '';
+  width: 36px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--tgui--divider);
+}
+
+.before,
+.after {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+}
+
+.before {
+  justify-content: flex-start;
+}
+
+.after {
+  justify-content: flex-end;
+}
+
+.children {
+  --tgui--text--line_height: 28px;
+
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
+}

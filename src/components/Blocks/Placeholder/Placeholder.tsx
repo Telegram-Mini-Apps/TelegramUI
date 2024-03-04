@@ -25,16 +25,23 @@ export const Placeholder = ({
   className,
   action,
   ...restProps
-}: PlaceholderProps) => (
-  <section
-    className={classNames(styles.wrapper, className)}
-    {...restProps}
-  >
-    {hasReactNode(children) && children}
-    <dl className={styles.fields}>
-      {hasReactNode(header) && <Title Component="dt" level="3">{header}</Title>}
-      {hasReactNode(description) && <Text className={styles.description} Component="dd">{description}</Text>}
-    </dl>
-    {hasReactNode(action) && action}
-  </section>
-);
+}: PlaceholderProps) => {
+  const hasHeader = hasReactNode(header);
+  const hasDescription = hasReactNode(description);
+
+  return (
+    <section
+      className={classNames(styles.wrapper, className)}
+      {...restProps}
+    >
+      {hasReactNode(children) && children}
+      {(hasHeader || hasDescription) && (
+        <dl className={styles.fields}>
+          {hasHeader && <Title Component="dt" level="3" weight="2">{header}</Title>}
+          {hasDescription && <Text className={styles.description} Component="dd">{description}</Text>}
+        </dl>
+      )}
+      {hasReactNode(action) && action}
+    </section>
+  );
+};

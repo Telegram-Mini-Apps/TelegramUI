@@ -1,6 +1,6 @@
 {
   "name": "@xelene/tgui",
-  "version": "1.5.0",
+  "version": "1.8.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
@@ -35,6 +35,10 @@
     "url": "https://github.com/XeleneStudio/TelegramUI/issues"
   },
   "homepage": "https://github.com/XeleneStudio/TelegramUI#readme",
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.7",
     "@storybook/addon-interactions": "^7.6.7",
@@ -86,8 +90,8 @@
   "dependencies": {
     "@floating-ui/react-dom": "^2.0.8",
     "@swc/helpers": "^0.5.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@twa-dev/types": "^7.0.0",
+    "vaul": "^0.9.0"
   },
   "resolutions": {
     "@types/react": "18.2.0",

@@ -41,8 +41,8 @@ const preview: Preview = {
   },
   decorators: [
     StrictDecorator,
-    AppearanceDecorator,
     AppRootDecorator,
+    AppearanceDecorator,
   ],
 };
 

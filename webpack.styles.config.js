@@ -100,4 +100,8 @@ module.exports = {
     errors: true,
     warnings: false,
   },
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom',
+  },
 };

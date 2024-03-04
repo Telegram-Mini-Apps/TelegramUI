@@ -1,18 +1,11 @@
-type WindowWithTelegramData = {
-  Telegram: {
-    WebApp: {
-      platform: string;
-      colorScheme: 'light' | 'dark';
-      onEvent: (event: string, callback: () => void) => void;
-      offEvent: (event: string, callback: () => void) => void;
-    }
+import { Telegram } from '@twa-dev/types';
+
+declare global {
+  interface Window {
+    Telegram?: Telegram;
   }
 }
 
-export const getTelegramData = (): WindowWithTelegramData['Telegram']['WebApp'] | undefined => {
-  if ('Telegram' in window) {
-    return (window as WindowWithTelegramData).Telegram.WebApp;
-  }
-
-  return undefined;
+export const getTelegramData = () => {
+  return window.Telegram?.WebApp;
 };
