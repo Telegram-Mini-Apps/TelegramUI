@@ -5,6 +5,8 @@
 
   border: none;
   border-radius: 8px;
+  text-decoration: none;
+  box-sizing: border-box;
 
   max-inline-size: 100%;
   min-inline-size: 80px;

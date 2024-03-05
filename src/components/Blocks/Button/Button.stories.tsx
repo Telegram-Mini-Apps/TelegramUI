@@ -41,3 +41,14 @@ export const WithIcon: Story = {
     />
   ),
 } satisfies Story;
+
+export const Link: Story = {
+  args: {
+    size: 's',
+    mode: 'filled',
+    children: 'No hello',
+    target: '_blank',
+    href: 'https://nohello.net/en/',
+    Component: 'a',
+  },
+} satisfies Story;

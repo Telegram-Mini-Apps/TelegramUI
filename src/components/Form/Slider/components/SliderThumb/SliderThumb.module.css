@@ -11,7 +11,7 @@
 }
 
 .wrapper--ios {
-  background: var(--tgui--bg_color);
+  background: var(--tgui--white);
   box-shadow: 0 6px 6.5px rgba(0, 0, 0, .12), 0 .5px 2px rgba(0, 0, 0, .12);
 }
 

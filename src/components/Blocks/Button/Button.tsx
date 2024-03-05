@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
+import { AllHTMLAttributes, ElementType, forwardRef, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -9,7 +9,7 @@ import { Spinner } from 'components';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { ButtonTypography } from './components/ButtonTypography/ButtonTypography';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends Omit<AllHTMLAttributes<HTMLButtonElement>, 'size'> {
   /** Inserts a component before the button text, e.g. Icon */
   before?: ReactNode;
   /** Inserts a component after the button text, e.g. Badge */
@@ -24,6 +24,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   /** Is button disabled */
   disabled?: boolean;
+  /** HTML Tag, button by default */
+  Component?: ElementType;
 }
 
 const modeStyles = {
@@ -51,6 +53,7 @@ export const Button = forwardRef(({
   className,
   mode = 'filled',
   loading,
+  Component = 'button',
   ...restProps
 }: ButtonProps, ref) => {
   const platform = usePlatform();
@@ -59,7 +62,7 @@ export const Button = forwardRef(({
     <Tappable
       ref={ref}
       type={type || 'button'}
-      Component="button"
+      Component={Component}
       className={classNames(
         styles.wrapper,
         mode && modeStyles[mode],

@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  background-color: var(--tgui--secondary_bg_color);
+  background-color: var(--tgui--tertiary_bg_color);
 
   display: flex;
   align-items: center;
