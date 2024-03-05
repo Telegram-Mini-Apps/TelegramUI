@@ -77,6 +77,10 @@
   --tgui--white: #FFFFFF;
   --tgui--black: #000000;
 
+  --tgui--z-index--simple: 1;
+  --tgui--z-index--skeleton: 2;
+  --tgui--z-index--overlay: 3;
+
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
 

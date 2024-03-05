@@ -29,7 +29,7 @@
   inset: 0;
   transition: transform 150ms;
   border-radius: 40px;
-  z-index: 1;
+  z-index: var(--tgui--z-index--simple);
   box-sizing: border-box;
   background: var(--tgui--segmented_control_active_bg);
 }

@@ -7,7 +7,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: var(--tgui--z-index--simple);
 }
 
 .wrapper::before {
@@ -15,7 +15,7 @@
 }
 
 .wrapper:not(.wrapper--noAnimation)::after {
-  z-index: 2;
+  z-index: var(--tgui--z-index--skeleton);
   background-color: var(--tgui--bg_color);
   animation: fade 1.8s linear infinite;
 }

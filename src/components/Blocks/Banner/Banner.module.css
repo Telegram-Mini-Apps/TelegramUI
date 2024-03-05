@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  z-index: 1;
+  z-index: var(--tgui--z-index--simple);
 }
 
 .subheader {

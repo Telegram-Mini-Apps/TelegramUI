@@ -19,5 +19,5 @@
   border-radius: inherit;
   transition: width 0.2s ease;
   background: var(--tgui--link_color);
-  z-index: 1;
+  z-index: var(--tgui--z-index--simple);
 }

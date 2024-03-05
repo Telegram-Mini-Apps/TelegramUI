@@ -9,7 +9,7 @@
   inset: 0;
   background-color: var(--tgui--bg_color);
   background-image: url('./icons/spoiler.svg');
-  z-index: 1;
+  z-index: var(--tgui--z-index--simple);
   transition: .4s ease;
 }
 

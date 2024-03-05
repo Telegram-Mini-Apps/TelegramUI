@@ -1,3 +1,3 @@
 .wrapper {
-  z-index: 1;
+  z-index: var(--tgui--z-index--simple);
 }
