@@ -2,7 +2,12 @@ import { Platform } from 'enums/Platform';
 import { getTelegramData } from 'helpers/telegram';
 
 export const getInitialPlatform = () => {
-  if (getTelegramData()?.platform === 'ios') {
+  const telegramData = getTelegramData();
+  if (!telegramData) {
+    return Platform.Base;
+  }
+
+  if (['ios', 'macos'].includes(telegramData.platform)) {
     return Platform.IOS;
   }
 
