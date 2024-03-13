@@ -31,7 +31,7 @@
     "url": "git+ssh://git@github.com/XeleneStudio/TelegramUI.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/XeleneStudio/TelegramUI/issues"
   },
