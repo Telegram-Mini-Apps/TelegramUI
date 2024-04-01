@@ -58,9 +58,7 @@ export const Playground: Story = {
         />
         <Popper
           {...args}
-          withArrow
           arrowProps={{ style: { color: 'var(--tgui--button_color)' } }}
-          placement="bottom"
           style={{
             padding: '10px 12px',
             background: 'var(--tgui--button_color)',

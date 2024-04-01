@@ -11,8 +11,9 @@
   gap: 16px;
 }
 
+.wrapper:hover,
 .wrapper--hovered {
-  background: var(--tgui--secondary_bg_color);
+  background: var(--tgui--tertiary_bg_color);
 }
 
 .before,
@@ -38,6 +39,10 @@
 .title {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.wrapper:not(.wrapper--multiline) .middle > *,
+.wrapper:not(.wrapper--multiline) .title {
   white-space: nowrap;
 }
 

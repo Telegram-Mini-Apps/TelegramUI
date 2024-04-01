@@ -1,5 +1,5 @@
 import { SpinnerProps } from 'components/Feedback/Spinner/Spinner';
-import { IconBig } from './icons/big';
+import { IconLarge } from './icons/large';
 import { IconMedium } from './icons/medium';
 import { IconSmall } from './icons/small';
 
@@ -10,7 +10,7 @@ interface BaseSpinnerProps {
 const componentBySize = {
   s: IconSmall,
   m: IconMedium,
-  l: IconBig,
+  l: IconLarge,
 };
 
 const rotateCenterBySize = {

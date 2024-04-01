@@ -5,9 +5,15 @@
   width: 100%;
   resize: none;
 
+  color: var(--tgui--text_color);
   outline: none;
   border: none;
+  background: inherit;
   border-radius: inherit;
+}
+
+.textarea::placeholder {
+  color: var(--tgui--secondary_hint_color);
 }
 
 .wrapper--ios .textarea {

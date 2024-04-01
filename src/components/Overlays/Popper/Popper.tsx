@@ -39,7 +39,7 @@ export const Popper = forwardRef(({
   sameWidth,
   offsetByMainAxis = 8,
   offsetByCrossAxis = 0,
-  withArrow,
+  withArrow = true,
   customMiddlewares,
 
   // UseFloatingProps

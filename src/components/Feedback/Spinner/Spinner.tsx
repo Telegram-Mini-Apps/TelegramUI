@@ -2,8 +2,10 @@ import { HTMLAttributes } from 'react';
 import styles from './Spinner.module.css';
 
 import { classNames } from 'helpers/classNames';
+import { usePlatform } from 'hooks/usePlatform';
 
 import { BaseSpinner } from './components/BaseSpinner/BaseSpinner';
+import { IOSSpinner } from './components/IOSSpinner/IOSSpinner';
 
 export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
   /** Size of the spinner, m by default */
@@ -19,15 +21,21 @@ const sizeStyles = {
 export const Spinner = ({
   size = 'm',
   className,
-}: SpinnerProps) => (
-  <div
-    role="status"
-    className={classNames(
-      styles.wrapper,
-      sizeStyles[size],
-      className,
-    )}
-  >
-    <BaseSpinner size={size} />
-  </div>
-);
+}: SpinnerProps) => {
+  const platform = usePlatform();
+
+  const Component = platform === 'ios' ? IOSSpinner : BaseSpinner;
+  return (
+    <div
+      role="status"
+      className={classNames(
+        styles.wrapper,
+        platform === 'ios' && styles['wrapper--ios'],
+        sizeStyles[size],
+        className,
+      )}
+    >
+      <Component size={size} />
+    </div>
+  );
+};

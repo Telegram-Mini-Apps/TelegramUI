@@ -17,8 +17,6 @@ export const usePagination = ({
   hidePrevButton = false,
   onChange,
   page: pageProp,
-  showFirstButton = false,
-  showLastButton = false,
   siblingCount = 1,
 }: UsePaginationProps): UsePaginationItem[] => {
   const [page, setPageState] = useState(pageProp === undefined ? defaultPage : pageProp);
@@ -61,7 +59,6 @@ export const usePagination = ({
   // Basic list of items to render
   // e.g. itemList = ['first', 'previous', 1, 'ellipsis', 4, 5, 6, 'ellipsis', 10, 'next', 'last']
   const itemList: Array<PaginationType | number> = [
-    ...(showFirstButton ? [PaginationType.First] : []),
     ...(hidePrevButton ? [] : [PaginationType.Previous]),
     ...startPages,
 
@@ -86,20 +83,15 @@ export const usePagination = ({
 
     ...endPages,
     ...(hideNextButton ? [] : [PaginationType.Next]),
-    ...(showLastButton ? [PaginationType.Last] : []),
   ];
 
   // Map the button type to its page number
   const buttonPage = (type: UsePaginationItem['type']) => {
     switch (type) {
-      case 'first':
-        return 1;
       case 'previous':
         return page - 1;
       case 'next':
         return page + 1;
-      case 'last':
-        return count;
       default:
         return null;
     }
@@ -124,7 +116,7 @@ export const usePagination = ({
       selected: false,
       disabled:
         (![PaginationType.StartEllipsis, PaginationType.EndEllipsis].includes(typeOrPageNumber) &&
-          (typeOrPageNumber === PaginationType.Next || typeOrPageNumber === PaginationType.Last ? page >= count : page <= 1)),
+          (typeOrPageNumber === PaginationType.Next ? page >= count : page <= 1)),
     };
   });
 };

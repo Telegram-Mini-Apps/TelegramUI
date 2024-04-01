@@ -8,3 +8,5 @@ export type { PaginationProps } from './Pagination/Pagination';
 export { Pagination } from './Pagination/Pagination';
 export type { SegmentedControlProps } from './SegmentedControl/SegmentedControl';
 export { SegmentedControl } from './SegmentedControl/SegmentedControl';
+export type { TabsListProps } from './TabsList/TabsList';
+export { TabsList } from './TabsList/TabsList';

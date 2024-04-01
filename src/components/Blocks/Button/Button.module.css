@@ -56,7 +56,7 @@
   cursor: auto;
   background: inherit;
   border-radius: inherit;
-  color: var(--tgui--white);
+  color: var(--tgui--button--spinner-color);
 }
 
 .wrapper--s {
@@ -83,30 +83,35 @@
 
 .wrapper--filled {
   --tgui--button--hovered-opacity: .15;
+  --tgui--button--spinner-color: var(--tgui--button_text_color);
   color: var(--tgui--button_text_color);
   background: var(--tgui--button_color);
 }
 
 .wrapper--bezeled {
   --tgui--button--hovered-opacity: .07;
+  --tgui--button--spinner-color: var(--tgui--link_color);
   color: var(--tgui--link_color);
   background: var(--tgui--secondary_fill);
 }
 
 .wrapper--plain {
   --tgui--button--hovered-opacity: .03;
+  --tgui--button--spinner-color: var(--tgui--plain_foreground);
   color: var(--tgui--link_color);
   background: transparent;
 }
 
 .wrapper--gray {
   --tgui--button--hovered-opacity: .5;
+  --tgui--button--spinner-color: var(--tgui--plain_foreground);
   color: var(--tgui--plain_foreground);
   background: var(--tgui--plain_background);
 }
 
 .wrapper--outline {
   --tgui--button--hovered-opacity: .5;
+  --tgui--button--spinner-color: var(--tgui--plain_foreground);
   color: var(--tgui--plain_foreground);
   background: inherit;
   box-shadow: 0 0 0 1px var(--tgui--outline);
@@ -114,6 +119,8 @@
 
 .wrapper--white {
   --tgui--button--hovered-opacity: .5;
+  /* TODO, set right color */
+  --tgui--button--spinner-color: var(--tgui--surface_dark);
   background: var(--tgui--white);
 }
 
@@ -123,4 +130,10 @@
 
 .wrapper--ios::after {
   content: unset;
+}
+
+.wrapper--loading .before,
+.wrapper--loading .after,
+.wrapper--loading .content {
+  opacity: 0;
 }

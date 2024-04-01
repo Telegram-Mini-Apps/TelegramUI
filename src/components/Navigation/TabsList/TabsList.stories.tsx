@@ -48,7 +48,7 @@ export const Playground: StoryObj<TabsListProps> = {
   },
   decorators: [
     (Component) => (
-      <div style={{ width: 500 }}>
+      <div style={{ maxWidth: 500 }}>
         <Component />
       </div>
     ),

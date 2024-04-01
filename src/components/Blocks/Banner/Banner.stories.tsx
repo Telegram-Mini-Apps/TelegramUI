@@ -10,7 +10,7 @@ const meta = {
   title: 'Blocks/Banner',
   component: Banner,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   argTypes: {
     ...hideControls('before', 'children', 'onCloseIcon', 'background'),

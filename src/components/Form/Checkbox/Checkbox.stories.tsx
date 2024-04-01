@@ -29,6 +29,7 @@ export const WithCells: Story = {
         Component="label"
         before={<Checkbox name="checkbox" value="1" {...args} />}
         description="Pass Component='label' to Cell to make it clickable."
+        multiline
       >
         Apples
       </Cell>
@@ -36,6 +37,7 @@ export const WithCells: Story = {
         Component="label"
         before={<Checkbox name="checkbox" value="2" {...args} />}
         description="Pass Component='label' to Cell to make it clickable."
+        multiline
       >
         Milk
       </Cell>

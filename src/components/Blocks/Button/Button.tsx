@@ -69,6 +69,7 @@ export const Button = forwardRef(({
         size && sizeStyles[size],
         platform === 'ios' && styles['wrapper--ios'],
         stretched && styles['wrapper--stretched'],
+        loading && styles['wrapper--loading'],
         className,
       )}
       {...restProps}
@@ -79,7 +80,7 @@ export const Button = forwardRef(({
           {before}
         </div>
       )}
-      <ButtonTypography size={size}>{children}</ButtonTypography>
+      <ButtonTypography className={styles.content} size={size}>{children}</ButtonTypography>
       {hasReactNode(after) && (
         <div className={styles.after}>
           {after}

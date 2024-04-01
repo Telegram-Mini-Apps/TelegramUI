@@ -10,6 +10,9 @@ const meta = {
   title: 'Overlays/Tooltip',
   component: Tooltip,
   argTypes: hideControls('ArrowIcon', 'targetRef', 'arrowProps', 'Component', 'customMiddlewares'),
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

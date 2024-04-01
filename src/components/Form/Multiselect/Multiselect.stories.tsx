@@ -28,7 +28,7 @@ const PLATFORM_OPTIONS: MultiselectOption[] = [
 ];
 
 const decorator: Decorator = (Story) => (
-  <List style={{ background: 'var(--tgui--secondary_bg_color)', height: '80vh' }}>
+  <List style={{ background: 'var(--tgui--secondary_bg_color)', height: '100dvh' }}>
     <Story />
   </List>
 );

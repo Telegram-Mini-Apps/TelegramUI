@@ -17,10 +17,6 @@ export interface UsePaginationProps {
   onChange?: (event: ChangeEvent<unknown>, page: number) => void;
   /** The current page. */
   page?: number;
-  /** If `true`, show the first-page button. */
-  showFirstButton?: boolean;
-  /** If `true`, show the last-page button. */
-  showLastButton?: boolean;
   /** Number of always visible pages before and after the current page. */
   siblingCount?: number;
 }

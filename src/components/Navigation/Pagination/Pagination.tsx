@@ -25,8 +25,6 @@ export const Pagination = ({
   onChange,
   page,
   disabled,
-  showFirstButton,
-  showLastButton,
   siblingCount,
   className,
   ...restProps
@@ -39,8 +37,6 @@ export const Pagination = ({
     hidePrevButton,
     onChange,
     page,
-    showFirstButton,
-    showLastButton,
     siblingCount,
   });
 

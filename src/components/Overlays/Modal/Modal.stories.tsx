@@ -71,7 +71,7 @@ export const WithCloseButton: Story = {
   args: {
     ...Playground.args,
     header: (
-      <Modal.Header after={<Modal.Close><Icon28Close /></Modal.Close>}>
+      <Modal.Header after={<Modal.Close><Icon28Close style={{ color: 'var(--tgui--plain_foreground)' }} /></Modal.Close>}>
         Only iOS header
       </Modal.Header>
     ),

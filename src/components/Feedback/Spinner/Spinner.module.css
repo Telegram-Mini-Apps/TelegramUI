@@ -2,17 +2,6 @@
   color: var(--tgui--link_color);
 }
 
-.wrapper--s {
-  width: 24px;
-  height: 24px;
-}
-
-.wrapper--m {
-  width: 36px;
-  height: 36px;
-}
-
-.wrapper--l {
-  width: 44px;
-  height: 44px;
+.wrapper--ios {
+  color: var(--tgui--hint_color);
 }

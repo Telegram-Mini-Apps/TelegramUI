@@ -33,6 +33,7 @@ export const WithCell: Story = {
       Component="label"
       after={<Switch defaultChecked {...args} />}
       description="Pass Component='label' to Cell to make it clickable."
+      multiline
     >
       First radio
     </Cell>

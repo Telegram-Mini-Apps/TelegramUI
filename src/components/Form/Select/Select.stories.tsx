@@ -15,7 +15,10 @@ export default meta;
 
 export const Playground: StoryObj<SelectProps> = {
   render: () => (
-    <List style={{ background: 'var(--tgui--secondary_bg_color)', width: 500 }}>
+    <List style={{
+      width: 240,
+      background: 'var(--tgui--secondary_bg_color)',
+    }}>
       <Select
         header="Select"
         placeholder="I am usual input, just leave me alone"

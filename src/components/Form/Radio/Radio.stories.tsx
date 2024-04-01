@@ -30,6 +30,7 @@ export const WithCells: Story = {
         Component="label"
         before={<Radio name="radio" value="1" {...args} />}
         description="Pass Component='label' to Cell to make it clickable."
+        multiline
       >
         First radio
       </Cell>
@@ -37,6 +38,7 @@ export const WithCells: Story = {
         Component="label"
         before={<Radio name="radio" value="2" {...args} />}
         description="Pass Component='label' to Cell to make it clickable."
+        multiline
       >
         Second radio
       </Cell>

@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   render: () => (
-    <List style={{ background: 'var(--tgui--secondary_bg_color)', width: 500 }}>
+    <List style={{ background: 'var(--tgui--secondary_bg_color)', width: 240 }}>
       <Textarea
         header="Textarea"
         placeholder="I am usual textarea"

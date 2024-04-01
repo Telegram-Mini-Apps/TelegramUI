@@ -1,4 +1,6 @@
 .wrapper {
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,6 +11,7 @@
 }
 
 .fields {
+  overflow-wrap: anywhere;
   text-align: center;
   margin: 0;
 }

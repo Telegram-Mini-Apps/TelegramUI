@@ -30,6 +30,7 @@ export const WithCell: Story = {
         Component="label"
         before={<Selectable defaultChecked name="group" value="1" />}
         description="Pass Component='label' to Cell to make it clickable."
+        multiline
       >
         First radio
       </Cell>
@@ -37,6 +38,7 @@ export const WithCell: Story = {
         Component="label"
         before={<Selectable name="group" value="2" />}
         description="Pass Component='label' to Cell to make it clickable."
+        multiline
       >
         Second radio
       </Cell>

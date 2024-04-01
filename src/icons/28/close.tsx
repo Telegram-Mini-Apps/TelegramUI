@@ -2,7 +2,7 @@ import { Icon } from 'types/Icon';
 
 export const Icon28Close = ({ ...restProps }: Icon) => (
   <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" {...restProps}>
-    <g clipPath="url(#close_a)" fill="#000">
+    <g clipPath="url(#close_a)" fill="currentColor">
       <path d="M14 28c7.66 0 14-6.35 14-14 0-7.66-6.35-14-14.01-14A14.1 14.1 0 0 0 0 14c0 7.65 6.35 14 14 14Z"
         fillOpacity=".04" />
       <path opacity=".5"

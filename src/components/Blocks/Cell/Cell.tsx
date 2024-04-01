@@ -31,6 +31,8 @@ export interface CellProps extends Omit<TappableProps, 'Component'> {
   Component?: ElementType;
   /** Controls hover state outside of component, can be useful for elements with keyboard focus */
   hovered?: boolean;
+  /** Removes default white-space value from the cell */
+  multiline?: boolean;
 }
 
 export const Cell = forwardRef(({
@@ -45,6 +47,7 @@ export const Cell = forwardRef(({
   after,
   Component,
   hovered,
+  multiline,
   ...restProps
 }: CellProps, ref) => {
   const platform = usePlatform();
@@ -59,6 +62,7 @@ export const Cell = forwardRef(({
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         hovered && styles['wrapper--hovered'],
+        multiline && styles['wrapper--multiline'],
         className,
       )}
       {...restProps}

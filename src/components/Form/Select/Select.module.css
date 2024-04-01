@@ -10,8 +10,10 @@
   width: 100%;
   border: none;
 
+  color: var(--tgui--text_color);
   outline: none;
   border-radius: inherit;
+  background: inherit;
 }
 
 .chevron {

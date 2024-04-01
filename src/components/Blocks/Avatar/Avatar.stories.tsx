@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Icon12Quote } from 'icons/12/quote';
 import { Icon28Stats } from 'icons/28/stats';
 import { hideControls } from 'storybook/controls';
 
@@ -56,4 +57,9 @@ export const WithChildren: Story = {
     size: 48,
     children: <Icon28Stats />,
   },
+  render: (props) => (
+    <Avatar {...props}>
+      {(props?.size || 0) <= 28 ? <Icon12Quote /> : <Icon28Stats />}
+    </Avatar>
+  ),
 } satisfies Story;
