@@ -10,52 +10,53 @@ import { SliderSteps } from './components/SliderSteps/SliderSteps';
 import { SliderThumb } from './components/SliderThumb/SliderThumb';
 import { useSlider } from './hooks/useSlider';
 
-export interface SliderBaseProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'defaultValue' | 'onChange'> {
-  /** Minimum allowed value @default 0 */
+export interface SliderBaseProps extends Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'defaultValue' | 'onChange'> {
+  /** Minimum allowed value. Defaults to 0. */
   min?: number;
-  /** Maximum allowed value @default 100 */
+  /** Maximum allowed value. Defaults to 100. */
   max?: number;
-  /** Step value for each movement @default 1 */
+  /** Step value for each movement. Defaults to 1. */
   step?: number;
-  /** Indicates whether the slider is disabled */
+  /** Indicates whether the slider is disabled. */
   disabled?: boolean;
-  /** Content before the Slider */
+  /** Content to be rendered before the slider. */
   before?: ReactNode;
-  /** Content after the Slider */
+  /** Content to be rendered after the slider. */
   after?: ReactNode;
-  /**
-   * Similar to `aria-label`, but takes the current slider's index as input.
-   * Allows providing different labels based on the index. Overrides `aria-label`
-   */
+  /** Provides a way to generate dynamic aria-label based on the slider's thumb index. */
   getAriaLabel?: (index: number) => string;
-  /**
-   * Unlike `aria-valuetext`, allows more flexible formatting of text based on the slider's value.
-   * Useful when using the component in an uncontrolled manner. Overrides `aria-valuetext`
-   */
+  /** Provides a way to customize the aria-valuetext for more flexible text representation based on the slider's value. */
   getAriaValueText?: (value: number, index: number) => string;
 }
 
 export interface SliderNoMultipleProps extends SliderBaseProps {
-  /** Indicates if multiple thumbs are allowed */
+  /** Enables single-thumb mode. */
   multiple?: false;
-  /** Current value of the slider */
+  /** The current value of the slider. */
   value?: number;
-  /** Default value for the slider */
+  /** Default value of the slider. */
   defaultValue?: number;
-  /** Event handler for value changes. */
+  /** Callback for when the slider value changes. */
   onChange?: (value: number, event: TouchEvent | ChangeEvent) => void;
 }
 
 export interface SliderMultipleProps extends SliderBaseProps {
+  /** Enables multiple-thumb mode for range selection. */
   multiple: true;
+  /** The current value of the slider, expecting a tuple for start and end values. */
   value?: [number, number];
+  /** Default value of the slider, expecting a tuple for start and end values. */
   defaultValue?: [number, number];
+  /** Callback for when the slider value changes. */
   onChange?: (value: [number, number], event: TouchEvent | ChangeEvent) => void;
 }
 
 export type SliderProps = SliderNoMultipleProps | SliderMultipleProps;
 
+/**
+ * Renders a slider input for selecting a value or range from a predefined interval. Supports single or multiple thumbs for range selection.
+ * It leverages custom hooks for logic and state management and provides customization options for appearance and functionality.
+ */
 export const Slider = ({ className, disabled, before, after, ...restProps }: SliderProps) => {
   const platform = usePlatform();
 

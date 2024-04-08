@@ -8,10 +8,14 @@ import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Caption } from 'components/Typography/Caption/Caption';
 
 export interface SegmentedControlItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Sets item selected state, will be checked by parent (SegmentedControl) */
+  /** Whether the item is selected. Used by the parent SegmentedControl to style accordingly. */
   selected?: boolean;
 }
 
+/**
+ * A component representing an individual item within a SegmentedControl.
+ * It leverages the Tappable component for handling interactions and supports platform-specific styles.
+ */
 export const SegmentedControlItem = ({
   selected,
   className,

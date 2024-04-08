@@ -44,8 +44,7 @@ export const Playground: Story = {
       <Touch
         style={{
           position: 'relative',
-          width: '100vw',
-          height: '100vh',
+          height: '40vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

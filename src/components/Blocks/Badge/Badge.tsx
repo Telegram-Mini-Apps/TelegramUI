@@ -8,11 +8,11 @@ import { Caption } from 'components/Typography/Caption/Caption';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  /** Badge type */
+  /** The visual style of the badge: 'number' displays the content, 'dot' shows a simple dot. */
   type: 'number' | 'dot';
-  /** Badge mode, only color and background will be changed */
+  /** The color scheme of the badge, affecting its background and text color. */
   mode?: 'primary' | 'critical' | 'secondary' | 'gray' | 'white';
-  /** Badge size, applies only to type=number */
+  /** Increases the size of the badge. Applicable only when `type` is 'number'. */
   large?: boolean;
 }
 
@@ -29,6 +29,10 @@ const modeStyles = {
   white: styles['wrapper--white'],
 };
 
+/**
+ * The `Badge` component renders a small numeric or dot indicator, typically used for notifications, statuses, or counts.
+ * It supports several visual modes for different contexts (e.g., critical, primary) and can be sized normally or enlarged.
+ */
 export const Badge = ({
   type,
   mode = 'primary',

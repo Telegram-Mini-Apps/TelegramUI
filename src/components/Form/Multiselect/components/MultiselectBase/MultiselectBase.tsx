@@ -23,17 +23,22 @@ import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { getValueOptionByHTMLElement } from './helpers/getValueOptionByHTMLElement';
 import { renderChipDefault } from './constants';
 
-export interface MultiselectBaseProps extends InputHTMLAttributes<HTMLInputElement>{
-  /** Custom function to render Chip component */
+export interface MultiselectBaseProps extends InputHTMLAttributes<HTMLInputElement> {
+  /** Custom function to render Chip component. */
   renderChip?: (props: ChipProps) => JSX.Element;
-
+  /** Ref to the input element within the multiselect base. */
   inputRef: RefObject<HTMLInputElement>;
+  /** Array of selected options (chips). */
   chipsValue: MultiselectOption[];
-
+  /** Callback function to add an option based on text input. */
   onAddChipOption: (optionText: string) => void;
+  /** Callback function to remove a selected chip. */
   onRemoveChipOption: (option: MultiselectOption) => void;
 }
 
+/**
+ * Renders the base layout of the multiselect including the chips (selected options) and the input field.
+ */
 export const MultiselectBase = forwardRef<HTMLDivElement, MultiselectBaseProps>(({
   inputRef,
   className,

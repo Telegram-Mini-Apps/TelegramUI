@@ -7,14 +7,18 @@ import { HorizontalScroll } from 'components/Service/HorizontalScroll/Horizontal
 import { TimelineItem, TimelineItemProps } from './components/TimelineItem/TimelineItem';
 
 export interface TimelineProps extends HTMLAttributes<HTMLUListElement> {
-  /** If true, the timeline will be horizontal */
+  /** Determines the orientation of the timeline. If true, the timeline is displayed horizontally. */
   horizontal?: boolean;
-  /** Marks lines and dots of the items before the active one */
+  /** The index of the active item in the timeline, which affects styling to indicate progress. */
   active?: number;
-  /** Pass Timeline.Item[] here */
+  /** The children of the Timeline, expected to be a collection of `Timeline.Item` components. */
   children: ReactElement<TimelineItemProps>[];
 }
 
+/**
+ * Renders a sequence of events or steps in either a vertical or horizontal layout. It is flexible,
+ * supporting an active state to visually distinguish past, present, and future steps.
+ */
 export const Timeline = ({
   active,
   horizontal,

@@ -9,13 +9,13 @@ import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 
 export interface ChipProps extends AllHTMLAttributes<HTMLDivElement> {
-  /** Changes the appearance of the component */
+  /** Defines the visual style of the chip, affecting its background, border, and shadow. */
   mode?: 'elevated' | 'mono' | 'outline';
-  /** Content before the text */
+  /** Content or component to be placed before the main text, typically an icon or avatar. */
   before?: ReactNode;
-  /** Content after the text */
+  /** Content or component to be placed after the main text, such as an icon indicating an action. */
   after?: ReactNode;
-  /** Text of the chip */
+  /** The main text content of the chip. */
   children?: ReactNode;
 }
 
@@ -25,6 +25,10 @@ const modeStyles = {
   outline: styles['wrapper--outline'],
 };
 
+/**
+ * Renders a compact element representing an input, attribute, or action. Chips can include icons, text, or both,
+ * and are used to trigger actions, input information, or represent a complex piece of information in a compact form.
+ */
 export const Chip = ({
   mode = 'elevated',
   before,

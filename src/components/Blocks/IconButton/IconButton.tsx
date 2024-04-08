@@ -6,9 +6,9 @@ import { classNames } from 'helpers/classNames';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 
 export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Button size, you should pass different icons for each size. Recommended 20 for s, 24 for m, 28 for l  */
+  /** Specifies the button size, affecting icon scaling. Recommended icon sizes are 20px for 's', 24px for 'm', and 28px for 'l'. */
   size?: 's' | 'm' | 'l';
-  /** Button mode, only color and background will be changed */
+  /** Defines the button's visual style, affecting its color and background. */
   mode?: 'bezeled' | 'plain' | 'gray' | 'outline';
 }
 
@@ -25,6 +25,10 @@ const sizeStyles = {
   l: styles['wrapper--l'],
 };
 
+/**
+ * Renders an icon button with customizable size and mode. It utilizes the `Tappable` component for enhanced
+ * touch interaction, allowing it to serve various UI actions efficiently.
+ */
 export const IconButton = ({
   size = 'm',
   mode = 'bezeled',

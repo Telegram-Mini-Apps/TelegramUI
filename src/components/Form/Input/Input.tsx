@@ -10,6 +10,10 @@ import { Text } from 'components/Typography/Text/Text';
 
 export interface InputProps extends FormPublicProps, InputHTMLAttributes<HTMLInputElement> {}
 
+/**
+ * Renders a text input field with enhanced styling and integration into a form structure. Supports customization through `FormPublicProps` and standard input attributes.
+ * It automatically adapts typography and layout based on the platform, ensuring a consistent user experience across devices.
+ */
 export const Input = ({
   type = 'text',
   header,

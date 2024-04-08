@@ -9,11 +9,11 @@ import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
 export interface InfoProps extends HTMLAttributes<HTMLDivElement> {
-  /** Info type */
+  /** Determines the type of content to display, affecting the layout and styling. */
   type: 'text' | 'avatarStack';
-  /** Text content, only applicable with type="text" */
+  /** Text content for the component, utilized when the `type` is set to 'text'. */
   subtitle?: string;
-  /** AvatarStack component, only applicable with type="avatarStack" */
+  /** An `AvatarStack` component to display when the `type` is 'avatarStack', showcasing multiple avatars. */
   avatarStack?: ReactElement<AvatarStackProps>;
 }
 
@@ -22,6 +22,10 @@ const typeStyles = {
   avatarStack: styles['wrapper--avatarStack'],
 };
 
+/**
+ * A versatile component designed to display either text information with an optional subtitle or a stack of avatars.
+ * It adapts its structure based on the `type` prop, allowing for a wide range of use cases within user interfaces.
+ */
 export const Info = ({
   type = 'text',
   subtitle,

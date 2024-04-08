@@ -9,9 +9,9 @@ import {
 } from './components/CompactPaginationItem/CompactPaginationItem';
 
 export interface CompactPaginationProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  /** pagination mode, only colors are changing */
+  /** Sets the color theme of the pagination. */
   mode?: 'default' | 'ambient' | 'white';
-  /** Pass CompactPagination.Item components here */
+  /** Contains pagination items. */
   children?: ReactElement<CompactPaginationItemProps>[];
 }
 
@@ -21,6 +21,10 @@ const modeStyles = {
   white: styles['wrapper--white'],
 };
 
+/**
+ * Displays a compact set of pagination controls. This component allows users to navigate
+ * between pages of content. It supports several themes for customization and can fit within various UI designs.
+ */
 export const CompactPagination = ({
   mode = 'default',
   children,

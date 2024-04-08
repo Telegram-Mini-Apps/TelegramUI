@@ -9,7 +9,7 @@ import { CardChip } from './components/CardChip/CardChip';
 import { CardContext, CardContextInterface } from './CardContext';
 
 export interface CardProps extends HTMLAttributes<HTMLElement> {
-  /** Card type, plain by default */
+  /** Defines the visual style of the card, influencing background, shadow, and border. */
   type?: CardContextInterface['type'];
 }
 
@@ -18,6 +18,10 @@ type CardWithComponents = ForwardRefExoticComponent<CardProps & RefAttributes<HT
   Chip: typeof CardChip;
 };
 
+/**
+ * Serves as a container for card-styled UI elements, providing context for its child components.
+ * It supports different visual styles and can encapsulate various content types.
+ */
 export const Card = forwardRef<HTMLDivElement, CardProps>(({
   type = 'plain',
   className,

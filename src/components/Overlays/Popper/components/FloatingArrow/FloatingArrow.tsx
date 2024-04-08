@@ -15,18 +15,23 @@ const placementStyles = {
 };
 
 export interface FloatingArrowProps extends HTMLAttributes<HTMLDivElement> {
-  /** Distance from the target element for the arrow's placement, in pixels. */
+  /** Optional distance from the target element, influencing the arrow's placement. */
   offset?: number;
-  /** Flag indicating if the `offset` should remain constant, not adjusting dynamically. */
+  /** When true, the offset distance remains constant, regardless of the arrow's placement. */
   isStaticOffset?: boolean;
-  /** Coordinates object for precise arrow positioning. */
+  /** Coordinates for the arrow, useful for precise positioning when the arrow is not directly adjacent to its target. */
   coords?: Coords;
-  /** Placement directive for the arrow's position relative to the target. */
+  /** The preferred placement of the arrow relative to its target element. */
   placement?: Placement;
-  /** React component type for custom SVG arrow icon. */
+  /** A React component for rendering the arrow icon, allowing for custom arrow designs. */
   Icon?: ComponentType<SVGAttributes<SVGSVGElement>>;
 }
 
+/**
+ * FloatingArrow dynamically positions an arrow indicator relative to a floating element,
+ * such as a tooltip to signify its association with a target element.
+ * Supports custom arrow icons and positioning adjustments.
+ */
 export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(({
   style,
   offset,

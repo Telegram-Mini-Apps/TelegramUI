@@ -7,12 +7,19 @@ import { getBorderRadius } from 'components/Blocks/Image/helpers/getBorderRadius
 import { ImageBadge } from './components/ImageBadge/ImageBadge';
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLElement> {
-  /** Available sizes, 40 is default */
+  /** Specifies the size of the image, with a default of 40. Sizes are defined in pixels. */
   size?: 20 | 24 | 28 | 40 | 48 | 96;
-  /** Fallback icon will be shown if image failed to load or src is not provided */
+  /** An element (often an icon) displayed when the image fails to load or the `src` attribute is not provided. */
   fallbackIcon?: ReactNode;
+  /** Optional children to render within the image component's container. */
+  children?: ReactNode;
 }
 
+/**
+ * Renders an image with optional fallback content. It supports custom sizing and will automatically
+ * handle loading states and errors by optionally displaying a fallback icon. This component can also
+ * include additional content, such as badges or overlays, as children.
+ */
 export const Image = ({
   size = 40,
   className,

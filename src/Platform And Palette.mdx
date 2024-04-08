@@ -1,0 +1,35 @@
+# Understanding `AppRoot` Theming Mechanism
+
+The `AppRoot` component is pivotal in implementing a dynamic theming system within your application. It employs a sophisticated approach to CSS variables and React context to seamlessly adapt to various themes and platforms. This section delves into the inner workings of this system, explaining how themes are managed and applied internally.
+
+## CSS Variables: The Backbone of Theming
+
+At the heart of the `AppRoot` theming system lie CSS variables, which are utilized to create a flexible and adaptable styling framework. These variables are divided into two main categories: **Basic Variables** and **Custom Variables**. Both play a crucial role in tailoring the application's appearance to match both Telegram's theme and any additional stylistic preferences.
+
+### Basic Variables
+
+Basic Variables are designed to inherit styles directly from Telegram or fall back on predefined styles within the library. This ensures that the application remains consistent with the user's current Telegram theme settings.
+
+- **Telegram Style Inheritance**: When available, Basic Variables dynamically adopt values from Telegram's theme, aligning the application's appearance with the platform's chosen theme.
+- **Library Defaults**: In scenarios where Telegram theme data isn't available or not support in current version, these variables revert to a set of default styles specified within the library, maintaining a coherent and user-friendly interface.
+
+### Custom Variables
+
+Custom Variables offer an extension to the theming capabilities, allowing for more nuanced and specific styling adjustments that go beyond the scope of Telegram's native themes.
+
+- **Enhanced Styling Flexibility**: These variables enable the definition of unique stylistic elements like accent colors, providing opportunities for brand alignment and distinct visual design.
+- **Brand Identity Support**: By leveraging Custom Variables, developers can ensure that the application not only adheres to Telegram's theming but also reflects the brand's identity through consistent use of colors, typography, and other design elements.
+
+## Internal Mechanism for Theme and Platform Adaptation
+
+`AppRoot` intelligently leverages React context and CSS variables to dynamically adjust the application's styling based on the current theme (light, dark, or Telegram custom themes) and platform (iOS, Android, web). Here's an overview of how this process unfolds internally:
+
+- **Theme Detection and Application**: Upon initialization, `AppRoot` detects the current theme settings (from Telegram or manually set preferences) and updates the CSS variables accordingly. This process ensures that the theme is consistently applied across the application.
+- **Platform-Specific Styling**: In addition to theme management, `AppRoot` also detects the user's platform and applies platform-specific styles to optimize the user experience. This might include adjustments to typography, element sizing, and interaction feedback, aligning with platform conventions.
+- **Contextual Theme and Platform Information**: Through the use of React context, `AppRoot` provides nested components with access to current theme and platform information. This allows for conditional rendering or styling adjustments deep within the component tree, based on the overall application context.
+
+## Summary
+
+The `AppRoot` theming system is a sophisticated framework designed to ensure visual consistency and adaptability across different themes and platforms. By combining CSS variables with React context, it offers a robust solution for managing theme and platform-specific styling, all while keeping the application aligned with Telegram's theming capabilities and the brand's visual identity.
+
+Through this internal mechanism, `AppRoot` abstracts away the complexities of dynamic theming, allowing developers to focus on building feature-rich and visually appealing applications that provide a seamless user experience across all platforms and themes.

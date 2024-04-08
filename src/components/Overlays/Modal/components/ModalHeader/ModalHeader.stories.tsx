@@ -7,7 +7,7 @@ import { ModalHeader, ModalHeaderProps } from './ModalHeader';
 const meta = {
   title: 'Overlays/Modal/Modal.Header',
   component: ModalHeader,
-  argTypes: hideControls('children'),
+  argTypes: hideControls('children', 'before', 'after'),
 } satisfies Meta<typeof ModalHeader>;
 
 export default meta;

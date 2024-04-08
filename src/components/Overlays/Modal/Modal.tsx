@@ -18,39 +18,32 @@ import { ModalClose } from './components/ModalClose/ModalClose';
 import { ModalHeader } from './components/ModalHeader/ModalHeader';
 import { ModalOverlay } from './components/ModalOverlay/ModalOverlay';
 
-export type ModalProps = Omit<HTMLAttributes<HTMLDivElement>, 'onAnimationEnd'> & {
-  /** Controls modal state externally. */
+export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnimationEnd'> {
+  /** Controls the displayed state of the modal, enabling external management. */
   open?: boolean;
-  /** Callback fired when the modal changes state. */
+  /** Callback fired upon state change, facilitating open/close state synchronization. */
   onOpenChange?: (open: boolean) => void;
-  /** Component that will be rendered as a header. */
+  /** Custom header component to display at the top of the modal. */
   header?: ReactNode;
-  /** Component that will be rendered as an overlay. */
+  /** Custom component for the modal's overlay backdrop. */
   overlayComponent?: ReactNode;
-  /** Component wrapper that will trigger the drawer to open. */
+  /** Component or element used to trigger the modal's visibility. */
   trigger?: ReactNode;
-  /** If true, the drawer will be nested inside the parent drawer. */
+  /** Enables nesting within another drawer component, allowing for hierarchical structures. */
   nested?: boolean;
-  /**
-   * Number between 0 and 1 that determines when the drawer should be closed.
-   * Example: threshold of 0.5 would close the drawer if the user swiped for 50% of the height of the drawer or more.
-   */
+  /** Threshold for swipe actions to trigger modal closure, expressed as a decimal between 0 and 1. */
   closeThreshold?: number;
-  /** Duration for which the drawer is not draggable after scrolling content inside the drawer. Defaults to 500ms */
+  /** Debounce duration after scrolling within the modal before it can be closed through swipe actions. */
   scrollLockTimeout?: number;
-  /** When false it allows to interact with elements outside the drawer without closing it. Defaults true. */
+  /** Governs interaction with background elements when the modal is open. */
   modal?: boolean;
-  /** When true it prevents scroll restoration when the drawer is closed after a navigation happens inside of it. Defaults true. */
+  /** Prevents automatic scroll position restoration when the modal closes, preserving user context. */
   preventScrollRestoration?: boolean;
-  /**
-   * Array of numbers from 0 to 100 that corresponds to % of the screen a given snap point should take up.
-   * Should go from least visible. Example [0.2, 0.5, 0.8].
-   * You can also use px values, which doesn't take screen height into account.
-   */
+  /** Defines snap points for modal positioning, supporting percentages of screen height or pixel values. */
   snapPoints?: (number | string)[];
-  /** Index of a snapPoint from which the overlay fade should be applied. Defaults to the last snap point. */
+  /** Snap point index at which the overlay begins to fade, enhancing visual cues for modal depth. */
   fadeFromIndex?: never;
-};
+}
 
 type ModalWithComponents = ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivElement>> & {
   Header: typeof ModalHeader;
@@ -58,6 +51,11 @@ type ModalWithComponents = ForwardRefExoticComponent<ModalProps & RefAttributes<
   Close: typeof ModalClose;
 };
 
+/**
+ * Modal component, providing a flexible dialog framework with customizable content and interaction models.
+ * It leverages the Drawer component from 'vaul' for its base functionality, enhanced with additional properties
+ * and behaviors specific to modal dialogues, such as overlay management and nested modals.
+ */
 export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   overlayComponent = <ModalOverlay />,
   open,

@@ -4,12 +4,16 @@ import styles from './Skeleton.module.css';
 import { classNames } from 'helpers/classNames';
 
 export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
-  /** Disabling animation for the skeleton */
+  /** If true, disables the shimmering animation of the skeleton. */
   withoutAnimation?: boolean;
-  /** Shows the content under the skeleton */
+  /** If true, the skeleton overlay is shown above the content. When false, the skeleton is hidden, showing any underlying content. */
   visible?: boolean;
 }
 
+/**
+ * Used as a placeholder during the loading state of a component or page. It can visually mimic
+ * the layout that will be replaced by the actual content once loaded, improving user experience by reducing perceived loading times.
+ */
 export const Skeleton = ({
   withoutAnimation,
   visible,

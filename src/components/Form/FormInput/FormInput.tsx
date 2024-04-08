@@ -9,15 +9,15 @@ import { usePlatform } from 'hooks/usePlatform';
 import { FormInputTitle } from './components/FormInputTitle';
 
 export interface FormPublicProps {
-  /** Form status, higher priority than automatic */
+  /** Defines the visual state of the form input (e.g., error, focused). */
   status?: 'default' | 'error' | 'focused';
-  /** Form header will be shown only for "base" platform */
+  /** Optional header content, displayed above the form input on `base` platform. */
   header?: ReactNode;
-  /** Content before the Form */
+  /** Content to be displayed before the form input, such as icons or labels. */
   before?: ReactNode;
-  /** Content after the Form */
+  /** Content to be displayed after the form input, often used for action icons or additional information. */
   after?: ReactNode;
-  /** Is form disabled */
+  /** Indicates if the form input is disabled. */
   disabled?: boolean;
 }
 
@@ -34,6 +34,10 @@ const formStatusStyles = {
   focused: styles['wrapper--focused'],
 };
 
+/**
+ * Wraps an input element with additional layout for headers, icons, or actions, providing a consistent look and feel across the form.
+ * It supports conditional rendering based on the platform and the state of the form element.
+ */
 export const FormInput = forwardRef<HTMLDivElement, FormInputProps>(({
   status,
   header,

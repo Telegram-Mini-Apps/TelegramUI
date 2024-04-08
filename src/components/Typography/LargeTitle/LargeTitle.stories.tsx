@@ -1,15 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { hideControls } from 'storybook/controls';
 
 import { LargeTitle } from './LargeTitle';
 
 const meta = {
   title: 'Typography/LargeTitle',
   component: LargeTitle,
-  parameters: {
-    controls: {
-      exclude: 'Component',
-    },
-  },
+  argTypes: hideControls('Component'),
 } satisfies Meta<typeof LargeTitle>;
 
 export default meta;

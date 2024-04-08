@@ -4,9 +4,9 @@ import styles from './FixedLayout.module.css';
 import { classNames } from 'helpers/classNames';
 
 export interface FixedLayoutProps extends AllHTMLAttributes<HTMLElement> {
-  /** DOM node, div by default */
+  /** The component type to render, allowing for semantic HTML use. Defaults to 'div'. */
   Component?: ElementType;
-  /** Determine layout position */
+  /** Determines the vertical positioning of the layout within its container. Options are 'top' or 'bottom'. */
   vertical?: 'top' | 'bottom';
 }
 
@@ -15,6 +15,10 @@ const verticalStyles = {
   bottom: styles['wrapper--bottom'],
 };
 
+/**
+ * This component provides a flexible way to create a layout that is fixed to either the top or bottom of its parent container.
+ * It's useful for creating headers, footers, or any element that should remain in view regardless of the scrolling content.
+ */
 export const FixedLayout = ({
   Component = 'div',
   vertical = 'bottom',

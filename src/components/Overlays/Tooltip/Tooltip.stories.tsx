@@ -43,5 +43,16 @@ export const Playground: Story = {
       </>
     );
   },
+  decorators: [(StoryComponent) => (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 280,
+      height: 300,
+    }}>
+      <StoryComponent />
+    </div>
+  )],
 };
 

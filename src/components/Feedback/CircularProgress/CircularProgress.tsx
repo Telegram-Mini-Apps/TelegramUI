@@ -4,12 +4,17 @@ import styles from './CircularProgress.module.css';
 import { getCircleAttributes } from 'components/Feedback/CircularProgress/helpers/getCircleAttributes';
 
 export interface CircularProgressProps extends HTMLAttributes<HTMLOrSVGElement> {
-  /** Size of the circle, medium by default */
+  /** Specifies the size of the circular progress indicator. Can be 'small', 'medium', or 'large'. */
   size?: 'small' | 'medium' | 'large';
-  /** Progress of the circle, 0 by default */
+  /** Current progress of the circular indicator, expressed as a percentage from 0 to 100. */
   progress?: number;
 }
 
+/**
+ * Renders a circular progress indicator, useful for displaying loading states or progress metrics.
+ * The component dynamically adjusts its size and stroke based on the provided `size` prop and visually represents
+ * the `progress` prop as a percentage of the circle's circumference.
+ */
 export const CircularProgress = ({
   size = 'medium',
   progress = 0,

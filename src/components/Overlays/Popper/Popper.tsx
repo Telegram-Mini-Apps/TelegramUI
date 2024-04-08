@@ -13,26 +13,28 @@ import { DEFAULT_ARROW_HEIGHT, DEFAULT_ARROW_PADDING, DefaultIcon } from './comp
 import { autoUpdateFloatingElement } from './helpers/autoUpdateFloatingElement';
 import { useFloatingMiddlewares, UseFloatingMiddlewaresOptions } from './hooks/useFloatingMiddlewares';
 
-export interface PopperProps extends
-  Omit<UseFloatingMiddlewaresOptions, 'arrowHeight' | 'arrowPadding' | 'arrowRef'>,
-  HTMLAttributes<HTMLDivElement> {
-  /** Reference to the target element or virtual element for positioning. */
+export interface PopperProps extends Omit<UseFloatingMiddlewaresOptions, 'arrowHeight' | 'arrowPadding' | 'arrowRef'>, HTMLAttributes<HTMLDivElement> {
+  /** Reference to the target element or virtual element for precise positioning. */
   targetRef: RefObject<HTMLElement> | VirtualElement;
-  /** Properties for the floating arrow, including optional height and padding. */
+  /** Configuration and customization options for the floating arrow component. */
   arrowProps?: FloatingArrowProps & {
-    /** Height of the arrow, in pixels. */
+    /** Optionally override the default arrow height. */
     height?: number;
-    /** Padding around the arrow. */
+    /** Optionally override the default arrow padding. */
     padding?: number;
   };
-  /** Custom arrow icon component, derived from FloatingArrowProps. */
+  /** Optional custom component for the arrow icon, replacing the default. */
   ArrowIcon?: FloatingArrowProps['Icon'];
-  /** The component type to render as the Popper's root element. */
+  /** Defines the root element type of the Popper, allowing for semantic customization. */
   Component?: ElementType;
-  /** Whether the Popper should automatically update its position when the target element is resized. */
+  /** Opt-in feature to automatically update Popper's position when the target element resizes. */
   autoUpdateOnTargetResize?: boolean;
 }
 
+/**
+ * Renders a Popper component, leveraging floating UI for dynamic, responsive positioning.
+ * Supports advanced configurations like virtual elements, custom arrows, and auto-position updates.
+ */
 export const Popper = forwardRef(({
   // UseFloatingMiddlewaresOptions
   placement = 'auto',

@@ -1,15 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { hideControls } from 'storybook/controls';
 
 import { Text } from './Text';
 
 const meta = {
   title: 'Typography/Text',
   component: Text,
-  parameters: {
-    controls: {
-      exclude: 'Component',
-    },
-  },
+  argTypes: hideControls('Component'),
 } satisfies Meta<typeof Text>;
 
 export default meta;

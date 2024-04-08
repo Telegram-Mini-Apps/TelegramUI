@@ -12,7 +12,7 @@ const meta = {
     layout: 'centered',
   },
   argTypes: {
-    ...hideControls('before', 'after'),
+    ...hideControls('before', 'after', 'Component'),
     ...setControlsTypes(['children'], 'text'),
   },
 } satisfies Meta<typeof Button>;

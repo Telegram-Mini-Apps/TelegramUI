@@ -14,6 +14,11 @@ const platformStyles = {
   ios: styles['wrapper--ios'],
 };
 
+/**
+ * A custom switch component that mimics the behavior of a checkbox input but with enhanced styling.
+ * It supports all the standard attributes of an HTML input element of type "checkbox".
+ * The appearance of the switch can be customized to match either a base or iOS platform style using CSS modules.
+ */
 export const Switch = ({
   style,
   className,

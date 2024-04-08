@@ -11,30 +11,35 @@ import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { useTypographyCellComponents } from './hooks/useTypographyCellComponents';
 
 export interface CellProps extends Omit<TappableProps, 'Component'> {
-  /** Content displayed above the header */
+  /** Content displayed above the main content as a subheading */
   subhead?: ReactNode;
-  /** Content displayed as a header */
+  /** Main content displayed as a header */
   children?: ReactNode;
-  /** Content displayed as a hint on the same position as header */
+  /** Content displayed alongside the header as a hint */
   hint?: ReactNode;
-  /** Content displayed as a badge on the same position as header */
+  /** A badge component to be displayed next to the header */
   titleBadge?: ReactElement<BadgeProps>;
-  /** Content displayed under the header */
+  /** Content displayed below the header as a subtitle */
   subtitle?: ReactNode;
-  /** Content displayed under the subtitle */
+  /** Additional description displayed below the subtitle */
   description?: ReactNode;
-  /** Content displayed on the left side */
+  /** Content or elements to be displayed on the left side of the cell */
   before?: ReactNode;
-  /** Content displayed on the right side */
+  /** Content or elements to be displayed on the right side of the cell */
   after?: ReactNode;
-  /** Component root tag, div by default, useful for cells witch used as a form */
+  /** Custom component or HTML tag to be used as the root element of the cell, div by default */
   Component?: ElementType;
-  /** Controls hover state outside of component, can be useful for elements with keyboard focus */
+  /** Controls the hover state of the component externally, useful for keyboard navigation */
   hovered?: boolean;
-  /** Removes default white-space value from the cell */
+  /** Allows for multiline content without truncation */
   multiline?: boolean;
 }
 
+/**
+ * `Cell` component acts as a flexible and interactive container for various types of content,
+ * enabling the creation of complex list items, form fields, and more. It leverages the `Tappable`
+ * component for interaction and is designed to be flexible and extensible.
+ */
 export const Cell = forwardRef(({
   children,
   titleBadge,

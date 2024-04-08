@@ -9,26 +9,40 @@ import { UseMultiselectProps } from '../../hooks/useMultiselect';
 import { renderOptionDefault } from './constants';
 
 export interface MultiselectDropdownProps extends Required<Pick<UseMultiselectProps, 'options' | 'value'>> {
+  /** Array of selected options. */
   value: MultiselectOption[];
+  /** Reference to the target element the dropdown is associated with. */
   targetRef: RefObject<HTMLElement>;
+  /** Accessibility ID for the dropdown. */
   dropdownAriaId: string;
+  /** Currently focused option within the dropdown. */
   focusedOption: MultiselectOption | null;
+  /** Function to register a DOM node with an option index. */
   setOptionNode: (index: number, node: HTMLElement) => void;
+  /** Function to control the open state of the dropdown. */
   setOpened: (opened: boolean) => void;
+  /** Index of the currently focused option. */
   focusedOptionIndex: number | null;
+  /** Function to update the index of the focused option. */
   setFocusedOptionIndex: (index: number) => void;
+  /** Function to add an option derived from the input value. */
   addOptionFromInput: () => void;
+  /** Mouse leave event handler for the dropdown. */
   onMouseLeave: (event: MouseEvent<HTMLDivElement>) => void;
+  /** Function to add a selected option. */
   addOption: (option: MultiselectOption) => void;
+  /** Function to clear the input value. */
   clearInput: () => void;
-
-  /** Custom function to render Option-Cell component */
+  /** Custom render function for each option. Defaults to a basic implementation. */
   renderOption?: ForwardRefExoticComponent<CellProps & RefAttributes<unknown>>;
-
-  /** Close dropdown after select, false by default */
+  /** Whether to close the dropdown after selecting an option. */
   closeDropdownAfterSelect?: boolean;
 }
 
+/**
+ * Renders the dropdown menu for the multiselect input, including all options and managing interactions such as selection, focus, and mouse events.
+ * Utilizes the `Popper` component for positioning relative to the input field.
+ */
 export const MultiselectDropdown = forwardRef<HTMLDivElement, MultiselectDropdownProps>(({
   dropdownAriaId,
   options,

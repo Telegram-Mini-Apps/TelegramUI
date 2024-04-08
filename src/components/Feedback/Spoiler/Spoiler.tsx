@@ -5,10 +5,14 @@ import { classNames } from 'helpers/classNames';
 import { callMultiple } from 'helpers/function';
 
 export interface SpoilerProps extends HTMLAttributes<HTMLDivElement> {
-  /** Is content visible under the spoiler */
+  /** Controls the visibility of the content inside the spoiler. */
   visible?: boolean;
 }
 
+/**
+ * Provides a way to hide or show content, such as details or spoilers, with a simple click.
+ * The visibility state can be controlled externally via props or toggled by user interaction.
+ */
 export const Spoiler = ({
   visible = false,
   className,

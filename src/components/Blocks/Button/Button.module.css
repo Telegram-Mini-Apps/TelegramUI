@@ -119,7 +119,6 @@
 
 .wrapper--white {
   --tgui--button--hovered-opacity: .5;
-  /* TODO, set right color */
   --tgui--button--spinner-color: var(--tgui--surface_dark);
   background: var(--tgui--white);
 }

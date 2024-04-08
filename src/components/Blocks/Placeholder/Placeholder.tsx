@@ -8,16 +8,17 @@ import { Text } from 'components/Typography/Text/Text';
 import { Title } from 'components/Typography/Title/Title';
 
 export interface PlaceholderProps extends HTMLAttributes<HTMLElement> {
-  /** Header, usually img or lottie */
+  /** Element(s) to be displayed as the primary visual content, typically an image or an animation. */
   children?: ReactNode;
-  /** Title content */
+  /** The primary text, usually a title or a header, for the placeholder. */
   header?: ReactNode;
-  /** Text content */
+  /** Additional descriptive text to provide more details or context. */
   description?: ReactNode;
-  /** Action, usually button component */
+  /** An actionable element, such as a button, to be placed in the placeholder for user interaction. */
   action?: ReactNode;
 }
 
+/** A versatile component designed to display a placeholder with optional text, images, and actions. */
 export const Placeholder = ({
   children,
   header,

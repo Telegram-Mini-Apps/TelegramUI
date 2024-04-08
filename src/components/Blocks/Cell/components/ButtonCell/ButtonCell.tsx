@@ -10,16 +10,22 @@ import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
 interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
-  /** Cell type, influence only on color */
+  /** Determines the button cell's visual theme, influencing color and style. */
   mode?: 'default' | 'destructive';
-  /** Content before the text */
+  /** Element or component displayed before the main content, adding visual context or functionality. */
   before?: ReactNode;
-  /** Content after the text */
+  /** Element or component displayed after the main content, typically indicating a possible action or outcome. */
   after?: ReactNode;
-  /** DOM node, button by default */
+  /** Specifies the root element type for more semantic HTML structure or integration with navigation libraries. */
   Component?: ElementType;
+  /** The content within the button cell, usually text. */
+  children?: ReactNode;
 }
 
+/**
+ * Renders an interactive cell component with optional leading and trailing elements. Designed to be flexible,
+ * supporting various content structures and interaction models within UI designs.
+ */
 export const ButtonCell = forwardRef(({
   mode = 'default',
   before,

@@ -8,7 +8,7 @@ import { Typography, TypographyProps } from '../Typography';
 type TitleLevel = '1' | '2' | '3';
 
 export interface TitleProps extends TypographyProps {
-  /** Size of the title */
+  /** Determines the size and semantic tag of the title, with options for `h2`, `h3`, or `h4`. */
   level?: TitleLevel;
 }
 
@@ -24,6 +24,12 @@ const titleLevelStyles: Record<TitleLevel, string> = {
   '3': styles['wrapper--3'],
 };
 
+/**
+ * The Title component is designed to render text as a page or section heading,
+ * providing clear hierarchy and structure within content. It supports three levels of emphasis,
+ * allowing for flexibility in design while maintaining semantic integrity. By default, it uses `h3`
+ * for its semantic HTML element but can be customized via the `level` prop or explicitly with the `Component` prop.
+ */
 export const Title = ({
   level = '2',
   className,

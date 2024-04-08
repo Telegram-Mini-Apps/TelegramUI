@@ -7,10 +7,14 @@ import { AvatarAcronym } from './components/AvatarAcronym/AvatarAcronym';
 import { AvatarBadge } from './components/AvatarBadge/AvatarBadge';
 
 export interface AvatarProps extends ImageProps {
-  /** One or two letters shown as a placeholder, fallbackIcon will be ignored if passed */
+  /** One or two letters to be shown as a placeholder. `fallbackIcon` will not be used if `acronym` is provided. */
   acronym?: string;
 }
 
+/**
+ * Renders an image with specific styles for an avatar presentation, including optional acronym display and badge support.
+ * Utilizes the `Image` component for core functionality, enhancing it with avatar-specific features like acronyms and badges.
+ */
 export const Avatar = ({
   className,
   style,

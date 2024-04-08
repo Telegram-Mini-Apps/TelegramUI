@@ -15,18 +15,21 @@ import { PinInputCell } from './components/PinInputCell/PinInputCell';
 import { AVAILABLE_PINS, usePinInput } from './hooks/usePinInput';
 
 export interface PinInputProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
-  /** Pin input label */
+  /** Text label displayed above the pin input cells. */
   label?: string;
-  /** Number of pin input fields, minimum 2 */
+  /** The number of pin input fields to display, with a minimum of 2. */
   pinCount?: number;
-  /** Initial value */
+  /** The initial pin values to populate the input fields with. */
   value?: number[];
-  /** Callback on pin input change */
+  /** Callback function triggered when the pin values change. */
   onChange?: (value: number[]) => void;
 }
 
 const PIN_MIN_COUNT = 2;
 
+/**
+ * Renders a set of input fields for entering pin codes with a virtual keypad for value entry and deletion.
+ */
 export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
   label = 'Enter your pin',
   pinCount = 4,

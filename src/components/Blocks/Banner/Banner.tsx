@@ -14,24 +14,28 @@ import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
 export interface BannerProps extends HTMLAttributes<HTMLDivElement> {
-  /** Banner type */
+  /** Specifies the banner's layout style, which can affect its positioning and styling. */
   type?: 'section' | 'inline';
-  /** Content displayed on the left side of the banner. */
+  /** Element(s) to be placed on the left side of the banner, typically an icon or an image. */
   before?: ReactNode;
-  /** Header content */
+  /** The main text or title displayed in the banner. */
   header?: ReactNode;
-  /** Content under the header */
+  /** Additional information or subtext displayed below the header. */
   subheader?: ReactNode;
-  /** Content under the subheader */
+  /** Further details or description provided under the subheader. */
   description?: ReactNode;
-  /** Background component, will be stretched */
+  /** Custom background component or design, such as an image or gradient, that covers the banner's area. */
   background?: ReactNode;
-  /** Function called when the close icon is clicked, icon won't be shown if not passed */
+  /** Callback function that is executed when the close icon of the banner is clicked. If not provided, the close icon is not displayed. */
   onCloseIcon?: MouseEventHandler<HTMLButtonElement>;
-  /** Pass a collection of buttons here, if you need more than one button, pass React.Fragment */
+  /** Content or components, such as buttons, displayed within the banner. For multiple elements, wrap them in a React.Fragment. */
   children?: ReactNode;
 }
 
+/**
+ * The `Banner` component renders a small numeric or dot indicator, typically used for notifications, statuses, or counts.
+ * It supports several visual modes for different contexts (e.g., critical, primary) and can be sized normally or enlarged.
+ */
 export const Banner = ({
   type,
   before,

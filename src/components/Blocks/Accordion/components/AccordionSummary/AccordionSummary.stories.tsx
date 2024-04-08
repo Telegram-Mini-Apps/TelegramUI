@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Subheadline } from 'components';
+import CellMeta from 'components/Blocks/Cell/Cell.stories';
 import { Section } from 'components/Blocks/Section/Section';
 import { Accordion } from '../../Accordion';
 import { AccordionSummary, AccordionSummaryProps } from './AccordionSummary';
@@ -8,6 +9,7 @@ import { AccordionSummary, AccordionSummaryProps } from './AccordionSummary';
 const meta = {
   title: 'Blocks/Accordion/Accordion.Summary',
   component: AccordionSummary,
+  argTypes: CellMeta.argTypes,
 } satisfies Meta<typeof AccordionSummary>;
 
 export default meta;

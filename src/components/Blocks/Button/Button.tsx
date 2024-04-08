@@ -10,21 +10,21 @@ import { Tappable } from 'components/Service/Tappable/Tappable';
 import { ButtonTypography } from './components/ButtonTypography/ButtonTypography';
 
 export interface ButtonProps extends Omit<AllHTMLAttributes<HTMLButtonElement>, 'size'> {
-  /** Inserts a component before the button text, e.g. Icon */
+  /** Inserts a component before the button text, typically an icon. */
   before?: ReactNode;
-  /** Inserts a component after the button text, e.g. Badge */
+  /** Inserts a component after the button text, such as a badge or indicator. */
   after?: ReactNode;
-  /** Button size */
+  /** Controls the size of the button, influencing padding and font size. */
   size?: 's' | 'm' | 'l';
-  /** Stretches the width of the button to fill the available horizontal space */
+  /** If true, stretches the button to fill the width with its container. */
   stretched?: boolean;
-  /** Button mode, only background and color are changing */
+  /** Defines the button's visual style, affecting its background and text color. */
   mode?: 'filled' | 'bezeled' | 'plain' | 'gray' | 'outline' | 'white';
-  /** Is button loading */
+  /** Displays a loading indicator in place of the button content when true. */
   loading?: boolean;
-  /** Is button disabled */
+  /** Disables the button, preventing user interactions, when true. */
   disabled?: boolean;
-  /** HTML Tag, button by default */
+  /** Specifies the root element type for the button, allowing for semantic customization or integration with routing libraries. */
   Component?: ElementType;
 }
 
@@ -43,6 +43,9 @@ const sizeStyles = {
   l: styles['wrapper--l'],
 };
 
+/**
+ * Renders a button or a button-like element with customizable properties, such as size, mode, and loading state. Supports adding icons or other elements before and after the text.
+ */
 export const Button = forwardRef(({
   type,
   size = 'm',

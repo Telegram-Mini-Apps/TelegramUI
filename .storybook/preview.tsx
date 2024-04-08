@@ -2,9 +2,26 @@ import type { Preview } from '@storybook/react';
 import { AppearanceDecorator } from './decorators/appearance';
 import { AppRootDecorator } from './decorators/root';
 import { StrictDecorator } from './decorators/strict';
+import { Controls, Description, Primary, Stories, Subtitle, Title } from '@storybook/blocks';
 
 const preview: Preview = {
   parameters: {
+    docs: {
+      inlineStories: true,
+      source: {
+        state: 'open',
+      },
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+          <Stories includePrimary={false} />
+        </>
+      ),
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       expanded: true,

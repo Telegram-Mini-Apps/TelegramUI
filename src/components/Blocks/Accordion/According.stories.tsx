@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { hideControls } from 'storybook/controls';
 
 import { Blockquote } from 'components/Blocks/Blockquote/Blockquote';
 import { Section } from 'components/Blocks/Section/Section';
@@ -9,6 +10,7 @@ import { Accordion, AccordionProps } from './Accordion';
 const meta = {
   title: 'Blocks/Accordion',
   component: Accordion,
+  argTypes: hideControls('children'),
 } satisfies Meta<typeof Accordion>;
 
 export default meta;

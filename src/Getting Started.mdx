@@ -1,0 +1,78 @@
+# Welcome to Telegram UI
+
+Dive into our sleek design on [Figma](https://www.figma.com/file/AwAi6qE11mQllHa1sOROYp/Telegram-Mini-Apps-Library-%C2%B7%C2%A0Beta?type=design&node-id=26-1081&mode=design&t=ltO243PjntJxW0Tc-0) to get a glimpse of what awaits you.
+
+## Easy Installation
+
+Getting started is a breeze with npm or yarn. Simply run:
+
+**npm:**
+
+```sh
+npm install @xelene/tgui
+```
+
+**yarn:**
+
+```sh
+yarn add @xelene/tgui
+```
+
+## Smooth Development Process
+
+Follow these simple steps to kickstart your development journey:
+
+### 1. Import Styles
+
+Before diving into the development, ensure to import the necessary styles:
+
+```jsx
+import '@xelene/tgui/dist/styles.css';
+```
+
+### 2. Wrap Your App
+
+Next, wrap your application with `AppRoot` to leverage our platform's features:
+
+```jsx
+import { AppRoot } from '@xelene/tgui';
+
+ReactDOM.render(
+  <AppRoot>
+    <App />
+  </AppRoot>,
+  document.getElementById('root')
+);
+```
+
+### Usage example
+
+```jsx
+// Import the necessary styles globally
+import '@xelene/tgui/dist/styles.css';
+
+// Import components from the library
+import { AppRoot, Cell, List, Section } from '@xelene/tgui';
+
+// Example data for rendering list cells
+const cellsTexts = ['Chat Settings', 'Data and Storage', 'Devices'];
+
+export const App = () => (
+  <AppRoot>
+    {/* List component to display a collection of items */}
+    <List>
+      {/* Section component to group items within the list */}
+      <Section header="Header for the section" footer="Footer for the section">
+        {/* Mapping through the cells data to render Cell components */}
+        {cellsTexts.map((cellText, index) => (
+          <Cell key={index}>
+            {cellText}
+          </Cell>
+        ))}
+      </Section>
+    </List>
+  </AppRoot>
+);
+```
+
+With these steps, you're all set to explore the potential of our library. Happy coding!

@@ -4,12 +4,16 @@ import styles from './Steps.module.css';
 import { classNames } from 'helpers/classNames';
 
 export interface StepsProps extends HTMLAttributes<HTMLDivElement> {
-  /** Steps count */
+  /** Total number of steps. */
   count: number;
-  /** Steps count progress, from 0 to {count} */
+  /** Current progress, indicating how many steps have been completed. Progress is 0-indexed and goes up to `count`. */
   progress: number;
 }
 
+/**
+ * Renders a visual indicator of steps or progress in a process, such as a tutorial or a multi-step form.
+ * It visually represents total steps and current progress.
+ */
 export const Steps = ({ className, count, progress }: StepsProps) => (
   <div className={classNames(styles.wrapper, className)}>
     {Array.from({ length: count }, (_, i) => (

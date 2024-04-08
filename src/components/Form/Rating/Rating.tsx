@@ -9,20 +9,24 @@ import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden
 import { IconStar } from './icons/star';
 
 export interface RatingProps extends Omit<HTMLAttributes<HTMLLabelElement>, 'onChange'> {
-  /** The precision of the rating. 1 by default */
+  /** The precision of the rating, determining the fraction of the star that can be selected. */
   precision?: 0.1 | 0.2 | 0.25 | 0.5 | 1;
-  /** The maximum value of the rating. 5 by default */
+  /** The maximum rating value, representing the number of icons displayed. */
   max?: number;
-  /** The value of the rating. 0 by default */
+  /** The current value of the rating. */
   value?: number;
-  /** The callback function that is triggered when the value of the rating is changed */
+  /** Callback function invoked when the rating value changes. */
   onChange?: (value: number) => void;
-  /** The icon that is used for the rating */
+  /** The component used to render the rating icons. Defaults to a star icon. */
   IconContainer?: ElementType<Icon>;
 }
 
 const MINIMUM_PRECISION = 0.1;
 
+/**
+ * Renders a customizable rating component, allowing users to provide a rating by selecting a value using icons (e.g., stars).
+ * Supports fractional ratings through precision control and allows for custom rating icon components.
+ */
 export const Rating = ({
   precision = 1,
   max = 5,

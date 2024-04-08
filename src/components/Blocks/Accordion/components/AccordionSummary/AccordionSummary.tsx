@@ -11,6 +11,11 @@ import { Cell, CellProps } from 'components/Blocks/Cell/Cell';
 
 export interface AccordionSummaryProps extends CellProps {}
 
+/**
+ * `AccordionSummary` serves as the clickable header for an accordion section, toggling the visibility of the content.
+ * It incorporates an expand/collapse icon to visually indicate state. This component further extends `Cell` to provide
+ * a consistent UI and accessibility features.
+ */
 export const AccordionSummary = ({
   after,
   before,

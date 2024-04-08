@@ -10,12 +10,23 @@ import { SectionFooter } from './components/SectionFooter/SectionFooter';
 import { SectionHeader } from './components/SectionHeader/SectionHeader';
 
 export interface SectionProps extends HTMLAttributes<HTMLElement> {
-  /** If text is passed - the component automatically uses SectionHeader, if u want a large title, pass &lt;Section.Header large>{headerText}</Section.Header> */
+  /**
+   * The content for the section header. If a string is passed, `Section.Header` is automatically used.
+   * For more control or a large title, use `<Section.Header large>{headerText}</Section.Header>`.
+   */
   header?: ReactNode;
-  /** If text is passed - the component automatically uses SectionFooter, if u want a centered footer, pass &lt;Section.Footer centered>{footerText}</Section.Footer> */
+  /**
+   * The content for the section footer. If a string is passed, `Section.Footer` is automatically used.
+   * For a centered footer, use `<Section.Footer centered>{footerText}</Section.Footer>`.
+   */
   footer?: ReactNode;
 }
 
+/**
+ * Organizes content into distinct sections with optional headers and footers. It automatically wraps
+ * primitive header and footer content in the appropriate sub-components, and inserts dividers between
+ * children when rendering multiple elements.
+ */
 export const Section = ({ header, footer, className, children, ...restProps }: SectionProps) => {
   const platform = usePlatform();
 
@@ -52,4 +63,3 @@ export const Section = ({ header, footer, className, children, ...restProps }: S
 
 Section.Header = SectionHeader;
 Section.Footer = SectionFooter;
-

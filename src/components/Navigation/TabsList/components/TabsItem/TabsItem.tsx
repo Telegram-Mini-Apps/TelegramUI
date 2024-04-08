@@ -8,10 +8,14 @@ import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Text } from 'components/Typography/Text/Text';
 
 export interface TabsItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Sets item selected state, will be checked by parent (TabsList) */
+  /** Indicates if the tab item is currently selected. */
   selected?: boolean;
 }
 
+/**
+ * Tabs.Item component represents an individual tab within a TabsList.
+ * It can be interactively selected to display associated content.
+ */
 export const TabsItem = ({
   selected,
   className,

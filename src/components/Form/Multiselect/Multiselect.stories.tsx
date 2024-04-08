@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Decorator, Meta, StoryObj } from '@storybook/react';
+import { hideControls, setControlsTypes } from 'storybook/controls';
 
 import { Section } from 'components';
 import { List } from 'components/Blocks/List/List';
@@ -12,6 +13,10 @@ const meta = {
   component: Multiselect,
   parameters: {
     layout: 'fullscreen',
+  },
+  argTypes: {
+    ...hideControls('options', 'before', 'renderOption', 'value', 'defaultValue', 'filterFn', 'creatable'),
+    ...setControlsTypes(['header'], 'text'),
   },
 } satisfies Meta<typeof Multiselect>;
 
@@ -28,7 +33,7 @@ const PLATFORM_OPTIONS: MultiselectOption[] = [
 ];
 
 const decorator: Decorator = (Story) => (
-  <List style={{ background: 'var(--tgui--secondary_bg_color)', height: '100dvh' }}>
+  <List style={{ background: 'var(--tgui--secondary_bg_color)', minHeight: '360px' }}>
     <Story />
   </List>
 );
@@ -40,8 +45,8 @@ const StoryBookComponent = (props: MultiselectProps & { sectionHeader: string })
   return (
     <Section header={sectionHeader}>
       <Multiselect
-        {...multiselectProps}
         header="Platforms"
+        {...multiselectProps}
         placeholder="Select platform"
         options={PLATFORM_OPTIONS}
         value={value}

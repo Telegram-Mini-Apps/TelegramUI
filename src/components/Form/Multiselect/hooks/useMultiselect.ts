@@ -10,23 +10,26 @@ import { DEFAULT_EMPTY_TEXT, DEFAULT_SELECTED_BEHAVIOR } from './constants';
 import { useMultiselectInput, type UseMultiselectInputProps } from './useMultiselectInput';
 
 export interface UseMultiselectProps extends UseMultiselectInputProps {
-  /** Options to select */
+  /** Array of options available for selection. */
   options?: MultiselectOption[];
   /**
-   * The ability to create chips that are not in the list:
-   * - `true` - adding by pressing Enter;
-   * - `<text>` - in addition to the ability to add via Enter, a button with text will appear in the menu item.
-   * The text for the item that creates chips when clicked also determines whether this item will be shown
+   * Enables the creation of new options that are not in the initial list.
+   * - `true` allows adding by pressing Enter.
+   * - A `string` value also adds a button with the provided text to the dropdown for creating options.
    */
   creatable?: boolean | string;
-  /** Text that is shown if the list of options is empty */
+  /** Text displayed when no options are available or match the filter criteria. */
   emptyText?: string;
-  /** Should selected options be hidden or highlighted */
+  /** Determines how selected options are treated: either hidden from the list or highlighted within it. */
   selectedBehavior?: 'hide' | 'highlight';
-  /** Function to filter options */
+  /** Custom function to filter options based on the input value. */
   filterFn?: false | FilterFn;
 }
 
+/**
+ * Hook to manage the state and interactions of a multiselect component.
+ * It encapsulates logic for option selection, input change handling, dropdown visibility, and focused option management.
+ */
 export const useMultiselect = ({
   // Common props
   disabled,

@@ -13,7 +13,7 @@ const meta = {
 
 export default meta;
 
-const paginationItems = Array.from({ length: 10 }, (_, i) => i + 1);
+const paginationItems = Array.from({ length: 8 }, (_, i) => i + 1);
 
 export const Playground: StoryObj<CompactPaginationProps> = {
   render: (args) => {

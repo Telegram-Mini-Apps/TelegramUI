@@ -6,10 +6,14 @@ import { classNames } from 'helpers/classNames';
 import { TabsItem, TabsItemProps } from './components/TabsItem/TabsItem';
 
 export interface TabsListProps extends HTMLAttributes<HTMLDivElement> {
-  /** Pass TabsList.Item components here */
+  /** Children should be TabsList.Item components to be rendered as tabs. */
   children: ReactElement<TabsItemProps>[];
 }
 
+/**
+ * The TabsList component renders a list of tabs, typically used for navigating between different views
+ * or filtering content. It visually indicates the currently active tab and supports custom styling.
+ */
 export const TabsList = ({
   className,
   children,

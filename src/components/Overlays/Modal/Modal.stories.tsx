@@ -18,7 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DecoratorFullScreen: Decorator = (StoryComponent) => (
-  <div style={{ height: '100vh' }}>
+  <div style={{ position: 'relative', height: '20px', width: '160px', background: 'red' }}>
     <StoryComponent />
   </div>
 );

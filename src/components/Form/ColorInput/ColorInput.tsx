@@ -12,6 +12,10 @@ import { Text } from 'components/Typography/Text/Text';
 
 export interface ColorInputProps extends Omit<FormPublicProps, 'after'>, InputHTMLAttributes<HTMLInputElement> {}
 
+/**
+ * Renders a color picker input within a form structure, displaying the selected color value.
+ * It adapts the text style based on the platform and supports additional properties like header and status.
+ */
 export const ColorInput = ({
   header,
   before,

@@ -12,4 +12,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Playground: Story = {} satisfies Story;
+export const Playground: Story = {
+  decorators: [
+    (Component) => (
+      <div style={{ height: '600px' }}>
+        <Component />
+      </div>
+    ),
+  ],
+} satisfies Story;

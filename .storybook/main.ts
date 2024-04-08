@@ -31,7 +31,8 @@ const config: StorybookConfig = {
     },
   }),
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
+    defaultName: 'Documentation',
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',

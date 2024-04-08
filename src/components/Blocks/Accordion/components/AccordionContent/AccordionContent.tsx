@@ -6,9 +6,12 @@ import { classNames } from 'helpers/classNames';
 import { AccordionContext } from 'components/Blocks/Accordion/AccordionContext';
 import { calcMaxHeight } from './helpers/calcMaxHeight';
 
-export interface AccordionContentProps
-  extends HTMLAttributes<HTMLDivElement> {}
+export interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {}
 
+/**
+ * Renders the content part of an accordion, leveraging context to control visibility and animation.
+ * Utilizes `calcMaxHeight` for smooth height transitions during expand/collapse actions.
+ */
 export const AccordionContent = ({
   className,
   children,

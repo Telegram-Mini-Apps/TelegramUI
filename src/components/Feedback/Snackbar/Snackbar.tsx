@@ -12,24 +12,28 @@ import { Caption } from 'components/Typography/Caption/Caption';
 import { SnackbarButton } from './components/SnackbarButton/SnackbarButton';
 
 export interface SnackbarProps extends HTMLAttributes<HTMLDivElement> {
-  /** Content displayed on the left side */
+  /** Element or component to be displayed on the left side of the snackbar. */
   before?: ReactNode;
-  /** Content displayed on the right side */
+  /** Element or component to be displayed on the right side of the snackbar. */
   after?: ReactNode;
-  /** Content displayed as a title */
+  /** The main content of the snackbar, typically text or a message. */
   children?: ReactNode;
-  /** Content displayed under the title (children) */
+  /** Additional content displayed below the main message. */
   description?: ReactNode;
-  /** Content displayed under the description */
+  /** A link component to be included in the snackbar for user interaction. */
   link?: ReactElement<LinkProps>;
-  /** After {duration}ms it will be hidden */
+  /** The duration in milliseconds after which the snackbar will automatically close. */
   duration?: number;
-  /** Callback function to unmount component from dom */
+  /** Callback function invoked when the snackbar is closed. */
   onClose: () => void;
 }
 
 const TRANSITION_FINISH_DURATION = 320;
 
+/**
+ * Displays a brief message at the bottom of the screen, which can contain actions and other content.
+ * It automatically dismisses after a set duration, providing feedback or interaction prompts to users.
+ */
 export const Snackbar = ({
   before,
   after,

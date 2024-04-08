@@ -22,9 +22,18 @@ export interface MultiselectProps extends
   Pick<MultiselectDropdownProps, 'closeDropdownAfterSelect' | 'renderOption'>,
   Pick<UseMultiselectProps, 'value' | 'defaultValue' | 'onChange' | 'filterFn' | 'onInputChange' | 'inputValue' | 'selectedBehavior' | 'emptyText' | 'creatable'>,
   Pick<MultiselectBaseProps, 'renderChip'> {
+  /**
+   * The `options` property defines the available options within the multiselect dropdown.
+   * Each option is represented as an object conforming to the `MultiselectOption` structure,
+   * which typically includes properties like `value` (the option's value) and `label` (the human-readable text associated with the option).
+   */
   options: MultiselectOption[];
 }
 
+/**
+ * A comprehensive component for rendering a multiselect input field with customizable options, dropdown behaviors, and chip display.
+ * It integrates functionality for selecting multiple options, searching, and even creating new options based on user input.
+ */
 export const Multiselect = forwardRef<HTMLDivElement, MultiselectProps>(({
   // FormInput options
   header,
