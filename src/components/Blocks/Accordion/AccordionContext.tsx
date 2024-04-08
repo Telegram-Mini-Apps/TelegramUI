@@ -4,7 +4,7 @@ export interface AccordionContextProps {
   labelId: string;
   contentId: string;
   expanded: boolean;
-  onChange: (e: boolean) => void;
+  onChange: (expanded: boolean) => void;
 }
 
 export const AccordionContext = createContext<AccordionContextProps>({

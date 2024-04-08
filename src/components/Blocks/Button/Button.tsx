@@ -1,3 +1,5 @@
+'use client';
+
 import { AllHTMLAttributes, ElementType, forwardRef, ReactNode } from 'react';
 import styles from './Button.module.css';
 
@@ -5,7 +7,7 @@ import { classNames } from 'helpers/classNames';
 import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { Spinner } from 'components';
+import { Spinner } from 'components/Feedback/Spinner/Spinner';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { ButtonTypography } from './components/ButtonTypography/ButtonTypography';
 

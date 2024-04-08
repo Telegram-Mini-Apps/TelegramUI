@@ -1,3 +1,5 @@
+'use client';
+
 import { AllHTMLAttributes, ReactNode } from 'react';
 import styles from './Chip.module.css';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { ChangeEvent, useMemo, useRef, useState } from 'react';
 
 import { isEqual } from 'helpers/equal';

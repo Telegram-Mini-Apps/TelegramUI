@@ -1,4 +1,4 @@
-import { isNotServicePreset } from 'components/Form/Multiselect/hooks/constants';
+import { isServicePreset } from 'components/Form/Multiselect/hooks/constants';
 import { getNewOptionData } from 'components/Form/Multiselect/hooks/helpers/getNewOptionData';
 import { UseMultiselectProps } from 'components/Form/Multiselect/hooks/useMultiselect';
 import { MultiselectOption } from 'components/Form/Multiselect/types';
@@ -42,7 +42,7 @@ UseMultiselectProps,
   if (selectedBehavior === 'hide') {
     const selected = value.map((item) => item.value);
     return filteredOptionsProp.filter((item) => {
-      return isNotServicePreset(item) ? !selected.includes(item.value) : false;
+      return !isServicePreset(item) ? !selected.includes(item.value) : false;
     });
   }
 

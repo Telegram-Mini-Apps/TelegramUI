@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './SliderSteps.module.css';
 
 import { classNames } from 'helpers/classNames';

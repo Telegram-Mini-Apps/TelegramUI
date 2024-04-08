@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes, ReactElement } from 'react';
 import styles from './Tabbar.module.css';
 

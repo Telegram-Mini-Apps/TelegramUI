@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes, useEffect, useState } from 'react';
 import styles from './Spoiler.module.css';
 

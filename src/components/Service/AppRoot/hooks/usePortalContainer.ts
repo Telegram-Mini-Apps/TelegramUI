@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext, useRef } from 'react';
 
 import { AppRootContext, AppRootContextInterface } from '../AppRootContext';

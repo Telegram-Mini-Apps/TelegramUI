@@ -9,5 +9,6 @@
   "exclude": [
     "node_modules",
     "src/**/*.stories.ts*",
+    "src/**/*.test.ts*",
   ]
 }

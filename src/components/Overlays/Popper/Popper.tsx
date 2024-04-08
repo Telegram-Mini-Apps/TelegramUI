@@ -1,3 +1,5 @@
+'use client';
+
 import { ElementType, forwardRef, HTMLAttributes, RefObject, useState } from 'react';
 import styles from './Popper.module.css';
 

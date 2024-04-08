@@ -1,7 +1,8 @@
+'use client';
+
 import { AllHTMLAttributes, ElementType, forwardRef } from 'react';
 import styles from './Tappable.module.css';
 
-import { Platform } from 'enums/Platform';
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
@@ -25,7 +26,7 @@ export const Tappable = forwardRef(({
   const platform = usePlatform();
   const { clicks, onPointerCancel, onPointerDown } = useRipple();
 
-  const hasRippleEffect = platform === Platform.Base && interactiveAnimation === 'background' && !readOnly;
+  const hasRippleEffect = platform === 'base' && interactiveAnimation === 'background' && !readOnly;
   return (
     <Component
       ref={ref}

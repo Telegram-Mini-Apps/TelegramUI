@@ -1,7 +1,10 @@
-import { Platform } from 'enums/Platform';
+'use client';
+
 import { useAppRootContext } from 'hooks/useAppRootContext';
 
-export const usePlatform = (): Platform => {
+import { AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
+
+export const usePlatform = (): NonNullable<AppRootContextInterface['platform']> => {
   const context = useAppRootContext();
-  return context.platform || Platform.Base;
+  return context.platform || 'base';
 };

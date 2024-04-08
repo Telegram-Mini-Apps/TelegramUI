@@ -1,3 +1,5 @@
+'use client';
+
 import { ChangeEvent, useCallback, useRef, useState } from 'react';
 
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';

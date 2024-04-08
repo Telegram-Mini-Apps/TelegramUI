@@ -4,7 +4,7 @@ import { clamp } from 'helpers/math';
  * These functions are copied from material-ui
  * https://github.com/mui/material-ui/blob/v5.13.7/packages/mui-base/src/useSlider/useSlider.ts#L89-L105
  */
-const getDecimalPrecision = (num: number) => {
+export const getDecimalPrecision = (num: number) => {
   // This handles the case when num is very small (0.00000001), js will turn this into 1e-8.
   // When num is bigger than 1 or less than -1 it won't get converted to this notation so it's fine.
   if (Math.abs(num) < 1) {
@@ -17,12 +17,12 @@ const getDecimalPrecision = (num: number) => {
   return decimalPart ? decimalPart.length : 0;
 };
 
-const roundValueToStep = (value: number, step: number, min: number) => {
+export const roundValueToStep = (value: number, step: number, min: number) => {
   const nearest = Math.round((value - min) / step) * step + min;
   return Number(nearest.toFixed(getDecimalPrecision(step)));
 };
 
-const roundedClampWithStep = (val: number, min: number, max: number, step?: number) => {
+export const roundedClampWithStep = (val: number, min: number, max: number, step?: number) => {
   if (step == null || step <= 0) {
     return clamp(val, min, max);
   }
@@ -31,7 +31,7 @@ const roundedClampWithStep = (val: number, min: number, max: number, step?: numb
   return clamp(roundedValue, min, max);
 };
 
-const scaleAndClampValue = (
+export const scaleAndClampValue = (
   value: number,
   from: [number, number],
   to: [number, number],
@@ -52,4 +52,3 @@ export const offsetXToScaledValue = (
 ) => {
   return scaleAndClampValue(startX, [0, width], [min, max], { step });
 };
-

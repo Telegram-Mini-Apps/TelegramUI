@@ -1,3 +1,5 @@
+'use client';
+
 import { ElementType, forwardRef, ReactNode } from 'react';
 import styles from './ButtonCell.module.css';
 

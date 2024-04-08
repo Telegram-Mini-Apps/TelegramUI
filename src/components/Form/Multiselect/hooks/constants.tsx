@@ -18,6 +18,5 @@ export const isEmptyOptionPreset = (option: MultiselectOption) => {
   return option && 'placeholder' in option;
 };
 
-export const isNotServicePreset = (option: MultiselectOption) =>
-  !isCreateNewOptionPreset(option) && !isEmptyOptionPreset(option);
-
+export const isServicePreset = (option: MultiselectOption) =>
+  isCreateNewOptionPreset(option) || isEmptyOptionPreset(option);

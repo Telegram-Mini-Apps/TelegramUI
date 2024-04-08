@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+'use client';
+
 import { ChangeEvent, Dispatch, SetStateAction, useCallback, useRef, useState } from 'react';
 
 import { isFunction } from 'helpers/fuctions';

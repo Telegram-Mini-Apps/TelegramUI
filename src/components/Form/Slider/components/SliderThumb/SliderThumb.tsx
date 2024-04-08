@@ -1,4 +1,6 @@
-import React, { forwardRef, HTMLAttributes, InputHTMLAttributes } from 'react';
+'use client';
+
+import { forwardRef, HTMLAttributes, InputHTMLAttributes } from 'react';
 import styles from './SliderThumb.module.css';
 
 import { classNames } from 'helpers/classNames';

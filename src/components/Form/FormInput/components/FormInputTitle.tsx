@@ -1,3 +1,5 @@
+'use client';
+
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Caption } from 'components/Typography/Caption/Caption';

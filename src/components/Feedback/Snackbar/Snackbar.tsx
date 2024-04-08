@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes, ReactElement, ReactNode, useEffect, useState } from 'react';
 import styles from './Snackbar.module.css';
 

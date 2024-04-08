@@ -1,3 +1,5 @@
+'use client';
+
 import { InputHTMLAttributes } from 'react';
 import styles from './Multiselectable.module.css';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { ImgHTMLAttributes, isValidElement, ReactNode, SyntheticEvent, useState } from 'react';
 import styles from './Image.module.css';
 
@@ -42,7 +44,7 @@ export const Image = ({
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
 
-  const hasSrc = src || srcSet;
+  const hasSrc = src || srcSet?.length !== 0;
   const needShowFallbackIcon = (failed || !hasSrc) && isValidElement(fallbackIcon);
 
   const handleImageLoad = (event: SyntheticEvent<HTMLImageElement>) => {

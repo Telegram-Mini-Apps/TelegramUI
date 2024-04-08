@@ -1,3 +1,5 @@
+'use client';
+
 import { PointerEventHandler, useMemo, useState } from 'react';
 
 import { useTimeout } from 'hooks/useTimeout';

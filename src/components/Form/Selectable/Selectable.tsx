@@ -1,3 +1,5 @@
+'use client';
+
 import { InputHTMLAttributes } from 'react';
 import styles from './Selectable.module.css';
 

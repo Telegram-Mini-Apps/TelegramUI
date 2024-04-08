@@ -1,3 +1,5 @@
+'use client';
+
 import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
 import styles from './ColorInput.module.css';
 

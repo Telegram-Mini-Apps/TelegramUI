@@ -16,8 +16,12 @@ export function defaultFilterFn(
     return false;
   }
 
-  const searchQuery = rawSearchQuery.toLocaleLowerCase();
-  const label = getTextFromChildren(option.label).toLocaleLowerCase();
+  const searchQuery = rawSearchQuery.trim().toLocaleLowerCase();
+  const label = getTextFromChildren(option.label).trim().toLocaleLowerCase();
+
+  if (!searchQuery) {
+    return false;
+  }
 
   if (label.startsWith(searchQuery)) {
     return true;

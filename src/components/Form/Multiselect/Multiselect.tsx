@@ -1,3 +1,5 @@
+'use client';
+
 import { FocusEvent, forwardRef, InputHTMLAttributes, KeyboardEvent, useCallback, useEffect, useId, useRef } from 'react';
 import styles from './Multiselect.module.css';
 
@@ -12,7 +14,7 @@ import { Icon20ChevronDown } from 'icons/20/chevron_down';
 import { FormInput, FormPublicProps } from 'components/Form/FormInput/FormInput';
 import { MultiselectBase, MultiselectBaseProps } from './components/MultiselectBase/MultiselectBase';
 import { MultiselectDropdown, MultiselectDropdownProps } from './components/MultiselectDropdown/MultiselectDropdown';
-import { FOCUS_ACTION_NEXT, FOCUS_ACTION_PREV, FocusActionType, isNotServicePreset } from './hooks/constants';
+import { FOCUS_ACTION_NEXT, FOCUS_ACTION_PREV, FocusActionType, isServicePreset } from './hooks/constants';
 import { useMultiselect, UseMultiselectProps } from './hooks/useMultiselect';
 import { MultiselectOption } from './types';
 
@@ -211,7 +213,7 @@ export const Multiselect = forwardRef<HTMLDivElement, MultiselectProps>(({
         }
 
         const foundOption = options[focusedOptionIndex];
-        if (!foundOption || !isNotServicePreset(foundOption)) {
+        if (!foundOption || isServicePreset(foundOption)) {
           break;
         }
 
@@ -241,7 +243,7 @@ export const Multiselect = forwardRef<HTMLDivElement, MultiselectProps>(({
     }
 
     const foundFocusedOptionIndex = options[focusedOptionIndex];
-    if (foundFocusedOptionIndex && isNotServicePreset(foundFocusedOptionIndex)) {
+    if (foundFocusedOptionIndex && !isServicePreset(foundFocusedOptionIndex)) {
       setFocusedOption(foundFocusedOptionIndex);
     }
   }, [options, focusedOptionIndex, setFocusedOption]);

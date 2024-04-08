@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
+'use client';
+
 import { AllHTMLAttributes, DragEvent, ElementType, MouseEvent as ReactMouseEvent, useMemo, useRef } from 'react';
 
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';

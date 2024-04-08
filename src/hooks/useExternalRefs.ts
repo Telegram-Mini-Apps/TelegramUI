@@ -1,3 +1,5 @@
+'use client';
+
 import { MutableRefObject, Ref, useMemo, useRef } from 'react';
 
 import { setRef } from 'helpers/react/refs';

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/swcrc",
-  "exclude": ["\\.(stories)\\.[jt]sx?$"],
+  "exclude": ["\\.(stories|test)\\.[jt]sx?$"],
   "module": {
     "type": "es6"
   },
@@ -8,7 +8,6 @@
     "baseUrl": ".",
     "paths": {
       "components/*": ["./src/components/*"],
-      "enums/*": ["./src/enums/*"],
       "helpers/*": ["./src/helpers/*"],
       "hooks/*": ["./src/hooks/*"],
       "icons/*": ["./src/icons/*"],

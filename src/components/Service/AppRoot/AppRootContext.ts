@@ -1,9 +1,9 @@
+'use client';
+
 import { createContext, RefObject } from 'react';
 
-import { Platform } from 'enums/Platform';
-
 export interface AppRootContextInterface {
-  platform?: Platform;
+  platform?: 'base' | 'ios';
   appearance?: 'light' | 'dark';
   portalContainer?: RefObject<HTMLDivElement>;
   isRendered: boolean;

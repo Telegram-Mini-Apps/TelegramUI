@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes, useContext, useRef } from 'react';
 import styles from './AccordionContent.module.css';
 

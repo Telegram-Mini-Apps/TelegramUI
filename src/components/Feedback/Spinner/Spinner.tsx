@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes } from 'react';
 import styles from './Spinner.module.css';
 

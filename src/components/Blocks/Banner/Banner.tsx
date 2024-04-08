@@ -1,3 +1,5 @@
+'use client';
+
 import { HTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import styles from './Banner.module.css';
 

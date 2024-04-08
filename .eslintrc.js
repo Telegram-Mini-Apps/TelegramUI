@@ -9,6 +9,7 @@ module.exports = {
     'plugin:import/typescript',
   ],
   env: {
+    jest: true,
     browser: true,
     node: true,
   },

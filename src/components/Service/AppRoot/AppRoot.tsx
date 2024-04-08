@@ -1,9 +1,10 @@
-import { forwardRef, HTMLAttributes, useEffect, useState } from 'react';
+'use client';
+
+import { forwardRef, HTMLAttributes } from 'react';
 import styles from './AppRoot.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { multipleRef } from 'helpers/react/refs';
-import { getTelegramData } from 'helpers/telegram';
 import { useObjectMemo } from 'hooks/useObjectMemo';
 
 import { AppRootContext, AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
@@ -28,7 +29,7 @@ export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(({
   className,
   ...restProps
 }, ref) => {
-  const [appearance, setAppearance] = useState(useAppearance(appearanceProp));
+  const appearance = useAppearance(appearanceProp);
   const portalContainer = usePortalContainer(portalContainerProp);
   const platform = usePlatform(platformProp);
 
@@ -38,29 +39,6 @@ export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(({
     portalContainer,
     isRendered: true,
   });
-
-  const onHandleChangeTheme = () => {
-    const telegramData = getTelegramData();
-    if (!telegramData) {
-      return;
-    }
-
-    setAppearance(telegramData.colorScheme);
-  };
-
-  useEffect(() => {
-    const telegramData = getTelegramData();
-    if (!telegramData) {
-      return () => {};
-    }
-
-    telegramData.onEvent('themeChanged', onHandleChangeTheme);
-    return () => telegramData.offEvent('themeChanged', onHandleChangeTheme);
-  }, []);
-
-  useEffect(() => {
-    appearanceProp && setAppearance(appearanceProp);
-  }, [appearanceProp]);
 
   return (
     <div

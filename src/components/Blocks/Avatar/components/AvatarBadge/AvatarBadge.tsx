@@ -8,8 +8,7 @@ export interface AvatarBadgeProps extends BadgeProps {}
 
 export const AvatarBadge = ({ type, className, ...restProps }: AvatarBadgeProps) => {
   if (type !== 'number') {
-    console.error('[ImageBadge]: Component supports only type="number"');
-    return null;
+    throw new Error('[ImageBadge]: Component supports only type="number"');
   }
 
   return (

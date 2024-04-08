@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, HTMLAttributes, ReactNode, useState } from 'react';
 import styles from './FormInput.module.css';
 

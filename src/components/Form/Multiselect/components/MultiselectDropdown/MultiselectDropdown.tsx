@@ -104,7 +104,7 @@ export const MultiselectDropdown = forwardRef<HTMLDivElement, MultiselectDropdow
                   ? option.value === focusedOption.value
                   : false,
                 children: option.label,
-                selected: !!value.find((selectedOption) => selectedOption.value === option.value),
+                selected: value.findIndex((selectedOption) => selectedOption.value === option.value) !== -1,
                 ref: (node: HTMLElement) => setOptionNode(index, node),
                 onMouseDown: (event: MouseEvent<HTMLDivElement>) => {
                   if (event.defaultPrevented) {

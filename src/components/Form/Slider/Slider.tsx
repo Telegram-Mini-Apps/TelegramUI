@@ -1,3 +1,5 @@
+'use client';
+
 import { ChangeEvent, HTMLAttributes, ReactNode } from 'react';
 import styles from './Slider.module.css';
 

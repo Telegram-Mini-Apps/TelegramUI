@@ -1,27 +1,40 @@
-import { useContext } from 'react';
+'use client';
+
+import { useCallback, useContext, useEffect, useState } from 'react';
 
 import { getTelegramData } from 'helpers/telegram';
 
 import { AppRootContext, AppRootContextInterface } from '../AppRootContext';
+import { getBrowserAppearanceSubscriber } from './helpers/getBrowserAppearanceSubscriber';
+import { getInitialAppearance } from './helpers/getInitialAppearance';
 
 export const useAppearance = (appearanceProp?: AppRootContextInterface['appearance']): NonNullable<AppRootContextInterface['appearance']> => {
-  if (appearanceProp !== undefined) {
-    return appearanceProp;
-  }
+  const { appearance: contextAppearance } = useContext(AppRootContext);
+  const [appearance, setAppearance] = useState(appearanceProp || contextAppearance || getInitialAppearance());
 
-  const appContext = useContext(AppRootContext);
-  if (appContext.isRendered && appContext.appearance !== undefined) {
-    return appContext.appearance;
-  }
+  const handleThemeChange = useCallback(() => {
+    const telegramData = getTelegramData();
+    if (!telegramData) {
+      return;
+    }
 
-  const telegramData = getTelegramData();
-  if (telegramData) {
-    return telegramData.colorScheme;
-  }
+    setAppearance(telegramData.colorScheme);
+  }, []);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
+  useEffect(() => {
+    if (appearanceProp !== undefined) {
+      setAppearance(appearanceProp);
+      return () => {};
+    }
 
-  return 'light';
+    const telegramData = getTelegramData();
+    if (telegramData) {
+      telegramData.onEvent('themeChanged', handleThemeChange);
+      return () => telegramData.offEvent('themeChanged', handleThemeChange);
+    }
+
+    return getBrowserAppearanceSubscriber(setAppearance);
+  }, [appearanceProp]);
+
+  return appearance;
 };

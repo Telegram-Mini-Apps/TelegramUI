@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode, SelectHTMLAttributes } from 'react';
 import styles from './Select.module.css';
 
