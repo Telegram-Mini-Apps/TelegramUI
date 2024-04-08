@@ -14,7 +14,7 @@ import styles from './Modal.module.css';
 import { classNames } from 'helpers/classNames';
 import { useAppRootContext } from 'hooks/useAppRootContext';
 
-import { Drawer } from 'vaul';
+import { Drawer } from '@xelene/vaul-with-scroll-fix';
 
 import { ModalClose } from './components/ModalClose/ModalClose';
 import { ModalHeader } from './components/ModalHeader/ModalHeader';

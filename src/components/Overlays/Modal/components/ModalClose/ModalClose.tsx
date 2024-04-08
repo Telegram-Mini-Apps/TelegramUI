@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Drawer } from 'vaul';
+import { Drawer } from '@xelene/vaul-with-scroll-fix';
 
 export interface ModalCloseProps {
   children?: ReactNode;

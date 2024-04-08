@@ -18,7 +18,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DecoratorFullScreen: Decorator = (StoryComponent) => (
-  <div style={{ position: 'relative', height: '20px', width: '160px', background: 'red' }}>
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 600,
+    maxHeight: '96vh',
+  }}>
     <StoryComponent />
   </div>
 );
@@ -48,13 +54,7 @@ const PlaceholderForNestedModal = (props: ModalProps) => (
     header="Title"
     description="Description"
     action={<Modal {...props} nested><PlaceholderForNestedModal {...props} /></Modal>}
-  >
-    <img
-      alt="Telegram sticker"
-      src="https://xelene.me/telegram.gif"
-      style={{ display: 'block', width: '144px', height: '144px' }}
-    />
-  </Placeholder>
+  />
 );
 
 export const NestedModals: Story = {
@@ -97,7 +97,6 @@ export const SnapPoints: Story = {
 export const Controlled: Story = {
   args: {
     ...Playground.args,
-    open: true,
   },
   render: (args) => {
     const [isOpen, setIsOpen] = useState(args.open);

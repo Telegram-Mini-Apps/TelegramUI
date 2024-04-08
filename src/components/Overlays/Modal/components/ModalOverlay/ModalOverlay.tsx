@@ -6,7 +6,7 @@ import { hexToRGB } from 'helpers/color';
 import { getTelegramData } from 'helpers/telegram';
 import { useAppRootContext } from 'hooks/useAppRootContext';
 
-import { Drawer } from 'vaul';
+import { Drawer } from '@xelene/vaul-with-scroll-fix';
 
 export interface ModalOverlayProps {
   className?: string;
