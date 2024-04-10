@@ -19,7 +19,7 @@ describe('defaultFilterFn', () => {
   });
 
   it('handles empty search query correctly', () => {
-    expect(defaultFilterFn('', { label: 'Banana', value: '' })).toBeFalsy();
+    expect(defaultFilterFn('', { label: 'Banana', value: '' })).toBeTruthy();
   });
 
   it('is case insensitive', () => {

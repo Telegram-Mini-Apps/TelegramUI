@@ -22,6 +22,8 @@ export type { IconContainerProps } from './IconContainer/IconContainer';
 export { IconContainer } from './IconContainer/IconContainer';
 export type { ImageProps } from './Image/Image';
 export { Image } from './Image/Image';
+export type { InlineButtonsProps } from './InlineButtons/InlineButtons';
+export { InlineButtons } from './InlineButtons/InlineButtons';
 export type { ListProps } from './List/List';
 export { List } from './List/List';
 export type { PlaceholderProps } from './Placeholder/Placeholder';

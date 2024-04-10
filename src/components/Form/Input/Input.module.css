@@ -17,6 +17,7 @@
   resize: none;
   background: transparent;
   box-sizing: border-box;
+  text-overflow: ellipsis;
   color: var(--tgui--text_color);
 }
 

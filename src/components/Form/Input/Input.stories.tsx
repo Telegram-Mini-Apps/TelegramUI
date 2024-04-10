@@ -11,7 +11,7 @@ const meta = {
   title: 'Form/Input',
   component: Input,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
 } satisfies Meta<typeof Input>;
 
@@ -23,7 +23,12 @@ export const Playground: Story = {
     const [value, setValue] = useState('');
 
     return (
-      <List style={{ background: 'var(--tgui--secondary_bg_color)', width: 500 }}>
+      <List style={{
+        width: 400,
+        maxWidth: '100%',
+        margin: 'auto',
+        background: 'var(--tgui--secondary_bg_color)',
+      }}>
         <Input
           header="Input"
           placeholder="I am usual input, just leave me alone"

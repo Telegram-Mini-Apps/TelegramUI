@@ -2,8 +2,8 @@
   position: relative;
 }
 
-.wrapper:not(.wrapper--visible)::before,
-.wrapper:not(.wrapper--visible)::after {
+.wrapper--visible::before,
+.wrapper--visible::after {
   content: '';
   position: absolute;
   inset: 0;

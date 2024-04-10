@@ -17,11 +17,7 @@ export function defaultFilterFn(
   }
 
   const searchQuery = rawSearchQuery.trim().toLocaleLowerCase();
-  const label = getTextFromChildren(option.label).trim().toLocaleLowerCase();
-
-  if (!searchQuery) {
-    return false;
-  }
+  const label = getTextFromChildren(option.label).toLocaleLowerCase();
 
   if (label.startsWith(searchQuery)) {
     return true;

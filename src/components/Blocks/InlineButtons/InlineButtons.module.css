@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.wrapper--ios {
+  gap: 8px;
+}

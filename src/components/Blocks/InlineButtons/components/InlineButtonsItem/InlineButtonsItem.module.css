@@ -1,0 +1,42 @@
+.wrapper {
+  flex: 1 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+
+  min-height: 60px;
+  min-width: 64px;
+  padding: 0 12px;
+  max-inline-size: 100%;
+
+  border: none;
+  border-radius: 12px;
+  color: var(--tgui--link_color);
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.wrapper--ios {
+  min-height: 64px;
+  min-width: 72px;
+  gap: 4px;
+}
+
+.wrapper--bezeled {
+  background: var(--tgui--secondary_fill);
+}
+
+.wrapper--gray {
+  color: var(--tgui--plain_foreground);
+  background: var(--tgui--plain_background);
+}
+
+.text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-inline-size: inherit;
+}

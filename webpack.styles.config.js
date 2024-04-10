@@ -25,6 +25,7 @@ module.exports = {
         test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         loader: 'swc-loader',
+        sideEffects: true,
         options: {
           jsc: {
             experimental: {
@@ -42,6 +43,7 @@ module.exports = {
       },
       {
         test: /\.module\.css$/,
+        sideEffects: true,
         use: [
           MiniCssExtractPlugin.loader,
           {
