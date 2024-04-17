@@ -11,7 +11,7 @@ import { Tappable, TappableProps } from 'components/Service/Tappable/Tappable';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
-interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
+export interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
   /** Determines the button cell's visual theme, influencing color and style. */
   mode?: 'default' | 'destructive';
   /** Element or component displayed before the main content, adding visual context or functionality. */
