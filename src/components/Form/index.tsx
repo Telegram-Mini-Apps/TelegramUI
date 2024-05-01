@@ -18,6 +18,8 @@ export type { RadioProps } from './Radio/Radio';
 export { Radio } from './Radio/Radio';
 export type { RatingProps } from './Rating/Rating';
 export { Rating } from './Rating/Rating';
+export type { SelectProps } from './Select/Select';
+export { Select } from './Select/Select';
 export type { SelectableProps } from './Selectable/Selectable';
 export { Selectable } from './Selectable/Selectable';
 export type { SliderProps } from './Slider/Slider';
