@@ -45,7 +45,7 @@ pnpm add @telegram-apps/telegram-ui
 ## Usage
 
 ```jsx static
-import '@telegram-apps/telegram-ui';
+import '@telegram-apps/telegram-ui.css';
 
 import { AppRoot, Placeholder } from '@telegram-apps/telegram-ui';
 
