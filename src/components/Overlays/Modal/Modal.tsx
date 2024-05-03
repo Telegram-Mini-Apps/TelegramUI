@@ -45,6 +45,9 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnim
   snapPoints?: (number | string)[];
   /** Snap point index at which the overlay begins to fade, enhancing visual cues for modal depth. */
   fadeFromIndex?: never;
+  /** makes the modal window not close */
+  dismissible?: boolean;
+
 }
 
 type ModalWithComponents = ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivElement>> & {
@@ -73,6 +76,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   fadeFromIndex,
   modal,
   preventScrollRestoration,
+  dismissible
   ...restProps
 }, ref) => {
   const container = useAppRootContext();
@@ -96,6 +100,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
       fadeFromIndex={fadeFromIndex}
       modal={modal}
       preventScrollRestoration={preventScrollRestoration}
+      dismissible={dismissible}
     >
       {trigger && <Drawer.Trigger asChild>{trigger}</Drawer.Trigger>}
       <Drawer.Portal container={portal}>
