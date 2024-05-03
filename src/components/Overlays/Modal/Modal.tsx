@@ -45,7 +45,7 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnim
   snapPoints?: (number | string)[];
   /** Snap point index at which the overlay begins to fade, enhancing visual cues for modal depth. */
   fadeFromIndex?: never;
-  /** makes the modal window not close */
+  /** Determines if the modal can be closed by user interactions */
   dismissible?: boolean;
 
 }
