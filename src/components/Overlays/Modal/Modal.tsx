@@ -47,7 +47,6 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnim
   fadeFromIndex?: never;
   /** Determines if the modal can be closed by user interactions */
   dismissible?: boolean;
-
 }
 
 type ModalWithComponents = ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivElement>> & {
@@ -76,7 +75,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
   fadeFromIndex,
   modal,
   preventScrollRestoration,
-  dismissible
+  dismissible,
   ...restProps
 }, ref) => {
   const container = useAppRootContext();
