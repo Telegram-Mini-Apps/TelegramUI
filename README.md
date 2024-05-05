@@ -24,7 +24,7 @@ Welcome to the official repository of the Telegram UI Kit designed for developer
 
 ## Resources
 
-- **Example Mini App:** [Typescript version](github.com/Telegram-Mini-Apps/TGUI-Example).
+- **Example Mini App:** Typescript version — https://github.com/Telegram-Mini-Apps/TGUI-Example
 - **Playground and Storybook:** Experiment with components and visualize changes in real-time at [Playground and Storybook](https://tgui.xelene.me/).
 - **Figma Resources:** Design and prototype with ease using our comprehensive Figma files available at [Figma](https://figma.com/community/file/1348989725141777736/).
 
