@@ -2,12 +2,12 @@
 
 ## Overview
 
-Welcome to the official repository of the Telegram UI Kit designed for developers. This UI kit equips you with a variety of pre-designed components and tools to help you quickly develop high-quality Telegram applications. Whether you're aiming to create custom client apps, integrate Telegram functionality, or develop unique bots, this toolkit is your go-to resource.
+Telegram UI kit equips you with a variety of pre-designed components and tools to help you quickly develop high-quality Telegram applications. Whether you're aiming to create custom client apps, integrate Telegram functionality, or develop unique bots, this toolkit is your go-to resource.
 
 ## Features
 
 - **Cross-Platform Design Consistency:** Use built-in support for iOS’s Human Interface Guidelines and Android’s Material Design to maintain a uniform look and functionality across both platforms.
-- **Pre-designed UI Components:** Access a variety of ready-to-use UI components styled after Telegram’s interface, designed for easy integration and customization.
+- **Pre-designed UI Components:** Access a variety of ready-to-use UI components inspired by Telegram’s interface, designed for easy integration and customization.
 - **Responsive Design:** Create apps that look and work great on any device, using flexible layouts and media queries to ensure optimal display and functionality.
 - **Telegram Color Scheme Support:** Apply Telegram’s native color schemes to your apps for consistent branding and a familiar user experience.
 
