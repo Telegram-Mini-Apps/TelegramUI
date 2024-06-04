@@ -1,3 +1,5 @@
+export type { CircularProgressProps } from './CircularProgress/CircularProgress';
+export { CircularProgress } from './CircularProgress/CircularProgress';
 export type { ProgressProps } from './Progress/Progress';
 export { Progress } from './Progress/Progress';
 export type { SkeletonProps } from './Skeleton/Skeleton';
@@ -8,4 +10,3 @@ export type { SpinnerProps } from './Spinner/Spinner';
 export { Spinner } from './Spinner/Spinner';
 export type { SpoilerProps } from './Spoiler/Spoiler';
 export { Spoiler } from './Spoiler/Spoiler';
-
