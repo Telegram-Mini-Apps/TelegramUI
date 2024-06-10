@@ -36,6 +36,7 @@
 }
 
 .button--ellipsis {
+  cursor: default;
   opacity: 1;
 }
 
