@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-
 import { range } from 'helpers/array';
+import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
 import { PaginationType } from './enum';
 import { UsePaginationItem, UsePaginationProps } from './types';
@@ -21,7 +20,10 @@ export const usePagination = ({
   page: pageProp,
   siblingCount = 1,
 }: UsePaginationProps): UsePaginationItem[] => {
-  const [page, setPageState] = useState(pageProp === undefined ? defaultPage : pageProp);
+  const [page, setPageState] = useCustomEnsuredControl({
+    value: pageProp,
+    defaultValue: defaultPage,
+  });
 
   const handleClick: UsePaginationProps['onChange'] = (event, value) => {
     if (!pageProp) {

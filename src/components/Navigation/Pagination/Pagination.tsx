@@ -88,7 +88,7 @@ export const Pagination = ({
             })}
             aria-disabled={item.disabled || undefined}
             aria-current={item['aria-current']}
-            onClick={item.disabled ? undefined : item.onClick}
+            onClick={item.disabled || isEllipsis ? undefined : item.onClick}
           >
             {getPaginationChild(item)}
           </Headline>
