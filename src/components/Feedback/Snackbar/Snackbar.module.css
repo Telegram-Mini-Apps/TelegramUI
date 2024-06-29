@@ -1,10 +1,10 @@
 .wrapper {
-  position: absolute;
+  position: fixed;
   user-select: none;
 
   left: 10px;
   right: 10px;
-  bottom: 10px;
+  bottom: 17px;
 
   box-sizing: border-box;
   max-inline-size: 460px;
