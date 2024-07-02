@@ -4,7 +4,7 @@
 
   left: 10px;
   right: 10px;
-  bottom: 17px;
+  bottom: 10px;
 
   box-sizing: border-box;
   max-inline-size: 460px;
@@ -31,6 +31,10 @@
 
 .wrapper--closing {
   transform: translate3d(0, 140%, 0);
+}
+
+.wrapper--ios .wrapper {
+  bottom: 16px;
 }
 
 .wrapper--ios .body {
