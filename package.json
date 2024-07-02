@@ -42,8 +42,8 @@
   },
   "homepage": "https://github.com/Telegram-Mini-Apps/TelegramUI#readme",
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.7",
