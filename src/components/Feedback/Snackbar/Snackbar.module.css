@@ -33,7 +33,7 @@
   transform: translate3d(0, 140%, 0);
 }
 
-.wrapper--ios .wrapper {
+.wrapper--ios {
   bottom: 16px;
 }
 
