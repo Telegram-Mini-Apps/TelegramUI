@@ -1,5 +1,5 @@
 .wrapper {
-  position: absolute;
+  position: fixed;
   user-select: none;
 
   left: 10px;
@@ -31,6 +31,10 @@
 
 .wrapper--closing {
   transform: translate3d(0, 140%, 0);
+}
+
+.wrapper--ios {
+  bottom: 16px;
 }
 
 .wrapper--ios .body {
