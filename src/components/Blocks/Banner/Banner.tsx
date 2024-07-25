@@ -12,6 +12,7 @@ import { Icon28Close } from 'icons/28/close';
 import { Icon28CloseAmbient } from 'icons/28/close_ambient';
 
 import { Tappable } from 'components/Service/Tappable/Tappable';
+import { Caption } from 'components/Typography';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
@@ -20,6 +21,8 @@ export interface BannerProps extends HTMLAttributes<HTMLDivElement> {
   type?: 'section' | 'inline';
   /** Element(s) to be placed on the left side of the banner, typically an icon or an image. */
   before?: ReactNode;
+  /** Content displayed above the main content as a subheading */
+  callout?: ReactNode;
   /** The main text or title displayed in the banner. */
   header?: ReactNode;
   /** Additional information or subtext displayed below the header. */
@@ -35,12 +38,14 @@ export interface BannerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * The `Banner` component renders a small numeric or dot indicator, typically used for notifications, statuses, or counts.
- * It supports several visual modes for different contexts (e.g., critical, primary) and can be sized normally or enlarged.
+ * The `Banner` component renders a prominent graphical element, typically displayed at the top of a page or section, 
+ * designed to grab the user's attention and convey important information. 
+ * It is a versatile tool used for various purposes such as branding, promotion, announcements, or navigation.
  */
 export const Banner = ({
   type,
   before,
+  callout,
   header,
   subheader,
   description,
@@ -72,9 +77,10 @@ export const Banner = ({
       )}
       {before}
       <div className={styles.middle}>
+        {hasReactNode(callout) && <Subheadline className={styles.subheader} level="2">{callout}</Subheadline>} 
         {hasReactNode(header) && <Text className={styles.title} weight="2">{header}</Text>}
         {hasReactNode(subheader) && <Subheadline className={styles.subheader} level="2">{subheader}</Subheadline>}
-        {hasReactNode(description) && <Subheadline className={styles.description} level="2">{description}</Subheadline>}
+        {hasReactNode(description) && <Caption className={styles.description} level="1">{description}</Caption>}
         {hasReactNode(children) && (
           <div className={styles.buttons}>
             {children}

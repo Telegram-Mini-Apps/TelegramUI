@@ -25,8 +25,9 @@ export const Playground: Story = {
   args: {
     type: 'section',
     before: <UIImage size={48} />,
+    callout: 'Urgent notification',
     header: 'Introducing TON Space',
-    subheader: 'Start exploring TON in a new, better way',
+    description: 'Start exploring TON in a new, better way',
     children: (
       <>
         <Button size="s">Try it out</Button>
