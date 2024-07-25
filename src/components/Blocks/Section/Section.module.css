@@ -9,11 +9,13 @@
 }
 
 .wrapper--ios .body > :first-child {
-  padding-top: 2px;
   border-radius: 12px 12px 0 0;
 }
 
 .wrapper--ios .body > :last-child {
-  padding-bottom: 2px;
   border-radius: 0 0 12px 12px;
+}
+
+.wrapper--ios .body > :only-child {
+  border-radius: 12px;
 }
