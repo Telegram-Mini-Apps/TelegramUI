@@ -155,3 +155,13 @@
     --tgui--safe_area_inset_bottom: env(safe-area-inset-bottom);
   }
 }
+
+@supports (color: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent)) {
+  .wrapper {
+    --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent);
+  }
+
+  .wrapper--dark {
+    --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 15%, transparent);
+  }
+}
