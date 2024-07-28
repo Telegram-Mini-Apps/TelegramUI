@@ -12,9 +12,9 @@ import { Icon28Close } from 'icons/28/close';
 import { Icon28CloseAmbient } from 'icons/28/close_ambient';
 
 import { Tappable } from 'components/Service/Tappable/Tappable';
-import { Caption } from 'components/Typography';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
+import { BannerDescriptionTypography } from './components/BannerDescriptionTypography/BannerDescriptionTypography';
 
 export interface BannerProps extends HTMLAttributes<HTMLDivElement> {
   /** Specifies the banner's layout style, which can affect its positioning and styling. */
@@ -57,15 +57,6 @@ export const Banner = ({
 }: BannerProps) => {
   const platform = usePlatform();
   const hasBackground = hasReactNode(background);
-  let descriptionNode;
-
-  if (hasReactNode(description)) {
-    if (platform === 'ios') {
-      descriptionNode = <Caption className={styles.description} level="1">{description}</Caption>;
-    } else {
-      descriptionNode = <Subheadline className={styles.description} level="2">{description}</Subheadline>;
-    }
-  }
 
   return (
     <section
@@ -89,7 +80,7 @@ export const Banner = ({
         {hasReactNode(callout) && <Subheadline className={styles.subheader} level="2">{callout}</Subheadline>} 
         {hasReactNode(header) && <Text className={styles.title} weight="2">{header}</Text>}
         {hasReactNode(subheader) && <Subheadline className={styles.subheader} level="2">{subheader}</Subheadline>}
-        {descriptionNode}
+        {hasReactNode(description) && <BannerDescriptionTypography className={styles.description}>{description}</BannerDescriptionTypography>}
       </div>
       {onCloseIcon && (
         <Tappable onClick={onCloseIcon} className={styles.close} Component="div">
