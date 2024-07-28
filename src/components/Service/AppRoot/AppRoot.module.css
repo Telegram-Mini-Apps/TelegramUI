@@ -60,7 +60,7 @@
   --tgui--segmented_control_active_bg: #FFFFFF;
   --tgui--card_bg_color: #FFFFFF;
   --tgui--secondary_hint_color: #A2ACB0;
-  --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent);
+  --tgui--secondary_fill: rgba(67, 120, 255, .10);
   --tgui--green: #31D158;
   --tgui--destructive_background: #E53935;
   --tgui--primary_code_highlight: #4378FF;
@@ -127,7 +127,7 @@
   --tgui--segmented_control_active_bg: #2F2F2F;
   --tgui--card_bg_color: #242424;
   --tgui--secondary_hint_color: #78797E;
-  --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 15%, transparent);
+  --tgui--secondary_fill: rgba(41, 144, 255, .15);
   --tgui--green: #32E55E;
   --tgui--destructive_background: rgba(255, 35, 35, .02);
   --tgui--primary_code_highlight: #2990FF;
@@ -153,5 +153,15 @@
 @supports (padding-top: env(safe-area-inset-bottom)) {
   .wrapper {
     --tgui--safe_area_inset_bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@supports (color: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent)) {
+  .wrapper {
+    --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent);
+  }
+
+  .wrapper--dark {
+    --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 15%, transparent);
   }
 }
