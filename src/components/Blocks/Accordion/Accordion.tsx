@@ -1,55 +1,61 @@
-'use client';
+import { useContext } from "react";
+import styles from "./AccordionSummary.module.css";
 
-import { ReactNode } from 'react';
+import { classNames } from "@telegram-apps/telegram-ui/dist/helpers/classNames.js";
+import { callMultiple } from "@telegram-apps/telegram-ui/dist/helpers/function";
 
-import { useObjectMemo } from 'hooks/useObjectMemo';
+import { Icon24ChevronDown } from "@telegram-apps/telegram-ui/dist/icons/24/chevron_down";
 
-import { AccordionContent } from './components/AccordionContent/AccordionContent';
-import { AccordionSummary } from './components/AccordionSummary/AccordionSummary';
-import { useAccordionId } from './hooks/useAccordionId';
-import { AccordionContext } from './AccordionContext';
+import { AccordionContext } from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/AccordionContext";
+import { Cell, CellProps } from "@telegram-apps/telegram-ui/dist/components/Blocks/Cell/Cell";
 
-export interface AccordionProps {
-  /**
-   * Optional ID for the accordion element, enhancing accessibility (a11y) by associating the accordion
-   * summary and content. If not provided, a unique ID will be generated automatically.
-   * This ID is crucial for screen readers and other assistive technologies to understand the
-   * relationship between the accordion header and content.
-   */
-  id?: string;
-  /** Determines whether the accordion is currently expanded or collapsed. */
-  expanded: boolean;
-  /** Callback function that is called when the accordion's state changes, such as when it is opened or closed. */
-  onChange: (expanded: boolean) => void;
-  /**
-   * Children of the Accordion component. Pass `Accordion.Summary` and
-   * `Accordion.Content` as children to create a functional accordion structure.
-   */
-  children: ReactNode;
-}
+export interface AccordionSummaryProps extends CellProps {}
 
 /**
  * This component serves as a container for an accordion item, comprising a summary and
  * content sections. It uses the Context API to manage its state and to allow its children
  * (`Accordion.Summary` and `Accordion.Content`) to access shared state and callbacks.
  */
-export const Accordion = ({
-  id,
-  expanded,
-  onChange,
+export const AccordionSummary = ({
+  after,
+  before,
+  onClick,
   children,
-}: AccordionProps) => {
-  const { labelId, contentId } = useAccordionId(id);
+  ...restProps
+}: AccordionSummaryProps) => {
+  const { expanded, labelId, contentId, onChange } =
+    useContext(AccordionContext);
+  const toggle = () => onChange(!expanded);
 
-  const context = useObjectMemo({
-    labelId,
-    contentId,
-    expanded,
-    onChange,
-  });
-
-  return <AccordionContext.Provider value={context}>{children}</AccordionContext.Provider>;
+  return (
+    <Cell
+      id={labelId}
+      aria-expanded={expanded}
+      aria-controls={contentId}
+      onClick={callMultiple(toggle, onClick)}
+      after={
+        after || (
+          <Icon24ChevronDown
+            className={classNames(
+              styles.chevron,
+              expanded && styles["chevron--expanded"]
+            )}
+          />
+        )
+      }
+      before={
+        before || (
+          <Icon24ChevronDown
+            className={classNames(
+              styles.chevron,
+              expanded && styles["chevron--expanded"]
+            )}
+          />
+        )
+      }
+      {...restProps}
+    >
+      {children}
+    </Cell>
+  );
 };
-
-Accordion.Summary = AccordionSummary;
-Accordion.Content = AccordionContent;
