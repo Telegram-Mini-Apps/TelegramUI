@@ -57,6 +57,15 @@ export const Banner = ({
 }: BannerProps) => {
   const platform = usePlatform();
   const hasBackground = hasReactNode(background);
+  let descriptionNode;
+
+  if (hasReactNode(description)) {
+    if (platform === 'ios') {
+      descriptionNode = <Caption className={styles.description} level="1">{description}</Caption>;
+    } else {
+      descriptionNode = <Subheadline className={styles.description} level="2">{description}</Subheadline>;
+    }
+  }
 
   return (
     <section
@@ -80,12 +89,7 @@ export const Banner = ({
         {hasReactNode(callout) && <Subheadline className={styles.subheader} level="2">{callout}</Subheadline>} 
         {hasReactNode(header) && <Text className={styles.title} weight="2">{header}</Text>}
         {hasReactNode(subheader) && <Subheadline className={styles.subheader} level="2">{subheader}</Subheadline>}
-        {hasReactNode(description) && <Caption className={styles.description} level="1">{description}</Caption>}
-        {hasReactNode(children) && (
-          <div className={styles.buttons}>
-            {children}
-          </div>
-        )}
+        {descriptionNode}
       </div>
       {onCloseIcon && (
         <Tappable onClick={onCloseIcon} className={styles.close} Component="div">
