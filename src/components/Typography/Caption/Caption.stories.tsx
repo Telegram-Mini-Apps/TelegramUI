@@ -19,7 +19,7 @@ export const Caption1: Story = {
   },
   render: (args) => (
     <>
-      <Caption weight="1" {...args}>
+      <Caption weight="3" {...args}>
         Caption 1 · Regular
       </Caption>
       <br /><br />
@@ -27,7 +27,7 @@ export const Caption1: Story = {
         Caption 1 · Semibold
       </Caption>
       <br /><br />
-      <Caption weight="3" {...args}>
+      <Caption weight="1" {...args}>
         Caption 1 · Bold
       </Caption>
     </>
@@ -40,7 +40,7 @@ export const Caption2: Story = {
   },
   render: (args) => (
     <>
-      <Caption weight="1" {...args}>
+      <Caption weight="3" {...args}>
         Caption 2 · Regular
       </Caption>
       <br /><br />
@@ -48,7 +48,7 @@ export const Caption2: Story = {
         Caption 2 · Semibold
       </Caption>
       <br /><br />
-      <Caption weight="3" {...args}>
+      <Caption weight="1" {...args}>
         Caption 2 · Bold
       </Caption>
     </>

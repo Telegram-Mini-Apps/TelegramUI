@@ -18,7 +18,6 @@ export interface AccordionSummaryProps extends CellProps {}
  */
 export const AccordionSummary = ({
   after,
-  before,
   onClick,
   children,
   ...restProps

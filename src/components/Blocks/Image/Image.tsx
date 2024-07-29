@@ -44,7 +44,7 @@ export const Image = ({
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
 
-  const hasSrc = src || srcSet?.length !== 0;
+  const hasSrc = src || srcSet;
   const needShowFallbackIcon = (failed || !hasSrc) && isValidElement(fallbackIcon);
 
   const handleImageLoad = (event: SyntheticEvent<HTMLImageElement>) => {

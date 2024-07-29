@@ -21,7 +21,11 @@ export interface TabbarProps extends HTMLAttributes<HTMLDivElement> {
  *
  * The component adapts its styling based on the platform, providing a consistent look and feel across different devices.
  */
-export const Tabbar = ({ children, ...restProps }: TabbarProps) => {
+export const Tabbar = ({
+  children,
+  className,
+  ...restProps
+}: TabbarProps) => {
   const platform = usePlatform();
 
   return (
@@ -29,6 +33,7 @@ export const Tabbar = ({ children, ...restProps }: TabbarProps) => {
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
+        className,
       )}
       {...restProps}
     >

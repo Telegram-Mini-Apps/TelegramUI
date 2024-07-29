@@ -19,13 +19,13 @@ export const Playground: Story = {
   },
   render: (args) => (
     <>
-      <LargeTitle weight="1" {...args}>
+      <LargeTitle weight="3" {...args}>
         Large Title · Regular
       </LargeTitle>
       <LargeTitle weight="2" {...args}>
         Large Title · Semibold
       </LargeTitle>
-      <LargeTitle weight="3" {...args}>
+      <LargeTitle weight="1" {...args}>
         Large Title · Bold
       </LargeTitle>
     </>
