@@ -26,10 +26,6 @@
   background: var(--tgui--bg_color);
 }
 
-.wrapper:hover::after {
-  opacity: var(--tgui--button--hovered-opacity);
-}
-
 .before,
 .after {
   display: flex;
@@ -135,4 +131,10 @@
 .wrapper--loading .after,
 .wrapper--loading .content {
   opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wrapper:hover::after {
+    opacity: var(--tgui--button--hovered-opacity);
+  }
 }

@@ -15,12 +15,14 @@
   opacity: .35;
 }
 
-.wrapper--opacity:hover,
-.wrapper--ios:hover {
-  opacity: .85;
-}
-
 .wrapper--opacity:active,
 .wrapper--ios:active {
   opacity: .65;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wrapper--opacity:hover,
+  .wrapper--ios:hover {
+    opacity: .85;
+  }
 }

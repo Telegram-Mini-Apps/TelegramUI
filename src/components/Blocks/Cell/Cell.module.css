@@ -11,7 +11,6 @@
   gap: 16px;
 }
 
-.wrapper:hover,
 .wrapper--hovered {
   background: var(--tgui--tertiary_bg_color);
 }
@@ -71,4 +70,10 @@
 .wrapper--ios {
   --tgui--cell--middle--padding: 12px 0;
   padding: 0 16px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wrapper:hover {
+    background: var(--tgui--tertiary_bg_color);
+  }
 }

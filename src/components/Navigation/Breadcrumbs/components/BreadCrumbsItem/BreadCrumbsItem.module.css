@@ -8,10 +8,12 @@
   color: var(--tgui--hint_color);
 }
 
-.wrapper:hover {
-  background: var(--tgui--tertiary_bg_color);
-}
-
 .wrapper:active {
   opacity: .5;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wrapper:hover {
+    background: var(--tgui--tertiary_bg_color);
+  }
 }
