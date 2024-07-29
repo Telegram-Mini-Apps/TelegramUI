@@ -10,9 +10,9 @@ export interface BannerDescriptionTypographyProps extends Omit<TypographyProps, 
 export const BannerDescriptionTypography = (props: BannerDescriptionTypographyProps) => {
   const platform = usePlatform();
 
-  if (platform === 'base') {
-    return <Subheadline level="2" {...props} />;
+  if (platform === 'ios') {
+    return <Caption level="1" {...props} />;
   }
 
-  return <Caption level="1" {...props} />;
+  return <Subheadline level="2" {...props} />;
 };
