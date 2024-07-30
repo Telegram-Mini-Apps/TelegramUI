@@ -81,6 +81,11 @@ export const Banner = ({
         {hasReactNode(header) && <Text className={styles.title} weight="2">{header}</Text>}
         {hasReactNode(subheader) && <Subheadline className={styles.subheader} level="2">{subheader}</Subheadline>}
         {hasReactNode(description) && <BannerDescriptionTypography className={styles.description}>{description}</BannerDescriptionTypography>}
+        {hasReactNode(children) && (
+          <div className={styles.buttons}>
+            {children}
+          </div>
+        )}
       </div>
       {onCloseIcon && (
         <Tappable onClick={onCloseIcon} className={styles.close} Component="div">
