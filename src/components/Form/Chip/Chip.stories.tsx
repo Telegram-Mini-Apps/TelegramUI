@@ -4,6 +4,7 @@ import { hideControls, setControlsTypes } from 'storybook/controls';
 
 import { Avatar } from 'components/Blocks/Avatar/Avatar';
 import { List } from 'components/Blocks/List/List';
+import { Radio } from 'components/Form/Radio/Radio';
 import { Chip } from './Chip';
 
 const meta = {
@@ -21,28 +22,32 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const chips = [
-  'Chip',
-  '\'n\'',
-  'Dale',
-];
+const chips = ['Chip', '\'n\'', 'Dale'];
 
 export const Playground: Story = {
   render: (args) => (
-    <List style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}>
+    <List
+      style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}
+    >
       <div style={{ display: 'flex', gap: 16 }}>
         {chips.map((text) => (
-          <Chip key={text} {...args}>{text}</Chip>
+          <Chip key={text} {...args}>
+            {text}
+          </Chip>
         ))}
       </div>
       <div style={{ display: 'flex', gap: 16 }}>
         {chips.map((text) => (
-          <Chip mode="mono" key={text} {...args}>{text}</Chip>
+          <Chip mode="mono" key={text} {...args}>
+            {text}
+          </Chip>
         ))}
       </div>
       <div style={{ display: 'flex', gap: 16 }}>
         {chips.map((text) => (
-          <Chip mode="outline" key={text} {...args}>{text}</Chip>
+          <Chip mode="outline" key={text} {...args}>
+            {text}
+          </Chip>
         ))}
       </div>
     </List>
@@ -51,7 +56,9 @@ export const Playground: Story = {
 
 export const WithAfter: Story = {
   render: () => (
-    <List style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}>
+    <List
+      style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}
+    >
       <div style={{ display: 'flex', gap: 8 }}>
         <Chip mode="elevated" after={<Icon16Cancel />}>
           Elevated
@@ -69,7 +76,9 @@ export const WithAfter: Story = {
 
 export const WithBefore: Story = {
   render: () => (
-    <List style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}>
+    <List
+      style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}
+    >
       <div style={{ display: 'flex', gap: 8 }}>
         <Chip mode="elevated" before={<Avatar size={20} />}>
           Elevated
@@ -85,3 +94,22 @@ export const WithBefore: Story = {
   ),
 };
 
+export const WithRadioBefore: Story = {
+  render: () => (
+    <List
+      style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}
+    >
+      <div style={{ display: 'flex', gap: 8 }}>
+        <Chip mode="elevated" before={<Radio name="test" defaultChecked />}>
+          Elevated
+        </Chip>
+        <Chip mode="mono" before={<Radio name="test" />}>
+          Mono
+        </Chip>
+        <Chip mode="outline" before={<Radio name="test" />}>
+          Outline
+        </Chip>
+      </div>
+    </List>
+  ),
+};
