@@ -16,6 +16,7 @@ const meta = {
   argTypes: {
     ...hideControls('before', 'after'),
     ...setControlsTypes(['children'], 'text'),
+    ...hideControls('Component'),
   },
 } satisfies Meta<typeof Chip>;
 
