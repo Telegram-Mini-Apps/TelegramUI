@@ -1,6 +1,6 @@
 'use client';
 
-import { AllHTMLAttributes, ReactNode } from 'react';
+import { AllHTMLAttributes, ElementType, ReactNode } from 'react';
 import styles from './Chip.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -19,6 +19,8 @@ export interface ChipProps extends AllHTMLAttributes<HTMLDivElement> {
   after?: ReactNode;
   /** The main text content of the chip. */
   children?: ReactNode;
+  /** Specifies the HTML tag or React component used to render the Chip, defaulting to `div`. */
+  Component?: ElementType;
 }
 
 const modeStyles = {
@@ -37,26 +39,19 @@ export const Chip = ({
   after,
   className,
   children,
+  Component,
   ...restProps
 }: ChipProps) => {
   const platform = usePlatform();
 
   return (
     <Tappable
-      Component="div"
+      Component={Component || 'div'}
       interactiveAnimation="opacity"
-      className={classNames(
-        styles.wrapper,
-        modeStyles[mode],
-        className,
-      )}
+      className={classNames(styles.wrapper, modeStyles[mode], className)}
       {...restProps}
     >
-      {hasReactNode(before) && (
-        <div className={styles.before}>
-          {before}
-        </div>
-      )}
+      {hasReactNode(before) && <div className={styles.before}>{before}</div>}
       <Subheadline
         className={styles.text}
         level={platform === 'ios' ? '2' : '1'}
@@ -64,11 +59,7 @@ export const Chip = ({
       >
         {children}
       </Subheadline>
-      {hasReactNode(after) && (
-        <div className={styles.after}>
-          {after}
-        </div>
-      )}
+      {hasReactNode(after) && <div className={styles.after}>{after}</div>}
     </Tappable>
   );
 };

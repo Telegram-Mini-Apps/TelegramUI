@@ -100,13 +100,17 @@ export const WithRadioBefore: Story = {
       style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}
     >
       <div style={{ display: 'flex', gap: 8 }}>
-        <Chip mode="elevated" before={<Radio name="test" defaultChecked />}>
+        <Chip
+          mode="elevated"
+          Component="label"
+          before={<Radio name="test" defaultChecked />}
+        >
           Elevated
         </Chip>
-        <Chip mode="mono" before={<Radio name="test" />}>
+        <Chip mode="mono" Component="label" before={<Radio name="test" />}>
           Mono
         </Chip>
-        <Chip mode="outline" before={<Radio name="test" />}>
+        <Chip mode="outline" Component="label" before={<Radio name="test" />}>
           Outline
         </Chip>
       </div>
