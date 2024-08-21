@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   cursor: pointer;
+  display: block;
 }
 
 .wrapper--disabled {
