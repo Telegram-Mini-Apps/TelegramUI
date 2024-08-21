@@ -39,14 +39,14 @@ export const Chip = ({
   after,
   className,
   children,
-  Component,
+  Component = 'div',
   ...restProps
 }: ChipProps) => {
   const platform = usePlatform();
 
   return (
     <Tappable
-      Component={Component || 'div'}
+      Component={Component}
       interactiveAnimation="opacity"
       className={classNames(styles.wrapper, modeStyles[mode], className)}
       {...restProps}
