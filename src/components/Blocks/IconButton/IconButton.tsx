@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import styles from './IconButton.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -29,14 +29,15 @@ const sizeStyles = {
  * Renders an icon button with customizable size and mode. It utilizes the `Tappable` component for enhanced
  * touch interaction, allowing it to serve various UI actions efficiently.
  */
-export const IconButton = ({
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({
   size = 'm',
   mode = 'bezeled',
   className,
   children,
   ...restProps
-}: IconButtonProps) => (
+}, ref) => (
   <Tappable
+    ref={ref}
     Component="button"
     className={classNames(
       styles.wrapper,
@@ -48,4 +49,4 @@ export const IconButton = ({
   >
     {children}
   </Tappable>
-);
+));
