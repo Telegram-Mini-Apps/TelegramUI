@@ -16,6 +16,7 @@ import { useAppRootContext } from 'hooks/useAppRootContext';
 
 import { Drawer } from '@xelene/vaul-with-scroll-fix';
 
+import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { ModalClose } from './components/ModalClose/ModalClose';
 import { ModalHeader } from './components/ModalHeader/ModalHeader';
 import { ModalOverlay } from './components/ModalOverlay/ModalOverlay';
@@ -108,7 +109,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
           ref={ref}
           className={classNames(styles.wrapper, className)}
           {...restProps}
+          aria-describedby={undefined}
         >
+          <VisuallyHidden><Drawer.Title /></VisuallyHidden>
           {header}
           <div className={styles.body}>
             {children}
