@@ -1,6 +1,6 @@
 'use client';
 
-import { InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Textarea.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -17,13 +17,13 @@ export interface TextareaProps extends Omit<FormPublicProps, 'after' | 'before'>
  * This component inherits the flexible design of the `FormInput`, allowing it to display a header and reflect different status styles.
  * The appearance and behavior of the textarea can be customized through various props, providing a seamless integration with forms.
  */
-export const Textarea = ({
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
   type = 'text',
   header,
   status,
   className,
   ...restProps
-}: TextareaProps) => {
+}, ref) => {
   const platform = usePlatform();
 
   const TypographyComponent = platform === 'ios' ? Text : Subheadline;
@@ -38,6 +38,7 @@ export const Textarea = ({
       )}
     >
       <TypographyComponent
+        ref={ref}
         Component="textarea"
         className={styles.textarea}
         type={type}
@@ -45,4 +46,4 @@ export const Textarea = ({
       />
     </FormInput>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Checkbox.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -18,13 +18,13 @@ export interface CheckboxProps
  * Renders a checkbox input with custom styling and optional indeterminate state.
  * The component visually hides the actual input element for accessibility while providing a custom styled appearance.
  */
-export const Checkbox = ({
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
   style,
   className,
   disabled,
   indeterminate,
   ...restProps
-}: CheckboxProps) => (
+}, ref) => (
   <label
     className={classNames(
       styles.wrapper,
@@ -34,6 +34,7 @@ export const Checkbox = ({
   >
     <VisuallyHidden
       {...restProps}
+      ref={ref}
       Component="input"
       type="checkbox"
       className={styles.input}
@@ -44,4 +45,4 @@ export const Checkbox = ({
       {indeterminate ? <IconCheckboxIndeterminate /> : <IconCheckboxChecked />}
     </div>
   </label>
-);
+));
