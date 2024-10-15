@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, TextareaHTMLAttributes } from 'react';
 import styles from './Textarea.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -10,7 +10,7 @@ import { FormInput, FormPublicProps } from 'components/Form/FormInput/FormInput'
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
-export interface TextareaProps extends Omit<FormPublicProps, 'after' | 'before'>, InputHTMLAttributes<HTMLInputElement> {}
+export interface TextareaProps extends Omit<FormPublicProps, 'after' | 'before'>, TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
 /**
  * Wraps a standard HTML textarea element within a `FormInput` container, applying custom styles and functionality.
@@ -18,7 +18,6 @@ export interface TextareaProps extends Omit<FormPublicProps, 'after' | 'before'>
  * The appearance and behavior of the textarea can be customized through various props, providing a seamless integration with forms.
  */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
-  type = 'text',
   header,
   status,
   className,
@@ -41,7 +40,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
         ref={ref}
         Component="textarea"
         className={styles.textarea}
-        type={type}
         {...restProps}
       />
     </FormInput>
