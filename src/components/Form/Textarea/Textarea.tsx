@@ -17,7 +17,7 @@ export interface TextareaProps extends Omit<FormPublicProps, 'after' | 'before'>
  * This component inherits the flexible design of the `FormInput`, allowing it to display a header and reflect different status styles.
  * The appearance and behavior of the textarea can be customized through various props, providing a seamless integration with forms.
  */
-export const Textarea = forwardRef<HTMLInputElement, TextareaProps>(({
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
   type = 'text',
   header,
   status,
