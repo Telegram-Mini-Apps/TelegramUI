@@ -1,6 +1,6 @@
 'use client';
 
-import { InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Selectable.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -23,12 +23,12 @@ export interface SelectableProps
  * user experience across different environments. The actual radio input is visually hidden while remaining
  * fully accessible and functional.
  */
-export const Selectable = ({
+export const Selectable = forwardRef<HTMLInputElement, SelectableProps>(({
   style,
   className,
   disabled,
   ...restProps
-}: SelectableProps) => {
+}, ref) => {
   const platform = usePlatform();
 
   return (
@@ -45,9 +45,10 @@ export const Selectable = ({
         type="radio"
         className={styles.input}
         disabled={disabled}
+        ref={ref}
       />
       {platform === 'ios' && <IconSelectableIOS className={styles.icon} aria-hidden />}
       {platform === 'base' && <IconSelectableBase className={styles.icon} aria-hidden />}
     </label>
   );
-};
+});

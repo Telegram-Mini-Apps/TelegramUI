@@ -1,6 +1,6 @@
 'use client';
 
-import { InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Switch.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -21,13 +21,13 @@ const platformStyles = {
  * It supports all the standard attributes of an HTML input element of type "checkbox".
  * The appearance of the switch can be customized to match either a base or iOS platform style using CSS modules.
  */
-export const Switch = ({
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(({
   style,
   className,
   disabled,
   children,
   ...restProps
-}: SwitchProps) => {
+}, ref) => {
   const platform = usePlatform();
 
   return (
@@ -45,9 +45,10 @@ export const Switch = ({
         type="checkbox"
         className={styles.input}
         disabled={disabled}
+        ref={ref}
       />
       <div aria-hidden className={styles.control} />
       {children}
     </label>
   );
-};
+});

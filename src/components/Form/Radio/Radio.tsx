@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import styles from './Radio.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -15,12 +15,12 @@ export interface RadioProps
  * Renders a custom radio button, visually hiding the actual input while displaying custom icons for unchecked and checked states.
  * It supports all standard properties and events of an HTML input element of type "radio".
  */
-export const Radio = ({
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
   style,
   className,
   disabled,
   ...restProps
-}: RadioProps) => (
+}, ref) => (
   <label
     className={classNames(
       styles.wrapper,
@@ -34,8 +34,9 @@ export const Radio = ({
       type="radio"
       className={styles.input}
       disabled={disabled}
+      ref={ref}
     />
     <IconRadio className={styles.icon} aria-hidden />
     <IconRadioChecked className={styles.checkedIcon} aria-hidden />
   </label>
-);
+));
