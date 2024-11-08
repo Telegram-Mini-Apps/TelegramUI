@@ -19,10 +19,7 @@ export const Playground: StoryObj<SelectProps> = {
       width: 240,
       background: 'var(--tgui--secondary_bg_color)',
     }}>
-      <Select
-        header="Select"
-        placeholder="I am usual input, just leave me alone"
-      >
+      <Select header="Select">
         <option>Hello</option>
         <option>Okay</option>
       </Select>
