@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, SelectHTMLAttributes } from 'react';
+import { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 import styles from './Select.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -22,13 +22,13 @@ export interface SelectProps extends Omit<FormPublicProps, 'after'>, SelectHTMLA
  * with the form input styles, providing a consistent look and enhanced features such as a custom dropdown arrow and support
  * for platform-specific typography. The `FormInput` wrapper facilitates the inclusion of headers and status messages.
  */
-export const Select = ({
+export const Select = forwardRef<HTMLInputElement, SelectProps>(({
   header,
   before,
   status,
   className,
   ...restProps
-}: SelectProps) => {
+}, ref) => {
   const platform = usePlatform();
 
   const TypographyComponent = platform === 'ios' ? Text : Subheadline;
@@ -47,9 +47,10 @@ export const Select = ({
         Component="select"
         className={styles.select}
         multiple={false}
+        ref={ref}
         {...restProps}
       />
       <Icon20ChevronDown aria-hidden className={styles.chevron} />
     </FormInput>
   );
-};
+});
