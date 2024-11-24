@@ -8,7 +8,6 @@ import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Tappable, TappableProps } from 'components/Service/Tappable/Tappable';
-import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
 export interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
@@ -38,7 +37,6 @@ export const ButtonCell = forwardRef(({
   ...restProps
 }: ButtonCellProps, ref) => {
   const platform = usePlatform();
-  const Typography = platform === 'ios' ? Subheadline : Text;
 
   return (
     <Tappable
@@ -53,7 +51,7 @@ export const ButtonCell = forwardRef(({
       {...restProps}
     >
       {hasReactNode(before) && before}
-      {hasReactNode(children) && <Typography>{children}</Typography>}
+      {hasReactNode(children) && <Text>{children}</Text>}
       {hasReactNode(after) && after}
     </Tappable>
   );
