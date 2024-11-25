@@ -38,7 +38,7 @@ export const ButtonCell = forwardRef(({
   ...restProps
 }: ButtonCellProps, ref) => {
   const platform = usePlatform();
-  const Typography = platform === 'ios' ? Subheadline : Text;
+  const Typography = platform === 'ios' ? Text : Subheadline;
 
   return (
     <Tappable
