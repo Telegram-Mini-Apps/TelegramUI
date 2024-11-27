@@ -27,7 +27,7 @@ export const Timeline = ({
   ...restProps
 }: TimelineProps) => {
   const getChildMode = (childNumber: number): TimelineItemProps['mode'] => {
-    if (!active) {
+    if (active === undefined) {
       return undefined;
     }
 
