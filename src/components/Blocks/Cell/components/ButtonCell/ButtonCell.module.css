@@ -6,6 +6,7 @@
   gap: 24px;
   height: 48px;
   padding: 10px 24px;
+  box-sizing: border-box;
 
   color: var(--tgui--link_color);
   border: none;
