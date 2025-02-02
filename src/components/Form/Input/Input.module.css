@@ -2,7 +2,6 @@
   padding: 12px 16px;
   gap: 12px;
   position: relative;
-  z-index: 1;
 }
 
 .wrapper--ios {
