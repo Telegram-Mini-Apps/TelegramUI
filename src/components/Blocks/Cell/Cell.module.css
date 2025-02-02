@@ -69,7 +69,7 @@
 
 .wrapper--ios {
   --tgui--cell--middle--padding: 12px 0;
-  padding: 1px 16px;
+  padding: 0 16px;
 }
 
 @media (hover: hover) and (pointer: fine) {
