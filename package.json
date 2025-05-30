@@ -32,7 +32,9 @@
     "dev": "turbo run storybook css:types:dev --cache=local:r,remote:r",
     "storybook": "storybook dev -p 6006 --docs --no-open",
     "storybook:build": "storybook build --docs",
-    "storybook:publish": "rsync ./storybook-static/ xelene:/var/www/tgui.xelene.me -avz --exclude .git/ --exclude node_modules/"
+    "storybook:publish": "rsync ./storybook-static/ xelene:/var/www/tgui.xelene.me -avz --exclude .git/ --exclude node_modules/",
+    "css:types": "tcm -p 'src/**/*.module.*css'",
+    "css:types:dev": "tcm -p 'src/**/*.module.*css' --watch"
   },
   "repository": {
     "type": "git",
@@ -98,6 +100,7 @@
     "ts-loader": "^9.5.2",
     "tsc-alias": "^1.8.8",
     "turbo": "^2.5.3",
+    "typed-css-modules": "^0.9.1",
     "typescript": "^5.8.3",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1"

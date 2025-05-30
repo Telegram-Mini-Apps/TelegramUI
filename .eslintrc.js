@@ -108,6 +108,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: '**/*.d.ts',
+      rules: {
+        '@typescript-eslint/quotes': ['error', 'double'],
+      },
+    },
+    {
       files: ['**/icons/**/*.tsx'],
       rules: {
         'max-len': 'off',
