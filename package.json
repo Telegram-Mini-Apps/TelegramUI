@@ -26,6 +26,7 @@
     "swc:cjs": "pnpm run swc-base -- -d dist/cjs -s -C module.type=commonjs",
     "tsc:es6": "cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration -p tsconfig.dist.json && tsc-alias",
     "tsc:cjs": "cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration --outDir dist/cjs/ -p tsconfig.dist.json && tsc-alias",
+    "check": "turbo run test lint typecheck",
     "test": "jest",
     "lint": "eslint ./src --max-warnings=0",
     "typecheck": "tsc --noEmit",

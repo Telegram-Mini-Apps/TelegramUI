@@ -25,6 +25,12 @@
     "postcss": {
       "outputs": ["dist/**/*.css"]
     },
+    "check": {
+      "dependsOn": ["^check"]
+    },
+    "test": {},
+    "lint": {},
+    "typecheck": {},
     "dev": {
       "cache": false,
       "persistent": true
