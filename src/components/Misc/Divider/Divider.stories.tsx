@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Cell, List, Section } from 'components';
+import { Cell, List } from 'components';
 import { Divider } from './Divider';
 
 const meta = {

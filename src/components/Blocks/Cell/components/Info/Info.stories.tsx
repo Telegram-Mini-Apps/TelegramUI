@@ -25,6 +25,7 @@ export const Playground: Story = {
   },
 } satisfies Story;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
 export const _AvatarStack: Story = {
   args: {
     type: 'avatarStack',

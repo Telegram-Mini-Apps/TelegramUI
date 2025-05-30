@@ -105,6 +105,7 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     'jsx-a11y/label-has-associated-control': 'off', // This rule not for libs, because we use such thing as Visually Hidden components
     '@typescript-eslint/consistent-type-imports': 'error',
+    'no-console': 'off',
   },
   overrides: [
     {
