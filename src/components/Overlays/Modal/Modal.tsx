@@ -51,7 +51,7 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnim
 
 type ModalWithComponents = ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivElement>> & {
   Header: typeof ModalHeader;
-  Overlay: typeof Drawer.Overlay;
+  Overlay: typeof ModalOverlay;
   Close: typeof ModalClose;
 };
 
@@ -107,8 +107,12 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
         <Drawer.Content
           ref={ref}
           className={classNames(styles.wrapper, className)}
+          aria-describedby={undefined}
           {...restProps}
         >
+          <VisuallyHidden>
+            <Drawer.Title />
+          </VisuallyHidden>
           {header}
           <div className={styles.body}>
             {children}
