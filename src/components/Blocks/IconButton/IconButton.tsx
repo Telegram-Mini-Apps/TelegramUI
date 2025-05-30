@@ -20,12 +20,6 @@ const modeStyles = {
   outline: styles['wrapper--outline'],
 };
 
-const sizeStyles = {
-  s: styles['wrapper--s'],
-  m: styles['wrapper--m'],
-  l: styles['wrapper--l'],
-};
-
 /**
  * Renders an icon button with customizable size and mode. It utilizes the `Tappable` component for enhanced
  * touch interaction, allowing it to serve various UI actions efficiently.
@@ -43,7 +37,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({
     className={classNames(
       styles.wrapper,
       modeStyles[mode],
-      sizeStyles[size],
+      size === 's' && styles['wrapper--s'],
       className
     )}
     {...restProps}

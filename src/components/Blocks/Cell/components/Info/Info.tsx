@@ -39,11 +39,7 @@ export const Info = ({
 
   return (
     <div
-      className={classNames(
-        styles.wrapper,
-        typeStyles[type],
-        className
-      )}
+      className={classNames(typeStyles[type], className)}
       {...restProps}
     >
       {isAvatarStack && hasReactNode(avatarStack) && avatarStack}

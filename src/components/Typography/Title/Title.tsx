@@ -39,8 +39,7 @@ export const Title = ({
 }: TitleProps) => (
   <Typography
     {...restProps}
-    className={classNames(styles.wrapper, titleLevelStyles[level], className)}
+    className={classNames(titleLevelStyles[level], className)}
     Component={Component || titleLevelTags[level]}
   />
 );
-

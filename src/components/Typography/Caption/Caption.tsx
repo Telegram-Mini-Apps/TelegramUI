@@ -31,7 +31,7 @@ export const Caption = ({
 }: CaptionProps) => (
   <Typography
     {...restProps}
-    className={classNames(styles.wrapper, captionLevelStyles[level], className)}
+    className={classNames(captionLevelStyles[level], className)}
     Component={Component || 'span'}
   />
 );

@@ -20,7 +20,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  render: (args) => {
+  args: {
+    targetRef: {
+      getBoundingClientRect: () =>
+        DOMRect.fromRect({ x: 0, y: 0, width: 0, height: 0 }),
+    },
+  },
+  render: args => {
     const [virtualElement, setVirtualElement] = useState(() =>
       DOMRect.fromRect({
         x: -200,

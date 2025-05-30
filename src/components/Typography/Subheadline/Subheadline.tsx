@@ -33,7 +33,7 @@ export const Subheadline = forwardRef(({
   <Typography
     {...restProps}
     ref={ref}
-    className={classNames(styles.wrapper, subheadlineLevelStyles[level], className)}
+    className={classNames(subheadlineLevelStyles[level], className)}
     Component={Component || 'h6'}
   />
 ));

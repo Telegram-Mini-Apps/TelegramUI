@@ -39,11 +39,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(({
       header={header}
       before={before}
       status={status}
-      className={classNames(
-        styles.wrapper,
-        platform === 'ios' && styles['wrapper--ios'],
-        className
-      )}
+      className={classNames(styles.wrapper, className)}
     >
       <TypographyComponent
         Component="select"

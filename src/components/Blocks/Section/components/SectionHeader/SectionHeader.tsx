@@ -28,7 +28,7 @@ export const SectionHeader = ({ large, className, children, ...restProps }: Sect
       )}
       {...restProps}
     >
-      <Component Component="h1" className={styles.title}>{children}</Component>
+      <Component Component="h1">{children}</Component>
     </header>
   );
 };

@@ -45,7 +45,6 @@ export const Badge = ({
   return (
     <span
       className={classNames(
-        styles.wrapper,
         typeStyles[type],
         modeStyles[mode],
         isNumber && large && styles['wrapper--large'],

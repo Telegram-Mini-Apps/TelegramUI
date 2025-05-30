@@ -31,7 +31,6 @@ export const PinInputCell = forwardRef<HTMLLabelElement, PinInputCellProps>(({
         Component="input"
         type="number"
         maxLength={1}
-        className={styles.input}
         {...restProps}
       />
       {isTyped && !isIOS && <div className={styles.dot} />}

@@ -33,7 +33,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
       header={header}
       status={status}
       className={classNames(
-        styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         className
       )}

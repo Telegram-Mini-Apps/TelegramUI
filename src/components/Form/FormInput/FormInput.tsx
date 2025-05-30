@@ -32,7 +32,7 @@ const platformStyles = {
 };
 
 const formStatusStyles = {
-  default: styles['wrapper--default'],
+  default: undefined,
   error: styles['wrapper--error'],
   focused: styles['wrapper--focused'],
 };
@@ -71,7 +71,6 @@ export const FormInput = forwardRef<HTMLDivElement, FormInputProps>(({
     <div
       ref={ref}
       className={classNames(
-        styles.wrapper,
         platformStyles[platform],
         formStatusStyles[formStatus],
         disabled && styles['wrapper--disabled']
