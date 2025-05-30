@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './SectionHeader.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -24,7 +24,7 @@ export const SectionHeader = ({ large, className, children, ...restProps }: Sect
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         large && styles['wrapper--large'],
-        className,
+        className
       )}
       {...restProps}
     >

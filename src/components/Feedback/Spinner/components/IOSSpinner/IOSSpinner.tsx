@@ -1,4 +1,4 @@
-import { SpinnerProps } from 'components/Feedback/Spinner/Spinner';
+import type { SpinnerProps } from 'components/Feedback/Spinner/Spinner';
 import { IconLarge } from './icons/large';
 import { IconMedium } from './icons/medium';
 import { IconSmall } from './icons/small';

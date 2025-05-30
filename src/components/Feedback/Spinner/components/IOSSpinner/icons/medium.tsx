@@ -1,4 +1,4 @@
-import { Icon } from 'types/Icon';
+import type { Icon } from 'types/Icon';
 
 export const IconMedium = ({ children, ...restProps }: Icon) => (
   <svg xmlns="http://www.w3.org/2000/svg" id="m151:1947" width="32" height="32" viewBox="0 0 32 32" {...restProps}>

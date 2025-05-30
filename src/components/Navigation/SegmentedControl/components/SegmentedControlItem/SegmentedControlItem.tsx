@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import styles from './SegmentedControlItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -32,7 +32,7 @@ export const SegmentedControlItem = ({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
       {...restProps}
     >

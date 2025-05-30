@@ -1,6 +1,6 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
-import { Placement } from '@floating-ui/react-dom';
+import type { Placement } from '@floating-ui/react-dom';
 
 export type Coords = {
   x?: number;
@@ -11,7 +11,7 @@ export const getArrowPositionData = (
   placement: Placement,
   coords: Coords = { x: 0, y: 0 },
   offset = 0,
-  isStaticOffset = false,
+  isStaticOffset = false
 ): [undefined | 'right' | 'bottom' | 'left', CSSProperties] => {
   const withOffset = (isVerticalPlacement: boolean) => {
     const parsedCoords = { x: coords.x || 0, y: coords.y || 0 };

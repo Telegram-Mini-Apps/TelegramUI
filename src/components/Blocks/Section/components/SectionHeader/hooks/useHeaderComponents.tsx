@@ -5,7 +5,7 @@ import { usePlatform } from 'hooks/usePlatform';
 import { Caption } from 'components/Typography/Caption/Caption';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
-import { TypographyProps } from 'components/Typography/Typography';
+import type { TypographyProps } from 'components/Typography/Typography';
 
 export const useHeaderComponents = () => {
   const platform = usePlatform();

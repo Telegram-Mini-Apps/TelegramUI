@@ -1,6 +1,7 @@
 'use client';
 
-import { MutableRefObject, Ref, useMemo, useRef } from 'react';
+import type { MutableRefObject, Ref } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { setRef } from 'helpers/react/refs';
 
@@ -23,6 +24,6 @@ export function useExternRef<T>(
         });
       },
     }),
-    externRefs,
+    externRefs
   );
 }

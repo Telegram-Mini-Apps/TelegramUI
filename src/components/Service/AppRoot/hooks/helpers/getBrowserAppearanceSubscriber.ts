@@ -1,9 +1,9 @@
 import { canUseDOM } from 'helpers/dom';
 
-import { AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
+import type { AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
 
 export const getBrowserAppearanceSubscriber = (
-  setAppearance: (appearance: NonNullable<AppRootContextInterface['appearance']>) => void,
+  setAppearance: (appearance: NonNullable<AppRootContextInterface['appearance']>) => void
 ): () => void => {
   if (!canUseDOM || !window.matchMedia) {
     return () => {};

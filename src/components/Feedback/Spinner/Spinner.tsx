@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Spinner.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -38,7 +38,7 @@ export const Spinner = ({
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         sizeStyles[size],
-        className,
+        className
       )}
     >
       <Component size={size} />

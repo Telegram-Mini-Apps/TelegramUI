@@ -1,12 +1,14 @@
 'use client';
 
-import { forwardRef, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Input.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { FormInput, FormPublicProps } from 'components/Form/FormInput/FormInput';
+import type { FormPublicProps } from 'components/Form/FormInput/FormInput';
+import { FormInput } from 'components/Form/FormInput/FormInput';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
@@ -39,7 +41,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
     >
       <TypographyComponent

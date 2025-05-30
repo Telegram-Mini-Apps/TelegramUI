@@ -1,10 +1,11 @@
-import {
-  forwardRef,
-  Fragment,
+import type {
   InputHTMLAttributes,
   KeyboardEvent,
   MouseEvent,
-  RefObject,
+  RefObject } from 'react';
+import {
+  forwardRef,
+  Fragment,
 } from 'react';
 import styles from './MultiselectBase.module.css';
 
@@ -16,8 +17,8 @@ import { useExternRef } from 'hooks/useExternalRefs';
 import { isHTMLElement } from '@floating-ui/utils/dom';
 import { Icon16Cancel } from 'icons/16/cancel';
 
-import { ChipProps } from 'components/Form/Chip/Chip';
-import { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { ChipProps } from 'components/Form/Chip/Chip';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { getValueOptionByHTMLElement } from './helpers/getValueOptionByHTMLElement';
@@ -157,7 +158,7 @@ export const MultiselectBase = forwardRef<HTMLDivElement, MultiselectBaseProps>(
       className={classNames(
         styles.wrapper,
         withPlaceholder && styles['wrapper--withPlaceholder'],
-        className,
+        className
       )}
       onClick={isDisabled ? undefined : handleClick}
       role="listbox"
@@ -188,7 +189,7 @@ export const MultiselectBase = forwardRef<HTMLDivElement, MultiselectBaseProps>(
               'aria-selected': true,
               'aria-posinset': index + 1,
               'aria-setsize': valueLength,
-            },
+            }
           )}
         </Fragment>
       ))}

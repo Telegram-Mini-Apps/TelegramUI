@@ -1,9 +1,11 @@
-import { Children, HTMLAttributes, isValidElement, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
+import { Children, isValidElement } from 'react';
 import styles from './TabsList.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { TabsItem, TabsItemProps } from './components/TabsItem/TabsItem';
+import type { TabsItemProps } from './components/TabsItem/TabsItem';
+import { TabsItem } from './components/TabsItem/TabsItem';
 
 export interface TabsListProps extends HTMLAttributes<HTMLDivElement> {
   /** Children should be TabsList.Item components to be rendered as tabs. */
@@ -30,7 +32,7 @@ export const TabsList = ({
       role="tablist"
       className={classNames(
         styles.wrapper,
-        className,
+        className
       )}
       {...restProps}
     >

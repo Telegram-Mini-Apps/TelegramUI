@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import styles from './Placeholder.module.css';
 
 import { classNames } from 'helpers/classNames';

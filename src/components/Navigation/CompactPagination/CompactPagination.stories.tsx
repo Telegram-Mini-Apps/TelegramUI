@@ -3,7 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
 
-import { CompactPagination, CompactPaginationProps } from './CompactPagination';
+import type { CompactPaginationProps } from './CompactPagination';
+import { CompactPagination } from './CompactPagination';
 
 const meta = {
   title: 'Navigation/CompactPagination',

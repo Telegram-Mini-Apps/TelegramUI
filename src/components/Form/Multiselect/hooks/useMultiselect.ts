@@ -1,12 +1,14 @@
 'use client';
 
-import { ChangeEvent, useCallback, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useCallback, useState } from 'react';
 
 import { isEqual } from 'helpers/equal';
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 
-import { MultiselectOption } from 'components/Form/Multiselect/types';
-import { defaultFilterFn, FilterFn } from './helpers/filter';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { FilterFn } from './helpers/filter';
+import { defaultFilterFn } from './helpers/filter';
 import { transformOptions } from './helpers/transformOptions';
 import { DEFAULT_EMPTY_TEXT, DEFAULT_SELECTED_BEHAVIOR } from './constants';
 import { useMultiselectInput, type UseMultiselectInputProps } from './useMultiselectInput';
@@ -78,7 +80,7 @@ export const useMultiselect = ({
         options: optionsProp,
         selectedBehavior,
       })
-      : [],
+      : []
   );
 
   const [focusedOptionIndex, setFocusedOptionIndex] = useState<number | null>(0);

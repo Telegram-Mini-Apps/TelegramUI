@@ -1,7 +1,8 @@
 // Code from library from react-children-utilities
 // @see https://github.com/fernandopasik/react-children-utilities/tree/main
 
-import { Children, isValidElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { Children, isValidElement } from 'react';
 
 export const childToString = (child?: ReactNode): string => {
   if (typeof child === 'undefined' || child === null || typeof child === 'boolean') {

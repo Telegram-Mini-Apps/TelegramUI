@@ -1,4 +1,5 @@
-import { isValidElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { isValidElement } from 'react';
 import { createPortal } from 'react-dom';
 
 import { useAppRootContext } from 'hooks/useAppRootContext';
@@ -16,6 +17,6 @@ export const RootRenderer = ({ children }: RootRendererProps) => {
 
   return createPortal(
     children,
-    portalContainer.current,
+    portalContainer.current
   );
 };

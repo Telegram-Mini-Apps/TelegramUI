@@ -9,7 +9,7 @@ interface SimulateReactInputTargetState {
 /** @see https://github.com/facebook/react/issues/11488#issuecomment-347775628 */
 export const simulateReactInput = (
   target: HTMLInputElement & SimulateReactInputTargetState,
-  nextValue = '',
+  nextValue = ''
 ) => {
   try {
     const simulateTarget = target;

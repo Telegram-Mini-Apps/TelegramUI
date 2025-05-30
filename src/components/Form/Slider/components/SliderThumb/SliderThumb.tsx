@@ -1,6 +1,7 @@
 'use client';
 
-import { forwardRef, HTMLAttributes, InputHTMLAttributes } from 'react';
+import type { HTMLAttributes, InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './SliderThumb.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -22,7 +23,7 @@ export const SliderThumb = forwardRef<HTMLSpanElement, SliderThumbProps>(
         className={classNames(
           styles.wrapper,
           platform === 'ios' && styles['wrapper--ios'],
-          className,
+          className
         )}
         {...restProps}
       >
@@ -36,5 +37,5 @@ export const SliderThumb = forwardRef<HTMLSpanElement, SliderThumbProps>(
         />
       </span>
     );
-  },
+  }
 );

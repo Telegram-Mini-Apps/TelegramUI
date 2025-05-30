@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
 
-import { Spinner, SpinnerProps } from './Spinner';
+import type { SpinnerProps } from './Spinner';
+import { Spinner } from './Spinner';
 
 const meta = {
   title: 'Feedback/Spinner',

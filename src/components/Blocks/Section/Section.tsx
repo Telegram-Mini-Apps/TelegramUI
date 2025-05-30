@@ -1,6 +1,7 @@
 'use client';
 
-import { Children, HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { Children } from 'react';
 import styles from './Section.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -41,7 +42,7 @@ export const Section = ({ header, footer, className, children, ...restProps }: S
         styles.wrapper,
         platform === 'base' && styles['wrapper--base'],
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
       {...restProps}
     >

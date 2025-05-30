@@ -2,7 +2,8 @@
 
 'use client';
 
-import { ChangeEvent, Dispatch, SetStateAction, useCallback, useRef, useState } from 'react';
+import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { isFunction } from 'helpers/fuctions';
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
@@ -80,7 +81,7 @@ export function useEnsuredControl<V, E extends ChangeEvent<any>>({
       onChangeValue(e.target.value);
       onChangeProp && onChangeProp(e);
     },
-    [onChangeValue, onChangeProp, disabled],
+    [onChangeValue, onChangeProp, disabled]
   );
 
   return [value, onChange];

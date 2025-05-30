@@ -7,7 +7,7 @@ export const updateInternalStateValue = (
   newValue: number,
   minValue: number,
   maxValue: number,
-  draggingType: InternalDraggingType | null,
+  draggingType: InternalDraggingType | null
 ): InternalValueState => {
   const [currentStartValue, currentEndValue] = currentState;
 
@@ -33,7 +33,7 @@ export const updateInternalStateValue = (
 export const updateInternalStateByNativeChange = (
   currentState: InternalValueState,
   newValue: number,
-  draggingType: InternalDraggingType | null,
+  draggingType: InternalDraggingType | null
 ): InternalValueState => {
   const [currentStartValue, currentEndValue] = currentState;
   switch (draggingType) {
@@ -56,7 +56,7 @@ const MINIMUM_DIFFERENCE_BETWEEN_START_AND_END = 0.1;
 export const determineSnapDirection = (
   currentValues: InternalValueState,
   newValue: number,
-  draggingType: InternalDraggingType | null,
+  draggingType: InternalDraggingType | null
 ): InternalDraggingType | null => {
   if (draggingType === 'start' || draggingType === 'end') {
     return draggingType;

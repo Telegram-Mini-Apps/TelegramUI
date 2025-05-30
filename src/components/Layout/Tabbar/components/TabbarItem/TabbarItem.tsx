@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './TabbarItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -43,7 +43,7 @@ export const TabbarItem = ({
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         selected && styles['wrapper--selected'],
-        className,
+        className
       )}
       {...restProps}
     >

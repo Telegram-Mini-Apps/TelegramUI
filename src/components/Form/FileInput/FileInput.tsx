@@ -1,4 +1,5 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 import { Icon28Attach } from 'icons/28/attach';
 

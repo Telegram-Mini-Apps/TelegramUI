@@ -1,4 +1,4 @@
-import { SVGAttributes } from 'react';
+import type { SVGAttributes } from 'react';
 
 export const DEFAULT_ARROW_WIDTH = 22;
 export const DEFAULT_ARROW_HEIGHT = 6;

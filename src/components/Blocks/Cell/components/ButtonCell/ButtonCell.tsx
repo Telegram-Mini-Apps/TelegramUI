@@ -1,13 +1,15 @@
 'use client';
 
-import { ElementType, forwardRef, ReactNode } from 'react';
+import type { ElementType, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import styles from './ButtonCell.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { Tappable, TappableProps } from 'components/Service/Tappable/Tappable';
+import type { TappableProps } from 'components/Service/Tappable/Tappable';
+import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
@@ -48,7 +50,7 @@ export const ButtonCell = forwardRef(({
         styles.wrapper,
         mode === 'destructive' && styles['wrapper--destructive'],
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
       {...restProps}
     >

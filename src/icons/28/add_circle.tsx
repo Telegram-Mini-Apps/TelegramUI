@@ -1,4 +1,4 @@
-import { Icon } from 'types/Icon';
+import type { Icon } from 'types/Icon';
 
 export const Icon28AddCircle = ({ ...restProps }: Icon) => (
   <svg width="29" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" {...restProps}>

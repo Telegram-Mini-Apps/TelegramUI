@@ -1,14 +1,16 @@
 'use client';
 
-import { ElementType, forwardRef, ReactElement, ReactNode } from 'react';
+import type { ElementType, ReactElement, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import styles from './Cell.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { BadgeProps } from 'components/Blocks/Badge/Badge';
-import { Tappable, TappableProps } from 'components/Service/Tappable/Tappable';
+import type { BadgeProps } from 'components/Blocks/Badge/Badge';
+import type { TappableProps } from 'components/Service/Tappable/Tappable';
+import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { useTypographyCellComponents } from './hooks/useTypographyCellComponents';
 
@@ -70,7 +72,7 @@ export const Cell = forwardRef(({
         platform === 'ios' && styles['wrapper--ios'],
         hovered && styles['wrapper--hovered'],
         multiline && styles['wrapper--multiline'],
-        className,
+        className
       )}
       {...restProps}
     >

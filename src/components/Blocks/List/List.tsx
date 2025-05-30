@@ -1,6 +1,6 @@
 'use client';
 
-import { ElementType, HTMLAttributes } from 'react';
+import type { ElementType, HTMLAttributes } from 'react';
 import styles from './List.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -28,7 +28,7 @@ export const List = ({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
       {...restProps}
     >

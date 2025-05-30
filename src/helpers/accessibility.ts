@@ -19,7 +19,7 @@ export const Keys = {
 export type KeysValues = ValuesOfObject<typeof Keys>;
 
 export const getHorizontalSideByKey = (
-  keys: Extract<KeysValues, 'ArrowUp' | 'ArrowLeft' | 'ArrowDown' | 'ArrowRight'>,
+  keys: Extract<KeysValues, 'ArrowUp' | 'ArrowLeft' | 'ArrowDown' | 'ArrowRight'>
 ) => {
   switch (keys) {
     case Keys.ARROW_UP:

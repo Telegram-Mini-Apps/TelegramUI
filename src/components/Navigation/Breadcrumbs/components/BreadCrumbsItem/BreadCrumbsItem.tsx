@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ElementType } from 'react';
+import type { AllHTMLAttributes, ElementType } from 'react';
 import styles from './BreadCrumbsItem.module.css';
 
 import { classNames } from 'helpers/classNames';

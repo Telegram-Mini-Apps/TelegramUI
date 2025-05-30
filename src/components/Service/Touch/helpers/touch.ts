@@ -1,6 +1,6 @@
 import { canUseDOM } from 'helpers/dom';
 
-import { CustomTouchEvent, Gesture } from './types';
+import type { CustomTouchEvent, Gesture } from './types';
 
 export const initGesture = (startX: number, startY: number): Gesture => ({
   startX,

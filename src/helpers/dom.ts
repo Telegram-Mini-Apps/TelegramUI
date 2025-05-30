@@ -10,7 +10,7 @@ export const getHTMLElementByChildren = (children: HTMLCollection, index: number
 
 export const getHTMLElementSiblingByDirection = <T extends Element>(
   el: T,
-  direction: 'left' | 'right',
+  direction: 'left' | 'right'
 ) => {
   let siblingEl: Element | null = null;
   switch (direction) {

@@ -20,7 +20,16 @@ module.exports = {
   rules: {
     'object-curly-spacing': ['error', 'always'],
     'require-jsdoc': 'off',
-    'comma-dangle': ['warn', 'always-multiline'],
+    'comma-dangle': [
+      'warn',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'never',
+      },
+    ],
     'no-undef': 'error',
     'space-infix-ops': ['error', { int32Hint: false }],
     'max-len': ['error', 180, 2, { ignoreTemplateLiterals: true }],
@@ -64,7 +73,6 @@ module.exports = {
     'no-unsafe-negation': 'error',
     'no-empty': ['error', { allowEmptyCatch: true }],
     'indent': 'off',
-    '@typescript-eslint/indent': ['error', 2],
     'import/order': 'off',
     'import/prefer-default-export': 'off',
     'react/function-component-definition': ['error', {
@@ -96,6 +104,7 @@ module.exports = {
     ],
     'simple-import-sort/exports': 'error',
     'jsx-a11y/label-has-associated-control': 'off', // This rule not for libs, because we use such thing as Visually Hidden components
+    '@typescript-eslint/consistent-type-imports': 'error',
   },
   overrides: [
     {

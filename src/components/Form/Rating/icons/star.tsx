@@ -1,4 +1,4 @@
-import { Icon } from 'types/Icon';
+import type { Icon } from 'types/Icon';
 
 export const IconStar = (props: Icon) => (
   <svg width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>

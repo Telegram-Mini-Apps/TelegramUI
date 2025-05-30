@@ -2,7 +2,8 @@ import styles from './Caption.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Typography, TypographyProps } from '../Typography';
+import type { TypographyProps } from '../Typography';
+import { Typography } from '../Typography';
 
 type CaptionLevel = '1' | '2';
 

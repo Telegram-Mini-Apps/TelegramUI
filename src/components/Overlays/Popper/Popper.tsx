@@ -1,19 +1,23 @@
 'use client';
 
-import { ElementType, forwardRef, HTMLAttributes, RefObject, useState } from 'react';
+import type { ElementType, HTMLAttributes, RefObject } from 'react';
+import { forwardRef, useState } from 'react';
 import styles from './Popper.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { multipleRef } from 'helpers/react/refs';
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 
-import { useFloating, VirtualElement } from '@floating-ui/react-dom';
+import type { VirtualElement } from '@floating-ui/react-dom';
+import { useFloating } from '@floating-ui/react-dom';
 
 import { RootRenderer } from 'components/Service/RootRenderer/RootRenderer';
-import { FloatingArrow, FloatingArrowProps } from './components/FloatingArrow/FloatingArrow';
+import type { FloatingArrowProps } from './components/FloatingArrow/FloatingArrow';
+import { FloatingArrow } from './components/FloatingArrow/FloatingArrow';
 import { DEFAULT_ARROW_HEIGHT, DEFAULT_ARROW_PADDING, DefaultIcon } from './components/FloatingArrow/icons/arrow';
 import { autoUpdateFloatingElement } from './helpers/autoUpdateFloatingElement';
-import { useFloatingMiddlewares, UseFloatingMiddlewaresOptions } from './hooks/useFloatingMiddlewares';
+import type { UseFloatingMiddlewaresOptions } from './hooks/useFloatingMiddlewares';
+import { useFloatingMiddlewares } from './hooks/useFloatingMiddlewares';
 
 export interface PopperProps extends Omit<UseFloatingMiddlewaresOptions, 'arrowHeight' | 'arrowPadding' | 'arrowRef'>, HTMLAttributes<HTMLDivElement> {
   /** Reference to the target element or virtual element for precise positioning. */

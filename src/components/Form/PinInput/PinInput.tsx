@@ -1,4 +1,5 @@
-import { forwardRef, HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import styles from './PinInput.module.css';
 
 import { Keys } from 'helpers/accessibility';
@@ -60,7 +61,7 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
         className={classNames(
           styles.wrapper,
           platform === 'ios' && styles['wrapper--ios'],
-          className,
+          className
         )}
         {...restProps}
       >

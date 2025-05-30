@@ -1,13 +1,14 @@
 'use client';
 
-import { HTMLAttributes, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
 import styles from './Tabbar.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { FixedLayout } from 'components/Layout/FixedLayout/FixedLayout';
-import { TabbarItem, TabbarItemProps } from './components/TabbarItem/TabbarItem';
+import type { TabbarItemProps } from './components/TabbarItem/TabbarItem';
+import { TabbarItem } from './components/TabbarItem/TabbarItem';
 
 export interface TabbarProps extends HTMLAttributes<HTMLDivElement> {
   /** The child elements of the Tabbar, expected to be `Tabbar.Item` components. */
@@ -33,7 +34,7 @@ export const Tabbar = ({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
       {...restProps}
     >

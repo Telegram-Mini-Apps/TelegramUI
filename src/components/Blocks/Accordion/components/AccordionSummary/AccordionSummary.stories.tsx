@@ -4,7 +4,8 @@ import { Subheadline } from 'components';
 import CellMeta from 'components/Blocks/Cell/Cell.stories';
 import { Section } from 'components/Blocks/Section/Section';
 import { Accordion } from '../../Accordion';
-import { AccordionSummary, AccordionSummaryProps } from './AccordionSummary';
+import type { AccordionSummaryProps } from './AccordionSummary';
+import { AccordionSummary } from './AccordionSummary';
 
 const meta = {
   title: 'Blocks/Accordion/Accordion.Summary',

@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import styles from './Blockquote.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -31,7 +31,7 @@ export const Blockquote = ({
   <div
     className={classNames(
       styles.wrapper,
-      className,
+      className
     )}
     {...restProps}
   >

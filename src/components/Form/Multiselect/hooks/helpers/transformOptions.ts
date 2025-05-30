@@ -1,7 +1,7 @@
 import { isServicePreset } from 'components/Form/Multiselect/hooks/constants';
 import { getNewOptionData } from 'components/Form/Multiselect/hooks/helpers/getNewOptionData';
-import { UseMultiselectProps } from 'components/Form/Multiselect/hooks/useMultiselect';
-import { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { UseMultiselectProps } from 'components/Form/Multiselect/hooks/useMultiselect';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
 
 export const transformOptions = ({
   value,

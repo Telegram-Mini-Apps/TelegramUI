@@ -1,9 +1,10 @@
-import { ElementType } from 'react';
+import type { ElementType } from 'react';
 import styles from './Title.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Typography, TypographyProps } from '../Typography';
+import type { TypographyProps } from '../Typography';
+import { Typography } from '../Typography';
 
 type TitleLevel = '1' | '2' | '3';
 

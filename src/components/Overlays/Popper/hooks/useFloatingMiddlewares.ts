@@ -1,18 +1,19 @@
 import { useMemo } from 'react';
 
+import type {
+  ArrowOptions,
+  Middleware } from '@floating-ui/react-dom';
 import {
   arrow,
-  ArrowOptions,
   autoPlacement,
   flip,
-  Middleware,
   offset,
   shift,
   size,
 } from '@floating-ui/react-dom';
 
 import { getAutoPlacementAlignment, isNotAutoPlacement } from './helpers/alignment';
-import { PlacementWithAuto } from './types';
+import type { PlacementWithAuto } from './types';
 
 export interface UseFloatingMiddlewaresOptions {
   /** By default, the component will automatically choose the best placement */
@@ -59,7 +60,7 @@ export const useFloatingMiddlewares = ({
       middlewares.push(
         flip({
           fallbackAxisSideDirection: 'start',
-        }),
+        })
       );
     } else {
       middlewares.push(autoPlacement({
@@ -77,7 +78,7 @@ export const useFloatingMiddlewares = ({
               width: `${rects.reference.width}px`,
             });
           },
-        }),
+        })
       );
     }
 
@@ -90,7 +91,7 @@ export const useFloatingMiddlewares = ({
         arrow({
           element: arrowRef,
           padding: arrowPadding,
-        }),
+        })
       );
     }
 

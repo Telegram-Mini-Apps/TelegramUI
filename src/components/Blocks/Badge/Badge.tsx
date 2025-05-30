@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Badge.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -49,7 +49,7 @@ export const Badge = ({
         typeStyles[type],
         modeStyles[mode],
         isNumber && large && styles['wrapper--large'],
-        className,
+        className
       )}
       {...restProps}
     >

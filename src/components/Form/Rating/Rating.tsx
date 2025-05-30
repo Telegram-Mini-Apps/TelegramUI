@@ -1,9 +1,9 @@
-import { ChangeEvent, ElementType, HTMLAttributes } from 'react';
+import type { ChangeEvent, ElementType, HTMLAttributes } from 'react';
 import styles from './Rating.module.css';
 
 import { clamp } from 'helpers/math';
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
-import { Icon } from 'types/Icon';
+import type { Icon } from 'types/Icon';
 
 import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { IconStar } from './icons/star';

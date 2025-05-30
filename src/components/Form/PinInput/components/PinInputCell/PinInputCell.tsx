@@ -1,4 +1,5 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './PinInputCell.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -23,7 +24,7 @@ export const PinInputCell = forwardRef<HTMLLabelElement, PinInputCellProps>(({
       className={classNames(
         styles.wrapper,
         isIOS && styles['wrapper--ios'],
-        isTyped && styles['wrapper--typed'],
+        isTyped && styles['wrapper--typed']
       )}
     >
       <VisuallyHidden

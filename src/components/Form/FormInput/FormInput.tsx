@@ -1,6 +1,7 @@
 'use client';
 
-import { forwardRef, HTMLAttributes, ReactNode, useState } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { forwardRef, useState } from 'react';
 import styles from './FormInput.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -73,7 +74,7 @@ export const FormInput = forwardRef<HTMLDivElement, FormInputProps>(({
         styles.wrapper,
         platformStyles[platform],
         formStatusStyles[formStatus],
-        disabled && styles['wrapper--disabled'],
+        disabled && styles['wrapper--disabled']
       )}
       aria-disabled={disabled}
     >

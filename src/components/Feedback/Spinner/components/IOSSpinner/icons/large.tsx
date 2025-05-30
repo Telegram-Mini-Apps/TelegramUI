@@ -1,4 +1,4 @@
-import { Icon } from 'types/Icon';
+import type { Icon } from 'types/Icon';
 
 export const IconLarge = ({ children, ...restProps }: Icon) => (
   <svg id="l151:1947" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" {...restProps}>

@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Navigation.module.css';
 
 import { classNames } from 'helpers/classNames';

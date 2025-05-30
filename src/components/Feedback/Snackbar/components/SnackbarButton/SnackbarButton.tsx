@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import styles from './SnackbarButton.module.css';
 
 import { classNames } from 'helpers/classNames';

@@ -1,11 +1,12 @@
-import { HTMLAttributes, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
 import styles from './CompactPagination.module.css';
 
 import { classNames } from 'helpers/classNames';
 
+import type {
+  CompactPaginationItemProps } from './components/CompactPaginationItem/CompactPaginationItem';
 import {
   CompactPaginationItem,
-  CompactPaginationItemProps,
 } from './components/CompactPaginationItem/CompactPaginationItem';
 
 export interface CompactPaginationProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
@@ -36,7 +37,7 @@ export const CompactPagination = ({
     className={classNames(
       styles.wrapper,
       modeStyles[mode],
-      className,
+      className
     )}
     {...restProps}
   >

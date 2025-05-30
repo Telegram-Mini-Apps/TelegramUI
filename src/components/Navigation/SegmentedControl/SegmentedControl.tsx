@@ -1,10 +1,12 @@
-import { Children, HTMLAttributes, isValidElement, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
+import { Children, isValidElement } from 'react';
 import styles from './SegmentedControl.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { SegmentedControlItem, SegmentedControlItemProps } from './components/SegmentedControlItem/SegmentedControlItem';
+import type { SegmentedControlItemProps } from './components/SegmentedControlItem/SegmentedControlItem';
+import { SegmentedControlItem } from './components/SegmentedControlItem/SegmentedControlItem';
 
 export interface SegmentedControlProps extends HTMLAttributes<HTMLDivElement> {
   /** Children should be SegmentedControl.Item components to render within the control. */
@@ -35,7 +37,7 @@ export const SegmentedControl = ({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
       {...restProps}
     >

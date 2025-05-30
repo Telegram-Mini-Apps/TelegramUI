@@ -1,4 +1,4 @@
-import { Icon } from 'types/Icon';
+import type { Icon } from 'types/Icon';
 
 /** Each path wrapped in symbol for correct animation inside children in Safari */
 export const IconMedium = ({ children, ...restProps }: Icon) => (

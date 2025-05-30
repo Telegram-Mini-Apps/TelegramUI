@@ -1,6 +1,7 @@
 'use client';
 
-import { HTMLAttributes, useEffect, useState } from 'react';
+import type { HTMLAttributes } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Spoiler.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -36,7 +37,7 @@ export const Spoiler = ({
       className={classNames(
         styles.wrapper,
         isVisible && styles['wrapper--visible'],
-        className,
+        className
       )}
       onClick={callMultiple(toggle, restProps.onClick)}
       onKeyDown={callMultiple(toggle, restProps.onKeyDown)}

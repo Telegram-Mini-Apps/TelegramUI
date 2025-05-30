@@ -1,4 +1,5 @@
-import { forwardRef, ForwardRefExoticComponent, HTMLAttributes, RefAttributes } from 'react';
+import type { ForwardRefExoticComponent, HTMLAttributes, RefAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Card.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -6,7 +7,8 @@ import { useObjectMemo } from 'hooks/useObjectMemo';
 
 import { CardCell } from './components/CardCell/CardCell';
 import { CardChip } from './components/CardChip/CardChip';
-import { CardContext, CardContextInterface } from './CardContext';
+import type { CardContextInterface } from './CardContext';
+import { CardContext } from './CardContext';
 
 export interface CardProps extends HTMLAttributes<HTMLElement> {
   /** Defines the visual style of the card, influencing background, shadow, and border. */
@@ -39,7 +41,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(({
         className={classNames(
           styles.wrapper,
           type === 'ambient' && styles['wrapper--ambient'],
-          className,
+          className
         )}
         {...restProps}
       >

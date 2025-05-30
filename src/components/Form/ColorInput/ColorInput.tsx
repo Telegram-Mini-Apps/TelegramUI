@@ -1,13 +1,15 @@
 'use client';
 
-import { ChangeEvent, InputHTMLAttributes, useEffect, useState } from 'react';
+import type { ChangeEvent, InputHTMLAttributes } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ColorInput.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { callMultiple } from 'helpers/function';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { FormInput, FormPublicProps } from 'components/Form/FormInput/FormInput';
+import type { FormPublicProps } from 'components/Form/FormInput/FormInput';
+import { FormInput } from 'components/Form/FormInput/FormInput';
 import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
@@ -64,7 +66,7 @@ export const ColorInput = ({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
     >
       <TypographyComponent caps className={styles.text}>

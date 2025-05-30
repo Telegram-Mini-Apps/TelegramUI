@@ -1,6 +1,7 @@
 'use client';
 
-import { ImgHTMLAttributes, isValidElement, ReactNode, SyntheticEvent, useState } from 'react';
+import type { ImgHTMLAttributes, ReactNode, SyntheticEvent } from 'react';
+import { isValidElement, useState } from 'react';
 import styles from './Image.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -75,7 +76,7 @@ export const Image = ({
       className={classNames(
         styles.wrapper,
         loaded && styles['wrapper--loaded'],
-        className,
+        className
       )}
       {...restProps}
     >

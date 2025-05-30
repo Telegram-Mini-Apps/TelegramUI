@@ -1,10 +1,11 @@
 'use client';
 
-import { ChangeEvent, useCallback, useRef, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
-import { MultiselectOption, MultiselectOptionValue } from '../types';
+import type { MultiselectOption, MultiselectOptionValue } from '../types';
 import { getNewOptionData } from './helpers/getNewOptionData';
 import { isValueLikeOption } from './helpers/isValueLikeOption';
 import { simulateReactInput } from './helpers/simulateReactInput';
@@ -76,7 +77,7 @@ export const useMultiselectInput = ({
 
   const addOption = useCallback(
     (newValue: MultiselectOption | MultiselectOptionValue) => toggleOption(newValue, true),
-    [toggleOption],
+    [toggleOption]
   );
 
   const removeOption = useCallback((newValue: MultiselectOption | MultiselectOptionValue) => {

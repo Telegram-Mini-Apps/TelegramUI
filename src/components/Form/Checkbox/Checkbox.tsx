@@ -1,4 +1,5 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Checkbox.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -29,7 +30,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
     className={classNames(
       styles.wrapper,
       disabled && styles['wrapper--disabled'],
-      className,
+      className
     )}
   >
     <VisuallyHidden

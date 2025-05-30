@@ -1,10 +1,11 @@
 'use client';
 
-import { PointerEventHandler, useMemo, useState } from 'react';
+import type { PointerEventHandler } from 'react';
+import { useMemo, useState } from 'react';
 
 import { useTimeout } from 'hooks/useTimeout';
 
-import { Wave } from '../types/Wave';
+import type { Wave } from '../types/Wave';
 
 const RIPPLE_DELAY = 70;
 const WAVE_LIVE = 225;
@@ -14,7 +15,7 @@ export const useRipple = () => {
 
   const pointerDelayTimers = useMemo(
     () => new Map<number, ReturnType<typeof setTimeout>>(),
-    [],
+    []
   );
 
   const clearClicks = useTimeout(() => setClicks([]), WAVE_LIVE);
@@ -44,7 +45,7 @@ export const useRipple = () => {
 
     pointerDelayTimers.set(
       e.pointerId,
-      setTimeout(() => addClick(x, y, e.pointerId), RIPPLE_DELAY),
+      setTimeout(() => addClick(x, y, e.pointerId), RIPPLE_DELAY)
     );
   };
 

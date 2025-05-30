@@ -1,6 +1,7 @@
 'use client';
 
-import { createContext, RefObject } from 'react';
+import type { RefObject } from 'react';
+import { createContext } from 'react';
 
 export interface AppRootContextInterface {
   platform?: 'base' | 'ios';

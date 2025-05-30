@@ -1,11 +1,12 @@
 'use client';
 
-import { ChangeEvent, useMemo, useRef, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 import { isEqual } from 'helpers/equal';
 import { clamp } from 'helpers/math';
 
-import { SliderProps } from 'components/Form/Slider/Slider';
+import type { SliderProps } from 'components/Form/Slider/Slider';
 import type { TouchEvent } from 'components/Service/Touch/Touch';
 import { extractSliderAriaAttributes, getDraggingTypeByTargetDataset } from './helpers/html';
 import { offsetXToScaledValue, toPercent } from './helpers/math';
@@ -15,7 +16,7 @@ import {
   updateInternalStateByNativeChange,
   updateInternalStateValue,
 } from './helpers/state';
-import { InternalGestureRef, InternalValueState, Step } from './types';
+import type { InternalGestureRef, InternalValueState, Step } from './types';
 
 export const useSlider = ({
   step = 1,
@@ -96,7 +97,7 @@ export const useSlider = ({
       nextValue,
       min,
       max,
-      nextDragging,
+      nextDragging
     );
 
     const [nextStartValue, nextEndValue] = updatedInternalStateValue;
@@ -141,9 +142,9 @@ export const useSlider = ({
       updateInternalStateByNativeChange(
         value,
         Number(event.target.value),
-        getDraggingTypeByTargetDataset(event.target),
+        getDraggingTypeByTargetDataset(event.target)
       ),
-      event,
+      event
     );
   };
 

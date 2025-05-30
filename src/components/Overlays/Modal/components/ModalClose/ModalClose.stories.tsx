@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Placeholder } from 'components';
-import { ModalClose, ModalCloseProps } from './ModalClose';
+import type { ModalCloseProps } from './ModalClose';
+import { ModalClose } from './ModalClose';
 
 const meta = {
   title: 'Overlays/Modal/Modal.Close',

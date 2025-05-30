@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
-import { AppRootContext, AppRootContextInterface } from '../AppRootContext';
+import type { AppRootContextInterface } from '../AppRootContext';
+import { AppRootContext } from '../AppRootContext';
 import { getInitialPlatform } from './helpers/getInitialPlatform';
 
 export const usePlatform = (platform?: AppRootContextInterface['platform']): NonNullable<AppRootContextInterface['platform']> => {

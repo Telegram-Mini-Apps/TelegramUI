@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes, MouseEventHandler, ReactNode } from 'react';
+import type { HTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import styles from './Banner.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -66,7 +66,7 @@ export const Banner = ({
         platform === 'base' && styles['wrapper--base'],
         hasBackground && styles['wrapper--withBackground'],
         type === 'inline' && styles['wrapper--inline'],
-        className,
+        className
       )}
       {...restProps}
     >

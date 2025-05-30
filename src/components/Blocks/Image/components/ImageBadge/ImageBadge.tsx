@@ -2,7 +2,8 @@ import styles from './ImageBadge.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Badge, BadgeProps } from 'components/Blocks/Badge/Badge';
+import type { BadgeProps } from 'components/Blocks/Badge/Badge';
+import { Badge } from 'components/Blocks/Badge/Badge';
 
 export interface ImageBadgeProps extends BadgeProps {}
 

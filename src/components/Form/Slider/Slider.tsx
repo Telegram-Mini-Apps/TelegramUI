@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, HTMLAttributes, ReactNode } from 'react';
+import type { ChangeEvent, HTMLAttributes, ReactNode } from 'react';
 import styles from './Slider.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -82,7 +82,7 @@ export const Slider = ({ className, disabled, before, after, ...restProps }: Sli
       styles.wrapper,
       platform === 'ios' && styles['wrapper--ios'],
       disabled && styles['wrapper--disabled'],
-      className,
+      className
     )}>
       {hasReactNode(before) && (
         <div className={styles.before}>

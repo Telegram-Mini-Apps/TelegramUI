@@ -1,4 +1,5 @@
-import { forwardRef, HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import styles from './ModalHeader.module.css';
 
 import { classNames } from 'helpers/classNames';

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-import { Decorator, Meta, StoryObj } from '@storybook/react';
+import type { Decorator, Meta, StoryObj } from '@storybook/react';
 import { Icon28Close } from 'icons/28/close';
 import { hideControls } from 'storybook/controls';
 
 import { Button, Placeholder } from 'components';
-import { Modal, ModalProps } from './Modal';
+import type { ModalProps } from './Modal';
+import { Modal } from './Modal';
 
 const meta = {
   title: 'Overlays/Modal',

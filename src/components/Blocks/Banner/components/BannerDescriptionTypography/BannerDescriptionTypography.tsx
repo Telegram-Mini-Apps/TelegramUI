@@ -2,7 +2,7 @@ import { usePlatform } from 'hooks/usePlatform';
 
 import { Caption } from 'components/Typography/Caption/Caption';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
-import { TypographyProps } from 'components/Typography/Typography';
+import type { TypographyProps } from 'components/Typography/Typography';
 
 export interface BannerDescriptionTypographyProps extends Omit<TypographyProps, 'level'> {
 }

@@ -1,6 +1,7 @@
 'use client';
 
-import { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
+import type { ReactNode, SelectHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Select.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -8,7 +9,8 @@ import { usePlatform } from 'hooks/usePlatform';
 
 import { Icon20ChevronDown } from 'icons/20/chevron_down';
 
-import { FormInput, FormPublicProps } from 'components/Form/FormInput/FormInput';
+import type { FormPublicProps } from 'components/Form/FormInput/FormInput';
+import { FormInput } from 'components/Form/FormInput/FormInput';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
@@ -40,7 +42,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
     >
       <TypographyComponent

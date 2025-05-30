@@ -1,11 +1,13 @@
-import { forwardRef, ForwardRefExoticComponent, Fragment, MouseEvent, RefAttributes, RefObject } from 'react';
+import type { ForwardRefExoticComponent, MouseEvent, RefAttributes, RefObject } from 'react';
+import { forwardRef, Fragment } from 'react';
 import styles from './MultiselectDropdown.module.css';
 
-import { Cell, CellProps } from 'components/Blocks/Cell/Cell';
-import { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { CellProps } from 'components/Blocks/Cell/Cell';
+import { Cell } from 'components/Blocks/Cell/Cell';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
 import { Popper } from 'components/Overlays/Popper/Popper';
 import { isCreateNewOptionPreset, isEmptyOptionPreset } from '../../hooks/constants';
-import { UseMultiselectProps } from '../../hooks/useMultiselect';
+import type { UseMultiselectProps } from '../../hooks/useMultiselect';
 import { renderOptionDefault } from './constants';
 
 export interface MultiselectDropdownProps extends Required<Pick<UseMultiselectProps, 'options' | 'value'>> {
@@ -116,7 +118,7 @@ export const MultiselectDropdown = forwardRef<HTMLDivElement, MultiselectDropdow
                   clearInput();
                 },
                 onMouseEnter: () => setFocusedOptionIndex(index),
-              },
+              }
             )}
           </Fragment>
         );

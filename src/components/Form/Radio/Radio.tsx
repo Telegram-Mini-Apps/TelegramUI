@@ -1,4 +1,5 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Radio.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -25,7 +26,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(({
     className={classNames(
       styles.wrapper,
       disabled && styles['wrapper--disabled'],
-      className,
+      className
     )}
   >
     <VisuallyHidden

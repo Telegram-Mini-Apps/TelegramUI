@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 export type MultiselectOptionValue = string | number;
 export type MultiselectOptionLabel = ReactElement | string | number;

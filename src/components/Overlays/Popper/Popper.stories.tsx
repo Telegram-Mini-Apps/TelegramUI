@@ -1,4 +1,5 @@
-import { MouseEvent, useState } from 'react';
+import type { MouseEvent } from 'react';
+import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
@@ -26,7 +27,7 @@ export const Playground: Story = {
         y: -200,
         width: 10,
         height: 10,
-      }),
+      })
     );
 
     const handleClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -36,7 +37,7 @@ export const Playground: Story = {
           y: event.clientY,
           width,
           height,
-        }),
+        })
       );
     };
 

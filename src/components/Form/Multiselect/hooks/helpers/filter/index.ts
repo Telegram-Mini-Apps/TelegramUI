@@ -1,6 +1,6 @@
 import { getTextFromChildren } from 'helpers/react/children';
 
-import { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
 
 export type FilterFn = (
   inputValue: string,

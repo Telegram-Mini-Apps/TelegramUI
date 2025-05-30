@@ -29,7 +29,7 @@ export function useEventListener<E extends Event>(
 export function useEventListener<E extends Event, K extends keyof GlobalEventHandlersEventMap>(
   event: string | K,
   _cb: false | null | undefined | ((ev: E) => void),
-  _options?: AddEventListenerOptions,
+  _options?: AddEventListenerOptions
 ): EventListenerHandle {
   const cbRef = useRef(_cb);
 
@@ -63,7 +63,7 @@ export function useEventListener<E extends Event, K extends keyof GlobalEventHan
       el.addEventListener(event, cb, options);
       detach.current = () => el.removeEventListener(event, cb, options);
     },
-    [_options, cb, event, remove],
+    [_options, cb, event, remove]
   );
 
   useEffect(() => remove, [remove]);

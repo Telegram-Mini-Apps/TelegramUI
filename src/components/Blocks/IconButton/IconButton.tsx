@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './IconButton.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -43,7 +44,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({
       styles.wrapper,
       modeStyles[mode],
       sizeStyles[size],
-      className,
+      className
     )}
     {...restProps}
   >

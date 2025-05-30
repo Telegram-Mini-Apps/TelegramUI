@@ -1,6 +1,6 @@
 'use client';
 
-import { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 import styles from './Multiselectable.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -36,7 +36,7 @@ export const Multiselectable = ({
       className={classNames(
         styles.wrapper,
         disabled && styles['wrapper--disabled'],
-        className,
+        className
       )}
     >
       <VisuallyHidden

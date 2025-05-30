@@ -4,7 +4,7 @@ import { range } from 'helpers/array';
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
 import { PaginationType } from './enum';
-import { UsePaginationItem, UsePaginationProps } from './types';
+import type { UsePaginationItem, UsePaginationProps } from './types';
 
 /**
  * A bit changed hook from @mui
@@ -43,10 +43,10 @@ export const usePagination = ({
       // Natural start
       page - siblingCount,
       // Lower boundary when page is high
-      count - boundaryCount - siblingCount * 2 - 1,
+      count - boundaryCount - siblingCount * 2 - 1
     ),
     // Greater than startPages
-    boundaryCount + 2,
+    boundaryCount + 2
   );
 
   const siblingsEnd = Math.min(
@@ -54,10 +54,10 @@ export const usePagination = ({
       // Natural end
       page + siblingCount,
       // Upper boundary when page is low
-      boundaryCount + siblingCount * 2 + 2,
+      boundaryCount + siblingCount * 2 + 2
     ),
     // Less than endPages
-    endPages.length > 0 ? endPages[0] - 2 : count - 1,
+    endPages.length > 0 ? endPages[0] - 2 : count - 1
   );
 
   // Basic list of items to render

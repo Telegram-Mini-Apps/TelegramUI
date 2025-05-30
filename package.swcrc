@@ -22,14 +22,14 @@
         "runtime": "automatic"
       }
     },
-    "target": "es2015",
+    "target": "es2022",
     "experimental": {
       "cacheRoot": "node_modules/.cache/swc",
       "plugins": [
         [
           "swc-plugin-css-modules",
           {
-            "generate_scoped_name": "tgui.[hash]",
+            "generate_scoped_name": "tgui.[hash]"
           }
         ],
         [
@@ -37,7 +37,7 @@
           {
             "test": "\\.css$"
           }
-        ],
+        ]
       ]
     }
   }

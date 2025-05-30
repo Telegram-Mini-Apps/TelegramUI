@@ -1,6 +1,7 @@
 'use client';
 
-import { AllHTMLAttributes, ElementType, forwardRef } from 'react';
+import type { AllHTMLAttributes, ElementType } from 'react';
+import { forwardRef } from 'react';
 import styles from './Tappable.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -34,7 +35,7 @@ export const Tappable = forwardRef(({
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         interactiveAnimation === 'opacity' && styles['wrapper--opacity'],
-        className,
+        className
       )}
       onPointerCancel={onPointerCancel}
       onPointerDown={onPointerDown}

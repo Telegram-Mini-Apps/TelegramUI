@@ -1,6 +1,7 @@
 'use client';
 
-import { FocusEvent, forwardRef, InputHTMLAttributes, KeyboardEvent, useCallback, useEffect, useId, useRef } from 'react';
+import type { FocusEvent, InputHTMLAttributes, KeyboardEvent } from 'react';
+import { forwardRef, useCallback, useEffect, useId, useRef } from 'react';
 import styles from './Multiselect.module.css';
 
 import { Keys } from 'helpers/accessibility';
@@ -11,12 +12,17 @@ import { useGlobalClicks } from 'hooks/useGlobalClicks';
 
 import { Icon20ChevronDown } from 'icons/20/chevron_down';
 
-import { FormInput, FormPublicProps } from 'components/Form/FormInput/FormInput';
-import { MultiselectBase, MultiselectBaseProps } from './components/MultiselectBase/MultiselectBase';
-import { MultiselectDropdown, MultiselectDropdownProps } from './components/MultiselectDropdown/MultiselectDropdown';
-import { FOCUS_ACTION_NEXT, FOCUS_ACTION_PREV, FocusActionType, isServicePreset } from './hooks/constants';
-import { useMultiselect, UseMultiselectProps } from './hooks/useMultiselect';
-import { MultiselectOption } from './types';
+import type { FormPublicProps } from 'components/Form/FormInput/FormInput';
+import { FormInput } from 'components/Form/FormInput/FormInput';
+import type { MultiselectBaseProps } from './components/MultiselectBase/MultiselectBase';
+import { MultiselectBase } from './components/MultiselectBase/MultiselectBase';
+import type { MultiselectDropdownProps } from './components/MultiselectDropdown/MultiselectDropdown';
+import { MultiselectDropdown } from './components/MultiselectDropdown/MultiselectDropdown';
+import type { FocusActionType } from './hooks/constants';
+import { FOCUS_ACTION_NEXT, FOCUS_ACTION_PREV, isServicePreset } from './hooks/constants';
+import type { UseMultiselectProps } from './hooks/useMultiselect';
+import { useMultiselect } from './hooks/useMultiselect';
+import type { MultiselectOption } from './types';
 
 export interface MultiselectProps extends
   Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange'>,
@@ -267,7 +273,7 @@ export const Multiselect = forwardRef<HTMLDivElement, MultiselectProps>(({
   useGlobalClicks(
     handleClickOutside,
     opened ? rootRef : null,
-    opened ? dropdownScrollBoxRef : null,
+    opened ? dropdownScrollBoxRef : null
   );
 
   const controlledStatus = status || (opened ? 'focused' : 'default');

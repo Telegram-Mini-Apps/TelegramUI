@@ -3,7 +3,8 @@ import styles from './Subheadline.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Typography, TypographyProps } from '../Typography';
+import type { TypographyProps } from '../Typography';
+import { Typography } from '../Typography';
 
 type SubheadlineLevel = '1' | '2';
 

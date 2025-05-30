@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { List } from 'components/Blocks/List/List';
-import { Select, SelectProps } from './Select';
+import type { SelectProps } from './Select';
+import { Select } from './Select';
 
 const meta = {
   title: 'Form/Select',

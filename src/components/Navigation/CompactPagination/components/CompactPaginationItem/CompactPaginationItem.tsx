@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import styles from './CompactPaginationItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -23,7 +23,7 @@ export const CompactPaginationItem = ({
     className={classNames(
       styles.wrapper,
       selected && styles['wrapper--selected'],
-      className,
+      className
     )}
     {...restProps}
   >

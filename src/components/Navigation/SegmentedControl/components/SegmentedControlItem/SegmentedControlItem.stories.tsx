@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SegmentedControlItem, SegmentedControlItemProps } from './SegmentedControlItem';
+import type { SegmentedControlItemProps } from './SegmentedControlItem';
+import { SegmentedControlItem } from './SegmentedControlItem';
 
 const meta = {
   title: 'Navigation/SegmentedControl/SegmentedControl.Item',

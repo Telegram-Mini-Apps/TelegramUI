@@ -1,4 +1,5 @@
-import { AllHTMLAttributes, ElementType, forwardRef } from 'react';
+import type { AllHTMLAttributes, ElementType } from 'react';
+import { forwardRef } from 'react';
 import styles from './Typography.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -41,7 +42,7 @@ export const Typography = forwardRef(({
       plain && styles['wrapper--plain'],
       weight && stylesWeight[weight],
       caps && styles['wrapper--caps'],
-      className,
+      className
     )}
     {...restProps}
   />

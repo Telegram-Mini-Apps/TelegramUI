@@ -1,9 +1,9 @@
-import { ImageProps } from 'components/Blocks/Image/Image';
+import type { ImageProps } from 'components/Blocks/Image/Image';
 import { Caption } from 'components/Typography/Caption/Caption';
 import { Headline } from 'components/Typography/Headline/Headline';
 import { LargeTitle } from 'components/Typography/LargeTitle/LargeTitle';
 import { Title } from 'components/Typography/Title/Title';
-import { TypographyProps } from 'components/Typography/Typography';
+import type { TypographyProps } from 'components/Typography/Typography';
 
 export interface AvatarAcronymProps extends TypographyProps {
   size: ImageProps['size'];

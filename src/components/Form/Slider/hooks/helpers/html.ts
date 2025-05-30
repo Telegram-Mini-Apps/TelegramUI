@@ -1,9 +1,9 @@
-import { AriaAttributes } from 'react';
+import type { AriaAttributes } from 'react';
 
 import type { InternalDraggingType } from '../types';
 
 export const extractSliderAriaAttributes = <T extends AriaAttributes>(
-  restProps: T,
+  restProps: T
 ) => {
   const {
     'aria-label': ariaLabel,
@@ -23,7 +23,7 @@ export const extractSliderAriaAttributes = <T extends AriaAttributes>(
 };
 
 export const getDraggingTypeByTargetDataset = <T extends (EventTarget & HTMLElement) | null>(
-  target: T,
+  target: T
 ) => {
   if (!target) {
     return null;

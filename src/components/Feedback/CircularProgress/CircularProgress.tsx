@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './CircularProgress.module.css';
 
 import { getCircleAttributes } from 'components/Feedback/CircularProgress/helpers/getCircleAttributes';

@@ -35,7 +35,7 @@ export const scaleAndClampValue = (
   value: number,
   from: [number, number],
   to: [number, number],
-  options: { step?: number } = {},
+  options: { step?: number } = {}
 ) => {
   const scaled = ((value - from[0]) / (from[1] - from[0])) * (to[1] - to[0]) + to[0];
   return roundedClampWithStep(scaled, to[0], to[1], options.step);
@@ -48,7 +48,7 @@ export const offsetXToScaledValue = (
   width: number,
   min: number,
   max: number,
-  step?: number,
+  step?: number
 ) => {
   return scaleAndClampValue(startX, [0, width], [min, max], { step });
 };

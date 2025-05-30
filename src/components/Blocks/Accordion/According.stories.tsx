@@ -5,7 +5,8 @@ import { hideControls } from 'storybook/controls';
 
 import { Blockquote } from 'components/Blocks/Blockquote/Blockquote';
 import { Section } from 'components/Blocks/Section/Section';
-import { Accordion, AccordionProps } from './Accordion';
+import type { AccordionProps } from './Accordion';
+import { Accordion } from './Accordion';
 
 const meta = {
   title: 'Blocks/Accordion',

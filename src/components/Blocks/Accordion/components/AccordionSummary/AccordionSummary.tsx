@@ -7,7 +7,8 @@ import { callMultiple } from 'helpers/function';
 import { Icon24ChevronDown } from 'icons/24/chevron_down';
 
 import { AccordionContext } from 'components/Blocks/Accordion/AccordionContext';
-import { Cell, CellProps } from 'components/Blocks/Cell/Cell';
+import type { CellProps } from 'components/Blocks/Cell/Cell';
+import { Cell } from 'components/Blocks/Cell/Cell';
 
 export interface AccordionSummaryProps extends CellProps {}
 
@@ -35,7 +36,7 @@ export const AccordionSummary = ({
         <Icon24ChevronDown
           className={classNames(
             styles.chevron,
-            expanded && styles['chevron--expanded'],
+            expanded && styles['chevron--expanded']
           )}
         />
       )}

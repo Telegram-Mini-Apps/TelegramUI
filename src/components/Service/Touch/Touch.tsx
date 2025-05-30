@@ -2,13 +2,14 @@
 
 'use client';
 
-import { AllHTMLAttributes, DragEvent, ElementType, MouseEvent as ReactMouseEvent, useMemo, useRef } from 'react';
+import type { AllHTMLAttributes, DragEvent, ElementType, MouseEvent as ReactMouseEvent } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 import { useEventListener } from 'hooks/useEventListener';
 
 import { coordX, coordY, getSupportedEvents, initGesture, touchEnabled } from './helpers/touch';
-import { CustomTouchEvent, Gesture } from './helpers/types';
+import type { CustomTouchEvent, Gesture } from './helpers/types';
 
 export interface TouchProps extends AllHTMLAttributes<HTMLElement> {
   usePointerHover?: boolean;
@@ -111,10 +112,10 @@ export const Touch = ({
           : // Mouse events fire on the element under the pointer, so we lose move / end
         // if the pointer goes outside the container.
         // Can be fixed by PointerEvents' setPointerCapture later
-          window.document,
+          window.document
       );
     },
-    { capture: useCapture, passive: false },
+    { capture: useCapture, passive: false }
   );
   const containerRef = useRef();
 

@@ -1,4 +1,5 @@
-import { Children, HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { Children } from 'react';
 import styles from './Breadcrumbs.module.css';
 
 import { classNames } from 'helpers/classNames';

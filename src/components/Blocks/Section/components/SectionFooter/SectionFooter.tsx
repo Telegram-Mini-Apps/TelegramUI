@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './SectionFooter.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -8,7 +8,7 @@ import { usePlatform } from 'hooks/usePlatform';
 
 import { Caption } from 'components/Typography/Caption/Caption';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
-import { TypographyProps } from 'components/Typography/Typography';
+import type { TypographyProps } from 'components/Typography/Typography';
 
 export interface SectionFooterProps extends HTMLAttributes<HTMLElement> {
   /** Centering text, adding additional indents */
@@ -34,7 +34,7 @@ export const SectionFooter = ({ className, children, centered, ...restProps }: S
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         centered && styles['wrapper--centered'],
-        className,
+        className
       )}
       {...restProps}
     >

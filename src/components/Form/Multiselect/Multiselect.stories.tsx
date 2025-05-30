@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-import { Decorator, Meta, StoryObj } from '@storybook/react';
+import type { Decorator, Meta, StoryObj } from '@storybook/react';
 import { hideControls, setControlsTypes } from 'storybook/controls';
 
 import { Section } from 'components';
 import { List } from 'components/Blocks/List/List';
-import { MultiselectOption } from 'components/Form/Multiselect/types';
-import { Multiselect, MultiselectProps } from './Multiselect';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { MultiselectProps } from './Multiselect';
+import { Multiselect } from './Multiselect';
 
 const meta = {
   title: 'Form/Multiselect',

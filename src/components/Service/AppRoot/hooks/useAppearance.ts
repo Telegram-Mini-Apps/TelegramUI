@@ -4,7 +4,8 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 
 import { getTelegramData } from 'helpers/telegram';
 
-import { AppRootContext, AppRootContextInterface } from '../AppRootContext';
+import type { AppRootContextInterface } from '../AppRootContext';
+import { AppRootContext } from '../AppRootContext';
 import { getBrowserAppearanceSubscriber } from './helpers/getBrowserAppearanceSubscriber';
 import { getInitialAppearance } from './helpers/getInitialAppearance';
 

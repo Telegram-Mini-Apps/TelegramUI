@@ -1,6 +1,7 @@
 'use client';
 
-import { forwardRef, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Selectable.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -36,7 +37,7 @@ export const Selectable = forwardRef<HTMLInputElement, SelectableProps>(({
       className={classNames(
         styles.wrapper,
         disabled && styles['wrapper--disabled'],
-        className,
+        className
       )}
     >
       <VisuallyHidden

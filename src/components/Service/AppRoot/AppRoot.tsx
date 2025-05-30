@@ -1,13 +1,15 @@
 'use client';
 
-import { forwardRef, HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './AppRoot.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { multipleRef } from 'helpers/react/refs';
 import { useObjectMemo } from 'hooks/useObjectMemo';
 
-import { AppRootContext, AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
+import type { AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
+import { AppRootContext } from 'components/Service/AppRoot/AppRootContext';
 import { useAppearance } from 'components/Service/AppRoot/hooks/useAppearance';
 import { usePlatform } from './hooks/usePlatform';
 import { usePortalContainer } from './hooks/usePortalContainer';
@@ -47,7 +49,7 @@ export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(({
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         appearance === 'dark' && styles['wrapper--dark'],
-        className,
+        className
       )}
       {...restProps}
     >

@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Progress.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -35,7 +35,7 @@ export const Progress = ({ value = 0, className, ...restProps }: ProgressProps) 
       className={classNames(
         styles.wrapper,
         platform === 'base' && styles['wrapper--base'],
-        className,
+        className
       )}
       {...restProps}
     >

@@ -1,6 +1,7 @@
 'use client';
 
-import { AllHTMLAttributes, ElementType, forwardRef, ReactNode } from 'react';
+import type { AllHTMLAttributes, ElementType, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import styles from './Button.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -75,7 +76,7 @@ export const Button = forwardRef(({
         platform === 'ios' && styles['wrapper--ios'],
         stretched && styles['wrapper--stretched'],
         loading && styles['wrapper--loading'],
-        className,
+        className
       )}
       {...restProps}
     >

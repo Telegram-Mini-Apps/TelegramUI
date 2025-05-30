@@ -1,11 +1,13 @@
-import { ComponentType, forwardRef, HTMLAttributes, SVGAttributes } from 'react';
+import type { ComponentType, HTMLAttributes, SVGAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './FloatingArrow.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Placement } from '@floating-ui/react-dom';
+import type { Placement } from '@floating-ui/react-dom';
 
-import { Coords, getArrowPositionData } from './helpers/getArrowPositionData';
+import type { Coords } from './helpers/getArrowPositionData';
+import { getArrowPositionData } from './helpers/getArrowPositionData';
 import { DefaultIcon } from './icons/arrow';
 
 const placementStyles = {
@@ -46,7 +48,7 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(({
     placement,
     coords,
     offset,
-    isStaticOffset,
+    isStaticOffset
   );
 
   return (
@@ -59,7 +61,7 @@ export const FloatingArrow = forwardRef<HTMLDivElement, FloatingArrowProps>(({
       className={classNames(
         styles.wrapper,
         arrowPlacement && placementStyles[arrowPlacement],
-        className,
+        className
       )}
       {...restProps}
     >

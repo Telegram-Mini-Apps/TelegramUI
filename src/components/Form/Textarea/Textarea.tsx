@@ -1,12 +1,14 @@
 'use client';
 
-import { forwardRef, TextareaHTMLAttributes } from 'react';
+import type { TextareaHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Textarea.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { FormInput, FormPublicProps } from 'components/Form/FormInput/FormInput';
+import type { FormPublicProps } from 'components/Form/FormInput/FormInput';
+import { FormInput } from 'components/Form/FormInput/FormInput';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
@@ -33,7 +35,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
     >
       <TypographyComponent

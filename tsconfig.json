@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "lib": ["dom", "es2015"],
+    "target": "es2022",
+    "lib": [
+      "dom",
+      "es2022"
+    ],
     "module": "commonjs",
     "baseUrl": ".",
     "paths": {
-      "*": ["./src/*"]
+      "*": [
+        "./src/*"
+      ]
     },
     "outDir": "./dist",
     "esModuleInterop": true,
