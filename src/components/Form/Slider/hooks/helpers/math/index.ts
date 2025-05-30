@@ -9,8 +9,8 @@ export const getDecimalPrecision = (num: number) => {
   // When num is bigger than 1 or less than -1 it won't get converted to this notation so it's fine.
   if (Math.abs(num) < 1) {
     const parts = num.toExponential().split('e-');
-    const matissaDecimalPart = parts[0].split('.')[1];
-    return (matissaDecimalPart ? matissaDecimalPart.length : 0) + parseInt(parts[1], 10);
+    const matissaDecimalPart = parts[0]!.split('.')[1];
+    return (matissaDecimalPart ? matissaDecimalPart.length : 0) + parseInt(parts[1]!, 10);
   }
 
   const decimalPart = num.toString().split('.')[1];

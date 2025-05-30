@@ -35,7 +35,7 @@ const tabs = [
 
 export const Playground: StoryObj<TabbarProps> = {
   render: () => {
-    const [currentTab, setCurrentTab] = useState(tabs[0].id);
+    const [currentTab, setCurrentTab] = useState(tabs[0]!.id);
 
     return (
       <Tabbar>
@@ -53,11 +53,10 @@ export const Playground: StoryObj<TabbarProps> = {
     );
   },
   decorators: [
-    (Story) => (
+    Story => (
       <div style={{ height: 100 }}>
         <Story />
       </div>
     ),
   ],
 };
-

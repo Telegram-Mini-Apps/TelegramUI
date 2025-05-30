@@ -23,6 +23,7 @@ export const simulateReactInput = (
     const event = new Event('input', { bubbles: true });
     target.dispatchEvent(event);
   } catch (error) {
+    // @ts-expect-error - process.env might not be available in all environments
     if (process.env.NODE_ENV === 'development') {
       throw error;
     }

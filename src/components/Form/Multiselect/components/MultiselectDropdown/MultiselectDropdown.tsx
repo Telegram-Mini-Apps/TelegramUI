@@ -79,7 +79,8 @@ export const MultiselectDropdown = forwardRef<HTMLDivElement, MultiselectDropdow
         if (isEmptyOptionPreset(option)) {
           return (
             <Cell key="empty" readOnly className={styles.empty}>
-              {option.placeholder}
+              {/* eslint-disable-next-line @typescript-eslint/dot-notation */}
+              {option['placeholder']}
             </Cell>
           );
         }
@@ -92,7 +93,8 @@ export const MultiselectDropdown = forwardRef<HTMLDivElement, MultiselectDropdow
               onMouseDown={addOptionFromInput}
               onMouseEnter={() => setFocusedOptionIndex(index)}
             >
-              {option.actionText}
+              {/* eslint-disable-next-line @typescript-eslint/dot-notation */}
+              {option['actionText']}
             </Cell>
           );
         }

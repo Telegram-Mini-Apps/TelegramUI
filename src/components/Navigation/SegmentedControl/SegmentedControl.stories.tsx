@@ -30,8 +30,8 @@ const labels = [
 ];
 
 export const Playground: StoryObj<SegmentedControlProps> = {
-  render: (args) => {
-    const [selected, setSelected] = useState(labels[0].value);
+  render: args => {
+    const [selected, setSelected] = useState(labels[0]!.value);
 
     return (
       <SegmentedControl {...args}>
@@ -48,11 +48,10 @@ export const Playground: StoryObj<SegmentedControlProps> = {
     );
   },
   decorators: [
-    (Component) => (
+    Component => (
       <div style={{ width: 500 }}>
         <Component />
       </div>
     ),
   ],
 };
-

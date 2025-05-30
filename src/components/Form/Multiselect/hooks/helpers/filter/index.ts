@@ -38,5 +38,5 @@ export function defaultFilterFn(
     return false;
   }
 
-  return includes.some(index => index === 0 || !/\p{L}/u.test(label[index - 1]));
+  return includes.some(index => index === 0 || !/\p{L}/u.test(label[index - 1]!));
 }

@@ -57,7 +57,7 @@ export const usePagination = ({
       boundaryCount + siblingCount * 2 + 2
     ),
     // Less than endPages
-    endPages.length > 0 ? endPages[0] - 2 : count - 1
+    endPages.length > 0 ? endPages[0]! - 2 : count - 1
   );
 
   // Basic list of items to render

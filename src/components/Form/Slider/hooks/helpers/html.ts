@@ -29,10 +29,11 @@ export const getDraggingTypeByTargetDataset = <T extends (EventTarget & HTMLElem
     return null;
   }
 
-  if (['start', 'end'].includes(target.dataset.type || '')) {
-    return target.dataset.type as InternalDraggingType;
+  // eslint-disable-next-line @typescript-eslint/dot-notation
+  if (['start', 'end'].includes(target.dataset['type'] || '')) {
+    // eslint-disable-next-line @typescript-eslint/dot-notation
+    return target.dataset['type'] as InternalDraggingType;
   }
 
   return null;
 };
-

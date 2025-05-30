@@ -79,9 +79,9 @@ export const Touch = ({
 
   const listenerParams = { capture: useCapture, passive: false };
   const listeners = [
-    useEventListener(events[1], onMove, listenerParams),
-    useEventListener(events[2], onEnd, listenerParams),
-    useEventListener(events[3], onEnd, listenerParams),
+    useEventListener(events[1]!, onMove, listenerParams),
+    useEventListener(events[2]!, onEnd, listenerParams),
+    useEventListener(events[3]!, onEnd, listenerParams),
   ];
 
   const subscribe = (el: HTMLElement | Document | null | undefined) => {
@@ -89,17 +89,23 @@ export const Touch = ({
       return;
     }
 
-    listeners.forEach((l) => l.add(el));
+    listeners.forEach(l => l.add(el));
   };
 
   const unsubscribe = () => {
-    listeners.forEach((l) => l.remove());
+    listeners.forEach(l => l.remove());
   };
 
-  const enterHandler = useEventListener(usePointerHover ? 'pointerenter' : 'mouseenter', onEnter);
-  const leaveHandler = useEventListener(usePointerHover ? 'pointerleave' : 'mouseleave', onLeave);
+  const enterHandler = useEventListener(
+    usePointerHover ? 'pointerenter' : 'mouseenter',
+    onEnter
+  );
+  const leaveHandler = useEventListener(
+    usePointerHover ? 'pointerleave' : 'mouseleave',
+    onLeave
+  );
   const startHandler = useEventListener(
-    events[0],
+    events[0]!,
     (e: CustomTouchEvent) => {
       gesture.current = initGesture(coordX(e), coordY(e));
 
@@ -107,12 +113,12 @@ export const Touch = ({
       subscribe(
         touchEnabled()
           ? // Touch events fire on the initial target and won't bubble if it's removed
-        // see: #235, #1968, https://stackoverflow.com/a/45760014
-          (e.target as HTMLElement)
+            // see: #235, #1968, https://stackoverflow.com/a/45760014
+            (e.target as HTMLElement)
           : // Mouse events fire on the element under the pointer, so we lose move / end
-        // if the pointer goes outside the container.
-        // Can be fixed by PointerEvents' setPointerCapture later
-          window.document
+            // if the pointer goes outside the container.
+            // Can be fixed by PointerEvents' setPointerCapture later
+            window.document
       );
     },
     { capture: useCapture, passive: false }
@@ -227,7 +233,7 @@ export const Touch = ({
    * Click event handler for the component
    * Cancels the transition through the nested link if a swipe was detected
    */
-  const postGestureClick: typeof onClickCapture = (e) => {
+  const postGestureClick: typeof onClickCapture = e => {
     if (!didSlide.current) {
       onClickCapture && onClickCapture(e);
       return;

@@ -27,7 +27,7 @@ export const coordX = (e: CustomTouchEvent): number => {
     return e.clientX;
   }
 
-  return e.changedTouches && e.changedTouches[0].clientX;
+  return e.changedTouches && e.changedTouches[0]!.clientX;
 };
 
 /* Gets the Y-axis coordinate from a touch or mouse event */
@@ -36,7 +36,7 @@ export const coordY = (e: CustomTouchEvent): number => {
     return e.clientY;
   }
 
-  return e.changedTouches && e.changedTouches[0].clientY;
+  return e.changedTouches && e.changedTouches[0]!.clientY;
 };
 
 export const touchEnabled = () => canUseDOM && 'ontouchstart' in window;
