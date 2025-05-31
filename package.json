@@ -1,6 +1,6 @@
 {
   "name": "tmaui",
-  "version": "2.1.9-canary.1",
+  "version": "2.1.9-canary.2",
   "description": "World-class, ultimate UI developer toolkit.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/index.js",
