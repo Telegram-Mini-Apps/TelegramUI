@@ -1,0 +1,47 @@
+name: Deploy Storybook
+
+concurrency:
+  group: 'storybook-deploy'
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        id: pnpm-install
+        with:
+          version: 10.7.0
+          run_install: true
+
+      - name: Build n Deploy Storybook
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          build_command: pnpm storybook:build
+          path: storybook-static
+          checkout: false
