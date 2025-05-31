@@ -1,4 +1,5 @@
-import { Children, HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { Children } from 'react';
 import styles from './Breadcrumbs.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -33,7 +34,9 @@ export const Breadcrumbs = ({
           <div className={styles.divider}>
             {divider === 'dot' && <IconDot />}
             {divider === 'slash' && <IconSlash />}
-            {divider === 'chevron' && <Icon16Chevron className={styles.chevron} />}
+            {divider === 'chevron' && (
+              <Icon16Chevron className={styles.chevron} />
+            )}
           </div>
         )}
       </>

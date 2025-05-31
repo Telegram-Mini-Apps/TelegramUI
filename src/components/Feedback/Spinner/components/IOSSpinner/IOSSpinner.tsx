@@ -1,4 +1,4 @@
-import { SpinnerProps } from 'components/Feedback/Spinner/Spinner';
+import type { SpinnerProps } from 'components/Feedback/Spinner/Spinner';
 import { IconLarge } from './icons/large';
 import { IconMedium } from './icons/medium';
 import { IconSmall } from './icons/small';
@@ -9,11 +9,14 @@ interface IOSSpinnerProps {
 
 export const IOSSpinner = ({ size }: IOSSpinnerProps) => {
   switch (size) {
-    case 'l':
+    case 'l': {
       return <IconLarge />;
-    case 'm':
+    }
+    case 'm': {
       return <IconMedium />;
-    default:
+    }
+    default: {
       return <IconSmall />;
+    }
   }
 };

@@ -1,6 +1,6 @@
 import { canUseDOM } from 'helpers/dom';
 
-import { Telegram } from '@twa-dev/types';
+import type { Telegram } from '@twa-dev/types';
 
 declare global {
   interface Window {
@@ -10,7 +10,7 @@ declare global {
 
 export const getTelegramData = () => {
   if (!canUseDOM) {
-    return undefined;
+    return;
   }
 
   return window.Telegram?.WebApp;

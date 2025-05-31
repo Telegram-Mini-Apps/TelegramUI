@@ -22,13 +22,22 @@ export const Playground: Story = {
   args: {
     mode: 'plain',
     children: [
-      <InlineButtons.Item text="Chat">
+      <InlineButtons.Item
+        key="Chat"
+        text="Chat"
+      >
         <Icon24Chat />
       </InlineButtons.Item>,
-      <InlineButtons.Item text="Mute">
+      <InlineButtons.Item
+        key="Mute"
+        text="Mute"
+      >
         <Icon24Notifications />
       </InlineButtons.Item>,
-      <InlineButtons.Item text="QR">
+      <InlineButtons.Item
+        key="QR"
+        text="QR"
+      >
         <Icon24QR />
       </InlineButtons.Item>,
     ],

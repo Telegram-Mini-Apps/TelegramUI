@@ -1,14 +1,22 @@
 'use client';
 
-import { forwardRef, ForwardRefExoticComponent, HTMLAttributes, ReactElement, RefAttributes } from 'react';
+import type {
+  ForwardRefExoticComponent,
+  HTMLAttributes,
+  ReactElement,
+  RefAttributes,
+} from 'react';
+import { forwardRef } from 'react';
 import styles from './InlineButtons.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { useObjectMemo } from 'hooks/useObjectMemo';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { InlineButtonsItem, InlineButtonsItemProps } from './components/InlineButtonsItem/InlineButtonsItem';
-import { InlineButtonsContext, InlineButtonsContextProps } from './InlineButtonsContext';
+import type { InlineButtonsItemProps } from './components/InlineButtonsItem/InlineButtonsItem';
+import { InlineButtonsItem } from './components/InlineButtonsItem/InlineButtonsItem';
+import type { InlineButtonsContextProps } from './InlineButtonsContext';
+import { InlineButtonsContext } from './InlineButtonsContext';
 
 export interface InlineButtonsProps extends HTMLAttributes<HTMLDivElement> {
   /** Dictates the styling mode for the inline buttons, affecting color and background. */
@@ -20,7 +28,9 @@ export interface InlineButtonsProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<InlineButtonsItemProps>[];
 }
 
-type InlineButtonsWithComponents = ForwardRefExoticComponent<InlineButtonsProps & RefAttributes<HTMLDivElement>> & {
+type InlineButtonsWithComponents = ForwardRefExoticComponent<
+  InlineButtonsProps & RefAttributes<HTMLDivElement>
+> & {
   Item: typeof InlineButtonsItem;
 };
 
@@ -30,30 +40,27 @@ type InlineButtonsWithComponents = ForwardRefExoticComponent<InlineButtonsProps 
  * consistent styling across all child components. It ensures visual consistency across different
  * platforms and supports custom styling modes.
  */
-export const InlineButtons = forwardRef(({
-  mode,
-  className,
-  children,
-  ...restProps
-}: InlineButtonsProps, ref) => {
-  const platform = usePlatform();
-  const contextValue = useObjectMemo({ mode });
+export const InlineButtons = forwardRef(
+  ({ mode, className, children, ...restProps }: InlineButtonsProps, ref) => {
+    const platform = usePlatform();
+    const contextValue = useObjectMemo({ mode });
 
-  return (
-    <div
-      ref={ref}
-      className={classNames(
-        styles.wrapper,
-        platform === 'ios' && styles['wrapper--ios'],
-        className,
-      )}
-      {...restProps}
-    >
-      <InlineButtonsContext.Provider value={contextValue}>
-        {children}
-      </InlineButtonsContext.Provider>
-    </div>
-  );
-}) as InlineButtonsWithComponents;
+    return (
+      <div
+        ref={ref}
+        className={classNames(
+          styles.wrapper,
+          platform === 'ios' && styles['wrapper--ios'],
+          className
+        )}
+        {...restProps}
+      >
+        <InlineButtonsContext.Provider value={contextValue}>
+          {children}
+        </InlineButtonsContext.Provider>
+      </div>
+    );
+  }
+) as InlineButtonsWithComponents;
 
 InlineButtons.Item = InlineButtonsItem;

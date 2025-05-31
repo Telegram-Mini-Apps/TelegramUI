@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './TabbarItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -10,7 +10,8 @@ import { usePlatform } from 'hooks/usePlatform';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Caption } from 'components/Typography/Caption/Caption';
 
-export interface TabbarItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface TabbarItemProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Indicates whether the tab is selected or active. */
   selected?: boolean;
   /** The text displayed on the tab. */
@@ -43,15 +44,11 @@ export const TabbarItem = ({
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         selected && styles['wrapper--selected'],
-        className,
+        className
       )}
       {...restProps}
     >
-      {hasReactNode(children) && (
-        <div className={styles.icon}>
-          {children}
-        </div>
-      )}
+      {hasReactNode(children) && <div className={styles.icon}>{children}</div>}
       {hasReactNode(text) && (
         <Caption
           className={styles.text}

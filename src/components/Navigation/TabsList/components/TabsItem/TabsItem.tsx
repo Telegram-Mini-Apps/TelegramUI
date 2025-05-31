@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import styles from './TabsItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -34,15 +34,11 @@ export const TabsItem = ({
       className={classNames(
         styles.wrapper,
         selected && styles['wrapper--selected'],
-        className,
+        className
       )}
       {...restProps}
     >
-      <Text
-        weight={platform === 'ios' ? iosWeight : '2'}
-      >
-        {children}
-      </Text>
+      <Text weight={platform === 'ios' ? iosWeight : '2'}>{children}</Text>
     </Tappable>
   );
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import styles from './SegmentedControlItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -9,7 +9,8 @@ import { usePlatform } from 'hooks/usePlatform';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Caption } from 'components/Typography/Caption/Caption';
 
-export interface SegmentedControlItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface SegmentedControlItemProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Whether the item is selected. Used by the parent SegmentedControl to style accordingly. */
   selected?: boolean;
 }
@@ -32,7 +33,7 @@ export const SegmentedControlItem = ({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        className,
+        className
       )}
       {...restProps}
     >

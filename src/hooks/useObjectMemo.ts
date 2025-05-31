@@ -13,4 +13,3 @@ export const useObjectMemo = <T>(object: T): T => {
 
   return cache.current;
 };
-

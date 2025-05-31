@@ -1,13 +1,17 @@
 'use client';
 
-import { ChangeEvent, useMemo, useRef, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 import { isEqual } from 'helpers/equal';
 import { clamp } from 'helpers/math';
 
-import { SliderProps } from 'components/Form/Slider/Slider';
+import type { SliderProps } from 'components/Form/Slider/Slider';
 import type { TouchEvent } from 'components/Service/Touch/Touch';
-import { extractSliderAriaAttributes, getDraggingTypeByTargetDataset } from './helpers/html';
+import {
+  extractSliderAriaAttributes,
+  getDraggingTypeByTargetDataset,
+} from './helpers/html';
 import { offsetXToScaledValue, toPercent } from './helpers/math';
 import {
   determineSnapDirection,
@@ -15,7 +19,7 @@ import {
   updateInternalStateByNativeChange,
   updateInternalStateValue,
 } from './helpers/state';
-import { InternalGestureRef, InternalValueState, Step } from './types';
+import type { InternalGestureRef, InternalValueState, Step } from './types';
 
 export const useSlider = ({
   step = 1,
@@ -54,19 +58,30 @@ export const useSlider = ({
   const thumbStartInputRef = useRef<HTMLInputElement>(null);
   const thumbEndInputRef = useRef<HTMLInputElement>(null);
 
-  const changeValue = (nextValue: InternalValueState, event: TouchEvent | ChangeEvent) => {
+  const changeValue = (
+    nextValue: InternalValueState,
+    event: TouchEvent | ChangeEvent
+  ) => {
     if (disabled || isEqual(nextValue[0], nextValue[1])) {
       return;
     }
 
     if (multipleProp) {
       if (isMultipleValues(nextValue)) {
-        !isControlled && setValue(nextValue);
-        onChange && onChange(nextValue, event);
+        if (!isControlled) {
+          setValue(nextValue);
+        }
+        if (onChange) {
+          onChange(nextValue, event);
+        }
       }
     } else {
-      !isControlled && setValue(nextValue[0]);
-      onChange && onChange(nextValue[0], event);
+      if (!isControlled) {
+        setValue(nextValue[0]);
+      }
+      if (onChange) {
+        onChange(nextValue[0], event);
+      }
     }
   };
 
@@ -82,10 +97,22 @@ export const useSlider = ({
       return;
     }
 
-    const foundDraggingType = getDraggingTypeByTargetDataset(event.originalEvent.target);
+    const foundDraggingType = getDraggingTypeByTargetDataset(
+      event.originalEvent.target
+    );
     const nextStartX = event.startX - nextContainerX;
-    const nextValue = offsetXToScaledValue(nextStartX, nextContainerWidth, min, max, step);
-    const nextDragging = determineSnapDirection(value, nextValue, foundDraggingType);
+    const nextValue = offsetXToScaledValue(
+      nextStartX,
+      nextContainerWidth,
+      min,
+      max,
+      step
+    );
+    const nextDragging = determineSnapDirection(
+      value,
+      nextValue,
+      foundDraggingType
+    );
 
     gesture.dragging = nextDragging;
     gesture.containerWidth = nextContainerWidth;
@@ -96,19 +123,21 @@ export const useSlider = ({
       nextValue,
       min,
       max,
-      nextDragging,
+      nextDragging
     );
 
     const [nextStartValue, nextEndValue] = updatedInternalStateValue;
     if (
       thumbStartInputRef.current &&
-      (foundDraggingType === 'start' || (nextStartValue !== startValue && nextEndValue === endValue))
+      (foundDraggingType === 'start' ||
+        (nextStartValue !== startValue && nextEndValue === endValue))
     ) {
       thumbStartInputRef.current.focus();
       event.originalEvent.preventDefault();
     } else if (
       thumbEndInputRef.current &&
-      (foundDraggingType === 'end' || (nextEndValue !== endValue && nextStartValue === startValue))
+      (foundDraggingType === 'end' ||
+        (nextEndValue !== endValue && nextStartValue === startValue))
     ) {
       thumbEndInputRef.current.focus();
       event.originalEvent.preventDefault();
@@ -123,9 +152,18 @@ export const useSlider = ({
 
     const { shiftX = 0 } = event;
     const nextStartX = startX + shiftX;
-    const nextValue = offsetXToScaledValue(nextStartX, containerWidth, min, max, step);
+    const nextValue = offsetXToScaledValue(
+      nextStartX,
+      containerWidth,
+      min,
+      max,
+      step
+    );
 
-    changeValue(updateInternalStateValue(value, nextValue, min, max, dragging), event);
+    changeValue(
+      updateInternalStateValue(value, nextValue, min, max, dragging),
+      event
+    );
 
     event.originalEvent.stopPropagation();
     event.originalEvent.preventDefault();
@@ -141,13 +179,14 @@ export const useSlider = ({
       updateInternalStateByNativeChange(
         value,
         Number(event.target.value),
-        getDraggingTypeByTargetDataset(event.target),
+        getDraggingTypeByTargetDataset(event.target)
       ),
-      event,
+      event
     );
   };
 
-  const { aria, ...restPropsWithoutArea } = extractSliderAriaAttributes(restProps);
+  const { aria, ...restPropsWithoutArea } =
+    extractSliderAriaAttributes(restProps);
   const getInputProps = (isEndInput: boolean) => {
     const index = isEndInput ? 1 : 0;
     return {
@@ -158,7 +197,9 @@ export const useSlider = ({
       max: !isEndInput && multiple ? endValue : max,
       disabled,
       'aria-label': getAriaLabel ? getAriaLabel(index) : aria.ariaLabel,
-      'aria-valuetext': getAriaValueText ? getAriaValueText(startValue, index) : aria.ariaValueText,
+      'aria-valuetext': getAriaValueText
+        ? getAriaValueText(startValue, index)
+        : aria.ariaValueText,
       'aria-labelledby': aria.ariaLabelledBy,
       onChange: handleChangeByNativeInput,
     };
@@ -166,7 +207,7 @@ export const useSlider = ({
 
   const getStepsCoordinates = () => {
     if (step === 1) {
-      return undefined;
+      return;
     }
 
     const steps: Step[] = [];

@@ -1,21 +1,25 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
-import { Placement } from '@floating-ui/react-dom';
+import type { Placement } from '@floating-ui/react-dom';
 
-export type Coords = {
+export interface Coords {
   x?: number;
   y?: number;
-};
+}
+
+const defaultCoords = { x: 0, y: 0 };
 
 export const getArrowPositionData = (
   placement: Placement,
-  coords: Coords = { x: 0, y: 0 },
+  coords: Coords = defaultCoords,
   offset = 0,
-  isStaticOffset = false,
+  isStaticOffset = false
 ): [undefined | 'right' | 'bottom' | 'left', CSSProperties] => {
   const withOffset = (isVerticalPlacement: boolean) => {
     const parsedCoords = { x: coords.x || 0, y: coords.y || 0 };
-    return isStaticOffset ? offset : parsedCoords[isVerticalPlacement ? 'y' : 'x'] + offset;
+    return isStaticOffset
+      ? offset
+      : parsedCoords[isVerticalPlacement ? 'y' : 'x'] + offset;
   };
 
   if (placement.startsWith('top')) {
@@ -55,5 +59,4 @@ export const getArrowPositionData = (
       right: 0,
     },
   ];
-
 };

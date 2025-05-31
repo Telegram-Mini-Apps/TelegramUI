@@ -10,5 +10,7 @@
   "arrowParens": "always",
   "proseWrap": "never",
   "htmlWhitespaceSensitivity": "strict",
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "singleAttributePerLine": true,
+  "parser": "babel-ts"
 }

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
 
 import { Placeholder } from 'components';
-import { ModalHeader, ModalHeaderProps } from './ModalHeader';
+import type { ModalHeaderProps } from './ModalHeader';
+import { ModalHeader } from './ModalHeader';
 
 const meta = {
   title: 'Overlays/Modal/Modal.Header',

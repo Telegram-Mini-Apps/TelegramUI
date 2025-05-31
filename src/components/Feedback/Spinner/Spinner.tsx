@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Spinner.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -14,20 +14,11 @@ export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
   size: 's' | 'm' | 'l';
 }
 
-const sizeStyles = {
-  s: styles['wrapper--s'],
-  m: styles['wrapper--m'],
-  l: styles['wrapper--l'],
-};
-
 /**
  * Provides a visual indicator for loading states across different platforms. It automatically selects
  * an appropriate spinner style based on the current platform, allowing for a consistent user experience.
  */
-export const Spinner = ({
-  size = 'm',
-  className,
-}: SpinnerProps) => {
+export const Spinner = ({ size = 'm', className }: SpinnerProps) => {
   const platform = usePlatform();
 
   const Component = platform === 'ios' ? IOSSpinner : BaseSpinner;
@@ -37,8 +28,7 @@ export const Spinner = ({
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
-        sizeStyles[size],
-        className,
+        className
       )}
     >
       <Component size={size} />

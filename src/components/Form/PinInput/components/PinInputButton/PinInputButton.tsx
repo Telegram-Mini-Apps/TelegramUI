@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import styles from './PinInputButton.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -7,9 +7,9 @@ import { usePlatform } from 'hooks/usePlatform';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { LargeTitle } from 'components/Typography/LargeTitle/LargeTitle';
 import { Title } from 'components/Typography/Title/Title';
-import { TypographyProps } from 'components/Typography/Typography';
+import type { TypographyProps } from 'components/Typography/Typography';
 
-export interface PinInputButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+export type PinInputButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ButtonTypography = (props: TypographyProps) => {
   const platform = usePlatform();
@@ -32,7 +32,7 @@ export const PinInputButton = ({
       Component="button"
       className={classNames(
         styles.wrapper,
-        platform === 'ios' && styles['wrapper--ios'],
+        platform === 'ios' && styles['wrapper--ios']
       )}
       {...restProps}
     >

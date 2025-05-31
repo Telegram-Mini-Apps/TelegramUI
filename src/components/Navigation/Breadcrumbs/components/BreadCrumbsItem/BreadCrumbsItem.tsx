@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ElementType } from 'react';
+import type { AllHTMLAttributes, ElementType } from 'react';
 import styles from './BreadCrumbsItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -15,7 +15,15 @@ export const BreadCrumbsItem = ({
   children,
   ...restProps
 }: BreadCrumbsItemProps) => (
-  <Component className={classNames(styles.wrapper, className)} {...restProps}>
-    <Subheadline level="2" weight="2">{children}</Subheadline>
+  <Component
+    className={classNames(styles.wrapper, className)}
+    {...restProps}
+  >
+    <Subheadline
+      level="2"
+      weight="2"
+    >
+      {children}
+    </Subheadline>
   </Component>
 );

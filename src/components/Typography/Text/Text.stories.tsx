@@ -16,15 +16,26 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   render: (args) => (
     <>
-      <Text weight="3" {...args}>
+      <Text
+        weight="3"
+        {...args}
+      >
         Text · Regular
       </Text>
-      <br /><br />
-      <Text weight="2" {...args}>
+      <br />
+      <br />
+      <Text
+        weight="2"
+        {...args}
+      >
         Text · Semibold
       </Text>
-      <br /><br />
-      <Text weight="1" {...args}>
+      <br />
+      <br />
+      <Text
+        weight="1"
+        {...args}
+      >
         Text · Bold
       </Text>
     </>

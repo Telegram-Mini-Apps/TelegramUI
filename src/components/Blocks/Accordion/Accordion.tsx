@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { useObjectMemo } from 'hooks/useObjectMemo';
 
@@ -48,7 +48,11 @@ export const Accordion = ({
     onChange,
   });
 
-  return <AccordionContext.Provider value={context}>{children}</AccordionContext.Provider>;
+  return (
+    <AccordionContext.Provider value={context}>
+      {children}
+    </AccordionContext.Provider>
+  );
 };
 
 Accordion.Summary = AccordionSummary;

@@ -7,9 +7,10 @@ import { callMultiple } from 'helpers/function';
 import { Icon24ChevronDown } from 'icons/24/chevron_down';
 
 import { AccordionContext } from 'components/Blocks/Accordion/AccordionContext';
-import { Cell, CellProps } from 'components/Blocks/Cell/Cell';
+import type { CellProps } from 'components/Blocks/Cell/Cell';
+import { Cell } from 'components/Blocks/Cell/Cell';
 
-export interface AccordionSummaryProps extends CellProps {}
+export type AccordionSummaryProps = CellProps;
 
 /**
  * `AccordionSummary` serves as the clickable header for an accordion section, toggling the visibility of the content.
@@ -22,7 +23,8 @@ export const AccordionSummary = ({
   children,
   ...restProps
 }: AccordionSummaryProps) => {
-  const { expanded, labelId, contentId, onChange } = useContext(AccordionContext);
+  const { expanded, labelId, contentId, onChange } =
+    useContext(AccordionContext);
   const toggle = () => onChange(!expanded);
 
   return (
@@ -31,14 +33,16 @@ export const AccordionSummary = ({
       aria-expanded={expanded}
       aria-controls={contentId}
       onClick={callMultiple(toggle, onClick)}
-      after={after || (
-        <Icon24ChevronDown
-          className={classNames(
-            styles.chevron,
-            expanded && styles['chevron--expanded'],
-          )}
-        />
-      )}
+      after={
+        after || (
+          <Icon24ChevronDown
+            className={classNames(
+              styles.chevron,
+              expanded && styles['chevron--expanded']
+            )}
+          />
+        )
+      }
       {...restProps}
     >
       {children}

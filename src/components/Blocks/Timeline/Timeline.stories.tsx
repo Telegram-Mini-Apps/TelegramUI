@@ -44,7 +44,10 @@ export const Playground: Story = {
   args: {
     active: 2,
     children: TimelineItems.map((item) => (
-      <Timeline.Item key={item.key} header={item.header}>
+      <Timeline.Item
+        key={item.key}
+        header={item.header}
+      >
         {item.children}
       </Timeline.Item>
     )),

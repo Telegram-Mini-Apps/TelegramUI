@@ -23,12 +23,14 @@ export const Playground: Story = {
     const [value, setValue] = useState('');
 
     return (
-      <List style={{
-        width: 400,
-        maxWidth: '100%',
-        margin: 'auto',
-        background: 'var(--tgui--secondary_bg_color)',
-      }}>
+      <List
+        style={{
+          width: 400,
+          maxWidth: '100%',
+          margin: 'auto',
+          background: 'var(--tgui--secondary_bg_color)',
+        }}
+      >
         <Input
           header="Input"
           placeholder="I am usual input, just leave me alone"
@@ -54,7 +56,7 @@ export const Playground: Story = {
           placeholder="Write and clean me"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          after={(
+          after={
             <Tappable
               Component="div"
               style={{ display: 'flex' }}
@@ -62,10 +64,9 @@ export const Playground: Story = {
             >
               <Icon24Close />
             </Tappable>
-          )}
+          }
         />
       </List>
     );
   },
 } satisfies Story;
-

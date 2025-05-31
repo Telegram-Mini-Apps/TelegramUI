@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Badge.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -45,17 +45,24 @@ export const Badge = ({
   return (
     <span
       className={classNames(
-        styles.wrapper,
         typeStyles[type],
         modeStyles[mode],
         isNumber && large && styles['wrapper--large'],
-        className,
+        className
       )}
       {...restProps}
     >
       {hasReactNode(children) && isNumber && (
         <>
-          {large && <Subheadline Component="span" level="2" weight="2">{children}</Subheadline>}
+          {large && (
+            <Subheadline
+              Component="span"
+              level="2"
+              weight="2"
+            >
+              {children}
+            </Subheadline>
+          )}
           {!large && <Caption weight="2">{children}</Caption>}
         </>
       )}

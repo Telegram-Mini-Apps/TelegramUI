@@ -3,7 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
 
-import { TabsList, TabsListProps } from './TabsList';
+import type { TabsListProps } from './TabsList';
+import { TabsList } from './TabsList';
 
 const meta = {
   title: 'Navigation/TabsList',
@@ -30,7 +31,7 @@ const labels = [
 
 export const Playground: StoryObj<TabsListProps> = {
   render: (args) => {
-    const [selected, setSelected] = useState(labels[0].value);
+    const [selected, setSelected] = useState(labels[0]!.value);
 
     return (
       <TabsList {...args}>
@@ -54,4 +55,3 @@ export const Playground: StoryObj<TabsListProps> = {
     ),
   ],
 };
-

@@ -1,6 +1,6 @@
-import { ChangeEvent, SyntheticEvent } from 'react';
+import type { ChangeEvent, SyntheticEvent } from 'react';
 
-import { PaginationType } from './enum';
+import type { PaginationType } from './enum';
 
 export interface UsePaginationProps {
   /** Number of always visible pages at the beginning and end. */

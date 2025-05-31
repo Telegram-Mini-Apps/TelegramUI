@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ElementType } from 'react';
+import type { AllHTMLAttributes, ElementType } from 'react';
 import styles from './HorizontalScroll.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -13,7 +13,10 @@ export const HorizontalScroll = ({
   children,
   ...restProps
 }: HorizontalScrollProps) => (
-  <Component className={classNames(styles.wrapper, className)} {...restProps}>
+  <Component
+    className={classNames(styles.wrapper, className)}
+    {...restProps}
+  >
     {children}
   </Component>
 );

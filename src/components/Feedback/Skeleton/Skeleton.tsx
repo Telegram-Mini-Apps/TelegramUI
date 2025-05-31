@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Skeleton.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -26,7 +26,7 @@ export const Skeleton = ({
       styles.wrapper,
       visible && styles['wrapper--visible'],
       withoutAnimation && styles['wrapper--noAnimation'],
-      className,
+      className
     )}
     {...restProps}
   >

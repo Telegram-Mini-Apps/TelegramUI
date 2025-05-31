@@ -1,6 +1,7 @@
 'use client';
 
-import { HTMLAttributes, ReactElement, ReactNode, useEffect, useState } from 'react';
+import type { HTMLAttributes, ReactElement, ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Snackbar.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -8,7 +9,7 @@ import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 import { useTimeout } from 'hooks/useTimeout';
 
-import { LinkProps } from 'components/Navigation/Link/Link';
+import type { LinkProps } from 'components/Navigation/Link/Link';
 import { RootRenderer } from 'components/Service/RootRenderer/RootRenderer';
 import { Caption } from 'components/Typography/Caption/Caption';
 import { SnackbarButton } from './components/SnackbarButton/SnackbarButton';
@@ -65,26 +66,20 @@ export const Snackbar = ({
           styles.wrapper,
           platform === 'ios' && styles['wrapper--ios'],
           closing && styles['wrapper--closing'],
-          className,
+          className
         )}
         {...restProps}
       >
         <div className={styles.body}>
           {hasReactNode(before) && (
-            <div className={styles.before}>
-              {before}
-            </div>
+            <div className={styles.before}>{before}</div>
           )}
           <div className={styles.middle}>
             {hasReactNode(children) && <Caption weight="2">{children}</Caption>}
             {hasReactNode(description) && <Caption>{description}</Caption>}
             {hasReactNode(link) && <Caption>{link}</Caption>}
           </div>
-          {hasReactNode(after) && (
-            <div className={styles.after}>
-              {after}
-            </div>
-          )}
+          {hasReactNode(after) && <div className={styles.after}>{after}</div>}
         </div>
       </div>
     </RootRenderer>

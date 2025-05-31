@@ -3,7 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
 
-import { SegmentedControl, SegmentedControlProps } from './SegmentedControl';
+import type { SegmentedControlProps } from './SegmentedControl';
+import { SegmentedControl } from './SegmentedControl';
 
 const meta = {
   title: 'Navigation/SegmentedControl',
@@ -30,7 +31,7 @@ const labels = [
 
 export const Playground: StoryObj<SegmentedControlProps> = {
   render: (args) => {
-    const [selected, setSelected] = useState(labels[0].value);
+    const [selected, setSelected] = useState(labels[0]!.value);
 
     return (
       <SegmentedControl {...args}>
@@ -54,4 +55,3 @@ export const Playground: StoryObj<SegmentedControlProps> = {
     ),
   ],
 };
-

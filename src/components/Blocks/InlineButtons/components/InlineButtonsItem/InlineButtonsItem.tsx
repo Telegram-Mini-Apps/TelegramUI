@@ -1,6 +1,7 @@
 'use client';
 
-import { ButtonHTMLAttributes, ReactNode, useContext } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import { useContext } from 'react';
 import styles from './InlineButtonsItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -9,9 +10,11 @@ import { usePlatform } from 'hooks/usePlatform';
 
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Caption } from 'components/Typography/Caption/Caption';
-import { InlineButtonsContext, InlineButtonsContextProps } from '../../InlineButtonsContext';
+import type { InlineButtonsContextProps } from '../../InlineButtonsContext';
+import { InlineButtonsContext } from '../../InlineButtonsContext';
 
-export interface InlineButtonsItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface InlineButtonsItemProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Text displayed inside the button. */
   text?: string;
   /** Optional mode for styling the button, with 'plain' as the default. */
@@ -49,12 +52,20 @@ export const InlineButtonsItem = ({
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         mode !== 'plain' && modeStyles[mode],
-        className,
+        className
       )}
       {...restProps}
     >
       {children}
-      {hasReactNode(text) && <Caption className={styles.text} level="1" weight="2">{text}</Caption>}
+      {hasReactNode(text) && (
+        <Caption
+          className={styles.text}
+          level="1"
+          weight="2"
+        >
+          {text}
+        </Caption>
+      )}
     </Tappable>
   );
 };

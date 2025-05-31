@@ -2,15 +2,14 @@
 
 import { canUseDOM } from 'helpers/dom';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export function isFunction(value: unknown): value is Function {
+export function isFunction<T>(value: unknown): value is (data: unknown) => T {
   return typeof value === 'function';
 }
 
 export function throttle<T extends any[]>(
   fn: (...args: T) => unknown,
   threshold = 50,
-  scope = canUseDOM ? window : undefined,
+  scope = canUseDOM ? window : undefined
 ) {
   let prevDate: number = Date.now() - threshold;
   let timeoutId: ReturnType<typeof setTimeout>;
@@ -41,7 +40,7 @@ export function throttle<T extends any[]>(
 export function debounce<T extends any[]>(
   fn: (...args: T) => unknown,
   delay: number,
-  context = canUseDOM ? window : undefined,
+  context = canUseDOM ? window : undefined
 ) {
   let timeoutId: ReturnType<typeof setTimeout>;
   let args: T;

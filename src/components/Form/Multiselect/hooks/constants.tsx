@@ -1,4 +1,4 @@
-import { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
 
 export type FocusActionType = 'next' | 'prev';
 

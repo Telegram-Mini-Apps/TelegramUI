@@ -1,14 +1,25 @@
-import { forwardRef, ForwardRefExoticComponent, Fragment, MouseEvent, RefAttributes, RefObject } from 'react';
+import type {
+  ForwardRefExoticComponent,
+  MouseEvent,
+  RefAttributes,
+  RefObject,
+} from 'react';
+import { forwardRef, Fragment } from 'react';
 import styles from './MultiselectDropdown.module.css';
 
-import { Cell, CellProps } from 'components/Blocks/Cell/Cell';
-import { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { CellProps } from 'components/Blocks/Cell/Cell';
+import { Cell } from 'components/Blocks/Cell/Cell';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
 import { Popper } from 'components/Overlays/Popper/Popper';
-import { isCreateNewOptionPreset, isEmptyOptionPreset } from '../../hooks/constants';
-import { UseMultiselectProps } from '../../hooks/useMultiselect';
+import {
+  isCreateNewOptionPreset,
+  isEmptyOptionPreset,
+} from '../../hooks/constants';
+import type { UseMultiselectProps } from '../../hooks/useMultiselect';
 import { renderOptionDefault } from './constants';
 
-export interface MultiselectDropdownProps extends Required<Pick<UseMultiselectProps, 'options' | 'value'>> {
+export interface MultiselectDropdownProps
+  extends Required<Pick<UseMultiselectProps, 'options' | 'value'>> {
   /** Array of selected options. */
   value: MultiselectOption[];
   /** Reference to the target element the dropdown is associated with. */
@@ -43,84 +54,99 @@ export interface MultiselectDropdownProps extends Required<Pick<UseMultiselectPr
  * Renders the dropdown menu for the multiselect input, including all options and managing interactions such as selection, focus, and mouse events.
  * Utilizes the `Popper` component for positioning relative to the input field.
  */
-export const MultiselectDropdown = forwardRef<HTMLDivElement, MultiselectDropdownProps>(({
-  dropdownAriaId,
-  options,
-  onMouseLeave,
-  targetRef,
-  addOptionFromInput,
-  setFocusedOptionIndex,
-  renderOption = renderOptionDefault,
-  focusedOption,
-  value,
-  setOptionNode,
-  setOpened,
-  closeDropdownAfterSelect,
-  addOption,
-  focusedOptionIndex,
-  clearInput,
-}, ref) => {
+export const MultiselectDropdown = forwardRef<
+  HTMLDivElement,
+  MultiselectDropdownProps
+>(
+  (
+    {
+      dropdownAriaId,
+      options,
+      onMouseLeave,
+      targetRef,
+      addOptionFromInput,
+      setFocusedOptionIndex,
+      renderOption = renderOptionDefault,
+      focusedOption,
+      value,
+      setOptionNode,
+      setOpened,
+      closeDropdownAfterSelect,
+      addOption,
+      focusedOptionIndex,
+      clearInput,
+    },
+    ref
+  ) => {
+    return (
+      <Popper
+        id={dropdownAriaId}
+        ref={ref}
+        targetRef={targetRef}
+        onMouseLeave={onMouseLeave}
+        autoUpdateOnTargetResize
+        role="listbox"
+        placement="bottom"
+        sameWidth
+        className={styles.wrapper}
+      >
+        {options.map((option, index) => {
+          if (isEmptyOptionPreset(option)) {
+            return (
+              <Cell
+                key="empty"
+                readOnly
+                className={styles.empty}
+              >
+                {option['placeholder']}
+              </Cell>
+            );
+          }
 
-  return (
-    <Popper
-      id={dropdownAriaId}
-      ref={ref}
-      targetRef={targetRef}
-      onMouseLeave={onMouseLeave}
-      autoUpdateOnTargetResize
-      role="listbox"
-      placement="bottom"
-      sameWidth
-      className={styles.wrapper}
-    >
-      {options.map((option, index) => {
-        if (isEmptyOptionPreset(option)) {
+          if (isCreateNewOptionPreset(option)) {
+            return (
+              <Cell
+                key="new-options"
+                hovered={focusedOptionIndex === index}
+                onMouseDown={addOptionFromInput}
+                onMouseEnter={() => setFocusedOptionIndex(index)}
+              >
+                {option['actionText']}
+              </Cell>
+            );
+          }
+
           return (
-            <Cell key="empty" readOnly className={styles.empty}>
-              {option.placeholder}
-            </Cell>
-          );
-        }
-
-        if (isCreateNewOptionPreset(option)) {
-          return (
-            <Cell
-              key="new-options"
-              hovered={focusedOptionIndex === index}
-              onMouseDown={addOptionFromInput}
-              onMouseEnter={() => setFocusedOptionIndex(index)}
-            >
-              {option.actionText}
-            </Cell>
-          );
-        }
-
-        return (
-          <Fragment key={`${typeof option.value}-${option.label}`}>
-            {renderOption(
-              {
+            // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
+            <Fragment key={`${typeof option.value}-${option.label}`}>
+              {renderOption({
                 className: styles.option,
                 hovered: focusedOption
                   ? option.value === focusedOption.value
                   : false,
                 children: option.label,
-                selected: value.findIndex((selectedOption) => selectedOption.value === option.value) !== -1,
+                selected: value.some(
+                  (selectedOption) => selectedOption.value === option.value
+                ),
                 ref: (node: HTMLElement) => setOptionNode(index, node),
                 onMouseDown: (event: MouseEvent<HTMLDivElement>) => {
                   if (event.defaultPrevented) {
                     return;
                   }
 
-                  closeDropdownAfterSelect && setOpened(false);
+                  if (closeDropdownAfterSelect) {
+                    setOpened(false);
+                  }
+
                   addOption(option);
                   clearInput();
                 },
                 onMouseEnter: () => setFocusedOptionIndex(index),
-              },
-            )}
-          </Fragment>
-        );
-      })}
-    </Popper>
-  );
-});
+              })}
+            </Fragment>
+          );
+        })}
+      </Popper>
+    );
+  }
+);

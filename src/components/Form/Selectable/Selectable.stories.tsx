@@ -28,7 +28,13 @@ export const WithCell: Story = {
     <form>
       <Cell
         Component="label"
-        before={<Selectable defaultChecked name="group" value="1" />}
+        before={
+          <Selectable
+            defaultChecked
+            name="group"
+            value="1"
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >
@@ -36,7 +42,12 @@ export const WithCell: Story = {
       </Cell>
       <Cell
         Component="label"
-        before={<Selectable name="group" value="2" />}
+        before={
+          <Selectable
+            name="group"
+            value="2"
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >
@@ -45,4 +56,3 @@ export const WithCell: Story = {
     </form>
   ),
 } satisfies Story;
-

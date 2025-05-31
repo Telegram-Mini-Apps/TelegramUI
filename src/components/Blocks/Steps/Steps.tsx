@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Steps.module.css';
 
 import { classNames } from 'helpers/classNames';

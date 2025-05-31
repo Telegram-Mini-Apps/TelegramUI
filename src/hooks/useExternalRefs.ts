@@ -1,11 +1,12 @@
 'use client';
 
-import { MutableRefObject, Ref, useMemo, useRef } from 'react';
+import type { MutableRefObject, Ref } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { setRef } from 'helpers/react/refs';
 
 export function useExternRef<T>(
-  ...externRefs: Array<Ref<T> | undefined | false>
+  ...externRefs: (Ref<T> | undefined | false)[]
 ): MutableRefObject<T | null> {
   const stableRef = useRef<T | null>(null);
 
@@ -16,13 +17,14 @@ export function useExternRef<T>(
       },
       set current(el) {
         stableRef.current = el;
-        externRefs.forEach((ref) => {
+        for (const ref of externRefs) {
           if (ref) {
             setRef(el, ref);
           }
-        });
+        }
       },
     }),
-    externRefs,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    externRefs
   );
 }

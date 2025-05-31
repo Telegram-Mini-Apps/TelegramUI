@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes, MouseEventHandler, ReactNode } from 'react';
+import type { HTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import styles from './Banner.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -38,8 +38,8 @@ export interface BannerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * The `Banner` component renders a prominent graphical element, typically displayed at the top of a page or section, 
- * designed to grab the user's attention and convey important information. 
+ * The `Banner` component renders a prominent graphical element, typically displayed at the top of a page or section,
+ * designed to grab the user's attention and convey important information.
  * It is a versatile tool used for various purposes such as branding, promotion, announcements, or navigation.
  */
 export const Banner = ({
@@ -66,30 +66,54 @@ export const Banner = ({
         platform === 'base' && styles['wrapper--base'],
         hasBackground && styles['wrapper--withBackground'],
         type === 'inline' && styles['wrapper--inline'],
-        className,
+        className
       )}
       {...restProps}
     >
-      {hasBackground && (
-        <div className={styles.background}>
-          {background}
-        </div>
-      )}
+      {hasBackground && <div className={styles.background}>{background}</div>}
       {before}
       <div className={styles.middle}>
-        {hasReactNode(callout) && <Subheadline className={styles.subheader} level="2">{callout}</Subheadline>} 
-        {hasReactNode(header) && <Text className={styles.title} weight="2">{header}</Text>}
-        {hasReactNode(subheader) && <Subheadline className={styles.subheader} level="2">{subheader}</Subheadline>}
-        {hasReactNode(description) && <BannerDescriptionTypography className={styles.description}>{description}</BannerDescriptionTypography>}
+        {hasReactNode(callout) && (
+          <Subheadline
+            className={styles.subheader}
+            level="2"
+          >
+            {callout}
+          </Subheadline>
+        )}
+        {hasReactNode(header) && (
+          <Text
+            className={styles.title}
+            weight="2"
+          >
+            {header}
+          </Text>
+        )}
+        {hasReactNode(subheader) && (
+          <Subheadline
+            className={styles.subheader}
+            level="2"
+          >
+            {subheader}
+          </Subheadline>
+        )}
+        {hasReactNode(description) && (
+          <BannerDescriptionTypography className={styles.description}>
+            {description}
+          </BannerDescriptionTypography>
+        )}
         {hasReactNode(children) && (
-          <div className={styles.buttons}>
-            {children}
-          </div>
+          <div className={styles.buttons}>{children}</div>
         )}
       </div>
       {onCloseIcon && (
-        <Tappable onClick={onCloseIcon} className={styles.close} Component="div">
-          {!hasBackground && (platform === 'ios' ? <Icon24Cancel /> : <Icon28Close />)}
+        <Tappable
+          onClick={onCloseIcon}
+          className={styles.close}
+          Component="div"
+        >
+          {!hasBackground &&
+            (platform === 'ios' ? <Icon24Cancel /> : <Icon28Close />)}
           {hasBackground && <Icon28CloseAmbient />}
         </Tappable>
       )}

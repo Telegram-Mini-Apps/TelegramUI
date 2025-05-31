@@ -1,14 +1,35 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-
 'use client';
 
-import { AllHTMLAttributes, DragEvent, ElementType, MouseEvent as ReactMouseEvent, useMemo, useRef } from 'react';
+import type {
+  AllHTMLAttributes,
+  DragEvent,
+  ElementType,
+  MouseEvent as ReactMouseEvent,
+} from 'react';
+import { useMemo, useRef } from 'react';
 
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 import { useEventListener } from 'hooks/useEventListener';
 
-import { coordX, coordY, getSupportedEvents, initGesture, touchEnabled } from './helpers/touch';
-import { CustomTouchEvent, Gesture } from './helpers/types';
+import {
+  coordX,
+  coordY,
+  getSupportedEvents,
+  initGesture,
+  touchEnabled,
+} from './helpers/touch';
+import type { CustomTouchEvent, Gesture } from './helpers/types';
+
+/**
+ * Dragstart event handler
+ * Cancels the native browser behavior for nested links and images
+ */
+const onDragStart = (e: DragEvent<HTMLElement>) => {
+  const target = e.target as HTMLElement;
+  if (target.tagName === 'A' || target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+};
 
 export interface TouchProps extends AllHTMLAttributes<HTMLElement> {
   usePointerHover?: boolean;
@@ -68,19 +89,26 @@ export const Touch = ({
   const didSlide = useRef(false);
   const gesture = useRef<Partial<Gesture> | null>(null);
 
-  const handle = (e: CustomTouchEvent, handlers: Array<TouchEventHandler | undefined | false>) => {
-    stopPropagation && e.stopPropagation();
-    handlers.forEach((cb) => {
+  const handle = (
+    e: CustomTouchEvent,
+    handlers: (TouchEventHandler | undefined | false)[]
+  ) => {
+    if (stopPropagation) {
+      e.stopPropagation();
+    }
+    for (const cb of handlers) {
       const duration = Date.now() - (gesture.current?.startT?.getTime() ?? 0);
-      cb && cb({ ...(gesture.current as Gesture), duration, originalEvent: e });
-    });
+      if (cb) {
+        cb({ ...(gesture.current as Gesture), duration, originalEvent: e });
+      }
+    }
   };
 
   const listenerParams = { capture: useCapture, passive: false };
   const listeners = [
-    useEventListener(events[1], onMove, listenerParams),
-    useEventListener(events[2], onEnd, listenerParams),
-    useEventListener(events[3], onEnd, listenerParams),
+    useEventListener(events[1]!, onMove, listenerParams),
+    useEventListener(events[2]!, onEnd, listenerParams),
+    useEventListener(events[3]!, onEnd, listenerParams),
   ];
 
   const subscribe = (el: HTMLElement | Document | null | undefined) => {
@@ -88,17 +116,23 @@ export const Touch = ({
       return;
     }
 
-    listeners.forEach((l) => l.add(el));
+    for (const l of listeners) l.add(el);
   };
 
   const unsubscribe = () => {
-    listeners.forEach((l) => l.remove());
+    for (const l of listeners) l.remove();
   };
 
-  const enterHandler = useEventListener(usePointerHover ? 'pointerenter' : 'mouseenter', onEnter);
-  const leaveHandler = useEventListener(usePointerHover ? 'pointerleave' : 'mouseleave', onLeave);
+  const enterHandler = useEventListener(
+    usePointerHover ? 'pointerenter' : 'mouseenter',
+    onEnter
+  );
+  const leaveHandler = useEventListener(
+    usePointerHover ? 'pointerleave' : 'mouseleave',
+    onLeave
+  );
   const startHandler = useEventListener(
-    events[0],
+    events[0]!,
     (e: CustomTouchEvent) => {
       gesture.current = initGesture(coordX(e), coordY(e));
 
@@ -106,15 +140,15 @@ export const Touch = ({
       subscribe(
         touchEnabled()
           ? // Touch events fire on the initial target and won't bubble if it's removed
-        // see: #235, #1968, https://stackoverflow.com/a/45760014
-          (e.target as HTMLElement)
+            // see: #235, #1968, https://stackoverflow.com/a/45760014
+            (e.target as HTMLElement)
           : // Mouse events fire on the element under the pointer, so we lose move / end
-        // if the pointer goes outside the container.
-        // Can be fixed by PointerEvents' setPointerCapture later
-          window.document,
+            // if the pointer goes outside the container.
+            // Can be fixed by PointerEvents' setPointerCapture later
+            window.document
       );
     },
-    { capture: useCapture, passive: false },
+    { capture: useCapture, passive: false }
   );
   const containerRef = useRef();
 
@@ -128,7 +162,13 @@ export const Touch = ({
   }, [Component]);
 
   function onMove(e: CustomTouchEvent) {
-    const { isPressed, isX, isY, startX = 0, startY = 0 } = gesture.current ?? {};
+    const {
+      isPressed,
+      isX,
+      isY,
+      startX = 0,
+      startY = 0,
+    } = gesture.current ?? {};
 
     if (isPressed) {
       const clientX = coordX(e);
@@ -194,33 +234,18 @@ export const Touch = ({
 
     const isTouchEnabled = touchEnabled();
 
-    if (isTouchEnabled && isSlide) {
-      // If it's a touch device and touchmove was detected,
-      // the click event won't be triggered
-      didSlide.current = false;
-    } else {
-      didSlide.current = Boolean(isSlide);
-    }
+    // If it's a touch device and touchmove was detected,
+    // the click event won't be triggered
+    didSlide.current = isTouchEnabled && isSlide ? false : Boolean(isSlide);
     gesture.current = {};
 
     // If it was a touch event, simulate hover cancellation
-    if (isTouchEnabled) {
-      onLeave && onLeave(e);
+    if (isTouchEnabled && onLeave) {
+      onLeave(e);
     }
 
     unsubscribe();
   }
-
-  /**
-   * Dragstart event handler
-   * Cancels the native browser behavior for nested links and images
-   */
-  const onDragStart = (e: DragEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
-    if (target.tagName === 'A' || target.tagName === 'IMG') {
-      e.preventDefault();
-    }
-  };
 
   /**
    * Click event handler for the component
@@ -228,7 +253,9 @@ export const Touch = ({
    */
   const postGestureClick: typeof onClickCapture = (e) => {
     if (!didSlide.current) {
-      onClickCapture && onClickCapture(e);
+      if (onClickCapture) {
+        onClickCapture(e);
+      }
       return;
     }
 
@@ -236,7 +263,9 @@ export const Touch = ({
       e.stopPropagation();
       e.preventDefault();
     } else {
-      onClickCapture && onClickCapture(e);
+      if (onClickCapture) {
+        onClickCapture(e);
+      }
     }
 
     didSlide.current = false;

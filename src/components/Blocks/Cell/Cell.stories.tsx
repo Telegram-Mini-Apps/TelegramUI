@@ -11,7 +11,10 @@ const meta = {
   component: Cell,
   argTypes: {
     ...hideControls('before', 'after', 'titleBadge'),
-    ...setControlsTypes(['Component', 'subhead', 'subtitle', 'children', 'hint', 'description'], 'text'),
+    ...setControlsTypes(
+      ['Component', 'subhead', 'subtitle', 'children', 'hint', 'description'],
+      'text'
+    ),
   },
 } satisfies Meta<typeof Cell>;
 
@@ -35,6 +38,13 @@ export const CellWithInfo: Story = {
     children: 'Noah',
     subtitle: 'Yesterday',
     before: <Avatar size={48} />,
-    after: <Info type="text" subtitle="Received">+1000</Info>,
+    after: (
+      <Info
+        type="text"
+        subtitle="Received"
+      >
+        +1000
+      </Info>
+    ),
   },
 };

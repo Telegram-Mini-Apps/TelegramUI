@@ -1,6 +1,7 @@
 'use client';
 
-import { HTMLAttributes, useContext, useRef } from 'react';
+import type { HTMLAttributes } from 'react';
+import { useContext, useRef } from 'react';
 import styles from './AccordionContent.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -8,7 +9,7 @@ import { classNames } from 'helpers/classNames';
 import { AccordionContext } from 'components/Blocks/Accordion/AccordionContext';
 import { calcMaxHeight } from './helpers/calcMaxHeight';
 
-export interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {}
+export type AccordionContentProps = HTMLAttributes<HTMLDivElement>;
 
 /**
  * Renders the content part of an accordion, leveraging context to control visibility and animation.

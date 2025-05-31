@@ -5,16 +5,22 @@ import { usePlatform } from 'hooks/usePlatform';
 import { Icon20Select } from 'icons/20/select';
 import { Icon20SelectIOS } from 'icons/20/select_ios';
 
-import { Cell, CellProps } from 'components/Blocks/Cell/Cell';
+import type { CellProps } from 'components/Blocks/Cell/Cell';
+import { Cell } from 'components/Blocks/Cell/Cell';
 
 export const renderOptionDefault = (props: CellProps) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const platform = usePlatform();
 
   const SelectedIcon = platform === 'ios' ? Icon20SelectIOS : Icon20Select;
   return (
     <Cell
       {...props}
-      after={props.selected ? <SelectedIcon className={styles.selectedIcon} /> : undefined}
+      after={
+        props.selected ? (
+          <SelectedIcon className={styles.selectedIcon} />
+        ) : undefined
+      }
     />
   );
 };

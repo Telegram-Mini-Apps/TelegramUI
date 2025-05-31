@@ -1,11 +1,21 @@
 import { getTextFromChildren } from 'helpers/react/children';
 
-import { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
 
 export type FilterFn = (
   inputValue: string,
-  option: MultiselectOption,
+  option: MultiselectOption
 ) => boolean;
+
+const findAllIncludes = (target = '', search = '') => {
+  const includes = [];
+  let i = target.indexOf(search);
+  while (i !== -1) {
+    includes.push(i);
+    i = target.indexOf(search, i + 1);
+  }
+  return includes;
+};
 
 export function defaultFilterFn(
   ...args: Parameters<FilterFn>
@@ -23,20 +33,12 @@ export function defaultFilterFn(
     return true;
   }
 
-  const findAllIncludes = (target = '', search = '') => {
-    const includes = [];
-    let i = target.indexOf(search);
-    while (i !== -1) {
-      includes.push(i);
-      i = target.indexOf(search, i + 1);
-    }
-    return includes;
-  };
-
   const includes = findAllIncludes(label, searchQuery);
   if (includes.length === 0) {
     return false;
   }
 
-  return includes.some(index => index === 0 || !/\p{L}/u.test(label[index - 1]));
+  return includes.some(
+    (index) => index === 0 || !/\p{L}/u.test(label[index - 1]!)
+  );
 }

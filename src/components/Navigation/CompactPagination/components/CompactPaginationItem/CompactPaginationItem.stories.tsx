@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
 
 import { Subheadline } from 'components';
-import { CompactPaginationItem, CompactPaginationItemProps } from './CompactPaginationItem';
+import type { CompactPaginationItemProps } from './CompactPaginationItem';
+import { CompactPaginationItem } from './CompactPaginationItem';
 
 const meta = {
   title: 'Navigation/CompactPagination/CompactPagination.Item',
@@ -17,8 +18,9 @@ export const Playground: StoryObj<CompactPaginationItemProps> = {
     (Story) => (
       <>
         <Subheadline>
-          CompactPagination.Item is just a child for CompactPagination component, it exists separately for passing area
-          labels (It is really just a dot)
+          CompactPagination.Item is just a child for CompactPagination
+          component, it exists separately for passing area labels (It is really
+          just a dot)
         </Subheadline>
         <br />
         <Story />

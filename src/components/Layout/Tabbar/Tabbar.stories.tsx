@@ -5,7 +5,8 @@ import { Icon28Chat } from 'icons/28/chat';
 import { Icon28Devices } from 'icons/28/devices';
 import { Icon28Stats } from 'icons/28/stats';
 
-import { Tabbar, TabbarProps } from './Tabbar';
+import type { TabbarProps } from './Tabbar';
+import { Tabbar } from './Tabbar';
 
 const meta = {
   title: 'Layout/Tabbar',
@@ -34,7 +35,7 @@ const tabs = [
 
 export const Playground: StoryObj<TabbarProps> = {
   render: () => {
-    const [currentTab, setCurrentTab] = useState(tabs[0].id);
+    const [currentTab, setCurrentTab] = useState(tabs[0]!.id);
 
     return (
       <Tabbar>
@@ -59,4 +60,3 @@ export const Playground: StoryObj<TabbarProps> = {
     ),
   ],
 };
-

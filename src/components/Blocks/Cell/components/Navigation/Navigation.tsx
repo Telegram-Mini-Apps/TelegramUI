@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './Navigation.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -24,7 +24,9 @@ export const Navigation = ({ className, children }: NavigationProps) => {
   return (
     <div className={classNames(styles.wrapper, className)}>
       {hasChildren && <Text className={styles.text}>{children}</Text>}
-      {(!hasChildren || platform === 'ios') && <Icon16Chevron className={styles.icon} />}
+      {(!hasChildren || platform === 'ios') && (
+        <Icon16Chevron className={styles.icon} />
+      )}
     </div>
   );
 };

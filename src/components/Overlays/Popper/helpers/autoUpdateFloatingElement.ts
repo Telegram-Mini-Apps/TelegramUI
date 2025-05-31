@@ -1,5 +1,6 @@
-import { FloatingElement } from '@floating-ui/core';
-import { autoUpdate, AutoUpdateOptions, ReferenceType } from '@floating-ui/react-dom';
+import type { FloatingElement } from '@floating-ui/core';
+import type { AutoUpdateOptions, ReferenceType } from '@floating-ui/react-dom';
+import { autoUpdate } from '@floating-ui/react-dom';
 import { isHTMLElement } from '@floating-ui/utils/dom';
 
 const defaultOptions = {
@@ -13,10 +14,11 @@ export const autoUpdateFloatingElement = (
   reference: ReferenceType,
   floating: FloatingElement,
   update: () => void,
-  options: Partial<AutoUpdateOptions> = defaultOptions,
+  options: Partial<AutoUpdateOptions> = defaultOptions
 ): ReturnType<typeof autoUpdate> => {
   const { elementResize = false, ...restOptions } = options;
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const autoUpdateLibDisposer = autoUpdate(reference, floating, update, {
     ...restOptions,
     elementResize: false,
@@ -40,6 +42,7 @@ export const autoUpdateFloatingElement = (
       });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     observer.observe(floating, {
       childList: true,
       subtree: true,

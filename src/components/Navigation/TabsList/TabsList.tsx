@@ -1,9 +1,11 @@
-import { Children, HTMLAttributes, isValidElement, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
+import { Children, isValidElement } from 'react';
 import styles from './TabsList.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { TabsItem, TabsItemProps } from './components/TabsItem/TabsItem';
+import type { TabsItemProps } from './components/TabsItem/TabsItem';
+import { TabsItem } from './components/TabsItem/TabsItem';
 
 export interface TabsListProps extends HTMLAttributes<HTMLDivElement> {
   /** Children should be TabsList.Item components to be rendered as tabs. */
@@ -21,6 +23,7 @@ export const TabsList = ({
 }: TabsListProps) => {
   const childrenAsArray = Children.toArray(children);
   const checkedIndex = childrenAsArray.findIndex((option) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return isValidElement(option) && option.props.selected;
   });
 
@@ -28,13 +31,10 @@ export const TabsList = ({
   return (
     <div
       role="tablist"
-      className={classNames(
-        styles.wrapper,
-        className,
-      )}
+      className={classNames(styles.wrapper, className)}
       {...restProps}
     >
-      {checkedIndex > -1 && (
+      {checkedIndex !== -1 && (
         <div
           aria-hidden
           className={styles.slider}

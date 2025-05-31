@@ -2,7 +2,8 @@ import styles from './Avatar.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Image, ImageProps } from 'components/Blocks/Image/Image';
+import type { ImageProps } from 'components/Blocks/Image/Image';
+import { Image } from 'components/Blocks/Image/Image';
 import { AvatarAcronym } from './components/AvatarAcronym/AvatarAcronym';
 import { AvatarBadge } from './components/AvatarBadge/AvatarBadge';
 
@@ -28,9 +29,15 @@ export const Avatar = ({
     className={classNames(
       styles.wrapper,
       acronym && styles['wrapper--withAcronym'],
-      className,
+      className
     )}
-    fallbackIcon={acronym ? <AvatarAcronym size={size}>{acronym}</AvatarAcronym> : fallbackIcon}
+    fallbackIcon={
+      acronym ? (
+        <AvatarAcronym size={size}>{acronym}</AvatarAcronym>
+      ) : (
+        fallbackIcon
+      )
+    }
     size={size}
     {...restProps}
   />

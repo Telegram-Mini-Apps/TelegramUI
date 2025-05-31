@@ -1,0 +1,45 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "build:types": {
+      "outputs": ["dist/**/*.d.ts"]
+    },
+    "build:js-css": {
+      "outputs": ["dist/**/*.{js,css}", ".swc/plugins"]
+    },
+    "tsc:es6": {
+      "outputs": ["dist/**/*.d.ts"]
+    },
+    "tsc:cjs": {
+      "outputs": ["dist/cjs/**/*.d.ts"]
+    },
+    "swc:es6": {
+      "outputs": ["dist/**/*.js", ".swc/plugins"]
+    },
+    "swc:cjs": {
+      "outputs": ["dist/cjs/**/*.js", ".swc/plugins"]
+    },
+    "postcss": {
+      "outputs": ["dist/**/*.css"]
+    },
+    "check": {
+      "dependsOn": ["^check"]
+    },
+    "test": {
+      "inputs": ["$TURBO_DEFAULT$", "src/**/*.test.ts", "src/**/*.test.tsx"]
+    },
+    "lint": {},
+    "typecheck": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "css:types:dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

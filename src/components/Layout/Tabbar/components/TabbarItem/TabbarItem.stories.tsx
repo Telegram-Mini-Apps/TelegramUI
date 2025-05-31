@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Icon28Devices } from 'icons/28/devices';
 import { hideControls } from 'storybook/controls';
 
-import { TabbarItem, TabbarItemProps } from './TabbarItem';
+import type { TabbarItemProps } from './TabbarItem';
+import { TabbarItem } from './TabbarItem';
 
 const meta = {
   title: 'Layout/Tabbar/Tabbar.Item',
@@ -18,4 +19,3 @@ export const Playground: StoryObj<TabbarItemProps> = {
     children: <Icon28Devices />,
   },
 };
-

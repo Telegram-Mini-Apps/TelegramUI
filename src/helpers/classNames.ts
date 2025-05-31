@@ -1,34 +1,41 @@
-interface ClassNamesDictionary {
-  [index: string]: boolean | undefined | null;
-}
+type ClassNamesDictionary = Record<string, boolean | undefined | null>;
 
-export type ClassName = string | number | ClassNamesDictionary | boolean | undefined | null;
+export type ClassName =
+  | string
+  | number
+  | ClassNamesDictionary
+  | boolean
+  | undefined
+  | null;
 
 export function classNames(...args: ClassName[]): string {
   const result: string[] = [];
 
-  args.forEach((item): void => {
+  for (const item of args) {
     if (!item) {
-      return;
+      continue;
     }
 
     switch (typeof item) {
-      case 'string':
+      case 'string': {
         result.push(item);
         break;
+      }
 
-      case 'object':
-        Object.keys(item).forEach((key: string) => {
+      case 'object': {
+        for (const key of Object.keys(item)) {
           if (item[key]) {
             result.push(key);
           }
-        });
+        }
         break;
+      }
 
-      default:
+      default: {
         result.push(`${item}`);
+      }
     }
-  });
+  }
 
   return result.join(' ');
 }

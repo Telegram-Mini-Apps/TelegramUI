@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import styles from './TimelineItem.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -40,7 +40,7 @@ export const TimelineItem = ({
         mode && modeStyles[mode],
         platform === 'ios' && styles['wrapper--ios'],
         horizontal && styles['wrapper--horizontal'],
-        className,
+        className
       )}
       {...restProps}
     >
@@ -49,7 +49,12 @@ export const TimelineItem = ({
         <div className={styles.dot} />
       </div>
       <div className={styles.fields}>
-        <Text className={styles.title} weight="2">{header}</Text>
+        <Text
+          className={styles.title}
+          weight="2"
+        >
+          {header}
+        </Text>
         <Subheadline
           level={platform === 'ios' ? '1' : '2'}
           className={styles.description}

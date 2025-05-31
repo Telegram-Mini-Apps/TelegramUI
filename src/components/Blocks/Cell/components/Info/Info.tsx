@@ -1,10 +1,10 @@
-import { HTMLAttributes, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
 import styles from './Info.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { hasReactNode } from 'helpers/react/node';
 
-import { AvatarStackProps } from 'components/Blocks/AvatarStack/AvatarStack';
+import type { AvatarStackProps } from 'components/Blocks/AvatarStack/AvatarStack';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
 import { Text } from 'components/Typography/Text/Text';
 
@@ -39,17 +39,17 @@ export const Info = ({
 
   return (
     <div
-      className={classNames(
-        styles.wrapper,
-        typeStyles[type],
-        className,
-      )}
+      className={classNames(typeStyles[type], className)}
       {...restProps}
     >
       {isAvatarStack && hasReactNode(avatarStack) && avatarStack}
       {hasReactNode(children) && <Text>{children}</Text>}
       {isText && hasReactNode(subtitle) && (
-        <Subheadline className={styles.subtitle} level="2" plain={false}>
+        <Subheadline
+          className={styles.subtitle}
+          level="2"
+          plain={false}
+        >
           {subtitle}
         </Subheadline>
       )}

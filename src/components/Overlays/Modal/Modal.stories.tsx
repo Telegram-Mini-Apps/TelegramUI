@@ -1,16 +1,24 @@
 import { useState } from 'react';
 
-import { Decorator, Meta, StoryObj } from '@storybook/react';
+import type { Decorator, Meta, StoryObj } from '@storybook/react';
 import { Icon28Close } from 'icons/28/close';
 import { hideControls } from 'storybook/controls';
 
 import { Button, Placeholder } from 'components';
-import { Modal, ModalProps } from './Modal';
+import type { ModalProps } from './Modal';
+import { Modal } from './Modal';
 
 const meta = {
   title: 'Overlays/Modal',
   component: Modal,
-  argTypes: hideControls('header', 'trigger', 'children', 'overlayComponent', 'snapPoints', 'fadeFromIndex'),
+  argTypes: hideControls(
+    'header',
+    'trigger',
+    'children',
+    'overlayComponent',
+    'snapPoints',
+    'fadeFromIndex'
+  ),
 } satisfies Meta<typeof Modal>;
 
 export default meta;
@@ -18,13 +26,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DecoratorFullScreen: Decorator = (StoryComponent) => (
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 600,
-    maxHeight: '96vh',
-  }}>
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 600,
+      maxHeight: '96vh',
+    }}
+  >
     <StoryComponent />
   </div>
 );
@@ -53,7 +63,14 @@ const PlaceholderForNestedModal = (props: ModalProps) => (
   <Placeholder
     header="Title"
     description="Description"
-    action={<Modal {...props} nested><PlaceholderForNestedModal {...props} /></Modal>}
+    action={
+      <Modal
+        {...props}
+        nested
+      >
+        <PlaceholderForNestedModal {...props} />
+      </Modal>
+    }
   />
 );
 
@@ -61,7 +78,10 @@ export const NestedModals: Story = {
   args: Playground.args,
   render: (args) => (
     <Modal {...args}>
-      <PlaceholderForNestedModal trigger={args.trigger} {...args} />
+      <PlaceholderForNestedModal
+        trigger={args.trigger}
+        {...args}
+      />
     </Modal>
   ),
   decorators: [DecoratorFullScreen],
@@ -71,7 +91,13 @@ export const WithCloseButton: Story = {
   args: {
     ...Playground.args,
     header: (
-      <Modal.Header after={<Modal.Close><Icon28Close style={{ color: 'var(--tgui--plain_foreground)' }} /></Modal.Close>}>
+      <Modal.Header
+        after={
+          <Modal.Close>
+            <Icon28Close style={{ color: 'var(--tgui--plain_foreground)' }} />
+          </Modal.Close>
+        }
+      >
         Only iOS header
       </Modal.Header>
     ),
@@ -114,7 +140,14 @@ export const Controlled: Story = {
       <Placeholder
         header="This modal will be closed after 1000ms, click fetch"
         description="Click fetch"
-        action={<Button size="m" onClick={() => setIsOpen(true)}>Open again</Button>}
+        action={
+          <Button
+            size="m"
+            onClick={() => setIsOpen(true)}
+          >
+            Open again
+          </Button>
+        }
       >
         <Modal
           {...args}
@@ -122,15 +155,17 @@ export const Controlled: Story = {
           open={isOpen}
           onOpenChange={setIsOpen}
         >
-          <Placeholder action={(
-            <Button
-              size="m"
-              loading={isFetching}
-              onClick={fetchAndClose}
-            >
-              Fetch data and close
-            </Button>
-          )} />
+          <Placeholder
+            action={
+              <Button
+                size="m"
+                loading={isFetching}
+                onClick={fetchAndClose}
+              >
+                Fetch data and close
+              </Button>
+            }
+          />
         </Modal>
       </Placeholder>
     );

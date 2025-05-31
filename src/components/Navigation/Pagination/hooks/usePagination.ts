@@ -4,7 +4,7 @@ import { range } from 'helpers/array';
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
 import { PaginationType } from './enum';
-import { UsePaginationItem, UsePaginationProps } from './types';
+import type { UsePaginationItem, UsePaginationProps } from './types';
 
 /**
  * A bit changed hook from @mui
@@ -36,17 +36,20 @@ export const usePagination = ({
   };
 
   const startPages = range(1, Math.min(boundaryCount, count));
-  const endPages = range(Math.max(count - boundaryCount + 1, boundaryCount + 1), count);
+  const endPages = range(
+    Math.max(count - boundaryCount + 1, boundaryCount + 1),
+    count
+  );
 
   const siblingsStart = Math.max(
     Math.min(
       // Natural start
       page - siblingCount,
       // Lower boundary when page is high
-      count - boundaryCount - siblingCount * 2 - 1,
+      count - boundaryCount - siblingCount * 2 - 1
     ),
     // Greater than startPages
-    boundaryCount + 2,
+    boundaryCount + 2
   );
 
   const siblingsEnd = Math.min(
@@ -54,20 +57,19 @@ export const usePagination = ({
       // Natural end
       page + siblingCount,
       // Upper boundary when page is low
-      boundaryCount + siblingCount * 2 + 2,
+      boundaryCount + siblingCount * 2 + 2
     ),
     // Less than endPages
-    endPages.length > 0 ? endPages[0] - 2 : count - 1,
+    endPages.length > 0 ? endPages[0]! - 2 : count - 1
   );
 
   // Basic list of items to render
   // e.g. itemList = ['first', 'previous', 1, 'ellipsis', 4, 5, 6, 'ellipsis', 10, 'next', 'last']
-  const itemList: Array<PaginationType | number> = [
+  const itemList: (PaginationType | number)[] = [
     ...(hidePrevButton ? [] : [PaginationType.Previous]),
     ...startPages,
 
     // Start ellipsis
-    // eslint-disable-next-line no-nested-ternary
     ...(siblingsStart > boundaryCount + 2
       ? [PaginationType.StartEllipsis]
       : boundaryCount + 1 < count - boundaryCount
@@ -78,7 +80,6 @@ export const usePagination = ({
     ...range(siblingsStart, siblingsEnd),
 
     // End ellipsis
-    // eslint-disable-next-line no-nested-ternary
     ...(siblingsEnd < count - boundaryCount - 1
       ? [PaginationType.EndEllipsis]
       : count - boundaryCount > boundaryCount
@@ -92,12 +93,15 @@ export const usePagination = ({
   // Map the button type to its page number
   const buttonPage = (type: UsePaginationItem['type']) => {
     switch (type) {
-      case 'previous':
+      case PaginationType.Previous: {
         return page - 1;
-      case 'next':
+      }
+      case PaginationType.Next: {
         return page + 1;
-      default:
+      }
+      default: {
         return null;
+      }
     }
   };
 
@@ -119,8 +123,10 @@ export const usePagination = ({
       page: buttonPage(typeOrPageNumber),
       selected: false,
       disabled:
-        (![PaginationType.StartEllipsis, PaginationType.EndEllipsis].includes(typeOrPageNumber) &&
-          (typeOrPageNumber === PaginationType.Next ? page >= count : page <= 1)),
+        ![PaginationType.StartEllipsis, PaginationType.EndEllipsis].includes(
+          typeOrPageNumber
+        ) &&
+        (typeOrPageNumber === PaginationType.Next ? page >= count : page <= 1),
     };
   });
 };

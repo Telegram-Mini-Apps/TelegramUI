@@ -23,7 +23,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const chips = ['Chip', '\'n\'', 'Dale'];
+const chips = ['Chip', "'n'", 'Dale'];
 
 export const Playground: Story = {
   render: (args) => (
@@ -32,21 +32,32 @@ export const Playground: Story = {
     >
       <div style={{ display: 'flex', gap: 16 }}>
         {chips.map((text) => (
-          <Chip key={text} {...args}>
+          <Chip
+            key={text}
+            {...args}
+          >
             {text}
           </Chip>
         ))}
       </div>
       <div style={{ display: 'flex', gap: 16 }}>
         {chips.map((text) => (
-          <Chip mode="mono" key={text} {...args}>
+          <Chip
+            mode="mono"
+            key={text}
+            {...args}
+          >
             {text}
           </Chip>
         ))}
       </div>
       <div style={{ display: 'flex', gap: 16 }}>
         {chips.map((text) => (
-          <Chip mode="outline" key={text} {...args}>
+          <Chip
+            mode="outline"
+            key={text}
+            {...args}
+          >
             {text}
           </Chip>
         ))}
@@ -61,13 +72,22 @@ export const WithAfter: Story = {
       style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}
     >
       <div style={{ display: 'flex', gap: 8 }}>
-        <Chip mode="elevated" after={<Icon16Cancel />}>
+        <Chip
+          mode="elevated"
+          after={<Icon16Cancel />}
+        >
           Elevated
         </Chip>
-        <Chip mode="mono" after={<Icon16Cancel />}>
+        <Chip
+          mode="mono"
+          after={<Icon16Cancel />}
+        >
           Mono
         </Chip>
-        <Chip mode="outline" after={<Icon16Cancel />}>
+        <Chip
+          mode="outline"
+          after={<Icon16Cancel />}
+        >
           Outline
         </Chip>
       </div>
@@ -81,13 +101,22 @@ export const WithBefore: Story = {
       style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20 }}
     >
       <div style={{ display: 'flex', gap: 8 }}>
-        <Chip mode="elevated" before={<Avatar size={20} />}>
+        <Chip
+          mode="elevated"
+          before={<Avatar size={20} />}
+        >
           Elevated
         </Chip>
-        <Chip mode="mono" before={<Avatar size={20} />}>
+        <Chip
+          mode="mono"
+          before={<Avatar size={20} />}
+        >
           Mono
         </Chip>
-        <Chip mode="outline" before={<Avatar size={20} />}>
+        <Chip
+          mode="outline"
+          before={<Avatar size={20} />}
+        >
           Outline
         </Chip>
       </div>
@@ -104,14 +133,27 @@ export const WithRadioBefore: Story = {
         <Chip
           mode="elevated"
           Component="label"
-          before={<Radio name="test" defaultChecked />}
+          before={
+            <Radio
+              name="test"
+              defaultChecked
+            />
+          }
         >
           Elevated
         </Chip>
-        <Chip mode="mono" Component="label" before={<Radio name="test" />}>
+        <Chip
+          mode="mono"
+          Component="label"
+          before={<Radio name="test" />}
+        >
           Mono
         </Chip>
-        <Chip mode="outline" Component="label" before={<Radio name="test" />}>
+        <Chip
+          mode="outline"
+          Component="label"
+          before={<Radio name="test" />}
+        >
           Outline
         </Chip>
       </div>

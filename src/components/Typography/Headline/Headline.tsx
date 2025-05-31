@@ -2,7 +2,8 @@ import styles from './Headline.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Typography, TypographyProps } from '../Typography';
+import type { TypographyProps } from '../Typography';
+import { Typography } from '../Typography';
 
 export type HeadlineProps = TypographyProps;
 
@@ -13,11 +14,14 @@ export type HeadlineProps = TypographyProps;
  * The component defaults to an `<h5>` HTML tag, providing semantic meaning and ensuring good SEO practices,
  * but can be customized as needed.
  */
-export const Headline = ({ className, Component, ...restProps }: HeadlineProps) => (
+export const Headline = ({
+  className,
+  Component,
+  ...restProps
+}: HeadlineProps) => (
   <Typography
     {...restProps}
     className={classNames(styles.wrapper, className)}
     Component={Component || 'h5'}
   />
 );
-

@@ -2,7 +2,8 @@ import styles from './LargeTitle.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Typography, TypographyProps } from '../Typography';
+import type { TypographyProps } from '../Typography';
+import { Typography } from '../Typography';
 
 export type LargeTitleProps = TypographyProps;
 
@@ -13,11 +14,14 @@ export type LargeTitleProps = TypographyProps;
  * This choice of default component underscores the importance and hierarchy of the text it encapsulates,
  * making it suitable for primary page titles or significant headings.
  */
-export const LargeTitle = ({ className, Component, ...restProps }: LargeTitleProps) => (
+export const LargeTitle = ({
+  className,
+  Component,
+  ...restProps
+}: LargeTitleProps) => (
   <Typography
     {...restProps}
     Component={Component || 'h1'}
     className={classNames(styles.wrapper, className)}
   />
 );
-

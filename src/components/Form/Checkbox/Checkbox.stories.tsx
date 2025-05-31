@@ -27,7 +27,13 @@ export const WithCells: Story = {
     <>
       <Cell
         Component="label"
-        before={<Checkbox name="checkbox" value="1" {...args} />}
+        before={
+          <Checkbox
+            name="checkbox"
+            value="1"
+            {...args}
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >
@@ -35,7 +41,13 @@ export const WithCells: Story = {
       </Cell>
       <Cell
         Component="label"
-        before={<Checkbox name="checkbox" value="2" {...args} />}
+        before={
+          <Checkbox
+            name="checkbox"
+            value="2"
+            {...args}
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >

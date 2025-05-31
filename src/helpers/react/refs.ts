@@ -1,17 +1,18 @@
-import { MutableRefObject, Ref, RefObject } from 'react';
+import type { MutableRefObject, Ref, RefObject } from 'react';
 
 export const setRef = <T>(element: T, ref?: Ref<T>): void => {
   if (ref) {
     if (typeof ref === 'function') {
       ref(element);
     } else {
-      // eslint-disable-next-line no-param-reassign
       (ref as MutableRefObject<T>).current = element;
     }
   }
 };
 
-export const multipleRef = <T>(...refs: Array<Ref<T> | undefined>): RefObject<T> => {
+export const multipleRef = <T>(
+  ...refs: (Ref<T> | undefined)[]
+): RefObject<T> => {
   let current: T | null = null;
   return {
     get current() {
@@ -19,7 +20,11 @@ export const multipleRef = <T>(...refs: Array<Ref<T> | undefined>): RefObject<T>
     },
     set current(element) {
       current = element;
-      refs.forEach((ref) => ref && setRef(element, ref));
+      for (const ref of refs) {
+        if (ref) {
+          setRef(element, ref);
+        }
+      }
     },
   };
 };

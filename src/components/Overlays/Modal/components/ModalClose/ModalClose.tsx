@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Drawer } from '@xelene/vaul-with-scroll-fix';
 
@@ -7,5 +7,8 @@ export interface ModalCloseProps {
 }
 
 export const ModalClose = (props: ModalCloseProps) => (
-  <Drawer.Close asChild {...props} />
+  <Drawer.Close
+    asChild
+    {...props}
+  />
 );

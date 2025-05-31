@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { List } from 'components/Blocks/List/List';
-import { Select, SelectProps } from './Select';
+import type { SelectProps } from './Select';
+import { Select } from './Select';
 
 const meta = {
   title: 'Form/Select',
@@ -15,10 +16,12 @@ export default meta;
 
 export const Playground: StoryObj<SelectProps> = {
   render: () => (
-    <List style={{
-      width: 240,
-      background: 'var(--tgui--secondary_bg_color)',
-    }}>
+    <List
+      style={{
+        width: 240,
+        background: 'var(--tgui--secondary_bg_color)',
+      }}
+    >
       <Select header="Select">
         <option>Hello</option>
         <option>Okay</option>
@@ -26,4 +29,3 @@ export const Playground: StoryObj<SelectProps> = {
     </List>
   ),
 };
-

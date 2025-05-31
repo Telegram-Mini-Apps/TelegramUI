@@ -29,13 +29,16 @@ export const _AvatarStack: Story = {
   args: {
     type: 'avatarStack',
     avatarStack: (
-      <Info type="avatarStack" avatarStack={
-        <AvatarStack>
-          <Avatar size={28} />
-          <Avatar size={28} />
-          <Avatar size={28} />
-        </AvatarStack>
-      }>
+      <Info
+        type="avatarStack"
+        avatarStack={
+          <AvatarStack>
+            <Avatar size={28} />
+            <Avatar size={28} />
+            <Avatar size={28} />
+          </AvatarStack>
+        }
+      >
         Action
       </Info>
     ),

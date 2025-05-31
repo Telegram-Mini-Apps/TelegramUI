@@ -5,7 +5,7 @@ import styles from './SliderSteps.module.css';
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { Step } from '../../hooks/types';
+import type { Step } from '../../hooks/types';
 
 export interface SliderStepsProps {
   steps: Step[];

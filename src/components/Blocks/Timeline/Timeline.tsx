@@ -1,10 +1,12 @@
-import { Children, cloneElement, HTMLAttributes, isValidElement, ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
+import { Children, cloneElement, isValidElement } from 'react';
 import styles from './Timeline.module.css';
 
 import { classNames } from 'helpers/classNames';
 
 import { HorizontalScroll } from 'components/Service/HorizontalScroll/HorizontalScroll';
-import { TimelineItem, TimelineItemProps } from './components/TimelineItem/TimelineItem';
+import type { TimelineItemProps } from './components/TimelineItem/TimelineItem';
+import { TimelineItem } from './components/TimelineItem/TimelineItem';
 
 export interface TimelineProps extends HTMLAttributes<HTMLUListElement> {
   /** Determines the orientation of the timeline. If true, the timeline is displayed horizontally. */
@@ -48,12 +50,13 @@ export const Timeline = ({
       className={classNames(
         styles.wrapper,
         horizontal && styles['wrapper--horizontal'],
-        className,
+        className
       )}
       {...restProps}
     >
       {Children.map(children, (child, index) => {
         if (isValidElement(child)) {
+          // eslint-disable-next-line @eslint-react/no-clone-element
           return cloneElement(child, {
             mode: getChildMode(index + 1),
             horizontal,

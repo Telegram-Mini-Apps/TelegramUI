@@ -7,7 +7,7 @@ export const updateInternalStateValue = (
   newValue: number,
   minValue: number,
   maxValue: number,
-  draggingType: InternalDraggingType | null,
+  draggingType: InternalDraggingType | null
 ): InternalValueState => {
   const [currentStartValue, currentEndValue] = currentState;
 
@@ -16,38 +16,44 @@ export const updateInternalStateValue = (
   }
 
   switch (draggingType) {
-    case 'start':
+    case 'start': {
       return newValue > currentEndValue
         ? [currentEndValue, currentEndValue]
         : [clamp(newValue, minValue, maxValue), currentEndValue];
-    case 'end':
+    }
+    case 'end': {
       return newValue < currentStartValue
         ? [currentStartValue, currentStartValue]
         : [currentStartValue, clamp(newValue, minValue, maxValue)];
-    case null:
-    default:
+    }
+    default: {
       return currentState;
+    }
   }
 };
 
 export const updateInternalStateByNativeChange = (
   currentState: InternalValueState,
   newValue: number,
-  draggingType: InternalDraggingType | null,
+  draggingType: InternalDraggingType | null
 ): InternalValueState => {
   const [currentStartValue, currentEndValue] = currentState;
   switch (draggingType) {
-    case 'start':
+    case 'start': {
       return [newValue, currentEndValue];
-    case 'end':
+    }
+    case 'end': {
       return [currentStartValue, newValue];
-    case null:
-    default:
+    }
+    default: {
       return currentState;
+    }
   }
 };
 
-export const isMultipleValues = (value: InternalValueState): value is [number, number] => {
+export const isMultipleValues = (
+  value: InternalValueState
+): value is [number, number] => {
   return value[1] !== null;
 };
 
@@ -56,15 +62,21 @@ const MINIMUM_DIFFERENCE_BETWEEN_START_AND_END = 0.1;
 export const determineSnapDirection = (
   currentValues: InternalValueState,
   newValue: number,
-  draggingType: InternalDraggingType | null,
+  draggingType: InternalDraggingType | null
 ): InternalDraggingType | null => {
   if (draggingType === 'start' || draggingType === 'end') {
     return draggingType;
   }
 
   const [startRaw, endRaw] = currentValues;
-  const start = endRaw !== null ? startRaw - MINIMUM_DIFFERENCE_BETWEEN_START_AND_END : startRaw;
-  const end = endRaw !== null ? endRaw + MINIMUM_DIFFERENCE_BETWEEN_START_AND_END : 0;
+  const start =
+    endRaw === null
+      ? startRaw
+      : startRaw - MINIMUM_DIFFERENCE_BETWEEN_START_AND_END;
+  const end =
+    endRaw === null ? 0 : endRaw + MINIMUM_DIFFERENCE_BETWEEN_START_AND_END;
 
-  return Math.abs(start - newValue) <= Math.abs(end - newValue) ? 'start' : 'end';
+  return Math.abs(start - newValue) <= Math.abs(end - newValue)
+    ? 'start'
+    : 'end';
 };

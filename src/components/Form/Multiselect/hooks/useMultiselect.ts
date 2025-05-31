@@ -1,15 +1,20 @@
 'use client';
 
-import { ChangeEvent, useCallback, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useCallback, useState } from 'react';
 
 import { isEqual } from 'helpers/equal';
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 
-import { MultiselectOption } from 'components/Form/Multiselect/types';
-import { defaultFilterFn, FilterFn } from './helpers/filter';
+import type { MultiselectOption } from 'components/Form/Multiselect/types';
+import type { FilterFn } from './helpers/filter';
+import { defaultFilterFn } from './helpers/filter';
 import { transformOptions } from './helpers/transformOptions';
 import { DEFAULT_EMPTY_TEXT, DEFAULT_SELECTED_BEHAVIOR } from './constants';
-import { useMultiselectInput, type UseMultiselectInputProps } from './useMultiselectInput';
+import {
+  useMultiselectInput,
+  type UseMultiselectInputProps,
+} from './useMultiselectInput';
 
 export interface UseMultiselectProps extends UseMultiselectInputProps {
   /** Array of options available for selection. */
@@ -52,54 +57,64 @@ export const useMultiselect = ({
   selectedBehavior = DEFAULT_SELECTED_BEHAVIOR,
   options: optionsProp = [],
 }: UseMultiselectProps) => {
-  const { value, inputValue, onInputChange, ...restMultiselectProps } = useMultiselectInput({
-    // Option props
-    value: valueProp,
-    defaultValue,
-    onChange,
+  const { value, inputValue, onInputChange, ...restMultiselectProps } =
+    useMultiselectInput({
+      // Option props
+      value: valueProp,
+      defaultValue,
+      onChange,
 
-    // Input Props
-    inputValue: inputValueProp,
-    onInputChange: onInputChangeProp,
+      // Input Props
+      inputValue: inputValueProp,
+      onInputChange: onInputChangeProp,
 
-    // Other Props
-    disabled,
-  });
+      // Other Props
+      disabled,
+    });
 
   const [opened, setOpened] = useState(false);
   const [options, setOptions] = useState<MultiselectOption[]>(() =>
     opened
       ? transformOptions({
-        value,
-        inputValue,
-        emptyText,
-        creatable,
-        filterFn,
-        options: optionsProp,
-        selectedBehavior,
-      })
-      : [],
+          value,
+          inputValue,
+          emptyText,
+          creatable,
+          filterFn,
+          options: optionsProp,
+          selectedBehavior,
+        })
+      : []
   );
 
-  const [focusedOptionIndex, setFocusedOptionIndex] = useState<number | null>(0);
-  const [focusedOption, setFocusedOption] = useState<MultiselectOption | null>(null);
+  const [focusedOptionIndex, setFocusedOptionIndex] = useState<number | null>(
+    0
+  );
+  const [focusedOption, setFocusedOption] = useState<MultiselectOption | null>(
+    null
+  );
 
-  const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    onInputChange(event);
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onInputChange(event);
 
-    if (!opened) {
-      return;
-    }
+      if (!opened) {
+        return;
+      }
 
-    setOpened(true);
-    setFocusedOptionIndex(0);
-  }, [onInputChange, opened]);
+      setOpened(true);
+      setFocusedOptionIndex(0);
+    },
+    [onInputChange, opened]
+  );
 
   useEnhancedEffect(() => {
     if (!opened) {
       return;
     }
 
+    // todo: find out if it is necessary
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
     setOptions((prevOptions) => {
       const nextOptions = transformOptions({
         value,

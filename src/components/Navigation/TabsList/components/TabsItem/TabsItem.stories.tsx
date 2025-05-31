@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { TabsItem, TabsItemProps } from './TabsItem';
+import type { TabsItemProps } from './TabsItem';
+import { TabsItem } from './TabsItem';
 
 const meta = {
   title: 'Navigation/TabsList/TabsList.Item',
@@ -15,4 +16,3 @@ export const Playground: StoryObj<TabsItemProps> = {
     children: 'This is a TabsList.Item',
   },
 };
-

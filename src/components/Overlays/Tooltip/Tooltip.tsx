@@ -2,7 +2,8 @@ import styles from './Tooltip.module.css';
 
 import { classNames } from 'helpers/classNames';
 
-import { Popper, PopperProps } from 'components/Overlays/Popper/Popper';
+import type { PopperProps } from 'components/Overlays/Popper/Popper';
+import { Popper } from 'components/Overlays/Popper/Popper';
 import { Caption } from 'components/Typography/Caption/Caption';
 
 export interface TooltipProps extends PopperProps {
@@ -27,15 +28,12 @@ export const Tooltip = ({
     withArrow
     arrowProps={{
       ...arrowProps,
-      className: classNames(
-        styles.arrow,
-        arrowProps?.className,
-      ),
+      className: classNames(styles.arrow, arrowProps?.className),
     }}
     className={classNames(
       styles.wrapper,
       mode === 'dark' && styles['wrapper--dark'],
-      className,
+      className
     )}
     {...restProps}
   >

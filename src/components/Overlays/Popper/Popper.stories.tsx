@@ -1,4 +1,5 @@
-import { MouseEvent, useState } from 'react';
+import type { MouseEvent } from 'react';
+import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
@@ -11,7 +12,13 @@ import { Popper } from './Popper';
 const meta = {
   title: 'Overlays/Popper',
   component: Popper,
-  argTypes: hideControls('ArrowIcon', 'targetRef', 'arrowProps', 'Component', 'customMiddlewares'),
+  argTypes: hideControls(
+    'ArrowIcon',
+    'targetRef',
+    'arrowProps',
+    'Component',
+    'customMiddlewares'
+  ),
 } satisfies Meta<typeof Popper>;
 
 export default meta;
@@ -19,6 +26,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
+  args: {
+    targetRef: {
+      getBoundingClientRect: () =>
+        DOMRect.fromRect({ x: 0, y: 0, width: 0, height: 0 }),
+    },
+  },
   render: (args) => {
     const [virtualElement, setVirtualElement] = useState(() =>
       DOMRect.fromRect({
@@ -26,7 +39,7 @@ export const Playground: Story = {
         y: -200,
         width: 10,
         height: 10,
-      }),
+      })
     );
 
     const handleClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -36,7 +49,7 @@ export const Playground: Story = {
           y: event.clientY,
           width,
           height,
-        }),
+        })
       );
     };
 
@@ -75,4 +88,3 @@ export const Playground: Story = {
     );
   },
 };
-

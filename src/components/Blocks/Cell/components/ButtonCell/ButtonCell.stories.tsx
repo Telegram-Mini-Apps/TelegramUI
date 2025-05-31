@@ -26,9 +26,16 @@ export const Playground: Story = {
     children: 'Create Ad',
   },
   render: (props) => (
-    <List style={{ background: 'var(--tgui--secondary_bg_color)', padding: 10 }}>
+    <List
+      style={{ background: 'var(--tgui--secondary_bg_color)', padding: 10 }}
+    >
       <Section>
-        <Cell before={<Icon32ProfileColoredSquare />} subtitle="Manage ads and payment settings">My Ads</Cell>
+        <Cell
+          before={<Icon32ProfileColoredSquare />}
+          subtitle="Manage ads and payment settings"
+        >
+          My Ads
+        </Cell>
         <ButtonCell {...props} />
       </Section>
     </List>

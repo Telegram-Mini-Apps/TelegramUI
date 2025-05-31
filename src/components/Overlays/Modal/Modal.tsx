@@ -1,14 +1,12 @@
 'use client';
 
-import {
-  forwardRef,
+import type {
   ForwardRefExoticComponent,
   HTMLAttributes,
   ReactNode,
   RefAttributes,
-  useEffect,
-  useState,
 } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import styles from './Modal.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -16,11 +14,13 @@ import { useAppRootContext } from 'hooks/useAppRootContext';
 
 import { Drawer } from '@xelene/vaul-with-scroll-fix';
 
+import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { ModalClose } from './components/ModalClose/ModalClose';
 import { ModalHeader } from './components/ModalHeader/ModalHeader';
 import { ModalOverlay } from './components/ModalOverlay/ModalOverlay';
 
-export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnimationEnd'> {
+export interface ModalProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnimationEnd'> {
   /** Controls the displayed state of the modal, enabling external management. */
   open?: boolean;
   /** Callback fired upon state change, facilitating open/close state synchronization. */
@@ -49,79 +49,87 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onAnim
   dismissible?: boolean;
 }
 
-type ModalWithComponents = ForwardRefExoticComponent<ModalProps & RefAttributes<HTMLDivElement>> & {
+type ModalWithComponents = ForwardRefExoticComponent<
+  ModalProps & RefAttributes<HTMLDivElement>
+> & {
   Header: typeof ModalHeader;
   Overlay: typeof ModalOverlay;
   Close: typeof ModalClose;
 };
+
+const defaultOverlay = <ModalOverlay />;
 
 /**
  * Modal component, providing a flexible dialog framework with customizable content and interaction models.
  * It leverages the Drawer component from 'vaul' for its base functionality, enhanced with additional properties
  * and behaviors specific to modal dialogues, such as overlay management and nested modals.
  */
-export const Modal = forwardRef<HTMLDivElement, ModalProps>(({
-  overlayComponent = <ModalOverlay />,
-  open,
-  onOpenChange,
-  header,
-  className,
-  children,
-  nested,
-  trigger,
-  closeThreshold,
-  scrollLockTimeout,
-  snapPoints,
-  fadeFromIndex,
-  modal,
-  preventScrollRestoration,
-  dismissible,
-  ...restProps
-}, ref) => {
-  const container = useAppRootContext();
-  const [portal, setPortal] = useState(container.portalContainer?.current);
+export const Modal = forwardRef<HTMLDivElement, ModalProps>(
+  (
+    {
+      overlayComponent = defaultOverlay,
+      open,
+      onOpenChange,
+      header,
+      className,
+      children,
+      nested,
+      trigger,
+      closeThreshold,
+      scrollLockTimeout,
+      snapPoints,
+      fadeFromIndex,
+      modal,
+      preventScrollRestoration,
+      dismissible,
+      ...restProps
+    },
+    ref
+  ) => {
+    const container = useAppRootContext();
+    const [portal, setPortal] = useState(container.portalContainer?.current);
 
-  // This is internal optimization for AppRoot
-  // React sets ref to normal value only after the first render
-  // If we will have this logic inside the AppRoot component, then all tree will be re-rendered
-  useEffect(() => {
-    setPortal(container.portalContainer?.current);
-  }, [container.portalContainer]);
+    // This is internal optimization for AppRoot
+    // React sets ref to normal value only after the first render
+    // If we will have this logic inside the AppRoot component, then all tree will be re-rendered
+    useEffect(() => {
+      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
+      setPortal(container.portalContainer?.current);
+    }, [container.portalContainer]);
 
-  const Component = nested ? Drawer.NestedRoot : Drawer.Root;
-  return (
-    <Component
-      open={open}
-      onOpenChange={onOpenChange}
-      closeThreshold={closeThreshold}
-      scrollLockTimeout={scrollLockTimeout}
-      snapPoints={snapPoints}
-      fadeFromIndex={fadeFromIndex}
-      modal={modal}
-      preventScrollRestoration={preventScrollRestoration}
-      dismissible={dismissible}
-    >
-      {trigger && <Drawer.Trigger asChild>{trigger}</Drawer.Trigger>}
-      <Drawer.Portal container={portal}>
-        {overlayComponent}
-        <Drawer.Content
-          ref={ref}
-          className={classNames(styles.wrapper, className)}
-          aria-describedby={undefined}
-          {...restProps}
-        >
-          <VisuallyHidden>
-            <Drawer.Title />
-          </VisuallyHidden>
-          {header}
-          <div className={styles.body}>
-            {children}
-          </div>
-        </Drawer.Content>
-      </Drawer.Portal>
-    </Component>
-  );
-}) as ModalWithComponents;
+    const Component = nested ? Drawer.NestedRoot : Drawer.Root;
+    return (
+      <Component
+        open={open}
+        onOpenChange={onOpenChange}
+        closeThreshold={closeThreshold}
+        scrollLockTimeout={scrollLockTimeout}
+        snapPoints={snapPoints}
+        fadeFromIndex={fadeFromIndex}
+        modal={modal}
+        preventScrollRestoration={preventScrollRestoration}
+        dismissible={dismissible}
+      >
+        {trigger && <Drawer.Trigger asChild>{trigger}</Drawer.Trigger>}
+        <Drawer.Portal container={portal}>
+          {overlayComponent}
+          <Drawer.Content
+            ref={ref}
+            className={classNames(styles.wrapper, className)}
+            aria-describedby={undefined}
+            {...restProps}
+          >
+            <VisuallyHidden>
+              <Drawer.Title />
+            </VisuallyHidden>
+            {header}
+            <div className={styles.body}>{children}</div>
+          </Drawer.Content>
+        </Drawer.Portal>
+      </Component>
+    );
+  }
+) as ModalWithComponents;
 
 Modal.Header = ModalHeader;
 Modal.Overlay = ModalOverlay;

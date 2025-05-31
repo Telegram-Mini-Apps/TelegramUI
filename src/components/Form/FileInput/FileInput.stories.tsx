@@ -18,10 +18,20 @@ export const Playground: Story = {
     const [files, setFiles] = useState<FileList | null>(null);
 
     return (
-      <FileInput multiple onChange={(event) => setFiles(event.target.files)} {...args}>
-        {files && Array.from(files).map((file) => (
-          <Cell key={file.name} subtitle={`${file.size} bytes`}>{file.name}</Cell>
-        ))}
+      <FileInput
+        multiple
+        onChange={(event) => setFiles(event.target.files)}
+        {...args}
+      >
+        {files &&
+          Array.from(files).map((file) => (
+            <Cell
+              key={file.name}
+              subtitle={`${file.size} bytes`}
+            >
+              {file.name}
+            </Cell>
+          ))}
       </FileInput>
     );
   },

@@ -11,5 +11,6 @@ export const AccordionContext = createContext<AccordionContextProps>({
   labelId: '',
   contentId: '',
   expanded: false,
+
   onChange: () => {},
 });

@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ElementType } from 'react';
+import type { AllHTMLAttributes, ElementType } from 'react';
 import styles from './FixedLayout.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -31,7 +31,7 @@ export const FixedLayout = ({
       className={classNames(
         styles.wrapper,
         vertical && verticalStyles[vertical],
-        className,
+        className
       )}
       {...restProps}
     >
@@ -39,4 +39,3 @@ export const FixedLayout = ({
     </Component>
   );
 };
-

@@ -26,8 +26,18 @@ export const Playground: Story = {
         footer="Slider with before and after props"
       >
         <Slider
-          before={<IconContainer style={{ color: 'var(--tgui--secondary_hint_color)' }}><Icon24SunLow /></IconContainer>}
-          after={<IconContainer><Icon24SunLow /></IconContainer>}
+          before={
+            <IconContainer
+              style={{ color: 'var(--tgui--secondary_hint_color)' }}
+            >
+              <Icon24SunLow />
+            </IconContainer>
+          }
+          after={
+            <IconContainer>
+              <Icon24SunLow />
+            </IconContainer>
+          }
         />
       </Section>
       <Section

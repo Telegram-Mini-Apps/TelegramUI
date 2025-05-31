@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './SectionHeader.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -13,7 +13,12 @@ export interface SectionHeaderProps extends HTMLAttributes<HTMLHeadElement> {
   large?: boolean;
 }
 
-export const SectionHeader = ({ large, className, children, ...restProps }: SectionHeaderProps) => {
+export const SectionHeader = ({
+  large,
+  className,
+  children,
+  ...restProps
+}: SectionHeaderProps) => {
   const platform = usePlatform();
   const { Default, Large } = useHeaderComponents();
 
@@ -24,11 +29,11 @@ export const SectionHeader = ({ large, className, children, ...restProps }: Sect
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
         large && styles['wrapper--large'],
-        className,
+        className
       )}
       {...restProps}
     >
-      <Component Component="h1" className={styles.title}>{children}</Component>
+      <Component Component="h1">{children}</Component>
     </header>
   );
 };

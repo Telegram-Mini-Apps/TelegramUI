@@ -1,9 +1,10 @@
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import styles from './CircularProgress.module.css';
 
 import { getCircleAttributes } from 'components/Feedback/CircularProgress/helpers/getCircleAttributes';
 
-export interface CircularProgressProps extends HTMLAttributes<HTMLOrSVGElement> {
+export interface CircularProgressProps
+  extends HTMLAttributes<HTMLOrSVGElement> {
   /** Specifies the size of the circular progress indicator. Can be 'small', 'medium', or 'large'. */
   size?: 'small' | 'medium' | 'large';
   /** Current progress of the circular indicator, expressed as a percentage from 0 to 100. */

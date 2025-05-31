@@ -39,7 +39,13 @@ const cells = [
 
 export const Playground: Story = {
   render: (args) => (
-    <List style={{ background: 'var(--tgui--secondary_bg_color)', padding: '40px', width: 500 }}>
+    <List
+      style={{
+        background: 'var(--tgui--secondary_bg_color)',
+        padding: '40px',
+        width: 500,
+      }}
+    >
       <Section
         header="Main Settings"
         footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."

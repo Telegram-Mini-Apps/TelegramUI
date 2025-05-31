@@ -28,8 +28,10 @@ export const Playground: Story = {
 export const CustomIcon: Story = {
   render: (args) => (
     <Section header="We use custom icon here">
-      <Rating IconContainer={Icon28Heart} {...args} />
+      <Rating
+        IconContainer={Icon28Heart}
+        {...args}
+      />
     </Section>
   ),
 } satisfies Story;
-
