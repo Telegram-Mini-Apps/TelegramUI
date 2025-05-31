@@ -119,7 +119,6 @@ export const MultiselectDropdown = ({
               selected: value.some(
                 (selectedOption) => selectedOption.value === option.value
               ),
-              // @ts-expect-error - ref type in renderOption props needs to be more specific than HTMLElement
               ref: (node: HTMLElement) => setOptionNode(index, node),
               onMouseDown: (event: MouseEvent<HTMLDivElement>) => {
                 if (event.defaultPrevented) {
