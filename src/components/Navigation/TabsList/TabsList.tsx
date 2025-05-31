@@ -23,8 +23,7 @@ export const TabsList = ({
 }: TabsListProps) => {
   const childrenAsArray = Children.toArray(children);
   const checkedIndex = childrenAsArray.findIndex((option) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    return isValidElement(option) && option.props.selected;
+    return isValidElement<TabsItemProps>(option) && option.props.selected;
   });
 
   const translateX = `translateX(${100 * checkedIndex}%)`;

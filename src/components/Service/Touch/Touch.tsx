@@ -150,7 +150,7 @@ export const Touch = ({
     },
     { capture: useCapture, passive: false }
   );
-  const containerRef = useRef();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEnhancedEffect(() => {
     const el = containerRef.current;

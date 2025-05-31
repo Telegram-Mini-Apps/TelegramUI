@@ -1,8 +1,8 @@
 import type { InputHTMLAttributes } from 'react';
-import { forwardRef } from 'react';
 import styles from './Checkbox.module.css';
 
 import { classNames } from 'helpers/classNames';
+import type { RefProps } from 'types/ref';
 
 import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { IconCheckbox } from './icons/checkbox';
@@ -18,37 +18,37 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
  * Renders a checkbox input with custom styling and optional indeterminate state.
  * The component visually hides the actual input element for accessibility while providing a custom styled appearance.
  */
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, disabled, indeterminate, ...restProps }, ref) => (
-    <label
-      className={classNames(
-        styles.wrapper,
-        disabled && styles['wrapper--disabled'],
-        className
-      )}
+export const Checkbox = ({
+  ref,
+  className,
+  disabled,
+  indeterminate,
+  ...restProps
+}: CheckboxProps & RefProps<HTMLInputElement>) => (
+  <label
+    className={classNames(
+      styles.wrapper,
+      disabled && styles['wrapper--disabled'],
+      className
+    )}
+  >
+    <VisuallyHidden
+      {...restProps}
+      ref={ref}
+      Component="input"
+      type="checkbox"
+      className={styles.input}
+      disabled={disabled}
+    />
+    <IconCheckbox
+      className={styles.icon}
+      aria-hidden
+    />
+    <div
+      aria-hidden
+      className={styles.checkedIcon}
     >
-      <VisuallyHidden
-        {...restProps}
-        ref={ref}
-        Component="input"
-        type="checkbox"
-        className={styles.input}
-        disabled={disabled}
-      />
-      <IconCheckbox
-        className={styles.icon}
-        aria-hidden
-      />
-      <div
-        aria-hidden
-        className={styles.checkedIcon}
-      >
-        {indeterminate ? (
-          <IconCheckboxIndeterminate />
-        ) : (
-          <IconCheckboxChecked />
-        )}
-      </div>
-    </label>
-  )
+      {indeterminate ? <IconCheckboxIndeterminate /> : <IconCheckboxChecked />}
+    </div>
+  </label>
 );

@@ -1,5 +1,6 @@
 import type { InputHTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+
+import type { RefProps } from 'types/ref';
 
 import { Icon28Attach } from 'icons/28/attach';
 
@@ -15,26 +16,30 @@ export interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {
  * Renders a file input disguised as a button, enhancing the user interface and improving usability.
  * It leverages the `ButtonCell` component for consistent styling across the application.
  */
-export const FileInput = forwardRef<HTMLDivElement, FileInputProps>(
-  ({ label = 'Attach file', className, children, ...restProps }, ref) => (
-    <div
-      ref={ref}
-      className={className}
+export const FileInput = ({
+  ref,
+  label = 'Attach file',
+  className,
+  children,
+  ...restProps
+}: FileInputProps & RefProps<HTMLDivElement>) => (
+  <div
+    ref={ref}
+    className={className}
+  >
+    {children}
+    <ButtonCell
+      Component="label"
+      before={<Icon28Attach />}
     >
-      {children}
-      <ButtonCell
-        Component="label"
-        before={<Icon28Attach />}
-      >
-        <VisuallyHidden>
-          <input
-            type="file"
-            placeholder={label}
-            {...restProps}
-          />
-        </VisuallyHidden>
-        {label}
-      </ButtonCell>
-    </div>
-  )
+      <VisuallyHidden>
+        <input
+          type="file"
+          placeholder={label}
+          {...restProps}
+        />
+      </VisuallyHidden>
+      {label}
+    </ButtonCell>
+  </div>
 );

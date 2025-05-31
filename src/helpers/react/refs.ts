@@ -1,18 +1,18 @@
-import type { MutableRefObject, Ref, RefObject } from 'react';
+import type { Ref, RefObject } from 'react';
 
 export const setRef = <T>(element: T, ref?: Ref<T>): void => {
   if (ref) {
     if (typeof ref === 'function') {
       ref(element);
     } else {
-      (ref as MutableRefObject<T>).current = element;
+      (ref as RefObject<T>).current = element;
     }
   }
 };
 
 export const multipleRef = <T>(
   ...refs: (Ref<T> | undefined)[]
-): RefObject<T> => {
+): RefObject<T | null> => {
   let current: T | null = null;
   return {
     get current() {

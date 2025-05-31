@@ -4,7 +4,15 @@ import { useCallback, useRef } from 'react';
 
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 
-export const useTimeout = (callbackFunction: () => void, duration: number) => {
+interface TimeoutController {
+  set: () => void;
+  clear: () => void;
+}
+
+export const useTimeout = (
+  callbackFunction: () => void,
+  duration: number
+): TimeoutController => {
   const options = useRef({ callbackFunction, duration });
 
   useEnhancedEffect(() => {
@@ -12,7 +20,7 @@ export const useTimeout = (callbackFunction: () => void, duration: number) => {
     options.current.duration = duration;
   }, [callbackFunction, duration]);
 
-  const timeout = useRef<ReturnType<typeof setTimeout>>();
+  const timeout = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const clear = useCallback(() => clearTimeout(timeout?.current), []);
 
