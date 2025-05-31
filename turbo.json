@@ -28,7 +28,9 @@
     "check": {
       "dependsOn": ["^check"]
     },
-    "test": {},
+    "test": {
+      "inputs": ["$TURBO_DEFAULT$", "src/**/*.test.ts", "src/**/*.test.tsx"]
+    },
     "lint": {},
     "typecheck": {},
     "dev": {
