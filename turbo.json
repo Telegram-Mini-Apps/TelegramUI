@@ -8,7 +8,7 @@
       "outputs": ["dist/**/*.d.ts"]
     },
     "build:js-css": {
-      "outputs": ["dist/**/*.{js,css}"]
+      "outputs": ["dist/**/*.{js,css}", ".swc/plugins"]
     },
     "tsc:es6": {
       "outputs": ["dist/**/*.d.ts"]
@@ -17,10 +17,10 @@
       "outputs": ["dist/cjs/**/*.d.ts"]
     },
     "swc:es6": {
-      "outputs": ["dist/**/*.js"]
+      "outputs": ["dist/**/*.js", ".swc/plugins"]
     },
     "swc:cjs": {
-      "outputs": ["dist/cjs/**/*.js"]
+      "outputs": ["dist/cjs/**/*.js", ".swc/plugins"]
     },
     "postcss": {
       "outputs": ["dist/**/*.css"]
