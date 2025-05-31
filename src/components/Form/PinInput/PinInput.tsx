@@ -82,10 +82,7 @@ export const PinInput = ({
                 /* We can't use useId here, because if pinCount changes in runtime, it will crash because amount of renders will be different */
                 // eslint-disable-next-line @eslint-react/no-array-index-key
                 key={index}
-                // @ts-expect-error - The ref type from PinInputCell is incompatible with HTMLElement
-                ref={(labelRef: HTMLLabelElement) =>
-                  setInputRefByIndex(index, labelRef)
-                }
+                ref={(labelRef) => setInputRefByIndex(index, labelRef)}
                 isTyped={index < value.length}
                 value={value[index] || ''}
                 onKeyDown={(event) => handleButton(index, event.key)}

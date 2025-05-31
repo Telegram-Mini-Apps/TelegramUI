@@ -1,13 +1,13 @@
 'use client';
 
-import type { MutableRefObject, Ref } from 'react';
+import type { Ref, RefObject } from 'react';
 import { useMemo, useRef } from 'react';
 
 import { setRef } from 'helpers/react/refs';
 
 export function useExternRef<T>(
   ...externRefs: (Ref<T> | undefined | false)[]
-): MutableRefObject<T | null> {
+): RefObject<T | null> {
   const stableRef = useRef<T | null>(null);
 
   return useMemo(

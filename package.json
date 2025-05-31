@@ -1,6 +1,6 @@
 {
   "name": "tmaui",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "World-class, ultimate UI developer toolkit.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/index.js",
@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/tophackr/tmaui/issues"
   },
-  "homepage": "https://github.com/tophackr/tmaui#readme",
+  "homepage": "https://tophackr.com/tmaui/",
   "peerDependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

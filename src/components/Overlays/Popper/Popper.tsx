@@ -1,7 +1,7 @@
 'use client';
 
 import type { ElementType, HTMLAttributes, RefObject } from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import styles from './Popper.module.css';
 
 import { classNames } from 'helpers/classNames';
@@ -75,7 +75,7 @@ export const Popper = ({
   children,
   ...restProps
 }: PopperProps & RefProps<HTMLDivElement>) => {
-  const arrowRef = useRef<HTMLDivElement>(null);
+  const [arrowRef, setArrowRef] = useState<HTMLDivElement | null>(null);
 
   const { strictPlacement, middlewares } = useFloatingMiddlewares({
     placement,
@@ -121,7 +121,7 @@ export const Popper = ({
             {...arrowProps}
             coords={middlewareData.arrow}
             placement={resolvedPlacement}
-            ref={arrowRef}
+            ref={setArrowRef}
             Icon={ArrowIcon}
           />
         )}
