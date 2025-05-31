@@ -97,7 +97,6 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       setPortal(container.portalContainer?.current);
     }, [container.portalContainer]);
 
-    const Component = nested ? Drawer.NestedRoot : Drawer.Root;
     return (
       <Component
         open={open}
