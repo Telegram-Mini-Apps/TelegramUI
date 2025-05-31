@@ -1,6 +1,6 @@
 {
-  "name": "@telegram-apps/telegram-ui",
-  "version": "2.1.7",
+  "name": "tmaui",
+  "version": "2.1.8",
   "description": "World-class, ultimate UI developer toolkit.",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
@@ -33,20 +33,19 @@
     "dev": "turbo run storybook css:types:dev --cache=local:r,remote:r",
     "storybook": "storybook dev -p 6006 --docs --no-open",
     "storybook:build": "storybook build --docs",
-    "storybook:publish": "rsync ./storybook-static/ xelene:/var/www/tgui.xelene.me -avz --exclude .git/ --exclude node_modules/",
     "css:types": "tcm -p 'src/**/*.module.*css'",
     "css:types:dev": "tcm -p 'src/**/*.module.*css' --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:Telegram-Mini-Apps/TelegramUI.git"
+    "url": "git+ssh://git@github.com/tophackr/tmaui.git"
   },
-  "author": "Ilya Smirnov",
+  "author": "Alexandr Musikhin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Telegram-Mini-Apps/TelegramUI/issues"
+    "url": "https://github.com/tophackr/tmaui/issues"
   },
-  "homepage": "https://github.com/Telegram-Mini-Apps/TelegramUI#readme",
+  "homepage": "https://github.com/tophackr/tmaui#readme",
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

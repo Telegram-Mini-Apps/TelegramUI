@@ -1,8 +1,8 @@
-# Telegram UI
+# tmaui
 
 ## Overview
 
-Telegram UI kit equips you with a variety of pre-designed components and tools to help you quickly develop high-quality Telegram applications. Whether you're aiming to create custom client apps, integrate Telegram functionality, or develop unique bots, this toolkit is your go-to resource.
+tamui kit equips you with a variety of pre-designed components and tools to help you quickly develop high-quality Telegram applications. Whether you're aiming to create custom client apps, integrate Telegram functionality, or develop unique bots, this toolkit is your go-to resource.
 
 ## Features
 
@@ -31,23 +31,23 @@ Telegram UI kit equips you with a variety of pre-designed components and tools t
 ## Installation
 
 ```sh
-npm i @telegram-apps/telegram-ui
+npm i tmaui
 ```
 
 ```sh
-yarn add @telegram-apps/telegram-ui
+yarn add tmaui
 ```
 
 ```sh
-pnpm add @telegram-apps/telegram-ui
+pnpm add tmaui
 ```
 
 ## Usage
 
 ```jsx static
-import '@telegram-apps/telegram-ui/dist/styles.css';
+import 'tmaui/dist/styles.css';
 
-import { AppRoot, Placeholder } from '@telegram-apps/telegram-ui';
+import { AppRoot, Placeholder } from 'tmaui';
 
 const App = () => (
   <AppRoot>
@@ -69,16 +69,16 @@ export default App;
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-<a href="https://next.ossinsight.io/widgets/official/compose-recent-active-contributors?limit=30&repo_id=738096149" target="_blank" style="display: block" align="center">
+<a href="https://next.ossinsight.io/widgets/official/compose-recent-active-contributors?limit=30&repo_id=993255381" target="_blank" style="display: block" align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-recent-active-contributors/thumbnail.png?limit=30&repo_id=738096149&image_size=auto&color_scheme=dark" width="655" height="auto">
-    <img alt="Active Contributors of Telegram-Mini-Apps/TelegramUI - Last 28 days" src="https://next.ossinsight.io/widgets/official/compose-recent-active-contributors/thumbnail.png?limit=30&repo_id=738096149&image_size=auto&color_scheme=light" width="655" height="auto">
+    <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-recent-active-contributors/thumbnail.png?limit=30&repo_id=993255381&image_size=auto&color_scheme=dark" width="655" height="auto">
+    <img alt="Active Contributors of tmaui - Last 28 days" src="https://next.ossinsight.io/widgets/official/compose-recent-active-contributors/thumbnail.png?limit=30&repo_id=993255381&image_size=auto&color_scheme=light" width="655" height="auto">
   </picture>
 </a>
 
-Contributions are welcome! To contribute, fork the repository, make your changes, and submit a pull request. We look forward to your innovative [ideas](https://github.com/Telegram-Mini-Apps/TelegramUI/pulls) and improvements.
+Contributions are welcome! To contribute, fork the repository, make your changes, and submit a pull request. We look forward to your innovative [ideas](https://github.com/tophackr/tmaui/pulls) and improvements.
 
 ## License
-This Telegram UI Kit is available under the [MIT License](https://opensource.org/license/mit). Use it freely in both personal and commercial projects.
+This tmaui kit is available under the [MIT License](https://opensource.org/license/mit). Use it freely in both personal and commercial projects.
 
 The library was skillfully crafted by [mainsmirnov](https://github.com/mainsmirnov), with the generous sponsorship of [TON Foundation](https://github.com/ton-society/grants-and-bounties/issues/364).
