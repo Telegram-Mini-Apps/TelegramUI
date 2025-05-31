@@ -114,7 +114,7 @@
     "@floating-ui/utils": "^0.2.9",
     "@swc/helpers": "^0.5.17",
     "@twa-dev/types": "^7.0.0",
-    "@xelene/vaul-with-scroll-fix": "0.1.4"
+    "vaul": "^1.1.2"
   },
   "resolutions": {
     "@types/react": "^19.1.6",

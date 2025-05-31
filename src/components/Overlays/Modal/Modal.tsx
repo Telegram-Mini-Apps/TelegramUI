@@ -8,7 +8,7 @@ import { classNames } from 'helpers/classNames';
 import { useAppRootContext } from 'hooks/useAppRootContext';
 import type { RefProps } from 'types/ref';
 
-import { Drawer } from '@xelene/vaul-with-scroll-fix';
+import { Drawer } from 'vaul';
 
 import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { ModalClose } from './components/ModalClose/ModalClose';
