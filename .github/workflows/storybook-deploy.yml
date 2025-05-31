@@ -42,6 +42,7 @@ jobs:
       - name: Build n Deploy Storybook
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
+          install_command: ''
           build_command: pnpm storybook:build
           path: storybook-static
           checkout: false
