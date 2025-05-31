@@ -38,11 +38,7 @@ export const TabsItem = ({
       )}
       {...restProps}
     >
-      <Text
-        weight={platform === 'ios' ? iosWeight : '2'}
-      >
-        {children}
-      </Text>
+      <Text weight={platform === 'ios' ? iosWeight : '2'}>{children}</Text>
     </Tappable>
   );
 };

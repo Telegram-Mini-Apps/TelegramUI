@@ -24,17 +24,16 @@ const subheadlineLevelStyles: Record<SubheadlineLevel, string> = {
  * offering additional control over the text's size through the `level` prop. By default, it renders
  * as an `<h6>` element but can be customized with the `Component` prop.
  */
-export const Subheadline = forwardRef(({
-  level = '1',
-  className,
-  Component,
-  ...restProps
-}: SubheadlineProps, ref) => (
-  <Typography
-    {...restProps}
-    ref={ref}
-    className={classNames(subheadlineLevelStyles[level], className)}
-    Component={Component || 'h6'}
-  />
-));
-
+export const Subheadline = forwardRef(
+  (
+    { level = '1', className, Component, ...restProps }: SubheadlineProps,
+    ref
+  ) => (
+    <Typography
+      {...restProps}
+      ref={ref}
+      className={classNames(subheadlineLevelStyles[level], className)}
+      Component={Component || 'h6'}
+    />
+  )
+);

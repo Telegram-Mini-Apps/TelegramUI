@@ -7,5 +7,8 @@ export interface ModalCloseProps {
 }
 
 export const ModalClose = (props: ModalCloseProps) => (
-  <Drawer.Close asChild {...props} />
+  <Drawer.Close
+    asChild
+    {...props}
+  />
 );

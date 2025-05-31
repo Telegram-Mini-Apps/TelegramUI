@@ -35,11 +35,25 @@ const platformStyles = {
  * primitive header and footer content in the appropriate sub-components, and inserts dividers between
  * children when rendering multiple elements.
  */
-export const Section = ({ header, footer, className, children, ...restProps }: SectionProps) => {
+export const Section = ({
+  header,
+  footer,
+  className,
+  children,
+  ...restProps
+}: SectionProps) => {
   const platform = usePlatform();
 
-  const headerWithWrapper = isPrimitiveReactNode(header) ? <SectionHeader>{header}</SectionHeader> : header;
-  const footerWithWrapper = isPrimitiveReactNode(footer) ? <SectionFooter>{footer}</SectionFooter> : footer;
+  const headerWithWrapper = isPrimitiveReactNode(header) ? (
+    <SectionHeader>{header}</SectionHeader>
+  ) : (
+    header
+  );
+  const footerWithWrapper = isPrimitiveReactNode(footer) ? (
+    <SectionFooter>{footer}</SectionFooter>
+  ) : (
+    footer
+  );
 
   return (
     <section

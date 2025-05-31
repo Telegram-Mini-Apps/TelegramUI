@@ -30,7 +30,7 @@ const labels = [
 ];
 
 export const Playground: StoryObj<TabsListProps> = {
-  render: args => {
+  render: (args) => {
     const [selected, setSelected] = useState(labels[0]!.value);
 
     return (
@@ -48,7 +48,7 @@ export const Playground: StoryObj<TabsListProps> = {
     );
   },
   decorators: [
-    Component => (
+    (Component) => (
       <div style={{ maxWidth: 500 }}>
         <Component />
       </div>

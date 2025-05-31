@@ -54,7 +54,15 @@ export const Badge = ({
     >
       {hasReactNode(children) && isNumber && (
         <>
-          {large && <Subheadline Component="span" level="2" weight="2">{children}</Subheadline>}
+          {large && (
+            <Subheadline
+              Component="span"
+              level="2"
+              weight="2"
+            >
+              {children}
+            </Subheadline>
+          )}
           {!large && <Caption weight="2">{children}</Caption>}
         </>
       )}

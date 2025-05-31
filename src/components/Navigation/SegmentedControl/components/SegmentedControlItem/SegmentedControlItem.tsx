@@ -9,7 +9,8 @@ import { usePlatform } from 'hooks/usePlatform';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Caption } from 'components/Typography/Caption/Caption';
 
-export interface SegmentedControlItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface SegmentedControlItemProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Whether the item is selected. Used by the parent SegmentedControl to style accordingly. */
   selected?: boolean;
 }

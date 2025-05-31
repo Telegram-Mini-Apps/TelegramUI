@@ -12,7 +12,8 @@ import { Spinner } from 'components/Feedback/Spinner/Spinner';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { ButtonTypography } from './components/ButtonTypography/ButtonTypography';
 
-export interface ButtonProps extends Omit<AllHTMLAttributes<HTMLButtonElement>, 'size'> {
+export interface ButtonProps
+  extends Omit<AllHTMLAttributes<HTMLButtonElement>, 'size'> {
   /** Inserts a component before the button text, typically an icon. */
   before?: ReactNode;
   /** Inserts a component after the button text, such as a badge or indicator. */
@@ -49,49 +50,56 @@ const sizeStyles = {
 /**
  * Renders a button or a button-like element with customizable properties, such as size, mode, and loading state. Supports adding icons or other elements before and after the text.
  */
-export const Button = forwardRef(({
-  type,
-  size = 'm',
-  before,
-  after,
-  stretched,
-  children,
-  className,
-  mode = 'filled',
-  loading,
-  Component = 'button',
-  ...restProps
-}: ButtonProps, ref) => {
-  const platform = usePlatform();
+export const Button = forwardRef(
+  (
+    {
+      type,
+      size = 'm',
+      before,
+      after,
+      stretched,
+      children,
+      className,
+      mode = 'filled',
+      loading,
+      Component = 'button',
+      ...restProps
+    }: ButtonProps,
+    ref
+  ) => {
+    const platform = usePlatform();
 
-  return (
-    <Tappable
-      ref={ref}
-      type={type || 'button'}
-      Component={Component}
-      className={classNames(
-        styles.wrapper,
-        mode && modeStyles[mode],
-        size && sizeStyles[size],
-        platform === 'ios' && styles['wrapper--ios'],
-        stretched && styles['wrapper--stretched'],
-        loading && styles['wrapper--loading'],
-        className
-      )}
-      {...restProps}
-    >
-      {loading && <Spinner className={styles.spinner} size="s" />}
-      {hasReactNode(before) && (
-        <div className={styles.before}>
-          {before}
-        </div>
-      )}
-      <ButtonTypography className={styles.content} size={size}>{children}</ButtonTypography>
-      {hasReactNode(after) && (
-        <div className={styles.after}>
-          {after}
-        </div>
-      )}
-    </Tappable>
-  );
-});
+    return (
+      <Tappable
+        ref={ref}
+        type={type || 'button'}
+        Component={Component}
+        className={classNames(
+          styles.wrapper,
+          mode && modeStyles[mode],
+          size && sizeStyles[size],
+          platform === 'ios' && styles['wrapper--ios'],
+          stretched && styles['wrapper--stretched'],
+          loading && styles['wrapper--loading'],
+          className
+        )}
+        {...restProps}
+      >
+        {loading && (
+          <Spinner
+            className={styles.spinner}
+            size="s"
+          />
+        )}
+        {hasReactNode(before) && <div className={styles.before}>{before}</div>}
+        <ButtonTypography
+          className={styles.content}
+          size={size}
+        >
+          {children}
+        </ButtonTypography>
+        {hasReactNode(after) && <div className={styles.after}>{after}</div>}
+      </Tappable>
+    );
+  }
+);

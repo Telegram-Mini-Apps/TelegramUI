@@ -9,7 +9,7 @@ import { LargeTitle } from 'components/Typography/LargeTitle/LargeTitle';
 import { Title } from 'components/Typography/Title/Title';
 import type { TypographyProps } from 'components/Typography/Typography';
 
-export interface PinInputButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+export type PinInputButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ButtonTypography = (props: TypographyProps) => {
   const platform = usePlatform();

@@ -27,6 +27,7 @@ export const SegmentedControl = ({
 
   const childrenAsArray = Children.toArray(children);
   const checkedIndex = childrenAsArray.findIndex((option) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return isValidElement(option) && option.props.selected;
   });
 
@@ -42,7 +43,7 @@ export const SegmentedControl = ({
       {...restProps}
     >
       <div className={styles.body}>
-        {checkedIndex > -1 && (
+        {checkedIndex !== -1 && (
           <div
             aria-hidden
             className={styles.slider}

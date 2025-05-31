@@ -41,7 +41,14 @@ export const WithBadge: Story = {
     size: 48,
     src: 'https://avatars.githubusercontent.com/u/84640980?v=4',
     fallbackIcon: <span>😕</span>,
-    children: <Avatar.Badge type="number" large>42</Avatar.Badge>,
+    children: (
+      <Avatar.Badge
+        type="number"
+        large
+      >
+        42
+      </Avatar.Badge>
+    ),
   },
 } satisfies Story;
 

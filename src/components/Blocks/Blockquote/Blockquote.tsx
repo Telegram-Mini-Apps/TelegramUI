@@ -17,25 +17,28 @@ export interface BlockquoteProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
+const defaultTopRightIcon = <Icon12Quote />;
+
 /**
  * Renders a stylized blockquote element, typically used for quotations or special text. The component can include an
  * icon in the top right corner and supports different content types for flexible use within UI designs.
  */
 export const Blockquote = ({
   type = 'text',
-  topRightIcon = <Icon12Quote />,
+  topRightIcon = defaultTopRightIcon,
   className,
   children,
   ...restProps
 }: BlockquoteProps) => (
   <div
-    className={classNames(
-      styles.wrapper,
-      className
-    )}
+    className={classNames(styles.wrapper, className)}
     {...restProps}
   >
-    {type === 'text' ? <Subheadline className={styles.text}>{children}</Subheadline> : children}
+    {type === 'text' ? (
+      <Subheadline className={styles.text}>{children}</Subheadline>
+    ) : (
+      children
+    )}
     <IconContainer className={styles.topRightIcon}>
       {topRightIcon}
     </IconContainer>

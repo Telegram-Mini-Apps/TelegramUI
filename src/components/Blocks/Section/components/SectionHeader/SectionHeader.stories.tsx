@@ -16,7 +16,12 @@ export const Playground: Story = {
   render: (args) => (
     <>
       <SectionHeader {...args}>{args.children || 'Usual title'}</SectionHeader>
-      <SectionHeader large {...args}>{args.children || 'Large title'}</SectionHeader>
+      <SectionHeader
+        large
+        {...args}
+      >
+        {args.children || 'Large title'}
+      </SectionHeader>
     </>
   ),
 } satisfies Story;

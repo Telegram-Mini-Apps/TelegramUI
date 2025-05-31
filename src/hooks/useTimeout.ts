@@ -18,7 +18,10 @@ export const useTimeout = (callbackFunction: () => void, duration: number) => {
 
   const set = useCallback(() => {
     clear();
-    timeout.current = setTimeout(options.current.callbackFunction, options.current.duration);
+    timeout.current = setTimeout(
+      options.current.callbackFunction,
+      options.current.duration
+    );
   }, [clear]);
 
   return { set, clear };

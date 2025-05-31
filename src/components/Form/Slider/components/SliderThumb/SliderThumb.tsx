@@ -11,11 +11,10 @@ import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden
 
 export interface SliderThumbProps extends HTMLAttributes<HTMLSpanElement> {
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
-  withTooltip?: boolean;
 }
 
 export const SliderThumb = forwardRef<HTMLSpanElement, SliderThumbProps>(
-  ({ className, inputProps, withTooltip, ...restProps }, ref) => {
+  ({ className, inputProps, ...restProps }, ref) => {
     const platform = usePlatform();
 
     return (

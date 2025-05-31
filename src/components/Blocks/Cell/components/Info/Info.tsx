@@ -45,7 +45,11 @@ export const Info = ({
       {isAvatarStack && hasReactNode(avatarStack) && avatarStack}
       {hasReactNode(children) && <Text>{children}</Text>}
       {isText && hasReactNode(subtitle) && (
-        <Subheadline className={styles.subtitle} level="2" plain={false}>
+        <Subheadline
+          className={styles.subtitle}
+          level="2"
+          plain={false}
+        >
           {subtitle}
         </Subheadline>
       )}

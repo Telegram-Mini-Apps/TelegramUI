@@ -44,7 +44,10 @@ export const WithAction: Story = {
   args: {
     ...Playground.args,
     action: (
-      <Button stretched size="l">
+      <Button
+        stretched
+        size="l"
+      >
         Action
       </Button>
     ),
@@ -55,7 +58,8 @@ export const WithAction: Story = {
 export const HeaderAndDescription: Story = {
   args: {
     children: Playground.args?.children,
-    description: 'Only you can see archived stories unless you choose to post them to your profile.',
+    description:
+      'Only you can see archived stories unless you choose to post them to your profile.',
   },
   render: Playground.render,
 };

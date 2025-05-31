@@ -22,16 +22,16 @@ export const extractSliderAriaAttributes = <T extends AriaAttributes>(
   };
 };
 
-export const getDraggingTypeByTargetDataset = <T extends (EventTarget & HTMLElement) | null>(
+export const getDraggingTypeByTargetDataset = <
+  T extends (EventTarget & HTMLElement) | null,
+>(
   target: T
 ) => {
   if (!target) {
     return null;
   }
 
-  // eslint-disable-next-line @typescript-eslint/dot-notation
   if (['start', 'end'].includes(target.dataset['type'] || '')) {
-    // eslint-disable-next-line @typescript-eslint/dot-notation
     return target.dataset['type'] as InternalDraggingType;
   }
 

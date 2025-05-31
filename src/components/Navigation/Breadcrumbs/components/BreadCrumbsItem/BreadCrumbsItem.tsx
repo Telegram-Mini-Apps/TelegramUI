@@ -15,7 +15,15 @@ export const BreadCrumbsItem = ({
   children,
   ...restProps
 }: BreadCrumbsItemProps) => (
-  <Component className={classNames(styles.wrapper, className)} {...restProps}>
-    <Subheadline level="2" weight="2">{children}</Subheadline>
+  <Component
+    className={classNames(styles.wrapper, className)}
+    {...restProps}
+  >
+    <Subheadline
+      level="2"
+      weight="2"
+    >
+      {children}
+    </Subheadline>
   </Component>
 );

@@ -28,10 +28,7 @@ export const Tooltip = ({
     withArrow
     arrowProps={{
       ...arrowProps,
-      className: classNames(
-        styles.arrow,
-        arrowProps?.className
-      ),
+      className: classNames(styles.arrow, arrowProps?.className),
     }}
     className={classNames(
       styles.wrapper,

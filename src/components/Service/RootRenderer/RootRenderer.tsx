@@ -15,8 +15,5 @@ export const RootRenderer = ({ children }: RootRendererProps) => {
     return isValidElement(children) ? children : null;
   }
 
-  return createPortal(
-    children,
-    portalContainer.current
-  );
+  return createPortal(children, portalContainer.current);
 };

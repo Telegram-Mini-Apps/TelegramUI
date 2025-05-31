@@ -19,4 +19,3 @@ export const Playground: StoryObj<TabbarItemProps> = {
     children: <Icon28Devices />,
   },
 };
-

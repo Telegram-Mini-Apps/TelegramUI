@@ -13,7 +13,8 @@ import { Caption } from 'components/Typography/Caption/Caption';
 import type { InlineButtonsContextProps } from '../../InlineButtonsContext';
 import { InlineButtonsContext } from '../../InlineButtonsContext';
 
-export interface InlineButtonsItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface InlineButtonsItemProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Text displayed inside the button. */
   text?: string;
   /** Optional mode for styling the button, with 'plain' as the default. */
@@ -56,7 +57,15 @@ export const InlineButtonsItem = ({
       {...restProps}
     >
       {children}
-      {hasReactNode(text) && <Caption className={styles.text} level="1" weight="2">{text}</Caption>}
+      {hasReactNode(text) && (
+        <Caption
+          className={styles.text}
+          level="1"
+          weight="2"
+        >
+          {text}
+        </Caption>
+      )}
     </Tappable>
   );
 };

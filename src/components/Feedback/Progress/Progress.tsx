@@ -19,7 +19,11 @@ const PROGRESS_MAX_VALUE = 100;
  * Renders a linear progress bar that visually represents completion percentage towards a goal.
  * The component respects accessibility standards by including appropriate ARIA attributes.
  */
-export const Progress = ({ value = 0, className, ...restProps }: ProgressProps) => {
+export const Progress = ({
+  value = 0,
+  className,
+  ...restProps
+}: ProgressProps) => {
   const platform = usePlatform();
 
   const progress = clamp(value, PROGRESS_MIN_VALUE, PROGRESS_MAX_VALUE);
@@ -39,7 +43,11 @@ export const Progress = ({ value = 0, className, ...restProps }: ProgressProps) 
       )}
       {...restProps}
     >
-      <div aria-hidden className={styles.progress} style={{ width: `${progress}%` }} />
+      <div
+        aria-hidden
+        className={styles.progress}
+        style={{ width: `${progress}%` }}
+      />
     </div>
   );
 };

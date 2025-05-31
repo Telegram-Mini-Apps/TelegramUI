@@ -14,11 +14,14 @@ export type LargeTitleProps = TypographyProps;
  * This choice of default component underscores the importance and hierarchy of the text it encapsulates,
  * making it suitable for primary page titles or significant headings.
  */
-export const LargeTitle = ({ className, Component, ...restProps }: LargeTitleProps) => (
+export const LargeTitle = ({
+  className,
+  Component,
+  ...restProps
+}: LargeTitleProps) => (
   <Typography
     {...restProps}
     Component={Component || 'h1'}
     className={classNames(styles.wrapper, className)}
   />
 );
-

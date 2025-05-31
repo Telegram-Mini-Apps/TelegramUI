@@ -31,7 +31,12 @@ export const Playground: Story = {
     children: (
       <>
         <Button size="s">Try it out</Button>
-        <Button size="s" mode="plain">Maybe later</Button>
+        <Button
+          size="s"
+          mode="plain"
+        >
+          Maybe later
+        </Button>
       </>
     ),
     onCloseIcon: () => console.log('onCloseIcon'),
@@ -57,7 +62,14 @@ export const Image: Story = {
         src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
       />
     ),
-    children: <Button size="s" mode="white">Try it out</Button>,
+    children: (
+      <Button
+        size="s"
+        mode="white"
+      >
+        Try it out
+      </Button>
+    ),
   },
   decorators: [
     (StoryComponent) => (
@@ -67,4 +79,3 @@ export const Image: Story = {
     ),
   ],
 } satisfies Story;
-

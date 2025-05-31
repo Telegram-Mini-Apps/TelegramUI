@@ -8,7 +8,7 @@ export interface InternalGestureRef {
   containerWidth: number;
 }
 
-export type Step = {
+export interface Step {
   isPassed: boolean;
   XCoordinate: number;
-};
+}

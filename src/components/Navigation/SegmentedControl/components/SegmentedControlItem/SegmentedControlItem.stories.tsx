@@ -16,4 +16,3 @@ export const Playground: StoryObj<SegmentedControlItemProps> = {
     children: 'This is a SegmentedControl.Item',
   },
 };
-

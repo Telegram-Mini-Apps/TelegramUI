@@ -19,10 +19,22 @@ export const Playground: StoryObj<AvatarProps> = {
   args: {
     children: (
       <>
-        <Avatar size={48} src={AVATAR_URL} />
-        <Avatar size={48} src={AVATAR_URL} />
-        <Avatar size={48} src={AVATAR_URL} />
-        <Avatar size={48} src={AVATAR_URL} />
+        <Avatar
+          size={48}
+          src={AVATAR_URL}
+        />
+        <Avatar
+          size={48}
+          src={AVATAR_URL}
+        />
+        <Avatar
+          size={48}
+          src={AVATAR_URL}
+        />
+        <Avatar
+          size={48}
+          src={AVATAR_URL}
+        />
       </>
     ),
   },

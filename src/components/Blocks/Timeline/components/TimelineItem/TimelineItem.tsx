@@ -49,7 +49,12 @@ export const TimelineItem = ({
         <div className={styles.dot} />
       </div>
       <div className={styles.fields}>
-        <Text className={styles.title} weight="2">{header}</Text>
+        <Text
+          className={styles.title}
+          weight="2"
+        >
+          {header}
+        </Text>
         <Subheadline
           level={platform === 'ios' ? '1' : '2'}
           className={styles.description}

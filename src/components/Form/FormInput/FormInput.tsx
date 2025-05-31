@@ -24,7 +24,9 @@ export interface FormPublicProps {
   disabled?: boolean;
 }
 
-export interface FormInputProps extends FormPublicProps, HTMLAttributes<HTMLLabelElement> {}
+export interface FormInputProps
+  extends FormPublicProps,
+    HTMLAttributes<HTMLLabelElement> {}
 
 const platformStyles = {
   base: styles['wrapper--base'],
@@ -41,64 +43,63 @@ const formStatusStyles = {
  * Wraps an input element with additional layout for headers, icons, or actions, providing a consistent look and feel across the form.
  * It supports conditional rendering based on the platform and the state of the form element.
  */
-export const FormInput = forwardRef<HTMLDivElement, FormInputProps>(({
-  status,
-  header,
-  before,
-  after,
-  disabled,
-  children,
-  className,
-  onFocus: onFocusProp,
-  onBlur: onBlurProp,
-  ...restProps
-}, ref) => {
-  const platform = usePlatform();
-  const [isFocused, setIsFocused] = useState(false);
+export const FormInput = forwardRef<HTMLDivElement, FormInputProps>(
+  (
+    {
+      status,
+      header,
+      before,
+      after,
+      disabled,
+      children,
+      className,
+      onFocus: onFocusProp,
+      onBlur: onBlurProp,
+      ...restProps
+    },
+    ref
+  ) => {
+    const platform = usePlatform();
+    const [isFocused, setIsFocused] = useState(false);
 
-  const formStatus = status || (isFocused ? 'focused' : 'default');
+    const formStatus = status || (isFocused ? 'focused' : 'default');
 
-  const onFocus = callMultiple(onFocusProp, () => {
-    if (disabled) {
-      return;
-    }
+    const onFocus = callMultiple(onFocusProp, () => {
+      if (disabled) {
+        return;
+      }
 
-    setIsFocused(true);
-  });
-  const onBlur = callMultiple(onBlurProp, () => setIsFocused(false));
+      setIsFocused(true);
+    });
+    const onBlur = callMultiple(onBlurProp, () => setIsFocused(false));
 
-  return (
-    <div
-      ref={ref}
-      className={classNames(
-        platformStyles[platform],
-        formStatusStyles[formStatus],
-        disabled && styles['wrapper--disabled']
-      )}
-      aria-disabled={disabled}
-    >
-      <label
+    return (
+      <div
+        ref={ref}
+        className={classNames(
+          platformStyles[platform],
+          formStatusStyles[formStatus],
+          disabled && styles['wrapper--disabled']
+        )}
         aria-disabled={disabled}
-        className={classNames(styles.body, className)}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        {...restProps}
       >
-        {hasReactNode(before) && (
-          <div className={styles.before}>
-            {before}
-          </div>
+        <label
+          aria-disabled={disabled}
+          className={classNames(styles.body, className)}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          {...restProps}
+        >
+          {hasReactNode(before) && (
+            <div className={styles.before}>{before}</div>
+          )}
+          {children}
+          {hasReactNode(after) && <div className={styles.after}>{after}</div>}
+        </label>
+        {hasReactNode(header) && platform === 'base' && (
+          <FormInputTitle className={styles.title}>{header}</FormInputTitle>
         )}
-        {children}
-        {hasReactNode(after) && (
-          <div className={styles.after}>
-            {after}
-          </div>
-        )}
-      </label>
-      {hasReactNode(header) && platform === 'base' && (
-        <FormInputTitle className={styles.title}>{header}</FormInputTitle>
-      )}
-    </div>
-  );
-});
+      </div>
+    );
+  }
+);

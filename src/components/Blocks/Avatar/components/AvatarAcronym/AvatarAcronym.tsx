@@ -15,16 +15,42 @@ export const AvatarAcronym = ({ size, ...restProps }: AvatarAcronymProps) => {
   }
 
   if (size <= 28) {
-    return <Caption level={size <= 24 ? '2' : '1'} weight="1" caps {...restProps} />;
+    return (
+      <Caption
+        level={size <= 24 ? '2' : '1'}
+        weight="1"
+        caps
+        {...restProps}
+      />
+    );
   }
 
   if (size === 40) {
-    return <Headline weight="2" caps {...restProps} />;
+    return (
+      <Headline
+        weight="2"
+        caps
+        {...restProps}
+      />
+    );
   }
 
   if (size === 48) {
-    return <Title weight="1" level="3" caps {...restProps} />;
+    return (
+      <Title
+        weight="1"
+        level="3"
+        caps
+        {...restProps}
+      />
+    );
   }
 
-  return <LargeTitle weight="1" caps {...restProps} />;
+  return (
+    <LargeTitle
+      weight="1"
+      caps
+      {...restProps}
+    />
+  );
 };

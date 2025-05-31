@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { hideControls } from 'storybook/controls';
@@ -20,19 +20,21 @@ export const Playground: StoryObj<AccordionProps> = {
   render: (args) => {
     const [expanded, setExpanded] = useState(args.expanded);
 
-    useEffect(() => {
-      setExpanded(args.expanded);
-    }, [args.expanded]);
-
     return (
-      <Accordion {...args} onChange={() => setExpanded(!expanded)} expanded={expanded}>
+      <Accordion
+        {...args}
+        onChange={() => setExpanded(!expanded)}
+        expanded={expanded}
+      >
         <Accordion.Summary>History of accordion</Accordion.Summary>
         <Accordion.Content>
           <div style={{ padding: '10px 20px 20px' }}>
             <Blockquote>
-              The accordion&apos;s basic form is believed to have been invented in Berlin, in 1822,
-              by Christian Friedrich Ludwig Buschmann, although one instrument was discovered in 2006
-              that appears to have been built earlier. The earliest history of the accordion in Russia is poorly documented.
+              The accordion&apos;s basic form is believed to have been invented
+              in Berlin, in 1822, by Christian Friedrich Ludwig Buschmann,
+              although one instrument was discovered in 2006 that appears to
+              have been built earlier. The earliest history of the accordion in
+              Russia is poorly documented.
             </Blockquote>
           </div>
         </Accordion.Content>
@@ -41,7 +43,13 @@ export const Playground: StoryObj<AccordionProps> = {
   },
   decorators: [
     (Story) => (
-      <Section style={{ background: 'var(--tgui--secondary_bg_color)', padding: 20, width: 358 }}>
+      <Section
+        style={{
+          background: 'var(--tgui--secondary_bg_color)',
+          padding: 20,
+          width: 358,
+        }}
+      >
         <Story />
       </Section>
     ),

@@ -27,7 +27,13 @@ export const WithCell: Story = {
     <form>
       <Cell
         Component="label"
-        before={<Multiselectable name="multiselect" value="1" {...args} />}
+        before={
+          <Multiselectable
+            name="multiselect"
+            value="1"
+            {...args}
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >
@@ -35,7 +41,13 @@ export const WithCell: Story = {
       </Cell>
       <Cell
         Component="label"
-        before={<Multiselectable name="multiselect" value="2" {...args} />}
+        before={
+          <Multiselectable
+            name="multiselect"
+            value="2"
+            {...args}
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >

@@ -9,13 +9,18 @@ import type { CellProps } from 'components/Blocks/Cell/Cell';
 import { Cell } from 'components/Blocks/Cell/Cell';
 
 export const renderOptionDefault = (props: CellProps) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const platform = usePlatform();
 
   const SelectedIcon = platform === 'ios' ? Icon20SelectIOS : Icon20Select;
   return (
     <Cell
       {...props}
-      after={props.selected ? <SelectedIcon className={styles.selectedIcon} /> : undefined}
+      after={
+        props.selected ? (
+          <SelectedIcon className={styles.selectedIcon} />
+        ) : undefined
+      }
     />
   );
 };

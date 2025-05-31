@@ -10,7 +10,7 @@ declare global {
 
 export const getTelegramData = () => {
   if (!canUseDOM) {
-    return undefined;
+    return;
   }
 
   return window.Telegram?.WebApp;

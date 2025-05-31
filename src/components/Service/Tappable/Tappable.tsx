@@ -16,34 +16,40 @@ export interface TappableProps extends AllHTMLAttributes<HTMLElement> {
   interactiveAnimation?: 'opacity' | 'background';
 }
 
-export const Tappable = forwardRef(({
-  Component = 'div',
-  children,
-  className,
-  interactiveAnimation = 'background',
-  readOnly,
-  ...restProps
-}: TappableProps, ref) => {
-  const platform = usePlatform();
-  const { clicks, onPointerCancel, onPointerDown } = useRipple();
+export const Tappable = forwardRef(
+  (
+    {
+      Component = 'div',
+      children,
+      className,
+      interactiveAnimation = 'background',
+      readOnly,
+      ...restProps
+    }: TappableProps,
+    ref
+  ) => {
+    const platform = usePlatform();
+    const { clicks, onPointerCancel, onPointerDown } = useRipple();
 
-  const hasRippleEffect = platform === 'base' && interactiveAnimation === 'background' && !readOnly;
-  return (
-    <Component
-      ref={ref}
-      className={classNames(
-        styles.wrapper,
-        platform === 'ios' && styles['wrapper--ios'],
-        interactiveAnimation === 'opacity' && styles['wrapper--opacity'],
-        className
-      )}
-      onPointerCancel={onPointerCancel}
-      onPointerDown={onPointerDown}
-      readOnly={readOnly}
-      {...restProps}
-    >
-      {hasRippleEffect && <Ripple clicks={clicks} />}
-      {children}
-    </Component>
-  );
-});
+    const hasRippleEffect =
+      platform === 'base' && interactiveAnimation === 'background' && !readOnly;
+    return (
+      <Component
+        ref={ref}
+        className={classNames(
+          styles.wrapper,
+          platform === 'ios' && styles['wrapper--ios'],
+          interactiveAnimation === 'opacity' && styles['wrapper--opacity'],
+          className
+        )}
+        onPointerCancel={onPointerCancel}
+        onPointerDown={onPointerDown}
+        readOnly={readOnly}
+        {...restProps}
+      >
+        {hasRippleEffect && <Ripple clicks={clicks} />}
+        {children}
+      </Component>
+    );
+  }
+);

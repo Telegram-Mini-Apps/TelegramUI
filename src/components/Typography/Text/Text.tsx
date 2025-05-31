@@ -6,7 +6,7 @@ import { classNames } from 'helpers/classNames';
 import type { TypographyProps } from '../Typography';
 import { Typography } from '../Typography';
 
-export type TextProps = Omit<TypographyProps, 'plain'>
+export type TextProps = Omit<TypographyProps, 'plain'>;
 
 /**
  * Text component is designed for general-purpose text rendering,
@@ -15,18 +15,14 @@ export type TextProps = Omit<TypographyProps, 'plain'>
  * This component is ideal for paragraphs, labels, or any textual content, providing
  * consistent styling across the application.
  */
-export const Text = forwardRef(({
-  weight,
-  className,
-  Component,
-  ...restProps
-}: TextProps, ref) => (
-  <Typography
-    ref={ref}
-    {...restProps}
-    weight={weight}
-    className={classNames(styles.wrapper, className)}
-    Component={Component || 'span'}
-  />
-));
-
+export const Text = forwardRef(
+  ({ weight, className, Component, ...restProps }: TextProps, ref) => (
+    <Typography
+      ref={ref}
+      {...restProps}
+      weight={weight}
+      className={classNames(styles.wrapper, className)}
+      Component={Component || 'span'}
+    />
+  )
+);

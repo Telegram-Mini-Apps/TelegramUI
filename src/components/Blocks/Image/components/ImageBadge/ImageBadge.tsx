@@ -5,9 +5,13 @@ import { classNames } from 'helpers/classNames';
 import type { BadgeProps } from 'components/Blocks/Badge/Badge';
 import { Badge } from 'components/Blocks/Badge/Badge';
 
-export interface ImageBadgeProps extends BadgeProps {}
+export type ImageBadgeProps = BadgeProps;
 
-export const ImageBadge = ({ type, className, ...restProps }: ImageBadgeProps) => {
+export const ImageBadge = ({
+  type,
+  className,
+  ...restProps
+}: ImageBadgeProps) => {
   if (type !== 'number') {
     console.error('[ImageBadge]: Component supports only type="number"');
     return null;

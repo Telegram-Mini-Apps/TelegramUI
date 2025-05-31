@@ -15,10 +15,7 @@ export interface AvatarStackProps extends HTMLAttributes<HTMLDivElement> {
  * allows for the creation of visually grouped avatar representations, often used
  * to indicate multiple users or participants.
  */
-export const AvatarStack = ({
-  children,
-  ...restProps
-}: AvatarStackProps) => {
+export const AvatarStack = ({ children, ...restProps }: AvatarStackProps) => {
   return (
     <div
       {...restProps}

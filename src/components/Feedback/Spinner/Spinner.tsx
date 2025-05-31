@@ -18,10 +18,7 @@ export interface SpinnerProps extends HTMLAttributes<HTMLDivElement> {
  * Provides a visual indicator for loading states across different platforms. It automatically selects
  * an appropriate spinner style based on the current platform, allowing for a consistent user experience.
  */
-export const Spinner = ({
-  size = 'm',
-  className,
-}: SpinnerProps) => {
+export const Spinner = ({ size = 'm', className }: SpinnerProps) => {
   const platform = usePlatform();
 
   const Component = platform === 'ios' ? IOSSpinner : BaseSpinner;

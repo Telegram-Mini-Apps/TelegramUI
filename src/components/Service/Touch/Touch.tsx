@@ -1,15 +1,35 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-
 'use client';
 
-import type { AllHTMLAttributes, DragEvent, ElementType, MouseEvent as ReactMouseEvent } from 'react';
+import type {
+  AllHTMLAttributes,
+  DragEvent,
+  ElementType,
+  MouseEvent as ReactMouseEvent,
+} from 'react';
 import { useMemo, useRef } from 'react';
 
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
 import { useEventListener } from 'hooks/useEventListener';
 
-import { coordX, coordY, getSupportedEvents, initGesture, touchEnabled } from './helpers/touch';
+import {
+  coordX,
+  coordY,
+  getSupportedEvents,
+  initGesture,
+  touchEnabled,
+} from './helpers/touch';
 import type { CustomTouchEvent, Gesture } from './helpers/types';
+
+/**
+ * Dragstart event handler
+ * Cancels the native browser behavior for nested links and images
+ */
+const onDragStart = (e: DragEvent<HTMLElement>) => {
+  const target = e.target as HTMLElement;
+  if (target.tagName === 'A' || target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+};
 
 export interface TouchProps extends AllHTMLAttributes<HTMLElement> {
   usePointerHover?: boolean;
@@ -69,12 +89,19 @@ export const Touch = ({
   const didSlide = useRef(false);
   const gesture = useRef<Partial<Gesture> | null>(null);
 
-  const handle = (e: CustomTouchEvent, handlers: Array<TouchEventHandler | undefined | false>) => {
-    stopPropagation && e.stopPropagation();
-    handlers.forEach((cb) => {
+  const handle = (
+    e: CustomTouchEvent,
+    handlers: (TouchEventHandler | undefined | false)[]
+  ) => {
+    if (stopPropagation) {
+      e.stopPropagation();
+    }
+    for (const cb of handlers) {
       const duration = Date.now() - (gesture.current?.startT?.getTime() ?? 0);
-      cb && cb({ ...(gesture.current as Gesture), duration, originalEvent: e });
-    });
+      if (cb) {
+        cb({ ...(gesture.current as Gesture), duration, originalEvent: e });
+      }
+    }
   };
 
   const listenerParams = { capture: useCapture, passive: false };
@@ -89,11 +116,11 @@ export const Touch = ({
       return;
     }
 
-    listeners.forEach(l => l.add(el));
+    for (const l of listeners) l.add(el);
   };
 
   const unsubscribe = () => {
-    listeners.forEach(l => l.remove());
+    for (const l of listeners) l.remove();
   };
 
   const enterHandler = useEventListener(
@@ -135,7 +162,13 @@ export const Touch = ({
   }, [Component]);
 
   function onMove(e: CustomTouchEvent) {
-    const { isPressed, isX, isY, startX = 0, startY = 0 } = gesture.current ?? {};
+    const {
+      isPressed,
+      isX,
+      isY,
+      startX = 0,
+      startY = 0,
+    } = gesture.current ?? {};
 
     if (isPressed) {
       const clientX = coordX(e);
@@ -201,41 +234,28 @@ export const Touch = ({
 
     const isTouchEnabled = touchEnabled();
 
-    if (isTouchEnabled && isSlide) {
-      // If it's a touch device and touchmove was detected,
-      // the click event won't be triggered
-      didSlide.current = false;
-    } else {
-      didSlide.current = Boolean(isSlide);
-    }
+    // If it's a touch device and touchmove was detected,
+    // the click event won't be triggered
+    didSlide.current = isTouchEnabled && isSlide ? false : Boolean(isSlide);
     gesture.current = {};
 
     // If it was a touch event, simulate hover cancellation
-    if (isTouchEnabled) {
-      onLeave && onLeave(e);
+    if (isTouchEnabled && onLeave) {
+      onLeave(e);
     }
 
     unsubscribe();
   }
 
   /**
-   * Dragstart event handler
-   * Cancels the native browser behavior for nested links and images
-   */
-  const onDragStart = (e: DragEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
-    if (target.tagName === 'A' || target.tagName === 'IMG') {
-      e.preventDefault();
-    }
-  };
-
-  /**
    * Click event handler for the component
    * Cancels the transition through the nested link if a swipe was detected
    */
-  const postGestureClick: typeof onClickCapture = e => {
+  const postGestureClick: typeof onClickCapture = (e) => {
     if (!didSlide.current) {
-      onClickCapture && onClickCapture(e);
+      if (onClickCapture) {
+        onClickCapture(e);
+      }
       return;
     }
 
@@ -243,7 +263,9 @@ export const Touch = ({
       e.stopPropagation();
       e.preventDefault();
     } else {
-      onClickCapture && onClickCapture(e);
+      if (onClickCapture) {
+        onClickCapture(e);
+      }
     }
 
     didSlide.current = false;

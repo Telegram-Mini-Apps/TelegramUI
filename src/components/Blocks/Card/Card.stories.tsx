@@ -20,9 +20,17 @@ export const Playground: Story = {
         <img
           alt="Dog"
           src="https://i.imgur.com/892vhef.jpeg"
-          style={{ display: 'block', width: 254, height: 308, objectFit: 'cover' }}
+          style={{
+            display: 'block',
+            width: 254,
+            height: 308,
+            objectFit: 'cover',
+          }}
         />
-        <Card.Cell readOnly subtitle="United states">
+        <Card.Cell
+          readOnly
+          subtitle="United states"
+        >
           New York
         </Card.Cell>
       </>

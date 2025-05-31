@@ -30,33 +30,38 @@ export interface ButtonCellProps extends Omit<TappableProps, 'Component'> {
  * Renders an interactive cell component with optional leading and trailing elements. Designed to be flexible,
  * supporting various content structures and interaction models within UI designs.
  */
-export const ButtonCell = forwardRef(({
-  mode = 'default',
-  before,
-  after,
-  className,
-  children,
-  Component,
-  ...restProps
-}: ButtonCellProps, ref) => {
-  const platform = usePlatform();
-  const Typography = platform === 'ios' ? Text : Subheadline;
+export const ButtonCell = forwardRef(
+  (
+    {
+      mode = 'default',
+      before,
+      after,
+      className,
+      children,
+      Component,
+      ...restProps
+    }: ButtonCellProps,
+    ref
+  ) => {
+    const platform = usePlatform();
+    const Typography = platform === 'ios' ? Text : Subheadline;
 
-  return (
-    <Tappable
-      ref={ref}
-      Component={Component || 'button'}
-      className={classNames(
-        styles.wrapper,
-        mode === 'destructive' && styles['wrapper--destructive'],
-        platform === 'ios' && styles['wrapper--ios'],
-        className
-      )}
-      {...restProps}
-    >
-      {hasReactNode(before) && before}
-      {hasReactNode(children) && <Typography>{children}</Typography>}
-      {hasReactNode(after) && after}
-    </Tappable>
-  );
-});
+    return (
+      <Tappable
+        ref={ref}
+        Component={Component || 'button'}
+        className={classNames(
+          styles.wrapper,
+          mode === 'destructive' && styles['wrapper--destructive'],
+          platform === 'ios' && styles['wrapper--ios'],
+          className
+        )}
+        {...restProps}
+      >
+        {hasReactNode(before) && before}
+        {hasReactNode(children) && <Typography>{children}</Typography>}
+        {hasReactNode(after) && after}
+      </Tappable>
+    );
+  }
+);

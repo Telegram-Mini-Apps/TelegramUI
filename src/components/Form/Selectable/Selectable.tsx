@@ -11,9 +11,7 @@ import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden
 import { IconSelectableBase } from './icons/selectable_base';
 import { IconSelectableIOS } from './icons/selectable_ios';
 
-export interface SelectableProps
-  extends InputHTMLAttributes<HTMLInputElement> {
-}
+export type SelectableProps = InputHTMLAttributes<HTMLInputElement>;
 
 /**
  * Renders a custom styled selectable input (radio button), visually enhancing the default HTML input
@@ -24,32 +22,39 @@ export interface SelectableProps
  * user experience across different environments. The actual radio input is visually hidden while remaining
  * fully accessible and functional.
  */
-export const Selectable = forwardRef<HTMLInputElement, SelectableProps>(({
-  style,
-  className,
-  disabled,
-  ...restProps
-}, ref) => {
-  const platform = usePlatform();
+export const Selectable = forwardRef<HTMLInputElement, SelectableProps>(
+  ({ className, disabled, ...restProps }, ref) => {
+    const platform = usePlatform();
 
-  return (
-    <label
-      className={classNames(
-        styles.wrapper,
-        disabled && styles['wrapper--disabled'],
-        className
-      )}
-    >
-      <VisuallyHidden
-        {...restProps}
-        Component="input"
-        type="radio"
-        className={styles.input}
-        disabled={disabled}
-        ref={ref}
-      />
-      {platform === 'ios' && <IconSelectableIOS className={styles.icon} aria-hidden />}
-      {platform === 'base' && <IconSelectableBase className={styles.icon} aria-hidden />}
-    </label>
-  );
-});
+    return (
+      <label
+        className={classNames(
+          styles.wrapper,
+          disabled && styles['wrapper--disabled'],
+          className
+        )}
+      >
+        <VisuallyHidden
+          {...restProps}
+          Component="input"
+          type="radio"
+          className={styles.input}
+          disabled={disabled}
+          ref={ref}
+        />
+        {platform === 'ios' && (
+          <IconSelectableIOS
+            className={styles.icon}
+            aria-hidden
+          />
+        )}
+        {platform === 'base' && (
+          <IconSelectableBase
+            className={styles.icon}
+            aria-hidden
+          />
+        )}
+      </label>
+    );
+  }
+);

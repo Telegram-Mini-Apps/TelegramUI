@@ -22,7 +22,9 @@ export const useRipple = () => {
 
   function addClick(x: number, y: number, pointerId: number) {
     const dateNow = Date.now();
-    const filteredClicks = clicks.filter((click) => click.date + WAVE_LIVE > dateNow);
+    const filteredClicks = clicks.filter(
+      (click) => click.date + WAVE_LIVE > dateNow
+    );
 
     setClicks([
       ...filteredClicks,

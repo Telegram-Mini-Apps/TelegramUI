@@ -28,7 +28,13 @@ export const WithCells: Story = {
     <form>
       <Cell
         Component="label"
-        before={<Radio name="radio" value="1" {...args} />}
+        before={
+          <Radio
+            name="radio"
+            value="1"
+            {...args}
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >
@@ -36,7 +42,13 @@ export const WithCells: Story = {
       </Cell>
       <Cell
         Component="label"
-        before={<Radio name="radio" value="2" {...args} />}
+        before={
+          <Radio
+            name="radio"
+            value="2"
+            {...args}
+          />
+        }
         description="Pass Component='label' to Cell to make it clickable."
         multiline
       >

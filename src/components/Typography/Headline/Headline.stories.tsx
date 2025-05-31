@@ -19,13 +19,22 @@ export const Playground: Story = {
   },
   render: (args) => (
     <>
-      <Headline weight="3" {...args}>
+      <Headline
+        weight="3"
+        {...args}
+      >
         Headline · Regular
       </Headline>
-      <Headline weight="2" {...args}>
+      <Headline
+        weight="2"
+        {...args}
+      >
         Headline · Semibold
       </Headline>
-      <Headline weight="1" {...args}>
+      <Headline
+        weight="1"
+        {...args}
+      >
         Headline · Bold
       </Headline>
     </>

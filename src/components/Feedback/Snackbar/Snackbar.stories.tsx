@@ -32,15 +32,20 @@ export const Playground: Story = {
 
     return (
       <>
-        <Button onClick={() => setIsDeleteSnackbarShown(true)} size="m">Show snackbar</Button>
+        <Button
+          onClick={() => setIsDeleteSnackbarShown(true)}
+          size="m"
+        >
+          Show snackbar
+        </Button>
         {isDeleteSnackbarShown && (
           <Snackbar
             {...args}
-            after={(
+            after={
               <Snackbar.Button onClick={() => setIsUndoSnackbarShown(true)}>
-                  Undo
+                Undo
               </Snackbar.Button>
-            )}
+            }
             onClose={() => setIsDeleteSnackbarShown(false)}
           />
         )}
@@ -48,7 +53,14 @@ export const Playground: Story = {
           <Snackbar
             {...args}
             description="Message returned to the list"
-            link={<Link href="https://telegram.org" target="_blank">Open</Link>}
+            link={
+              <Link
+                href="https://telegram.org"
+                target="_blank"
+              >
+                Open
+              </Link>
+            }
             onClose={() => setIsUndoSnackbarShown(false)}
           >
             Message restored

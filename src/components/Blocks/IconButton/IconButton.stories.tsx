@@ -22,9 +22,7 @@ export const Playground: Story = {
     mode: 'bezeled',
   },
   render: (args) => (
-    <IconButton
-      {...args}
-    >
+    <IconButton {...args}>
       {args.size === 's' && <Icon20QuestionMark />}
       {args.size === 'm' && <Icon24QR />}
       {args.size === 'l' && <Icon28Stats />}

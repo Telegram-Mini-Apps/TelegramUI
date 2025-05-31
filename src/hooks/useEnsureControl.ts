@@ -29,31 +29,38 @@ export function useCustomEnsuredControl<V = any>({
     preservedControlledValueRef.current = value;
   });
 
-  const onChange = useCallback((nextValue: V | ((prevValue: any) => V)) => {
-    if (disabled) {
-      return;
-    }
-
-    if (isFunction(nextValue)) {
-      if (!isControlled) {
-        setLocalValue((prevValue) => {
-          const resolvedValue = nextValue(prevValue);
-          if (onChangeProp) {
-            onChangeProp(resolvedValue);
-          }
-          return resolvedValue;
-        });
-      } else if (onChangeProp) {
-        const resolvedValue = nextValue(preservedControlledValueRef.current);
-        onChangeProp(resolvedValue);
+  const onChange = useCallback(
+    (nextValue: V | ((prevValue: any) => V)) => {
+      if (disabled) {
+        return;
       }
 
-      return;
-    }
+      if (isFunction(nextValue)) {
+        if (!isControlled) {
+          setLocalValue((prevValue) => {
+            const resolvedValue = nextValue(prevValue);
+            if (onChangeProp) {
+              onChangeProp(resolvedValue);
+            }
+            return resolvedValue;
+          });
+        } else if (onChangeProp) {
+          const resolvedValue = nextValue(preservedControlledValueRef.current);
+          onChangeProp(resolvedValue);
+        }
 
-    onChangeProp && onChangeProp(nextValue);
-    !isControlled && setLocalValue(nextValue);
-  }, [disabled, isControlled, onChangeProp]);
+        return;
+      }
+
+      if (onChangeProp) {
+        onChangeProp(nextValue);
+      }
+      if (!isControlled) {
+        setLocalValue(nextValue);
+      }
+    },
+    [disabled, isControlled, onChangeProp]
+  );
 
   return [isControlled ? value : localValue, onChange];
 }
@@ -78,8 +85,11 @@ export function useEnsuredControl<V, E extends ChangeEvent<any>>({
         return;
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
       onChangeValue(e.target.value);
-      onChangeProp && onChangeProp(e);
+      if (onChangeProp) {
+        onChangeProp(e);
+      }
     },
     [onChangeValue, onChangeProp, disabled]
   );

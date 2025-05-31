@@ -4,4 +4,6 @@ export interface InlineButtonsContextProps {
   mode?: 'plain' | 'bezeled' | 'gray';
 }
 
-export const InlineButtonsContext = createContext<InlineButtonsContextProps>({});
+export const InlineButtonsContext = createContext<InlineButtonsContextProps>(
+  {}
+);

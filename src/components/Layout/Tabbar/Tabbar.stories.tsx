@@ -53,7 +53,7 @@ export const Playground: StoryObj<TabbarProps> = {
     );
   },
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ height: 100 }}>
         <Story />
       </div>

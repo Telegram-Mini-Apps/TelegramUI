@@ -14,28 +14,27 @@ export interface ModalHeaderProps extends HTMLAttributes<HTMLElement> {
   after?: ReactNode;
 }
 
-export const ModalHeader = forwardRef<HTMLElement, ModalHeaderProps>(({
-  before,
-  after,
-  className,
-  children,
-  ...props
-}, ref) => {
-  const platform = usePlatform();
+export const ModalHeader = forwardRef<HTMLElement, ModalHeaderProps>(
+  ({ before, after, className, children, ...props }, ref) => {
+    const platform = usePlatform();
 
-  return (
-    <header
-      ref={ref}
-      className={classNames(styles.wrapper, className)}
-      {...props}
-    >
-      <div className={styles.before}>
-        {before}
-      </div>
-      {platform === 'ios' && <Text weight="2" className={styles.children}>{children}</Text>}
-      <div className={styles.after}>
-        {after}
-      </div>
-    </header>
-  );
-});
+    return (
+      <header
+        ref={ref}
+        className={classNames(styles.wrapper, className)}
+        {...props}
+      >
+        <div className={styles.before}>{before}</div>
+        {platform === 'ios' && (
+          <Text
+            weight="2"
+            className={styles.children}
+          >
+            {children}
+          </Text>
+        )}
+        <div className={styles.after}>{after}</div>
+      </header>
+    );
+  }
+);

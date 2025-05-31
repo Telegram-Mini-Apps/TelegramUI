@@ -13,7 +13,12 @@ export interface SectionHeaderProps extends HTMLAttributes<HTMLHeadElement> {
   large?: boolean;
 }
 
-export const SectionHeader = ({ large, className, children, ...restProps }: SectionHeaderProps) => {
+export const SectionHeader = ({
+  large,
+  className,
+  children,
+  ...restProps
+}: SectionHeaderProps) => {
   const platform = usePlatform();
   const { Default, Large } = useHeaderComponents();
 

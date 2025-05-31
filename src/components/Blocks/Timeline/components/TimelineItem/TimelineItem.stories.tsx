@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   args: {
-    header: 'It\'s my header = header prop',
-    children: 'It\'s my description = children prop',
+    header: "It's my header = header prop",
+    children: "It's my description = children prop",
   },
 } satisfies Story;

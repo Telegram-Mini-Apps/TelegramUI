@@ -20,13 +20,22 @@ export const Subheadline1: Story = {
   },
   render: (args) => (
     <>
-      <Subheadline weight="3" {...args}>
+      <Subheadline
+        weight="3"
+        {...args}
+      >
         Subheadline 1 · Regular
       </Subheadline>
-      <Subheadline weight="2" {...args}>
+      <Subheadline
+        weight="2"
+        {...args}
+      >
         Subheadline 1 · Semibold
       </Subheadline>
-      <Subheadline weight="1" {...args}>
+      <Subheadline
+        weight="1"
+        {...args}
+      >
         Subheadline 1 · Bold
       </Subheadline>
     </>
@@ -40,13 +49,22 @@ export const Subheadline2: Story = {
   },
   render: (args) => (
     <>
-      <Subheadline weight="3" {...args}>
+      <Subheadline
+        weight="3"
+        {...args}
+      >
         Subheadline 2 · Regular
       </Subheadline>
-      <Subheadline weight="2" {...args}>
+      <Subheadline
+        weight="2"
+        {...args}
+      >
         Subheadline 2 · Semibold
       </Subheadline>
-      <Subheadline weight="1" {...args}>
+      <Subheadline
+        weight="1"
+        {...args}
+      >
         Subheadline 2 · Bold
       </Subheadline>
     </>

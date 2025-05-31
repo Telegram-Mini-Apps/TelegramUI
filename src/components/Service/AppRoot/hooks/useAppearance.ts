@@ -9,9 +9,13 @@ import { AppRootContext } from '../AppRootContext';
 import { getBrowserAppearanceSubscriber } from './helpers/getBrowserAppearanceSubscriber';
 import { getInitialAppearance } from './helpers/getInitialAppearance';
 
-export const useAppearance = (appearanceProp?: AppRootContextInterface['appearance']): NonNullable<AppRootContextInterface['appearance']> => {
-  const { appearance: contextAppearance } = useContext(AppRootContext);
-  const [appearance, setAppearance] = useState(appearanceProp || contextAppearance || getInitialAppearance());
+export const useAppearance = (
+  appearanceProp?: AppRootContextInterface['appearance']
+): NonNullable<AppRootContextInterface['appearance']> => {
+  const appContext = useContext(AppRootContext);
+  const [appearance, setAppearance] = useState(
+    () => appearanceProp || appContext?.appearance || getInitialAppearance()
+  );
 
   const handleThemeChange = useCallback(() => {
     const telegramData = getTelegramData();
@@ -24,6 +28,8 @@ export const useAppearance = (appearanceProp?: AppRootContextInterface['appearan
 
   useEffect(() => {
     if (appearanceProp !== undefined) {
+      // todo: find out if it is necessary
+      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
       setAppearance(appearanceProp);
       return () => {};
     }
@@ -35,7 +41,7 @@ export const useAppearance = (appearanceProp?: AppRootContextInterface['appearan
     }
 
     return getBrowserAppearanceSubscriber(setAppearance);
-  }, [appearanceProp]);
+  }, [appearanceProp, handleThemeChange]);
 
   return appearance;
 };

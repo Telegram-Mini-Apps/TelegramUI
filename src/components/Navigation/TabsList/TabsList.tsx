@@ -23,6 +23,7 @@ export const TabsList = ({
 }: TabsListProps) => {
   const childrenAsArray = Children.toArray(children);
   const checkedIndex = childrenAsArray.findIndex((option) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return isValidElement(option) && option.props.selected;
   });
 
@@ -30,13 +31,10 @@ export const TabsList = ({
   return (
     <div
       role="tablist"
-      className={classNames(
-        styles.wrapper,
-        className
-      )}
+      className={classNames(styles.wrapper, className)}
       {...restProps}
     >
-      {checkedIndex > -1 && (
+      {checkedIndex !== -1 && (
         <div
           aria-hidden
           className={styles.slider}

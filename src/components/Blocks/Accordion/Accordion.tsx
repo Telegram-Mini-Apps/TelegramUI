@@ -48,7 +48,11 @@ export const Accordion = ({
     onChange,
   });
 
-  return <AccordionContext.Provider value={context}>{children}</AccordionContext.Provider>;
+  return (
+    <AccordionContext.Provider value={context}>
+      {children}
+    </AccordionContext.Provider>
+  );
 };
 
 Accordion.Summary = AccordionSummary;

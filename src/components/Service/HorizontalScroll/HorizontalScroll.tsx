@@ -13,7 +13,10 @@ export const HorizontalScroll = ({
   children,
   ...restProps
 }: HorizontalScrollProps) => (
-  <Component className={classNames(styles.wrapper, className)} {...restProps}>
+  <Component
+    className={classNames(styles.wrapper, className)}
+    {...restProps}
+  >
     {children}
   </Component>
 );

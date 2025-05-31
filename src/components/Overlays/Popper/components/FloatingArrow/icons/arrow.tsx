@@ -15,7 +15,9 @@ export const DefaultIcon = (props: SVGAttributes<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path d="M10.804 0C6.387 0 6.94 6 .865 6h19.878c-6.074 0-5.521-6-9.939-6Z" fill="currentColor" />
+    <path
+      d="M10.804 0C6.387 0 6.94 6 .865 6h19.878c-6.074 0-5.521-6-9.939-6Z"
+      fill="currentColor"
+    />
   </svg>
 );
-

@@ -24,4 +24,3 @@ export const Playground: Story = {
     </List>
   ),
 } satisfies Story;
-

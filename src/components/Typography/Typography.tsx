@@ -27,23 +27,28 @@ export interface TypographyProps extends AllHTMLAttributes<HTMLElement> {
  * to facilitate consistent text styling across your application, with support for customization
  * through props. The component is highly reusable and adaptable to various design needs.
  */
-export const Typography = forwardRef(({
-  weight = '3',
-  Component = 'span',
-  plain = true,
-  caps,
-  className,
-  ...restProps
-}: TypographyProps, ref) => (
-  <Component
-    ref={ref}
-    className={classNames(
-      styles.wrapper,
-      plain && styles['wrapper--plain'],
-      weight && stylesWeight[weight],
-      caps && styles['wrapper--caps'],
-      className
-    )}
-    {...restProps}
-  />
-));
+export const Typography = forwardRef(
+  (
+    {
+      weight = '3',
+      Component = 'span',
+      plain = true,
+      caps,
+      className,
+      ...restProps
+    }: TypographyProps,
+    ref
+  ) => (
+    <Component
+      ref={ref}
+      className={classNames(
+        styles.wrapper,
+        plain && styles['wrapper--plain'],
+        weight && stylesWeight[weight],
+        caps && styles['wrapper--caps'],
+        className
+      )}
+      {...restProps}
+    />
+  )
+);

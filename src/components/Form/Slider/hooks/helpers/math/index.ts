@@ -10,7 +10,10 @@ export const getDecimalPrecision = (num: number) => {
   if (Math.abs(num) < 1) {
     const parts = num.toExponential().split('e-');
     const matissaDecimalPart = parts[0]!.split('.')[1];
-    return (matissaDecimalPart ? matissaDecimalPart.length : 0) + parseInt(parts[1]!, 10);
+    return (
+      (matissaDecimalPart ? matissaDecimalPart.length : 0) +
+      Number.parseInt(parts[1]!, 10)
+    );
   }
 
   const decimalPart = num.toString().split('.')[1];
@@ -22,7 +25,12 @@ export const roundValueToStep = (value: number, step: number, min: number) => {
   return Number(nearest.toFixed(getDecimalPrecision(step)));
 };
 
-export const roundedClampWithStep = (val: number, min: number, max: number, step?: number) => {
+export const roundedClampWithStep = (
+  val: number,
+  min: number,
+  max: number,
+  step?: number
+) => {
   if (step == null || step <= 0) {
     return clamp(val, min, max);
   }
@@ -37,11 +45,13 @@ export const scaleAndClampValue = (
   to: [number, number],
   options: { step?: number } = {}
 ) => {
-  const scaled = ((value - from[0]) / (from[1] - from[0])) * (to[1] - to[0]) + to[0];
+  const scaled =
+    ((value - from[0]) / (from[1] - from[0])) * (to[1] - to[0]) + to[0];
   return roundedClampWithStep(scaled, to[0], to[1], options.step);
 };
 
-export const toPercent = (v: number, min: number, max: number) => ((v - min) / (max - min)) * 100;
+export const toPercent = (v: number, min: number, max: number) =>
+  ((v - min) / (max - min)) * 100;
 
 export const offsetXToScaledValue = (
   startX: number,

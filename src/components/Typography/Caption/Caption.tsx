@@ -35,4 +35,3 @@ export const Caption = ({
     Component={Component || 'span'}
   />
 );
-

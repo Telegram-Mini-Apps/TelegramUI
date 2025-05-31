@@ -34,16 +34,30 @@ export const Link: Story = {
   },
   render: (args) => (
     <Breadcrumbs {...args}>
-      <Breadcrumbs.Item Component="a" href="https://nohello.net/en/" target="_blank" rel="noreferrer">
+      <Breadcrumbs.Item
+        Component="a"
+        href="https://nohello.net/en/"
+        target="_blank"
+        rel="noreferrer"
+      >
         No
       </Breadcrumbs.Item>
-      <Breadcrumbs.Item Component="a" href="https://nohello.net/en/" target="_blank" rel="noreferrer">
+      <Breadcrumbs.Item
+        Component="a"
+        href="https://nohello.net/en/"
+        target="_blank"
+        rel="noreferrer"
+      >
         Hello
       </Breadcrumbs.Item>
-      <Breadcrumbs.Item Component="a" href="https://nohello.net/en/" target="_blank" rel="noreferrer">
+      <Breadcrumbs.Item
+        Component="a"
+        href="https://nohello.net/en/"
+        target="_blank"
+        rel="noreferrer"
+      >
         OK?
       </Breadcrumbs.Item>
     </Breadcrumbs>
   ),
 } satisfies Story;
-

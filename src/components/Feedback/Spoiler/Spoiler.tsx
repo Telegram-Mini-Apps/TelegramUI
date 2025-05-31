@@ -25,13 +25,15 @@ export const Spoiler = ({
   const [isVisible, setIsVisible] = useState(visible);
 
   useEffect(() => {
+    // todo: find out if it is necessary
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
     setIsVisible(visible);
   }, [visible]);
 
   const toggle = () => setIsVisible(!isVisible);
   return (
     // It's a spoiler component, content inside is available for screen readers
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       {...restProps}
       className={classNames(

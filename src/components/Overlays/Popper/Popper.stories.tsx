@@ -12,7 +12,13 @@ import { Popper } from './Popper';
 const meta = {
   title: 'Overlays/Popper',
   component: Popper,
-  argTypes: hideControls('ArrowIcon', 'targetRef', 'arrowProps', 'Component', 'customMiddlewares'),
+  argTypes: hideControls(
+    'ArrowIcon',
+    'targetRef',
+    'arrowProps',
+    'Component',
+    'customMiddlewares'
+  ),
 } satisfies Meta<typeof Popper>;
 
 export default meta;
@@ -26,7 +32,7 @@ export const Playground: Story = {
         DOMRect.fromRect({ x: 0, y: 0, width: 0, height: 0 }),
     },
   },
-  render: args => {
+  render: (args) => {
     const [virtualElement, setVirtualElement] = useState(() =>
       DOMRect.fromRect({
         x: -200,
@@ -82,4 +88,3 @@ export const Playground: Story = {
     );
   },
 };
-

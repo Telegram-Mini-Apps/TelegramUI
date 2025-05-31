@@ -9,7 +9,7 @@ import {
 
 describe('getDecimalPrecision', () => {
   it('returns correct precision for fractional numbers', () => {
-    expect(getDecimalPrecision(0.00000001)).toBe(8);
+    expect(getDecimalPrecision(0.000_000_01)).toBe(8);
     expect(getDecimalPrecision(1.234)).toBe(3);
   });
 

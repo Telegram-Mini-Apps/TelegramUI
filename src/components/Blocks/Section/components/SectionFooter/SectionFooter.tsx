@@ -22,10 +22,20 @@ const FooterTypography = ({ ...restProps }: TypographyProps) => {
     return <Caption {...restProps} />;
   }
 
-  return <Subheadline level="2" {...restProps} />;
+  return (
+    <Subheadline
+      level="2"
+      {...restProps}
+    />
+  );
 };
 
-export const SectionFooter = ({ className, children, centered, ...restProps }: SectionFooterProps) => {
+export const SectionFooter = ({
+  className,
+  children,
+  centered,
+  ...restProps
+}: SectionFooterProps) => {
   const platform = usePlatform();
 
   return (

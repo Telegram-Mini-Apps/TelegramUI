@@ -22,11 +22,7 @@ export interface TabbarProps extends HTMLAttributes<HTMLDivElement> {
  *
  * The component adapts its styling based on the platform, providing a consistent look and feel across different devices.
  */
-export const Tabbar = ({
-  children,
-  className,
-  ...restProps
-}: TabbarProps) => {
+export const Tabbar = ({ children, className, ...restProps }: TabbarProps) => {
   const platform = usePlatform();
 
   return (

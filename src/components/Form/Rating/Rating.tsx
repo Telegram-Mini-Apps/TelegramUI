@@ -8,7 +8,8 @@ import type { Icon } from 'types/Icon';
 import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { IconStar } from './icons/star';
 
-export interface RatingProps extends Omit<HTMLAttributes<HTMLLabelElement>, 'onChange'> {
+export interface RatingProps
+  extends Omit<HTMLAttributes<HTMLLabelElement>, 'onChange'> {
   /** The precision of the rating, determining the fraction of the star that can be selected. */
   precision?: 0.1 | 0.2 | 0.25 | 0.5 | 1;
   /** The maximum rating value, representing the number of icons displayed. */
@@ -44,7 +45,7 @@ export const Rating = ({
   const onChangeLabel = (event: ChangeEvent<HTMLLabelElement>) => {
     const { target } = event;
     if (target instanceof HTMLInputElement) {
-      setValue(parseFloat(target.value));
+      setValue(Number.parseFloat(target.value));
     }
   };
 
@@ -61,19 +62,33 @@ export const Rating = ({
     return undefined;
   };
 
-  const keys = Array.from(Array(max).keys());
+  const keys = [...Array.from({ length: max }).keys()];
   return (
-    <label className={styles.wrapper} onChange={onChangeLabel}>
-      <VisuallyHidden Component="input" name="rating" type="radio" value={0} />
+    <label
+      className={styles.wrapper}
+      onChange={onChangeLabel}
+    >
+      <VisuallyHidden
+        Component="input"
+        name="rating"
+        type="radio"
+        value={0}
+      />
       {keys.map((key) => {
         const elementsWithPrecision = Math.floor(1 / normalizedPrecision);
-        const elements = Array.from(Array(elementsWithPrecision).keys());
+        const elements = [
+          ...Array.from({ length: elementsWithPrecision }).keys(),
+        ];
 
         const pickedElementWidth = getPickedElementWidth(key + 1);
         return (
-          <label key={key} className={styles.element}>
+          <label
+            key={key}
+            className={styles.element}
+          >
             {pickedElementWidth !== undefined && (
               <IconContainer
+                // eslint-disable-next-line @eslint-react/no-duplicate-key
                 key="star-picked"
                 className={styles['element--picked']}
                 style={{ width: `${pickedElementWidth * 100}%` }}

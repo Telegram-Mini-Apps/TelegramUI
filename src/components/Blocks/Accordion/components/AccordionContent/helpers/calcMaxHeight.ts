@@ -1,4 +1,7 @@
-export const calcMaxHeight = (expanded: boolean, bodyElement: HTMLElement | null): string => {
+export const calcMaxHeight = (
+  expanded: boolean,
+  bodyElement: HTMLElement | null
+): string => {
   if (!expanded) {
     return '0px';
   }

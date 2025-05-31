@@ -72,20 +72,14 @@ export const Snackbar = ({
       >
         <div className={styles.body}>
           {hasReactNode(before) && (
-            <div className={styles.before}>
-              {before}
-            </div>
+            <div className={styles.before}>{before}</div>
           )}
           <div className={styles.middle}>
             {hasReactNode(children) && <Caption weight="2">{children}</Caption>}
             {hasReactNode(description) && <Caption>{description}</Caption>}
             {hasReactNode(link) && <Caption>{link}</Caption>}
           </div>
-          {hasReactNode(after) && (
-            <div className={styles.after}>
-              {after}
-            </div>
-          )}
+          {hasReactNode(after) && <div className={styles.after}>{after}</div>}
         </div>
       </div>
     </RootRenderer>

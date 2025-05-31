@@ -6,10 +6,24 @@ export interface ButtonTypographyProps extends Omit<TypographyProps, 'size'> {
   size: 's' | 'm' | 'l';
 }
 
-export const ButtonTypography = ({ size, ...restProps }: ButtonTypographyProps) => {
+export const ButtonTypography = ({
+  size,
+  ...restProps
+}: ButtonTypographyProps) => {
   if (size === 'l') {
-    return <Text weight="2" {...restProps} />;
+    return (
+      <Text
+        weight="2"
+        {...restProps}
+      />
+    );
   }
 
-  return <Subheadline level="2" weight="2" {...restProps} />;
+  return (
+    <Subheadline
+      level="2"
+      weight="2"
+      {...restProps}
+    />
+  );
 };

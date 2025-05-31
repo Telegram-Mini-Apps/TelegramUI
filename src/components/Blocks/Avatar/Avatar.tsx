@@ -31,7 +31,13 @@ export const Avatar = ({
       acronym && styles['wrapper--withAcronym'],
       className
     )}
-    fallbackIcon={acronym ? <AvatarAcronym size={size}>{acronym}</AvatarAcronym> : fallbackIcon}
+    fallbackIcon={
+      acronym ? (
+        <AvatarAcronym size={size}>{acronym}</AvatarAcronym>
+      ) : (
+        fallbackIcon
+      )
+    }
     size={size}
     {...restProps}
   />

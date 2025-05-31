@@ -1,6 +1,11 @@
 'use client';
 
-import type { ForwardRefExoticComponent, HTMLAttributes, ReactElement, RefAttributes } from 'react';
+import type {
+  ForwardRefExoticComponent,
+  HTMLAttributes,
+  ReactElement,
+  RefAttributes,
+} from 'react';
 import { forwardRef } from 'react';
 import styles from './InlineButtons.module.css';
 
@@ -23,7 +28,9 @@ export interface InlineButtonsProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<InlineButtonsItemProps>[];
 }
 
-type InlineButtonsWithComponents = ForwardRefExoticComponent<InlineButtonsProps & RefAttributes<HTMLDivElement>> & {
+type InlineButtonsWithComponents = ForwardRefExoticComponent<
+  InlineButtonsProps & RefAttributes<HTMLDivElement>
+> & {
   Item: typeof InlineButtonsItem;
 };
 
@@ -33,30 +40,27 @@ type InlineButtonsWithComponents = ForwardRefExoticComponent<InlineButtonsProps 
  * consistent styling across all child components. It ensures visual consistency across different
  * platforms and supports custom styling modes.
  */
-export const InlineButtons = forwardRef(({
-  mode,
-  className,
-  children,
-  ...restProps
-}: InlineButtonsProps, ref) => {
-  const platform = usePlatform();
-  const contextValue = useObjectMemo({ mode });
+export const InlineButtons = forwardRef(
+  ({ mode, className, children, ...restProps }: InlineButtonsProps, ref) => {
+    const platform = usePlatform();
+    const contextValue = useObjectMemo({ mode });
 
-  return (
-    <div
-      ref={ref}
-      className={classNames(
-        styles.wrapper,
-        platform === 'ios' && styles['wrapper--ios'],
-        className
-      )}
-      {...restProps}
-    >
-      <InlineButtonsContext.Provider value={contextValue}>
-        {children}
-      </InlineButtonsContext.Provider>
-    </div>
-  );
-}) as InlineButtonsWithComponents;
+    return (
+      <div
+        ref={ref}
+        className={classNames(
+          styles.wrapper,
+          platform === 'ios' && styles['wrapper--ios'],
+          className
+        )}
+        {...restProps}
+      >
+        <InlineButtonsContext.Provider value={contextValue}>
+          {children}
+        </InlineButtonsContext.Provider>
+      </div>
+    );
+  }
+) as InlineButtonsWithComponents;
 
 InlineButtons.Item = InlineButtonsItem;

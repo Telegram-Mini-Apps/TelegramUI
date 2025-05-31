@@ -25,18 +25,20 @@ export const Playground: Story = {
   },
 } satisfies Story;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
 export const _AvatarStack: Story = {
   args: {
     type: 'avatarStack',
     avatarStack: (
-      <Info type="avatarStack" avatarStack={
-        <AvatarStack>
-          <Avatar size={28} />
-          <Avatar size={28} />
-          <Avatar size={28} />
-        </AvatarStack>
-      }>
+      <Info
+        type="avatarStack"
+        avatarStack={
+          <AvatarStack>
+            <Avatar size={28} />
+            <Avatar size={28} />
+            <Avatar size={28} />
+          </AvatarStack>
+        }
+      >
         Action
       </Info>
     ),

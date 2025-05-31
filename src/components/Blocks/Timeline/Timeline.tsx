@@ -56,6 +56,7 @@ export const Timeline = ({
     >
       {Children.map(children, (child, index) => {
         if (isValidElement(child)) {
+          // eslint-disable-next-line @eslint-react/no-clone-element
           return cloneElement(child, {
             mode: getChildMode(index + 1),
             horizontal,
