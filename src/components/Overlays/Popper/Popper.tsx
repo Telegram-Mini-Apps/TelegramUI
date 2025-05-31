@@ -1,12 +1,13 @@
 'use client';
 
 import type { ElementType, HTMLAttributes, RefObject } from 'react';
-import { forwardRef, useState } from 'react';
+import { useRef } from 'react';
 import styles from './Popper.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { multipleRef } from 'helpers/react/refs';
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
+import type { RefProps } from 'types/ref';
 
 import type { VirtualElement } from '@floating-ui/react-dom';
 import { useFloating } from '@floating-ui/react-dom';
@@ -30,7 +31,7 @@ export interface PopperProps
     >,
     HTMLAttributes<HTMLDivElement> {
   /** Reference to the target element or virtual element for precise positioning. */
-  targetRef: RefObject<HTMLElement> | VirtualElement;
+  targetRef: RefObject<HTMLElement | null> | VirtualElement;
   /** Configuration and customization options for the floating arrow component. */
   arrowProps?: FloatingArrowProps & {
     /** Optionally override the default arrow height. */
@@ -50,86 +51,82 @@ export interface PopperProps
  * Renders a Popper component, leveraging floating UI for dynamic, responsive positioning.
  * Supports advanced configurations like virtual elements, custom arrows, and auto-position updates.
  */
-export const Popper = forwardRef(
-  (
-    {
-      // UseFloatingMiddlewaresOptions
-      placement = 'auto',
-      sameWidth,
-      offsetByMainAxis = 8,
-      offsetByCrossAxis = 0,
-      withArrow = true,
-      customMiddlewares,
+export const Popper = ({
+  ref,
+  // UseFloatingMiddlewaresOptions
+  placement = 'auto',
+  sameWidth,
+  offsetByMainAxis = 8,
+  offsetByCrossAxis = 0,
+  withArrow = true,
+  customMiddlewares,
 
-      // UseFloatingProps
-      autoUpdateOnTargetResize = false,
+  // UseFloatingProps
+  autoUpdateOnTargetResize = false,
 
-      // ArrowProps
-      arrowProps,
-      ArrowIcon = DefaultIcon,
+  // ArrowProps
+  arrowProps,
+  ArrowIcon = DefaultIcon,
 
-      Component = 'div',
-      style,
-      targetRef,
-      className,
-      children,
-      ...restProps
-    }: PopperProps,
-    ref
-  ) => {
-    const [arrowRef, setArrowRef] = useState<HTMLDivElement | null>(null);
+  Component = 'div',
+  style,
+  targetRef,
+  className,
+  children,
+  ...restProps
+}: PopperProps & RefProps<HTMLDivElement>) => {
+  const arrowRef = useRef<HTMLDivElement>(null);
 
-    const { strictPlacement, middlewares } = useFloatingMiddlewares({
-      placement,
-      sameWidth,
-      withArrow,
-      arrowRef,
-      arrowHeight: arrowProps?.height || DEFAULT_ARROW_HEIGHT,
-      arrowPadding: arrowProps?.padding || DEFAULT_ARROW_PADDING,
-      offsetByMainAxis,
-      offsetByCrossAxis,
-      customMiddlewares,
-    });
+  const { strictPlacement, middlewares } = useFloatingMiddlewares({
+    placement,
+    sameWidth,
+    withArrow,
+    arrowRef,
+    arrowHeight: arrowProps?.height || DEFAULT_ARROW_HEIGHT,
+    arrowPadding: arrowProps?.padding || DEFAULT_ARROW_PADDING,
+    offsetByMainAxis,
+    offsetByCrossAxis,
+    customMiddlewares,
+  });
 
-    const {
-      placement: resolvedPlacement,
-      refs,
-      middlewareData,
-      floatingStyles,
-    } = useFloating({
-      placement: strictPlacement,
-      middleware: middlewares,
-      whileElementsMounted(...args) {
-        return autoUpdateFloatingElement(...args, {
-          elementResize: autoUpdateOnTargetResize,
-        });
-      },
-    });
+  const {
+    placement: resolvedPlacement,
+    refs,
+    middlewareData,
+    floatingStyles,
+  } = useFloating({
+    placement: strictPlacement,
+    middleware: middlewares,
+    whileElementsMounted(...args) {
+      return autoUpdateFloatingElement(...args, {
+        elementResize: autoUpdateOnTargetResize,
+      });
+    },
+  });
 
-    useEnhancedEffect(() => {
-      refs.setReference('current' in targetRef ? targetRef.current : targetRef);
-    }, [refs.setReference, targetRef]);
+  useEnhancedEffect(() => {
+    refs.setReference('current' in targetRef ? targetRef.current : targetRef);
+  }, [refs.setReference, targetRef]);
 
-    return (
-      <RootRenderer>
-        <Component
-          {...restProps}
-          ref={multipleRef(ref, refs.setFloating)}
-          style={{ ...style, ...floatingStyles }}
-          className={classNames(styles.wrapper, className)}
-        >
-          {withArrow && (
-            <FloatingArrow
-              {...arrowProps}
-              coords={middlewareData.arrow}
-              placement={resolvedPlacement}
-              ref={setArrowRef}
-              Icon={ArrowIcon}
-            />
-          )}
-          {children}
-        </Component>
-      </RootRenderer>
-    );
-  }
-);
+  return (
+    <RootRenderer>
+      <Component
+        {...restProps}
+        ref={multipleRef(ref, refs.setFloating)}
+        style={{ ...style, ...floatingStyles }}
+        className={classNames(styles.wrapper, className)}
+      >
+        {withArrow && (
+          <FloatingArrow
+            {...arrowProps}
+            coords={middlewareData.arrow}
+            placement={resolvedPlacement}
+            ref={arrowRef}
+            Icon={ArrowIcon}
+          />
+        )}
+        {children}
+      </Component>
+    </RootRenderer>
+  );
+};

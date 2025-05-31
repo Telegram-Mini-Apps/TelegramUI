@@ -1,11 +1,11 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef } from 'react';
 import styles from './PinInput.module.css';
 
 import { Keys } from 'helpers/accessibility';
 import { createChunks } from 'helpers/chunk';
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
+import type { RefProps } from 'types/ref';
 
 import { Icon36Backspace } from 'icons/36/backspace';
 
@@ -34,100 +34,99 @@ const defaultPinValue: number[] = [];
 /**
  * Renders a set of input fields for entering pin codes with a virtual keypad for value entry and deletion.
  */
-export const PinInput = forwardRef<HTMLElement, PinInputProps>(
-  (
-    {
-      label = 'Enter your pin',
-      pinCount = 4,
-      className,
-      value: valueProp = defaultPinValue,
-      onChange,
-      ...restProps
-    },
-    ref
-  ) => {
-    const platform = usePlatform();
-    const normalizedPinCount = Math.max(PIN_MIN_COUNT, pinCount);
+export const PinInput = ({
+  ref,
+  label = 'Enter your pin',
+  pinCount = 4,
+  className,
+  value: valueProp = defaultPinValue,
+  onChange,
+  ...restProps
+}: PinInputProps & RefProps) => {
+  const platform = usePlatform();
+  const normalizedPinCount = Math.max(PIN_MIN_COUNT, pinCount);
 
-    const {
-      handleClickValue,
-      handleClickBackspace,
-      setInputRefByIndex,
-      value,
-      handleButton,
-    } = usePinInput({
-      value: valueProp,
-      onChange,
-      pinCount: normalizedPinCount,
-    });
+  const {
+    handleClickValue,
+    handleClickBackspace,
+    setInputRefByIndex,
+    value,
+    handleButton,
+  } = usePinInput({
+    value: valueProp,
+    onChange,
+    pinCount: normalizedPinCount,
+  });
 
-    return (
-      <RootRenderer>
-        <section
-          ref={ref}
-          className={classNames(
-            styles.wrapper,
-            platform === 'ios' && styles['wrapper--ios'],
-            className
-          )}
-          {...restProps}
-        >
-          <header className={styles.header}>
-            <Headline
-              className={styles.title}
-              weight="2"
-            >
-              {label}
-            </Headline>
-            <div className={styles.cellsWrapper}>
-              {Array.from({ length: normalizedPinCount }).map((_, index) => (
-                <PinInputCell
-                  /* We can't use useId here, because if pinCount changes in runtime, it will crash because amount of renders will be different */
-                  // eslint-disable-next-line @eslint-react/no-array-index-key
-                  key={index}
-                  ref={(labelRef) => setInputRefByIndex(index, labelRef)}
-                  isTyped={index < value.length}
-                  value={value[index] || ''}
-                  onKeyDown={(event) => handleButton(index, event.key)}
-                  // eslint-disable-next-line jsx-a11y/no-autofocus
-                  autoFocus={index === 0}
-                  tabIndex={-1}
-                  readOnly
-                />
-              ))}
-            </div>
-          </header>
-          <div className={styles.buttonWrapper}>
-            {createChunks(AVAILABLE_PINS, 3).map((rows) => (
-              <div
-                key={rows.toString()}
-                className={styles.row}
-              >
-                {rows.map((element) => {
-                  let children: ReactNode = element;
-                  let clickFunction = () => handleClickValue(Number(element));
-
-                  if (element === Keys.BACKSPACE) {
-                    clickFunction = () => handleClickBackspace();
-                    children = (
-                      <Icon36Backspace className={styles.backspaceIcon} />
-                    );
-                  }
-
-                  return (
-                    <PinInputButton
-                      key={element}
-                      onClick={clickFunction}
-                    >
-                      {children}
-                    </PinInputButton>
-                  );
-                })}
-              </div>
+  return (
+    <RootRenderer>
+      <section
+        ref={ref}
+        className={classNames(
+          styles.wrapper,
+          platform === 'ios' && styles['wrapper--ios'],
+          className
+        )}
+        {...restProps}
+      >
+        <header className={styles.header}>
+          <Headline
+            className={styles.title}
+            weight="2"
+          >
+            {label}
+          </Headline>
+          <div className={styles.cellsWrapper}>
+            {Array.from({ length: normalizedPinCount }).map((_, index) => (
+              <PinInputCell
+                /* We can't use useId here, because if pinCount changes in runtime, it will crash because amount of renders will be different */
+                // eslint-disable-next-line @eslint-react/no-array-index-key
+                key={index}
+                // @ts-expect-error - The ref type from PinInputCell is incompatible with HTMLElement
+                ref={(labelRef: HTMLLabelElement) =>
+                  setInputRefByIndex(index, labelRef)
+                }
+                isTyped={index < value.length}
+                value={value[index] || ''}
+                onKeyDown={(event) => handleButton(index, event.key)}
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus={index === 0}
+                tabIndex={-1}
+                readOnly
+              />
             ))}
           </div>
-        </section>
-      </RootRenderer>
-    );
-  }
-);
+        </header>
+        <div className={styles.buttonWrapper}>
+          {createChunks(AVAILABLE_PINS, 3).map((rows) => (
+            <div
+              key={rows.toString()}
+              className={styles.row}
+            >
+              {rows.map((element) => {
+                let children: ReactNode = element;
+                let clickFunction = () => handleClickValue(Number(element));
+
+                if (element === Keys.BACKSPACE) {
+                  clickFunction = () => handleClickBackspace();
+                  children = (
+                    <Icon36Backspace className={styles.backspaceIcon} />
+                  );
+                }
+
+                return (
+                  <PinInputButton
+                    key={element}
+                    onClick={clickFunction}
+                  >
+                    {children}
+                  </PinInputButton>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </section>
+    </RootRenderer>
+  );
+};

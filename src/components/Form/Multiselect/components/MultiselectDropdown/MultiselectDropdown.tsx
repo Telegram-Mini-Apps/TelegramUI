@@ -1,11 +1,8 @@
-import type {
-  ForwardRefExoticComponent,
-  MouseEvent,
-  RefAttributes,
-  RefObject,
-} from 'react';
-import { forwardRef, Fragment } from 'react';
+import type { JSX, MouseEvent, RefObject } from 'react';
+import { Fragment } from 'react';
 import styles from './MultiselectDropdown.module.css';
+
+import type { RefProps } from 'types/ref';
 
 import type { CellProps } from 'components/Blocks/Cell/Cell';
 import { Cell } from 'components/Blocks/Cell/Cell';
@@ -23,7 +20,7 @@ export interface MultiselectDropdownProps
   /** Array of selected options. */
   value: MultiselectOption[];
   /** Reference to the target element the dropdown is associated with. */
-  targetRef: RefObject<HTMLElement>;
+  targetRef: RefObject<HTMLElement | null>;
   /** Accessibility ID for the dropdown. */
   dropdownAriaId: string;
   /** Currently focused option within the dropdown. */
@@ -45,7 +42,7 @@ export interface MultiselectDropdownProps
   /** Function to clear the input value. */
   clearInput: () => void;
   /** Custom render function for each option. Defaults to a basic implementation. */
-  renderOption?: ForwardRefExoticComponent<CellProps & RefAttributes<unknown>>;
+  renderOption?: (props: CellProps & RefProps) => JSX.Element;
   /** Whether to close the dropdown after selecting an option. */
   closeDropdownAfterSelect?: boolean;
 }
@@ -54,99 +51,93 @@ export interface MultiselectDropdownProps
  * Renders the dropdown menu for the multiselect input, including all options and managing interactions such as selection, focus, and mouse events.
  * Utilizes the `Popper` component for positioning relative to the input field.
  */
-export const MultiselectDropdown = forwardRef<
-  HTMLDivElement,
-  MultiselectDropdownProps
->(
-  (
-    {
-      dropdownAriaId,
-      options,
-      onMouseLeave,
-      targetRef,
-      addOptionFromInput,
-      setFocusedOptionIndex,
-      renderOption = renderOptionDefault,
-      focusedOption,
-      value,
-      setOptionNode,
-      setOpened,
-      closeDropdownAfterSelect,
-      addOption,
-      focusedOptionIndex,
-      clearInput,
-    },
-    ref
-  ) => {
-    return (
-      <Popper
-        id={dropdownAriaId}
-        ref={ref}
-        targetRef={targetRef}
-        onMouseLeave={onMouseLeave}
-        autoUpdateOnTargetResize
-        role="listbox"
-        placement="bottom"
-        sameWidth
-        className={styles.wrapper}
-      >
-        {options.map((option, index) => {
-          if (isEmptyOptionPreset(option)) {
-            return (
-              <Cell
-                key="empty"
-                readOnly
-                className={styles.empty}
-              >
-                {option['placeholder']}
-              </Cell>
-            );
-          }
-
-          if (isCreateNewOptionPreset(option)) {
-            return (
-              <Cell
-                key="new-options"
-                hovered={focusedOptionIndex === index}
-                onMouseDown={addOptionFromInput}
-                onMouseEnter={() => setFocusedOptionIndex(index)}
-              >
-                {option['actionText']}
-              </Cell>
-            );
-          }
-
+export const MultiselectDropdown = ({
+  ref,
+  dropdownAriaId,
+  options,
+  onMouseLeave,
+  targetRef,
+  addOptionFromInput,
+  setFocusedOptionIndex,
+  renderOption = renderOptionDefault,
+  focusedOption,
+  value,
+  setOptionNode,
+  setOpened,
+  closeDropdownAfterSelect,
+  addOption,
+  focusedOptionIndex,
+  clearInput,
+}: MultiselectDropdownProps & RefProps<HTMLDivElement>) => {
+  return (
+    <Popper
+      id={dropdownAriaId}
+      ref={ref}
+      targetRef={targetRef}
+      onMouseLeave={onMouseLeave}
+      autoUpdateOnTargetResize
+      role="listbox"
+      placement="bottom"
+      sameWidth
+      className={styles.wrapper}
+    >
+      {options.map((option, index) => {
+        if (isEmptyOptionPreset(option)) {
           return (
-            // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
-            <Fragment key={`${typeof option.value}-${option.label}`}>
-              {renderOption({
-                className: styles.option,
-                hovered: focusedOption
-                  ? option.value === focusedOption.value
-                  : false,
-                children: option.label,
-                selected: value.some(
-                  (selectedOption) => selectedOption.value === option.value
-                ),
-                ref: (node: HTMLElement) => setOptionNode(index, node),
-                onMouseDown: (event: MouseEvent<HTMLDivElement>) => {
-                  if (event.defaultPrevented) {
-                    return;
-                  }
-
-                  if (closeDropdownAfterSelect) {
-                    setOpened(false);
-                  }
-
-                  addOption(option);
-                  clearInput();
-                },
-                onMouseEnter: () => setFocusedOptionIndex(index),
-              })}
-            </Fragment>
+            <Cell
+              key="empty"
+              readOnly
+              className={styles.empty}
+            >
+              {option['placeholder']}
+            </Cell>
           );
-        })}
-      </Popper>
-    );
-  }
-);
+        }
+
+        if (isCreateNewOptionPreset(option)) {
+          return (
+            <Cell
+              key="new-options"
+              hovered={focusedOptionIndex === index}
+              onMouseDown={addOptionFromInput}
+              onMouseEnter={() => setFocusedOptionIndex(index)}
+            >
+              {option['actionText']}
+            </Cell>
+          );
+        }
+
+        return (
+          // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
+          <Fragment key={`${typeof option.value}-${option.label}`}>
+            {renderOption({
+              className: styles.option,
+              hovered: focusedOption
+                ? option.value === focusedOption.value
+                : false,
+              children: option.label,
+              selected: value.some(
+                (selectedOption) => selectedOption.value === option.value
+              ),
+              // @ts-expect-error - ref type in renderOption props needs to be more specific than HTMLElement
+              ref: (node: HTMLElement) => setOptionNode(index, node),
+              onMouseDown: (event: MouseEvent<HTMLDivElement>) => {
+                if (event.defaultPrevented) {
+                  return;
+                }
+
+                if (closeDropdownAfterSelect) {
+                  setOpened(false);
+                }
+
+                addOption(option);
+                clearInput();
+              },
+              onMouseEnter: () => setFocusedOptionIndex(index),
+            })}
+          </Fragment>
+        );
+      })}
+    </Popper>
+  );
+};

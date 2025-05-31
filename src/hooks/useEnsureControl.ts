@@ -23,7 +23,7 @@ export function useCustomEnsuredControl<V = any>({
 }: UseCustomEnsuredControlProps<V>): [V, Dispatch<SetStateAction<V>>] {
   const isControlled = value !== undefined;
   const [localValue, setLocalValue] = useState(defaultValue);
-  const preservedControlledValueRef = useRef<V>();
+  const preservedControlledValueRef = useRef<V>(undefined);
 
   useEnhancedEffect(() => {
     preservedControlledValueRef.current = value;

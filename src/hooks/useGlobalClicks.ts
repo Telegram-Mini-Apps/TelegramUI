@@ -9,7 +9,7 @@ import { isElement } from '@floating-ui/utils/dom';
  * If the click is outside the given refs, the callback will be called
  */
 export const useGlobalClicks = <
-  T extends RefObject<ElementType> | undefined | null,
+  T extends RefObject<ElementType | null> | undefined | null,
   ElementType extends Element = Element,
 >(
   callback: (event: MouseEvent) => void,

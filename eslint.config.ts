@@ -128,6 +128,8 @@ export default tseslint.config([
       '@eslint-react/no-children-count': 'off',
       '@eslint-react/no-children-map': 'off',
       '@eslint-react/no-children-to-array': 'off',
+      '@eslint-react/no-context-provider': 'off',
+      '@eslint-react/no-use-context': 'off',
       ...reactHooks.configs['recommended-latest'].rules,
 
       // No Commented Code
@@ -156,7 +158,7 @@ export default tseslint.config([
     },
     settings: {
       'react-x': {
-        version: '18.2.0',
+        version: '19.1.0',
         additionalHooks: {
           useEffect: ['useEnhancedEffect'],
           useLayoutEffect: ['useEnhancedEffect'],
