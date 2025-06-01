@@ -1,9 +1,10 @@
 import type { Icon } from 'types/Icon';
 
-export const Icon20Select = ({ ...restProps }: Icon) => (
+export const Icon20Select = ({ size = 20, ...restProps }: Icon) => (
   <svg
-    width="20"
-    height="20"
+    width={size}
+    height={size}
+    viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...restProps}

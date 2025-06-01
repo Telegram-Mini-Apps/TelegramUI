@@ -1,6 +1,6 @@
 import type { Icon } from 'types/Icon';
 
-export const Icon28Archive = ({ ...restProps }: Icon) => (
+export const Icon28Archive = ({ size = 28, ...restProps }: Icon) => (
   <svg
     width="28"
     height="29"

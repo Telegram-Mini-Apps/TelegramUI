@@ -1,10 +1,11 @@
 import type { Icon } from 'types/Icon';
 
-export const Icon28Stats = ({ ...restProps }: Icon) => (
+export const Icon28Stats = ({ size = 28, ...restProps }: Icon) => (
   <svg
-    width="28"
-    height="28"
+    width={size}
+    height={size}
     fill="none"
+    viewBox="0 0 28 28"
     xmlns="http://www.w3.org/2000/svg"
     {...restProps}
   >

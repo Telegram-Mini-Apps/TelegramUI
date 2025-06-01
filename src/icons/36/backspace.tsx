@@ -1,9 +1,10 @@
 import type { Icon } from 'types/Icon';
 
-export const Icon36Backspace = ({ ...restProps }: Icon) => (
+export const Icon36Backspace = ({ size = 36, ...restProps }: Icon) => (
   <svg
-    width="36"
-    height="36"
+    width={size}
+    height={size}
+    viewBox="0 0 36 36"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...restProps}

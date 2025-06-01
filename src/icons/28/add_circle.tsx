@@ -1,6 +1,6 @@
 import type { Icon } from 'types/Icon';
 
-export const Icon28AddCircle = ({ ...restProps }: Icon) => (
+export const Icon28AddCircle = ({ size = 28, ...restProps }: Icon) => (
   <svg
     width="29"
     height="28"

@@ -1,10 +1,13 @@
 import type { Icon } from 'types/Icon';
 
-export const Icon32ProfileColoredSquare = ({ ...restProps }: Icon) => (
+export const Icon32ProfileColoredSquare = ({
+  size = 32,
+  ...restProps
+}: Icon) => (
   <svg
-    width="33"
-    height="32"
-    viewBox="0 0 33 32"
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...restProps}

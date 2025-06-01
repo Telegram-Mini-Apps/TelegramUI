@@ -1,6 +1,6 @@
 import type { Icon } from 'types/Icon';
 
-export const Icon24Channel = ({ ...restProps }: Icon) => (
+export const Icon24Channel = ({ size = 24, ...restProps }: Icon) => (
   <svg
     width="25"
     height="24"
