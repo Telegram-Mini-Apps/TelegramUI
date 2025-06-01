@@ -12,6 +12,8 @@ import type { BadgeProps } from 'components/Blocks/Badge/Badge';
 import type { TappableProps } from 'components/Service/Tappable/Tappable';
 import { Tappable } from 'components/Service/Tappable/Tappable';
 import { Subheadline } from 'components/Typography/Subheadline/Subheadline';
+import { Info } from './components/Info/Info';
+import { Navigation } from './components/Navigation/Navigation';
 import { useTypographyCellComponents } from './hooks/useTypographyCellComponents';
 
 export interface CellProps extends Omit<TappableProps, 'Component'> {
@@ -117,3 +119,6 @@ export const Cell = ({
     </Tappable>
   );
 };
+
+Cell.Info = Info;
+Cell.Navigation = Navigation;
