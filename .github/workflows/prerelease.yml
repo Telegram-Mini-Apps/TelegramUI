@@ -1,0 +1,112 @@
+# Adapted from create-t3-app.
+
+name: Release - Beta
+
+on:
+  pull_request:
+    types: [labeled]
+    branches:
+      - main
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  prerelease:
+    if: |
+      github.repository_owner == 'tophackr' &&
+      contains(github.event.pull_request.labels.*.name, 'autorelease')
+    name: Build & Publish a beta release to NPM
+    runs-on: ubuntu-latest
+    environment: Preview
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.8.0
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install NPM Dependencies
+        run: pnpm install
+
+      - name: Modify package.json version
+        run: node .github/version-script-beta.mjs
+
+      - name: Authenticate to NPM
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Beta to NPM
+        run: pnpm pub:beta
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-package-tmaui@${{ steps.package-version.outputs.current-version }}-pr-${{ github.event.number }} # encode the PR number into the artifact name
+          path: dist/index.js
+
+      - name: 'Comment on PR'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+
+            for (const artifact of allArtifacts.data.artifacts) {
+              // Extract the PR number and package version from the artifact name
+              const match = /^npm-package-tmaui@(.*?)-pr-(\d+)/.exec(artifact.name);
+
+              if (match) {
+                require("fs").appendFileSync(
+                  process.env.GITHUB_ENV,
+                  `\nBETA_PACKAGE_VERSION=${match[1]}` +
+                  `\nWORKFLOW_RUN_PR=${match[2]}` +
+                  `\nWORKFLOW_RUN_ID=${context.runId}`
+                );
+                break;
+              }
+            }
+
+      - name: 'Comment on PR with Link'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ env.WORKFLOW_RUN_PR }}
+          message: |
+            A new prerelease is available for testing:
+
+            ```sh
+            pnpm add tmaui@${{ env.BETA_PACKAGE_VERSION }}
+            ```
+
+      - name: 'Remove the autorelease label once published'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: '${{ env.WORKFLOW_RUN_PR }}',
+              name: 'autorelease',
+            });
