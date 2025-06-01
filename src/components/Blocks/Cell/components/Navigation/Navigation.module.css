@@ -11,6 +11,10 @@
   overflow-wrap: anywhere;
 }
 
+.text--base {
+  color: var(--tgui--link_color);
+}
+
 .icon {
   flex-shrink: 0;
 }

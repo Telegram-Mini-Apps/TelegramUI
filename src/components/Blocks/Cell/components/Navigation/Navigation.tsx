@@ -23,10 +23,17 @@ export const Navigation = ({ className, children }: NavigationProps) => {
 
   return (
     <div className={classNames(styles.wrapper, className)}>
-      {hasChildren && <Text className={styles.text}>{children}</Text>}
-      {(!hasChildren || platform === 'ios') && (
-        <Icon16Chevron className={styles.icon} />
+      {hasChildren && (
+        <Text
+          className={classNames(
+            styles.text,
+            platform === 'base' && styles['text--base']
+          )}
+        >
+          {children}
+        </Text>
       )}
+      {platform === 'ios' && <Icon16Chevron className={styles.icon} />}
     </div>
   );
 };
