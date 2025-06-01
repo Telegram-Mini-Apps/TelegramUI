@@ -22,6 +22,8 @@ export type { InfoProps } from './Cell/components/Info/Info';
 export { Info } from './Cell/components/Info/Info';
 export type { NavigationProps } from './Cell/components/Navigation/Navigation';
 export { Navigation } from './Cell/components/Navigation/Navigation';
+export type { NavigationCellProps } from './Cell/components/NavigationCell/NavigationCell';
+export { NavigationCell } from './Cell/components/NavigationCell/NavigationCell';
 export type { IconButtonProps } from './IconButton/IconButton';
 export { IconButton } from './IconButton/IconButton';
 export type { IconContainerProps } from './IconContainer/IconContainer';
