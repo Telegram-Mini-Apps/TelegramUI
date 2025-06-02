@@ -2,8 +2,9 @@ import type { Icon } from 'types/Icon';
 
 export const Icon28Archive = ({ size = 28, ...restProps }: Icon) => (
   <svg
-    width="28"
-    height="29"
+    width={size}
+    height={size}
+    viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...restProps}

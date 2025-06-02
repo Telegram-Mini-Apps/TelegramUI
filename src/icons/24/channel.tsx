@@ -2,8 +2,9 @@ import type { Icon } from 'types/Icon';
 
 export const Icon24Channel = ({ size = 24, ...restProps }: Icon) => (
   <svg
-    width="25"
-    height="24"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...restProps}
