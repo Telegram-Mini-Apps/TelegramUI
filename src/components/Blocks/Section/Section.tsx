@@ -1,14 +1,12 @@
 'use client';
 
 import type { HTMLAttributes, ReactNode } from 'react';
-import { Children } from 'react';
 import styles from './Section.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { isPrimitiveReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
 
-import { Divider } from 'components/Misc/Divider/Divider';
 import { SectionFooter } from './components/SectionFooter/SectionFooter';
 import { SectionHeader } from './components/SectionHeader/SectionHeader';
 
@@ -62,14 +60,7 @@ export const Section = ({
     >
       <div className={styles.bodyWithHeader}>
         {headerWithWrapper}
-        <div className={styles.body}>
-          {Children.map(children, (child, index) => (
-            <>
-              {child}
-              {index < Children.count(children) - 1 && <Divider />}
-            </>
-          ))}
-        </div>
+        <div className={styles.body}>{children}</div>
       </div>
       {footerWithWrapper}
     </section>
