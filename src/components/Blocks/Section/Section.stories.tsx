@@ -73,6 +73,15 @@ export const Playground: Story = {
           header="Last name"
           placeholder="21 y.o. designer from San Francisco"
         />
+        <Input
+          status="error"
+          header="Phone number"
+          placeholder="Enter a correct phone number"
+        />
+        <Input
+          header="Address"
+          placeholder="This address is invalid"
+        />
       </Section>
     </List>
   ),
