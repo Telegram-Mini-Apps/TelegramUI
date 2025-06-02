@@ -1,5 +1,7 @@
 .wrapper {
-  --tgui--font-family: system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Apple Color Emoji", "Helvetica Neue", sans-serif;
+  --tgui--font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Apple Color Emoji',
+    'Helvetica Neue', sans-serif;
 
   --tgui--font_weight--accent1: 700;
   --tgui--font_weight--accent2: 600;
@@ -32,49 +34,55 @@
   --tgui--caption2--line_height: 16px;
 
   --tgui--border--width: 1px;
-  --tgui--base--section--box_shadow: 0 1px 2px 0 rgba(0, 0, 0, .10);
+  --tgui--base--section--box_shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 
   /** Native tokens */
-  --tgui--bg_color: var(--tg-theme-bg-color, #FFFFFF);
+  --tgui--bg_color: var(--tg-theme-bg-color, #ffffff);
   --tgui--text_color: var(--tg-theme-text-color, #000000);
   --tgui--hint_color: var(--tg-theme-hint-color, #707579);
-  --tgui--link_color: var(--tg-theme-link-color, #007AFF);
-  --tgui--button_color: var(--tg-theme-button-color, #007AFF);
-  --tgui--button_text_color:var(--tg-theme-button-text-color, #FFFFFF);
-  --tgui--secondary_bg_color: var(--tg-theme-secondary-bg-color, #EFEFF4);
-  --tgui--header_bg_color: var(--tg-theme-header-bg-color, #FFFFFF);
-  --tgui--accent_text_color: var(--tg-theme-accent-text-color, #007AFF);
-  --tgui--section_bg_color: var(--tg-theme-section-bg-color, #FFFFFF);
-  --tgui--section_header_text_color: var(--tg-theme-section-header-text-color, #707579);
+  --tgui--link_color: var(--tg-theme-link-color, #007aff);
+  --tgui--button_color: var(--tg-theme-button-color, #007aff);
+  --tgui--button_text_color: var(--tg-theme-button-text-color, #ffffff);
+  --tgui--secondary_bg_color: var(--tg-theme-secondary-bg-color, #efeff4);
+  --tgui--header_bg_color: var(--tg-theme-header-bg-color, #ffffff);
+  --tgui--accent_text_color: var(--tg-theme-accent-text-color, #007aff);
+  --tgui--section_bg_color: var(--tg-theme-section-bg-color, #ffffff);
+  --tgui--section_header_text_color: var(
+    --tg-theme-section-header-text-color,
+    #707579
+  );
   --tgui--subtitle_text_color: var(--tg-theme-subtitle-text-color, #707579);
-  --tgui--destructive_text_color: var(--tg-theme-destructive-text-color, #E53935);
+  --tgui--destructive_text_color: var(
+    --tg-theme-destructive-text-color,
+    #e53935
+  );
+  --tgui--divider: var(--tg-theme-section-separator-color, #efeff4);
   /** End of native tokens */
 
   /* Custom lib tokens */
-  --tgui--skeleton: rgba(255, 255, 255, .03);
-  --tgui--divider: rgba(0, 0, 0, .15);
-  --tgui--outline: rgba(0, 0, 0, .05);
-  --tgui--surface_primary: rgba(255, 255, 255, .95);
-  --tgui--tertiary_bg_color: #F4F4F7;
-  --tgui--quartenary_bg_color: #F6F6FA;
-  --tgui--segmented_control_active_bg: #FFFFFF;
-  --tgui--card_bg_color: #FFFFFF;
-  --tgui--secondary_hint_color: #A2ACB0;
-  --tgui--secondary_fill: rgba(67, 120, 255, .10);
-  --tgui--green: #31D158;
-  --tgui--destructive_background: #E53935;
-  --tgui--primary_code_highlight: #4378FF;
-  --tgui--secondary_code_highlight: #B00FB4;
-  --tgui--tertiary_code_highlight: #3A9F20;
-  --tgui--plain_background: rgba(0, 0, 0, .04);
-  --tgui--plain_foreground: rgba(0, 0, 0, .8);
-  --tgui--toast_accent_color: #55A6FF;
+  --tgui--skeleton: rgba(255, 255, 255, 0.03);
+  --tgui--outline: rgba(0, 0, 0, 0.05);
+  --tgui--surface_primary: rgba(255, 255, 255, 0.95);
+  --tgui--tertiary_bg_color: #f4f4f7;
+  --tgui--quartenary_bg_color: #f6f6fa;
+  --tgui--segmented_control_active_bg: #ffffff;
+  --tgui--card_bg_color: #ffffff;
+  --tgui--secondary_hint_color: #a2acb0;
+  --tgui--secondary_fill: rgba(67, 120, 255, 0.1);
+  --tgui--green: #31d158;
+  --tgui--destructive_background: #e53935;
+  --tgui--primary_code_highlight: #4378ff;
+  --tgui--secondary_code_highlight: #b00fb4;
+  --tgui--tertiary_code_highlight: #3a9f20;
+  --tgui--plain_background: rgba(0, 0, 0, 0.04);
+  --tgui--plain_foreground: rgba(0, 0, 0, 0.8);
+  --tgui--toast_accent_color: #55a6ff;
   /* End of custom lib tokens */
 
   /** Non-theme tokens */
-  --tgui--surface_dark: rgba(56, 56, 56, .85);
-  --tooltip_background_dark: rgba(0, 0, 0, .85);
-  --tgui--white: #FFFFFF;
+  --tgui--surface_dark: rgba(56, 56, 56, 0.85);
+  --tooltip_background_dark: rgba(0, 0, 0, 0.85);
+  --tgui--white: #ffffff;
   --tgui--black: #000000;
 
   --tgui--z-index--simple: 1;
@@ -103,45 +111,46 @@
 .wrapper--dark {
   /* Native tokens */
   --tgui--bg_color: var(--tg-theme-bg-color, #212121);
-  --tgui--text_color: var(--tg-theme-text-color, #FFFFFF);
-  --tgui--hint_color: var(--tg-theme-hint-color, #AAAAAA);
-  --tgui--link_color: var(--tg-theme-link-color, #2990FF);
-  --tgui--button_color: var(--tg-theme-button-color, #2990FF);
-  --tgui--button_text_color:var(--tg-theme-button-text-color, #FFFFFF);
-  --tgui--secondary_bg_color: var(--tg-theme-secondary-bg-color, #0F0F0F);
+  --tgui--text_color: var(--tg-theme-text-color, #ffffff);
+  --tgui--hint_color: var(--tg-theme-hint-color, #aaaaaa);
+  --tgui--link_color: var(--tg-theme-link-color, #2990ff);
+  --tgui--button_color: var(--tg-theme-button-color, #2990ff);
+  --tgui--button_text_color: var(--tg-theme-button-text-color, #ffffff);
+  --tgui--secondary_bg_color: var(--tg-theme-secondary-bg-color, #0f0f0f);
   --tgui--header_bg_color: var(--tg-theme-header-bg-color, #212121);
-  --tgui--accent_text_color: var(--tg-theme-accent-text-color, #007AFF);
+  --tgui--accent_text_color: var(--tg-theme-accent-text-color, #007aff);
   --tgui--section_bg_color: var(--tg-theme-section-bg-color, #212121);
-  --tgui--section_header_text_color: var(--tg-theme-section-header-text-color, #AAAAAA);
-  --tgui--subtitle_text_color: var(--tg-theme-subtitle-text-color, #AAAAAA);
-  --tgui--destructive_text_color: var(--tg-theme-destructive-text-color, #E53935);
+  --tgui--section_header_text_color: var(
+    --tg-theme-section-header-text-color,
+    #aaaaaa
+  );
+  --tgui--subtitle_text_color: var(--tg-theme-subtitle-text-color, #aaaaaa);
+  --tgui--destructive_text_color: var(
+    --tg-theme-destructive-text-color,
+    #e53935
+  );
+  --tgui--divider: var(--tg-theme-section-separator-color, #0f0f0f);
   /** End of native tokens */
 
   /* Custom lib tokens */
-  --tgui--skeleton: rgba(255, 255, 255, .03);
-  --tgui--divider: rgba(255, 255, 255, .05);
-  --tgui--outline: rgba(255, 255, 255, .10);
-  --tgui--surface_primary: rgba(23, 23, 23, .95);
-  --tgui--tertiary_bg_color: #2A2A2A;
-  --tgui--quartenary_bg_color: #2F2F2F;
-  --tgui--segmented_control_active_bg: #2F2F2F;
+  --tgui--skeleton: rgba(255, 255, 255, 0.03);
+  --tgui--divider: rgba(255, 255, 255, 0.05);
+  --tgui--outline: rgba(255, 255, 255, 0.1);
+  --tgui--surface_primary: rgba(23, 23, 23, 0.95);
+  --tgui--tertiary_bg_color: #2a2a2a;
+  --tgui--quartenary_bg_color: #2f2f2f;
+  --tgui--segmented_control_active_bg: #2f2f2f;
   --tgui--card_bg_color: #242424;
-  --tgui--secondary_hint_color: #78797E;
-  --tgui--secondary_fill: rgba(41, 144, 255, .15);
-  --tgui--green: #32E55E;
-  --tgui--destructive_background: rgba(255, 35, 35, .02);
-  --tgui--primary_code_highlight: #2990FF;
-  --tgui--secondary_code_highlight: #E937ED;
-  --tgui--tertiary_code_highlight: #5AE536;
-  --tgui--plain_background: rgba(255, 255, 255, .08);
-  --tgui--plain_foreground: rgba(255, 255, 255, .95);
+  --tgui--secondary_hint_color: #78797e;
+  --tgui--secondary_fill: rgba(41, 144, 255, 0.15);
+  --tgui--green: #32e55e;
+  --tgui--destructive_background: rgba(255, 35, 35, 0.02);
+  --tgui--primary_code_highlight: #2990ff;
+  --tgui--secondary_code_highlight: #e937ed;
+  --tgui--tertiary_code_highlight: #5ae536;
+  --tgui--plain_background: rgba(255, 255, 255, 0.08);
+  --tgui--plain_foreground: rgba(255, 255, 255, 0.95);
   /* End of custom lib tokens */
-}
-
-@media (min-resolution: 2dppx) {
-  .wrapper {
-    --tgui--border--width: .5px;
-  }
 }
 
 @supports (padding-top: constant(safe-area-inset-bottom)) {
@@ -156,12 +165,22 @@
   }
 }
 
-@supports (color: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent)) {
+@supports (
+  color: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent)
+) {
   .wrapper {
-    --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 10%, transparent);
+    --tgui--secondary_fill: color-mix(
+      in srgb,
+      var(--tgui--accent_text_color) 10%,
+      transparent
+    );
   }
 
   .wrapper--dark {
-    --tgui--secondary_fill: color-mix(in srgb, var(--tgui--accent_text_color) 15%, transparent);
+    --tgui--secondary_fill: color-mix(
+      in srgb,
+      var(--tgui--accent_text_color) 15%,
+      transparent
+    );
   }
 }
