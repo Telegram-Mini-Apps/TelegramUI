@@ -5,6 +5,7 @@ import styles from './Tabbar.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
+import type { RefProps } from 'types/ref';
 
 import { FixedLayout } from 'components/Layout/FixedLayout/FixedLayout';
 import type { TabbarItemProps } from './components/TabbarItem/TabbarItem';
@@ -22,11 +23,17 @@ export interface TabbarProps extends HTMLAttributes<HTMLDivElement> {
  *
  * The component adapts its styling based on the platform, providing a consistent look and feel across different devices.
  */
-export const Tabbar = ({ children, className, ...restProps }: TabbarProps) => {
+export const Tabbar = ({
+  ref,
+  children,
+  className,
+  ...restProps
+}: TabbarProps & RefProps<HTMLDivElement>) => {
   const platform = usePlatform();
 
   return (
     <FixedLayout
+      ref={ref}
       className={classNames(
         styles.wrapper,
         platform === 'ios' && styles['wrapper--ios'],
