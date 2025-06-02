@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react';
+import styles from './NavigationCell.module.css';
+
+import { classNames } from 'helpers/classNames';
 
 import { IconContainer } from 'components/Blocks/IconContainer/IconContainer';
 import type { CellProps } from '../../Cell';
@@ -16,12 +19,16 @@ export function NavigationCell({
   after,
   icon,
   color,
+  className,
+  Component,
   ...props
 }: NavigationCellProps) {
   return (
     <Cell
+      Component={Component || 'button'}
       before={icon && <IconContainer color={color}>{icon}</IconContainer>}
       after={<Navigation>{after}</Navigation>}
+      className={classNames(styles.wrapper, className)}
       {...props}
     />
   );
