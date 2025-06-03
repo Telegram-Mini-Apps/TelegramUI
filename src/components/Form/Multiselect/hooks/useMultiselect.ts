@@ -11,10 +11,8 @@ import type { FilterFn } from './helpers/filter';
 import { defaultFilterFn } from './helpers/filter';
 import { transformOptions } from './helpers/transformOptions';
 import { DEFAULT_EMPTY_TEXT, DEFAULT_SELECTED_BEHAVIOR } from './constants';
-import {
-  useMultiselectInput,
-  type UseMultiselectInputProps,
-} from './useMultiselectInput';
+import type { UseMultiselectInputProps } from './useMultiselectInput';
+import { useMultiselectInput } from './useMultiselectInput';
 
 export interface UseMultiselectProps extends UseMultiselectInputProps {
   /** Array of options available for selection. */
