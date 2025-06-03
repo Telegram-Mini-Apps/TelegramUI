@@ -1,12 +1,12 @@
 'use client';
 
 import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './AppRoot.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { multipleRef } from 'helpers/react/refs';
 import { useObjectMemo } from 'hooks/useObjectMemo';
-import type { RefProps } from 'types/ref';
 
 import type { AppRootContextInterface } from 'components/Service/AppRoot/AppRootContext';
 import { AppRootContext } from 'components/Service/AppRoot/AppRootContext';
@@ -23,40 +23,44 @@ export interface AppRootProps extends HTMLAttributes<HTMLDivElement> {
   portalContainer?: AppRootContextInterface['portalContainer'];
 }
 
-export const AppRoot = ({
-  ref,
-  platform: platformProp,
-  appearance: appearanceProp,
-  portalContainer: portalContainerProp,
-  children,
-  className,
-  ...restProps
-}: AppRootProps & RefProps<HTMLDivElement>) => {
-  const appearance = useAppearance(appearanceProp);
-  const portalContainer = usePortalContainer(portalContainerProp);
-  const platform = usePlatform(platformProp);
+export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(
+  (
+    {
+      platform: platformProp,
+      appearance: appearanceProp,
+      portalContainer: portalContainerProp,
+      children,
+      className,
+      ...restProps
+    },
+    ref
+  ) => {
+    const appearance = useAppearance(appearanceProp);
+    const portalContainer = usePortalContainer(portalContainerProp);
+    const platform = usePlatform(platformProp);
 
-  const contextValue = useObjectMemo({
-    platform,
-    appearance,
-    portalContainer,
-    isRendered: true,
-  });
+    const contextValue = useObjectMemo({
+      platform,
+      appearance,
+      portalContainer,
+      isRendered: true,
+    });
 
-  return (
-    <div
-      ref={multipleRef(ref, portalContainer)}
-      className={classNames(
-        styles.wrapper,
-        platform === 'ios' && styles['wrapper--ios'],
-        appearance === 'dark' && styles['wrapper--dark'],
-        className
-      )}
-      {...restProps}
-    >
-      <AppRootContext.Provider value={contextValue}>
-        {children}
-      </AppRootContext.Provider>
-    </div>
-  );
-};
+    return (
+      <div
+        ref={multipleRef(ref, portalContainer)}
+        className={classNames(
+          styles.wrapper,
+          platform === 'ios' && styles['wrapper--ios'],
+          appearance === 'dark' && styles['wrapper--dark'],
+          className
+        )}
+        {...restProps}
+      >
+        <AppRootContext.Provider value={contextValue}>
+          {children}
+        </AppRootContext.Provider>
+      </div>
+    );
+  }
+);

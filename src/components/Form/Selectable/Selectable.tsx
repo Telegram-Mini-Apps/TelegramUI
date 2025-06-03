@@ -1,11 +1,11 @@
 'use client';
 
 import type { InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import styles from './Selectable.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
-import type { RefProps } from 'types/ref';
 
 import { VisuallyHidden } from 'components/Service/VisuallyHidden/VisuallyHidden';
 import { IconSelectableBase } from './icons/selectable_base';
@@ -22,42 +22,39 @@ export type SelectableProps = InputHTMLAttributes<HTMLInputElement>;
  * user experience across different environments. The actual radio input is visually hidden while remaining
  * fully accessible and functional.
  */
-export const Selectable = ({
-  ref,
-  className,
-  disabled,
-  ...restProps
-}: SelectableProps & RefProps<HTMLInputElement>) => {
-  const platform = usePlatform();
+export const Selectable = forwardRef<HTMLInputElement, SelectableProps>(
+  ({ className, disabled, ...restProps }, ref) => {
+    const platform = usePlatform();
 
-  return (
-    <label
-      className={classNames(
-        styles.wrapper,
-        disabled && styles['wrapper--disabled'],
-        className
-      )}
-    >
-      <VisuallyHidden
-        {...restProps}
-        Component="input"
-        type="radio"
-        className={styles.input}
-        disabled={disabled}
-        ref={ref}
-      />
-      {platform === 'ios' && (
-        <IconSelectableIOS
-          className={styles.icon}
-          aria-hidden
+    return (
+      <label
+        className={classNames(
+          styles.wrapper,
+          disabled && styles['wrapper--disabled'],
+          className
+        )}
+      >
+        <VisuallyHidden
+          {...restProps}
+          Component="input"
+          type="radio"
+          className={styles.input}
+          disabled={disabled}
+          ref={ref}
         />
-      )}
-      {platform === 'base' && (
-        <IconSelectableBase
-          className={styles.icon}
-          aria-hidden
-        />
-      )}
-    </label>
-  );
-};
+        {platform === 'ios' && (
+          <IconSelectableIOS
+            className={styles.icon}
+            aria-hidden
+          />
+        )}
+        {platform === 'base' && (
+          <IconSelectableBase
+            className={styles.icon}
+            aria-hidden
+          />
+        )}
+      </label>
+    );
+  }
+);

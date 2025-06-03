@@ -130,6 +130,7 @@ export default tseslint.config([
       '@eslint-react/no-children-to-array': 'off',
       '@eslint-react/no-context-provider': 'off',
       '@eslint-react/no-use-context': 'off',
+      '@eslint-react/no-forward-ref': 'off',
       ...reactHooks.configs['recommended-latest'].rules,
 
       // No Commented Code

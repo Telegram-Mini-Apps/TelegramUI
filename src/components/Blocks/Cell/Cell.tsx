@@ -1,12 +1,18 @@
 'use client';
 
-import type { ElementType, ReactElement, ReactNode } from 'react';
+import type {
+  ElementType,
+  ForwardRefExoticComponent,
+  ReactElement,
+  ReactNode,
+  RefAttributes,
+} from 'react';
+import { forwardRef } from 'react';
 import styles from './Cell.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
-import type { RefProps } from 'types/ref';
 
 import type { BadgeProps } from 'components/Blocks/Badge/Badge';
 import type { TappableProps } from 'components/Service/Tappable/Tappable';
@@ -41,84 +47,97 @@ export interface CellProps extends Omit<TappableProps, 'Component'> {
   multiline?: boolean;
 }
 
+type CellWithComponents = ForwardRefExoticComponent<
+  CellProps & RefAttributes<HTMLDivElement>
+> & {
+  Info: typeof Info;
+  Navigation: typeof Navigation;
+};
+
 /**
  * `Cell` component acts as a flexible and interactive container for various types of content,
  * enabling the creation of complex list items, form fields, and more. It leverages the `Tappable`
  * component for interaction and is designed to be flexible and extensible.
  */
-export const Cell = ({
-  ref,
-  children,
-  titleBadge,
-  hint,
-  subhead,
-  subtitle,
-  description,
-  className,
-  before,
-  after,
-  Component,
-  hovered,
-  multiline,
-  ...restProps
-}: CellProps & RefProps) => {
-  const platform = usePlatform();
-  const { Title, Description } = useTypographyCellComponents();
+export const Cell = forwardRef<HTMLDivElement, CellProps>(
+  (
+    {
+      children,
+      titleBadge,
+      hint,
+      subhead,
+      subtitle,
+      description,
+      className,
+      before,
+      after,
+      Component,
+      hovered,
+      multiline,
+      ...restProps
+    },
+    ref
+  ) => {
+    const platform = usePlatform();
+    const { Title, Description } = useTypographyCellComponents();
 
-  const hasTitle =
-    hasReactNode(children) || hasReactNode(hint) || hasReactNode(titleBadge);
-  return (
-    <Tappable
-      ref={ref}
-      Component={Component || 'div'}
-      className={classNames(
-        styles.wrapper,
-        platform === 'ios' && styles['wrapper--ios'],
-        hovered && styles['wrapper--hovered'],
-        multiline && styles['wrapper--multiline'],
-        className
-      )}
-      {...restProps}
-    >
-      {hasReactNode(before) && <div className={styles.before}>{before}</div>}
-      <div className={styles.middle}>
-        {hasReactNode(subhead) && (
-          <Subheadline
-            className={styles.subhead}
-            level="2"
-            weight="3"
-          >
-            {subhead}
-          </Subheadline>
+    const hasTitle =
+      hasReactNode(children) || hasReactNode(hint) || hasReactNode(titleBadge);
+    return (
+      <Tappable
+        ref={ref}
+        Component={Component || 'div'}
+        className={classNames(
+          styles.wrapper,
+          platform === 'ios' && styles['wrapper--ios'],
+          hovered && styles['wrapper--hovered'],
+          multiline && styles['wrapper--multiline'],
+          className
         )}
-        {hasTitle && (
-          <Title className={styles.head}>
-            {hasReactNode(children) && (
-              <span className={styles.title}>{children}</span>
-            )}
-            {hasReactNode(hint) && <span className={styles.hint}>{hint}</span>}
-            {hasReactNode(titleBadge) && titleBadge}
-          </Title>
-        )}
-        {hasReactNode(subtitle) && (
-          <Subheadline
-            className={styles.subtitle}
-            level="2"
-            weight="3"
-          >
-            {subtitle}
-          </Subheadline>
-        )}
-        {hasReactNode(description) && (
-          <Description className={styles.description}>
-            {description}
-          </Description>
-        )}
-      </div>
-      {hasReactNode(after) && <div className={styles.after}>{after}</div>}
-    </Tappable>
-  );
-};
+        {...restProps}
+      >
+        {hasReactNode(before) && <div className={styles.before}>{before}</div>}
+        <div className={styles.middle}>
+          {hasReactNode(subhead) && (
+            <Subheadline
+              className={styles.subhead}
+              level="2"
+              weight="3"
+            >
+              {subhead}
+            </Subheadline>
+          )}
+          {hasTitle && (
+            <Title className={styles.head}>
+              {hasReactNode(children) && (
+                <span className={styles.title}>{children}</span>
+              )}
+              {hasReactNode(hint) && (
+                <span className={styles.hint}>{hint}</span>
+              )}
+              {hasReactNode(titleBadge) && titleBadge}
+            </Title>
+          )}
+          {hasReactNode(subtitle) && (
+            <Subheadline
+              className={styles.subtitle}
+              level="2"
+              weight="3"
+            >
+              {subtitle}
+            </Subheadline>
+          )}
+          {hasReactNode(description) && (
+            <Description className={styles.description}>
+              {description}
+            </Description>
+          )}
+        </div>
+        {hasReactNode(after) && <div className={styles.after}>{after}</div>}
+      </Tappable>
+    );
+  }
+) as CellWithComponents;
 
 Cell.Info = Info;
 Cell.Navigation = Navigation;

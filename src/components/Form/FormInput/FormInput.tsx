@@ -1,14 +1,13 @@
 'use client';
 
 import type { HTMLAttributes, ReactNode } from 'react';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import styles from './FormInput.module.css';
 
 import { classNames } from 'helpers/classNames';
 import { callMultiple } from 'helpers/function';
 import { hasReactNode } from 'helpers/react/node';
 import { usePlatform } from 'hooks/usePlatform';
-import type { RefProps } from 'types/ref';
 
 import { FormInputTitle } from './components/FormInputTitle';
 
@@ -44,57 +43,63 @@ const formStatusStyles = {
  * Wraps an input element with additional layout for headers, icons, or actions, providing a consistent look and feel across the form.
  * It supports conditional rendering based on the platform and the state of the form element.
  */
-export const FormInput = ({
-  ref,
-  status,
-  header,
-  before,
-  after,
-  disabled,
-  children,
-  className,
-  onFocus: onFocusProp,
-  onBlur: onBlurProp,
-  ...restProps
-}: FormInputProps & RefProps<HTMLDivElement>) => {
-  const platform = usePlatform();
-  const [isFocused, setIsFocused] = useState(false);
+export const FormInput = forwardRef<HTMLDivElement, FormInputProps>(
+  (
+    {
+      status,
+      header,
+      before,
+      after,
+      disabled,
+      children,
+      className,
+      onFocus: onFocusProp,
+      onBlur: onBlurProp,
+      ...restProps
+    },
+    ref
+  ) => {
+    const platform = usePlatform();
+    const [isFocused, setIsFocused] = useState(false);
 
-  const formStatus = status || (isFocused ? 'focused' : 'default');
+    const formStatus = status || (isFocused ? 'focused' : 'default');
 
-  const onFocus = callMultiple(onFocusProp, () => {
-    if (disabled) {
-      return;
-    }
+    const onFocus = callMultiple(onFocusProp, () => {
+      if (disabled) {
+        return;
+      }
 
-    setIsFocused(true);
-  });
-  const onBlur = callMultiple(onBlurProp, () => setIsFocused(false));
+      setIsFocused(true);
+    });
+    const onBlur = callMultiple(onBlurProp, () => setIsFocused(false));
 
-  return (
-    <div
-      ref={ref}
-      className={classNames(
-        platformStyles[platform],
-        formStatusStyles[formStatus],
-        disabled && styles['wrapper--disabled']
-      )}
-      aria-disabled={disabled}
-    >
-      <label
+    return (
+      <div
+        ref={ref}
+        className={classNames(
+          platformStyles[platform],
+          formStatusStyles[formStatus],
+          disabled && styles['wrapper--disabled']
+        )}
         aria-disabled={disabled}
-        className={classNames(styles.body, className)}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        {...restProps}
       >
-        {hasReactNode(before) && <div className={styles.before}>{before}</div>}
-        {children}
-        {hasReactNode(after) && <div className={styles.after}>{after}</div>}
-      </label>
-      {hasReactNode(header) && platform === 'base' && (
-        <FormInputTitle className={styles.title}>{header}</FormInputTitle>
-      )}
-    </div>
-  );
-};
+        <label
+          aria-disabled={disabled}
+          className={classNames(styles.body, className)}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          {...restProps}
+        >
+          {hasReactNode(before) && (
+            <div className={styles.before}>{before}</div>
+          )}
+          {children}
+          {hasReactNode(after) && <div className={styles.after}>{after}</div>}
+        </label>
+        {hasReactNode(header) && platform === 'base' && (
+          <FormInputTitle className={styles.title}>{header}</FormInputTitle>
+        )}
+      </div>
+    );
+  }
+);

@@ -5,7 +5,7 @@ import type {
   MouseEvent,
   RefObject,
 } from 'react';
-import { Fragment } from 'react';
+import { forwardRef, Fragment } from 'react';
 import styles from './MultiselectBase.module.css';
 
 import { getHorizontalSideByKey, Keys } from 'helpers/accessibility';
@@ -15,7 +15,6 @@ import {
   getHTMLElementSiblingByDirection,
 } from 'helpers/dom';
 import { useExternRef } from 'hooks/useExternalRefs';
-import type { RefProps } from 'types/ref';
 
 import { isHTMLElement } from '@floating-ui/utils/dom';
 import { Icon16Cancel } from 'icons/16/cancel';
@@ -44,185 +43,195 @@ export interface MultiselectBaseProps
 /**
  * Renders the base layout of the multiselect including the chips (selected options) and the input field.
  */
-export const MultiselectBase = ({
-  ref,
-  inputRef,
-  className,
-  chipsValue,
-  onAddChipOption,
-  onRemoveChipOption,
-  renderChip = renderChipDefault,
-  placeholder,
-  disabled,
-  readOnly,
-  ...restProps
-}: MultiselectBaseProps & RefProps<HTMLDivElement>) => {
-  const listRef = useExternRef<HTMLDivElement>(ref);
+export const MultiselectBase = forwardRef<
+  HTMLInputElement,
+  MultiselectBaseProps
+>(
+  (
+    {
+      inputRef,
+      className,
+      chipsValue,
+      onAddChipOption,
+      onRemoveChipOption,
+      renderChip = renderChipDefault,
+      placeholder,
+      disabled,
+      readOnly,
+      ...restProps
+    },
+    ref
+  ) => {
+    const listRef = useExternRef<HTMLDivElement>(ref);
 
-  const valueLength = chipsValue.length;
-  const withPlaceholder = valueLength === 0;
-  const isDisabled = disabled || readOnly;
+    const valueLength = chipsValue.length;
+    const withPlaceholder = valueLength === 0;
+    const isDisabled = disabled || readOnly;
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const targetEl = event.target;
-    const inputEl = inputRef.current;
+    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+      const targetEl = event.target;
+      const inputEl = inputRef.current;
 
-    if (event.defaultPrevented || !inputEl || !isHTMLElement(targetEl)) {
-      return;
-    }
-
-    const lastOptionIndex = valueLength - 1;
-
-    const nextInputValue = inputEl.value;
-    const isInputEl = targetEl === inputEl;
-    const isInputValueEmpty = nextInputValue === '';
-
-    switch (event.key) {
-      case Keys.ENTER: {
-        if (isInputEl && !isInputValueEmpty) {
-          event.preventDefault();
-          onAddChipOption(nextInputValue);
-        }
-        break;
+      if (event.defaultPrevented || !inputEl || !isHTMLElement(targetEl)) {
+        return;
       }
 
-      case Keys.BACKSPACE: {
-        if (valueLength) {
-          const option =
-            isInputEl && isInputValueEmpty
-              ? chipsValue[lastOptionIndex]
-              : getValueOptionByHTMLElement(chipsValue, targetEl);
+      const lastOptionIndex = valueLength - 1;
 
-          if (!option) {
-            return;
+      const nextInputValue = inputEl.value;
+      const isInputEl = targetEl === inputEl;
+      const isInputValueEmpty = nextInputValue === '';
+
+      switch (event.key) {
+        case Keys.ENTER: {
+          if (isInputEl && !isInputValueEmpty) {
+            event.preventDefault();
+            onAddChipOption(nextInputValue);
+          }
+          break;
+        }
+
+        case Keys.BACKSPACE: {
+          if (valueLength) {
+            const option =
+              isInputEl && isInputValueEmpty
+                ? chipsValue[lastOptionIndex]
+                : getValueOptionByHTMLElement(chipsValue, targetEl);
+
+            if (!option) {
+              return;
+            }
+
+            event.preventDefault();
+            inputRef.current?.focus();
+            onRemoveChipOption(option);
+          }
+          break;
+        }
+
+        case Keys.ARROW_UP:
+        case Keys.ARROW_LEFT:
+        case Keys.ARROW_DOWN:
+        case Keys.ARROW_RIGHT: {
+          if (!valueLength || !listRef.current) {
+            break;
+          }
+
+          const isSelectionOnFirstLetter = inputEl.selectionStart === 0;
+          const isRightSelection =
+            event.key === Keys.ARROW_RIGHT && isSelectionOnFirstLetter;
+
+          if (
+            (!isInputValueEmpty && !isSelectionOnFirstLetter) ||
+            isRightSelection
+          ) {
+            break;
           }
 
           event.preventDefault();
-          inputRef.current?.focus();
-          onRemoveChipOption(option);
-        }
-        break;
-      }
+          let foundEl: HTMLElement | null = null;
+          const horizontalSide = getHorizontalSideByKey(event.key);
 
-      case Keys.ARROW_UP:
-      case Keys.ARROW_LEFT:
-      case Keys.ARROW_DOWN:
-      case Keys.ARROW_RIGHT: {
-        if (!valueLength || !listRef.current) {
+          if (
+            isInputEl &&
+            (event.key === Keys.ARROW_UP || event.key === Keys.ARROW_LEFT)
+          ) {
+            foundEl = getHTMLElementByChildren(
+              listRef.current.children,
+              lastOptionIndex
+            );
+          } else if (horizontalSide) {
+            foundEl = getHTMLElementSiblingByDirection(
+              targetEl,
+              horizontalSide
+            );
+          }
+
+          if (foundEl) {
+            foundEl.focus();
+          }
           break;
         }
 
-        const isSelectionOnFirstLetter = inputEl.selectionStart === 0;
-        const isRightSelection =
-          event.key === Keys.ARROW_RIGHT && isSelectionOnFirstLetter;
-
-        if (
-          (!isInputValueEmpty && !isSelectionOnFirstLetter) ||
-          isRightSelection
-        ) {
+        default: {
           break;
         }
-
-        event.preventDefault();
-        let foundEl: HTMLElement | null = null;
-        const horizontalSide = getHorizontalSideByKey(event.key);
-
-        if (
-          isInputEl &&
-          (event.key === Keys.ARROW_UP || event.key === Keys.ARROW_LEFT)
-        ) {
-          foundEl = getHTMLElementByChildren(
-            listRef.current.children,
-            lastOptionIndex
-          );
-        } else if (horizontalSide) {
-          foundEl = getHTMLElementSiblingByDirection(targetEl, horizontalSide);
-        }
-
-        if (foundEl) {
-          foundEl.focus();
-        }
-        break;
       }
+    };
 
-      default: {
-        break;
+    const handleChipRemove = (
+      event: MouseEvent,
+      optionToRemove: MultiselectOption
+    ) => {
+      event.preventDefault();
+      event.stopPropagation();
+      onRemoveChipOption(optionToRemove);
+    };
+
+    const handleClick = () => {
+      const isFocused = document.activeElement === inputRef.current;
+      if (!isFocused && inputRef.current) {
+        inputRef.current.focus();
       }
-    }
-  };
+    };
 
-  const handleChipRemove = (
-    event: MouseEvent,
-    optionToRemove: MultiselectOption
-  ) => {
-    event.preventDefault();
-    event.stopPropagation();
-    onRemoveChipOption(optionToRemove);
-  };
-
-  const handleClick = () => {
-    const isFocused = document.activeElement === inputRef.current;
-    if (!isFocused && inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
-
-  return (
-    // eslint-disable-next-line jsx-a11y/interactive-supports-focus
-    <div
-      ref={listRef}
-      className={classNames(
-        styles.wrapper,
-        withPlaceholder && styles['wrapper--withPlaceholder'],
-        className
-      )}
-      onClick={isDisabled ? undefined : handleClick}
-      role="listbox"
-      aria-orientation="horizontal"
-      aria-disabled={disabled}
-      aria-readonly={readOnly}
-      onKeyDown={isDisabled ? undefined : handleKeyDown}
-    >
-      {chipsValue.map((option, index) => (
-        // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
-        <Fragment key={`${typeof option.value}-${option.label}`}>
-          {renderChip({
-            children: option.label,
-            className: styles.chip,
-            value: option.value,
-            tabIndex: -1,
-            after: (
-              <Tappable
-                Component="div"
-                interactiveAnimation="opacity"
-                onClick={(event) => handleChipRemove(event, option)}
-                className={styles.closeIcon}
-              >
-                <Icon16Cancel />
-              </Tappable>
-            ),
-            role: 'option',
-            'aria-selected': true,
-            'aria-posinset': index + 1,
-            'aria-setsize': valueLength,
-          })}
-        </Fragment>
-      ))}
-      <Subheadline
-        ref={inputRef}
-        aria-autocomplete="list"
-        autoCapitalize="none"
-        autoComplete="off"
-        autoCorrect="off"
-        spellCheck={false}
-        {...restProps}
-        Component="input"
-        type="text"
-        className={styles.input}
-        disabled={disabled}
-        readOnly={readOnly}
-        placeholder={withPlaceholder ? placeholder : undefined}
-      />
-    </div>
-  );
-};
+    return (
+      // eslint-disable-next-line jsx-a11y/interactive-supports-focus
+      <div
+        ref={listRef}
+        className={classNames(
+          styles.wrapper,
+          withPlaceholder && styles['wrapper--withPlaceholder'],
+          className
+        )}
+        onClick={isDisabled ? undefined : handleClick}
+        role="listbox"
+        aria-orientation="horizontal"
+        aria-disabled={disabled}
+        aria-readonly={readOnly}
+        onKeyDown={isDisabled ? undefined : handleKeyDown}
+      >
+        {chipsValue.map((option, index) => (
+          // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
+          <Fragment key={`${typeof option.value}-${option.label}`}>
+            {renderChip({
+              children: option.label,
+              className: styles.chip,
+              value: option.value,
+              tabIndex: -1,
+              after: (
+                <Tappable
+                  Component="div"
+                  interactiveAnimation="opacity"
+                  onClick={(event) => handleChipRemove(event, option)}
+                  className={styles.closeIcon}
+                >
+                  <Icon16Cancel />
+                </Tappable>
+              ),
+              role: 'option',
+              'aria-selected': true,
+              'aria-posinset': index + 1,
+              'aria-setsize': valueLength,
+            })}
+          </Fragment>
+        ))}
+        <Subheadline
+          ref={inputRef}
+          aria-autocomplete="list"
+          autoCapitalize="none"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
+          {...restProps}
+          Component="input"
+          type="text"
+          className={styles.input}
+          disabled={disabled}
+          readOnly={readOnly}
+          placeholder={withPlaceholder ? placeholder : undefined}
+        />
+      </div>
+    );
+  }
+);

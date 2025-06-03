@@ -1,7 +1,7 @@
+import { forwardRef } from 'react';
 import styles from './Text.module.css';
 
 import { classNames } from 'helpers/classNames';
-import type { RefProps } from 'types/ref';
 
 import type { TypographyProps } from '../Typography';
 import { Typography } from '../Typography';
@@ -15,18 +15,14 @@ export type TextProps = Omit<TypographyProps, 'plain'>;
  * This component is ideal for paragraphs, labels, or any textual content, providing
  * consistent styling across the application.
  */
-export const Text = ({
-  ref,
-  weight,
-  className,
-  Component,
-  ...restProps
-}: TextProps & RefProps) => (
-  <Typography
-    ref={ref}
-    {...restProps}
-    weight={weight}
-    className={classNames(styles.wrapper, className)}
-    Component={Component || 'span'}
-  />
+export const Text = forwardRef<HTMLElement, TextProps>(
+  ({ weight, className, Component, ...restProps }, ref) => (
+    <Typography
+      ref={ref}
+      {...restProps}
+      weight={weight}
+      className={classNames(styles.wrapper, className)}
+      Component={Component || 'span'}
+    />
+  )
 );
