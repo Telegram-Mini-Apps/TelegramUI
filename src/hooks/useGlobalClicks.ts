@@ -1,8 +1,7 @@
 import type { RefObject } from 'react';
 
+import { isElement } from 'helpers/dom';
 import { useEnhancedEffect } from 'hooks/useEnhancedEffect';
-
-import { isElement } from '@floating-ui/utils/dom';
 
 /**
  * Function helps to handle global clicks outside the given refs

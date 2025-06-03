@@ -1,7 +1,11 @@
-import type { FloatingElement } from '@floating-ui/core';
-import type { AutoUpdateOptions, ReferenceType } from '@floating-ui/react-dom';
+import { isHTMLElement } from 'helpers/dom';
+
+import type {
+  AutoUpdateOptions,
+  FloatingElement,
+  ReferenceType,
+} from '@floating-ui/react-dom';
 import { autoUpdate } from '@floating-ui/react-dom';
-import { isHTMLElement } from '@floating-ui/utils/dom';
 
 const defaultOptions = {
   ancestorScroll: true,
@@ -18,7 +22,6 @@ export const autoUpdateFloatingElement = (
 ): ReturnType<typeof autoUpdate> => {
   const { elementResize = false, ...restOptions } = options;
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const autoUpdateLibDisposer = autoUpdate(reference, floating, update, {
     ...restOptions,
     elementResize: false,
@@ -42,7 +45,6 @@ export const autoUpdateFloatingElement = (
       });
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     observer.observe(floating, {
       childList: true,
       subtree: true,

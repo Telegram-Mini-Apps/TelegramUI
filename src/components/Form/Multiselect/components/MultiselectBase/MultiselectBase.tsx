@@ -13,10 +13,10 @@ import { classNames } from 'helpers/classNames';
 import {
   getHTMLElementByChildren,
   getHTMLElementSiblingByDirection,
+  isHTMLElement,
 } from 'helpers/dom';
 import { useExternRef } from 'hooks/useExternalRefs';
 
-import { isHTMLElement } from '@floating-ui/utils/dom';
 import { Icon16Cancel } from 'icons/16/cancel';
 
 import type { ChipProps } from 'components/Form/Chip/Chip';
