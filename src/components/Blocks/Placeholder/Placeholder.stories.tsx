@@ -26,7 +26,7 @@ export const Playground: Story = {
     children: (
       <img
         alt="Telegram sticker"
-        src="https://xelene.me/telegram.gif"
+        src="./duck.gif"
         className={styles.sticker}
       />
     ),

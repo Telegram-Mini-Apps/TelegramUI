@@ -50,7 +50,7 @@ export const Playground: Story = {
       >
         <img
           alt="Telegram sticker"
-          src="https://xelene.me/telegram.gif"
+          src="./duck.gif"
           style={{ display: 'block', width: '144px', height: '144px' }}
         />
       </Placeholder>
