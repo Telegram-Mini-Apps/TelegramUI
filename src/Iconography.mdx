@@ -1,0 +1,46 @@
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
+
+import * as icons from './icons';
+import * as iconPack from './icons/pack';
+
+# UI Icons
+
+<IconGallery>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(256px, 1fr))',
+      gap: '12px',
+      maxWidth: '100%',
+      width: '100%',
+      boxSizing: 'border-box',
+    }}
+  >
+    {Object.entries(icons).map(([name, Icon]) => (
+      <IconItem name={name}>
+        <Icon />
+      </IconItem>
+    ))}
+  </div>
+</IconGallery>
+
+# Icon Pack
+
+<IconGallery>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(256px, 1fr))',
+      gap: '12px',
+      maxWidth: '100%',
+      width: '100%',
+      boxSizing: 'border-box',
+    }}
+  >
+    {Object.entries(iconPack).map(([name, Icon]) => (
+      <IconItem name={name}>
+        <Icon />
+      </IconItem>
+    ))}
+  </div>
+</IconGallery>
