@@ -1,4 +1,7 @@
 .wrapper {
+  max-width: 30px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,9 +9,6 @@
 }
 
 .wrapper--ios {
-  max-width: 28px;
-  width: 28px;
-  height: 28px;
   aspect-ratio: 1;
   border-radius: 7.5px;
   box-sizing: border-box;
