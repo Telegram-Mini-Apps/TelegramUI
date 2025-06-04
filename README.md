@@ -25,7 +25,7 @@ tamui kit equips you with a variety of pre-designed components and tools to help
 ## Resources
 
 - **Example Mini App:** Typescript version — https://github.com/Telegram-Mini-Apps/TGUI-Example
-- **Playground and Storybook:** Experiment with components and visualize changes in real-time at [Playground and Storybook](https://tgui.xelene.me/).
+- **Playground and Storybook:** Experiment with components and visualize changes in real-time at [Playground and Storybook](https://tophackr.com/tmaui/).
 - **Figma Resources:** Design and prototype with ease using our comprehensive Figma files available at [Figma](https://figma.com/community/file/1348989725141777736/).
 
 ## Installation
@@ -57,7 +57,7 @@ const App = () => (
     >
       <img
         alt="Telegram sticker"
-        src="https://xelene.me/telegram.gif"
+        src="/duck.gif"
         style={{ display: 'block', width: '144px', height: '144px' }}
       />
     </Placeholder>
@@ -67,7 +67,7 @@ const App = () => (
 export default App;
 ```
 
-## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://kentcdodds.github.io/makeapullrequest.com/)
 
 <a href="https://next.ossinsight.io/widgets/official/compose-recent-active-contributors?limit=30&repo_id=993255381" target="_blank" style="display: block" align="center">
   <picture>
