@@ -36,13 +36,22 @@ export interface ${name}Props extends SvgAttributes {
    * @default ${size}
    */
   size?: SvgAttributes['width'];
+  /**
+   * Icon color. It is automatically applied to all fill attributes of nested SVG elements.
+   * @default 'currentColor'
+   */
+  color?: SvgAttributes['fill'];
 }
 
-export function ${name}({ size = ${size}, ...props }: ${name}Props) {
+export function ${name}({ size = ${size}, color = 'currentColor', ...props }: ${name}Props) {
   return (
     ${svg
       .replace(/([{}])/g, "{'$1'}")
       .replace(/<!--\s*([\s\S]*?)\s*-->/g, '{/* $1 */}')
+      .replace(
+        /\b(fill|stroke)="currentColor"/g,
+        (_, attr) => `${attr}={color}`
+      )
       .replace(/(<svg[^>]*)>/i, '$1 width={size} height={size} {...props}>')}
   );
 }
