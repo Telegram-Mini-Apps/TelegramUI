@@ -169,6 +169,9 @@ importers:
       storybook:
         specifier: ^7.6.7
         version: 7.6.20
+      svgo:
+        specifier: ^3.3.2
+        version: 3.3.2
       swc-loader:
         specifier: ^0.2.6
         version: 0.2.6(@swc/core@1.11.29(@swc/helpers@0.5.17))(webpack@5.99.9)

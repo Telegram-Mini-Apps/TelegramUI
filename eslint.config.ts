@@ -180,4 +180,10 @@ export default tseslint.config([
       'unicorn/filename-case': 'off',
     },
   },
+  {
+    files: ['src/icons/**/*.tsx'],
+    rules: {
+      'unicorn/no-abusive-eslint-disable': 'off',
+    },
+  },
 ]);
