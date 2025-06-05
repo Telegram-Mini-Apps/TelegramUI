@@ -22,9 +22,3 @@
 .wrapper--ios .body > :only-child {
   border-radius: 12px;
 }
-
-.body > *:not(:last-child) {
-  border-bottom-width: var(--tgui--border--width);
-  border-bottom-style: solid;
-  border-bottom-color: var(--tgui--outline);
-}
