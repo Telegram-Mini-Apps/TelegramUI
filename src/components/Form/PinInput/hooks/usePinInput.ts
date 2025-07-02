@@ -6,19 +6,44 @@ import { Keys } from 'helpers/accessibility';
 import { clamp } from 'helpers/math';
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
+export const BiometricType = {
+  FACEID: 'faceid',
+  TOUCHID: 'touchid',
+  FINGERPRINT: 'fingerprint',
+  BIOMETRIC: 'biometric',
+} as const;
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export type BiometricType = typeof BiometricType[keyof typeof BiometricType];
+
 interface UsePinInputProps {
   pinCount: number;
   value?: number[];
   onChange?(value: number[]): void;
+  onBiometricAuth?(): void;
+  biometricType?: BiometricType;
 }
 
-export const AVAILABLE_PINS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, Keys.BACKSPACE];
+export const BIOMETRIC_AUTH = 'BIOMETRIC_AUTH';
+export const BASE_PINS = [1, 2, 3, 4, 5, 6, 7, 8, 9, BIOMETRIC_AUTH, 0, Keys.BACKSPACE];
 
 export const usePinInput = ({
   pinCount,
   value: valueProp = [],
   onChange,
+  onBiometricAuth,
+  biometricType = undefined,
 }: UsePinInputProps) => {
+// Create AVAILABLE_PINS array dynamically based on biometricType
+  const AVAILABLE_PINS = [...BASE_PINS];
+
+  // Remove BIOMETRIC_AUTH if biometricType is not provided
+  if (!biometricType) {
+    const biometricIndex = AVAILABLE_PINS.indexOf(BIOMETRIC_AUTH);
+    if (biometricIndex !== -1) {
+      AVAILABLE_PINS.splice(biometricIndex, 1);
+    }
+  }
   const inputRefs = useRef<HTMLLabelElement[]>([]).current;
   const [value, setValue] = useCustomEnsuredControl({
     defaultValue: valueProp,
@@ -52,9 +77,16 @@ export const usePinInput = ({
     removeLastValue(value.length - 1);
   }, [value]);
 
+  const handleBiometricAuth = useCallback(() => {
+    if (onBiometricAuth) {
+      onBiometricAuth();
+    }
+  }, [onBiometricAuth]);
+
   const handleButton = useCallback((index: number, button: string) => {
-    if (AVAILABLE_PINS.includes(Number(button))) {
-      setValueByIndex(index, Number(button));
+    const numButton = Number(button);
+    if (!Number.isNaN(numButton) && AVAILABLE_PINS.includes(numButton)) {
+      setValueByIndex(index, numButton);
       focusByIndex(index + 1);
     }
 
@@ -89,6 +121,8 @@ export const usePinInput = ({
     setInputRefByIndex,
     handleClickValue,
     handleClickBackspace,
+    handleBiometricAuth,
     handleButton,
+    AVAILABLE_PINS,
   };
 };

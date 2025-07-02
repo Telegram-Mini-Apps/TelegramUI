@@ -7,12 +7,18 @@ import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Icon36Backspace } from 'icons/36/backspace';
+import {
+  Icon36Biometric,
+  Icon36FaceId,
+  Icon36Fingerprint,
+  Icon36TouchId,
+} from 'icons/36/biometric';
 
 import { PinInputButton } from 'components/Form/PinInput/components/PinInputButton/PinInputButton';
 import { RootRenderer } from 'components/Service/RootRenderer/RootRenderer';
 import { Headline } from 'components/Typography/Headline/Headline';
 import { PinInputCell } from './components/PinInputCell/PinInputCell';
-import { AVAILABLE_PINS, usePinInput } from './hooks/usePinInput';
+import { BIOMETRIC_AUTH, BiometricType, usePinInput } from './hooks/usePinInput';
 
 export interface PinInputProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
   /** Text label displayed above the pin input cells. */
@@ -23,6 +29,10 @@ export interface PinInputProps extends Omit<HTMLAttributes<HTMLElement>, 'onChan
   value?: number[];
   /** Callback function triggered when the pin values change. */
   onChange?: (value: number[]) => void;
+  /** Callback function triggered when the biometric authentication button is clicked. */
+  onBiometricAuth?: () => void;
+  /** Type of biometric authentication to display. If undefined, no biometric button will be shown. */
+  biometricType?: BiometricType;
 }
 
 const PIN_MIN_COUNT = 2;
@@ -36,6 +46,8 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
   className,
   value: valueProp = [],
   onChange,
+  onBiometricAuth,
+  biometricType = undefined,
   ...restProps
 }, ref) => {
   const platform = usePlatform();
@@ -44,12 +56,16 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
   const {
     handleClickValue,
     handleClickBackspace,
+    handleBiometricAuth,
     setInputRefByIndex,
     value,
     handleButton,
+    AVAILABLE_PINS,
   } = usePinInput({
     value: valueProp,
     onChange,
+    onBiometricAuth,
+    biometricType,
     pinCount: normalizedPinCount,
   });
 
@@ -85,18 +101,43 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
         </header>
         <div className={styles.buttonWrapper}>
           {createChunks(AVAILABLE_PINS, 3).map((rows) => (
-            <div key={rows.toString()} className={styles.row}>
+            <div key={rows.toString()} className={classNames(
+              styles.row,
+              biometricType === undefined && styles['row--no-biometric'],
+            )}>
               {rows.map((element) => {
                 let children: ReactNode = element;
-                let clickFunction = () => handleClickValue(Number(element));
+                let clickFunction = () => {
+                  if (typeof element === 'number') {
+                    handleClickValue(element);
+                  }
+                };
 
                 if (element === Keys.BACKSPACE) {
                   clickFunction = () => handleClickBackspace();
                   children = <Icon36Backspace className={styles.backspaceIcon} />;
+                } else if (element === BIOMETRIC_AUTH) {
+                  clickFunction = () => handleBiometricAuth();
+
+                  // Select the appropriate biometric icon based on the biometricType
+                  switch (biometricType) {
+                    case 'faceid':
+                      children = <Icon36FaceId className={styles.biometricIcon} />;
+                      break;
+                    case 'touchid':
+                      children = <Icon36TouchId className={styles.biometricIcon} />;
+                      break;
+                    case 'fingerprint':
+                      children = <Icon36Fingerprint className={styles.biometricIcon} />;
+                      break;
+                    default:
+                      children = <Icon36Biometric className={styles.biometricIcon} />;
+                      break;
+                  }
                 }
 
                 return (
-                  <PinInputButton key={element} onClick={clickFunction}>
+                  <PinInputButton key={String(element)} onClick={clickFunction}>
                     {children}
                   </PinInputButton>
                 );
