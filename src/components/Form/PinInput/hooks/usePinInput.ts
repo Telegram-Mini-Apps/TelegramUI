@@ -8,9 +8,7 @@ import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
 export const BiometricType = {
   FACEID: 'faceid',
-  TOUCHID: 'touchid',
   FINGERPRINT: 'fingerprint',
-  BIOMETRIC: 'biometric',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare

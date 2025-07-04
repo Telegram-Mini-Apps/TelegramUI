@@ -7,12 +7,9 @@ import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Icon36Backspace } from 'icons/36/backspace';
-import {
-  Icon36Biometric,
-  Icon36FaceId,
-  Icon36Fingerprint,
-  Icon36TouchId,
-} from 'icons/36/biometric';
+import { Icon36FaceId } from 'icons/36/face_id';
+import { Icon36FingerPrint } from 'icons/36/fingerprint';
+import { Icon36ScanFace } from 'icons/36/scan_face';
 
 import { PinInputButton } from 'components/Form/PinInput/components/PinInputButton/PinInputButton';
 import { RootRenderer } from 'components/Service/RootRenderer/RootRenderer';
@@ -120,19 +117,12 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
                   clickFunction = () => handleBiometricAuth();
 
                   // Select the appropriate biometric icon based on the biometricType
-                  switch (biometricType) {
-                    case 'faceid':
-                      children = <Icon36FaceId className={styles.biometricIcon} />;
-                      break;
-                    case 'touchid':
-                      children = <Icon36TouchId className={styles.biometricIcon} />;
-                      break;
-                    case 'fingerprint':
-                      children = <Icon36Fingerprint className={styles.biometricIcon} />;
-                      break;
-                    default:
-                      children = <Icon36Biometric className={styles.biometricIcon} />;
-                      break;
+                  if (biometricType === BiometricType.FINGERPRINT) {
+                    children = <Icon36FingerPrint className={styles.biometricIcon} />;
+                  }
+
+                  if (biometricType === BiometricType.FACEID) {
+                    children = platform === 'ios' ? <Icon36FaceId className={styles.biometricIcon} /> : <Icon36ScanFace className={styles.biometricIcon} />;
                   }
                 }
 
