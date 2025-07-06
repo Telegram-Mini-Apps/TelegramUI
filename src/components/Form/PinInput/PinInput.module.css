@@ -91,8 +91,7 @@
   margin-left: calc(var(--tgui--pin_input--button-width) + var(--tgui--pin_input--buttons-gap));
 }
 
-.backspaceIcon,
-.biometricIcon {
+.actionButton {
   display: block;
   margin: auto;
   color: var(--tgui--link_color);

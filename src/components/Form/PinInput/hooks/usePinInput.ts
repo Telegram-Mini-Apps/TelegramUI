@@ -19,16 +19,12 @@ interface UsePinInputProps {
   biometricType?: BiometricType;
 }
 
-export const BIOMETRIC_AUTH_BUTTON_VALUE = 'BiometricAuth';
+const BIOMETRIC_AUTH_BUTTON_VALUE = 'BiometricAuth';
 export const DEFAULT_PINS = [1, 2, 3, 4, 5, 6, 7, 8, 9, BIOMETRIC_AUTH_BUTTON_VALUE, 0, Keys.BACKSPACE];
 
-/**
- * Returns the available pins based on whether biometric authentication is enabled.
- */
 export const getAvailablePins = (biometricType?: BiometricType) => {
   const pins = [...DEFAULT_PINS];
 
-  // Remove BIOMETRIC_AUTH if biometricType is not provided
   if (!biometricType) {
     const biometricIndex = pins.indexOf(BIOMETRIC_AUTH_BUTTON_VALUE);
     if (biometricIndex !== -1) {
@@ -119,12 +115,24 @@ export const usePinInput = ({
     inputRefs[index] = ref;
   }, []);
 
+  const onElementClick = useCallback((element: string | number) => {
+    if (element === Keys.BACKSPACE) {
+      handleClickBackspace();
+      return;
+    }
+
+    if (element === BIOMETRIC_AUTH_BUTTON_VALUE) {
+      handleBiometricAuth();
+      return;
+    }
+
+    handleClickValue(Number(element));
+  }, [handleClickValue, handleClickBackspace, handleBiometricAuth]);
+
   return {
     value,
     setInputRefByIndex,
-    handleClickValue,
-    handleClickBackspace,
-    handleBiometricAuth,
+    onElementClick,
     handleButton,
     PINS,
   };
