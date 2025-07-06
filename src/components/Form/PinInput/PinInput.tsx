@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import styles from './PinInput.module.css';
 
 import { Keys } from 'helpers/accessibility';
@@ -44,7 +44,7 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
   value: valueProp = [],
   onChange,
   onBiometricAuth,
-  biometricType = undefined,
+  biometricType,
   ...restProps
 }, ref) => {
   const platform = usePlatform();
