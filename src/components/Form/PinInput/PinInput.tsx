@@ -15,7 +15,7 @@ import { PinInputButton } from 'components/Form/PinInput/components/PinInputButt
 import { RootRenderer } from 'components/Service/RootRenderer/RootRenderer';
 import { Headline } from 'components/Typography/Headline/Headline';
 import { PinInputCell } from './components/PinInputCell/PinInputCell';
-import { BIOMETRIC_AUTH, BiometricType, usePinInput } from './hooks/usePinInput';
+import { BIOMETRIC_AUTH_BUTTON_VALUE, BiometricType,usePinInput } from './hooks/usePinInput';
 
 export interface PinInputProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
   /** Text label displayed above the pin input cells. */
@@ -33,6 +33,21 @@ export interface PinInputProps extends Omit<HTMLAttributes<HTMLElement>, 'onChan
 }
 
 const PIN_MIN_COUNT = 2;
+
+/**
+ * Returns the appropriate biometric component based on the biometric type and platform.
+ */
+const getBiometricComponent = (biometricType?: BiometricType, platform?: string) => {
+  if (biometricType === BiometricType.FINGERPRINT) {
+    return [Icon36FingerPrint];
+  }
+
+  if (biometricType === BiometricType.FACEID) {
+    return platform === 'ios' ? [Icon36FaceId] : [Icon36ScanFace];
+  }
+
+  return [null];
+};
 
 /**
  * Renders a set of input fields for entering pin codes with a virtual keypad for value entry and deletion.
@@ -57,7 +72,7 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
     setInputRefByIndex,
     value,
     handleButton,
-    AVAILABLE_PINS,
+    PINS,
   } = usePinInput({
     value: valueProp,
     onChange,
@@ -97,7 +112,7 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
           </div>
         </header>
         <div className={styles.buttonWrapper}>
-          {createChunks(AVAILABLE_PINS, 3).map((rows) => (
+          {createChunks(PINS, 3).map((rows) => (
             <div key={rows.toString()} className={classNames(
               styles.row,
               biometricType === undefined && styles['row--no-biometric'],
@@ -113,16 +128,12 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
                 if (element === Keys.BACKSPACE) {
                   clickFunction = () => handleClickBackspace();
                   children = <Icon36Backspace className={styles.backspaceIcon} />;
-                } else if (element === BIOMETRIC_AUTH) {
+                } else if (element === BIOMETRIC_AUTH_BUTTON_VALUE) {
                   clickFunction = () => handleBiometricAuth();
 
-                  // Select the appropriate biometric icon based on the biometricType
-                  if (biometricType === BiometricType.FINGERPRINT) {
-                    children = <Icon36FingerPrint className={styles.biometricIcon} />;
-                  }
-
-                  if (biometricType === BiometricType.FACEID) {
-                    children = platform === 'ios' ? <Icon36FaceId className={styles.biometricIcon} /> : <Icon36ScanFace className={styles.biometricIcon} />;
+                  const [BiometricComponent] = getBiometricComponent(biometricType, platform);
+                  if (BiometricComponent) {
+                    children = <BiometricComponent className={styles.biometricIcon} />;
                   }
                 }
 

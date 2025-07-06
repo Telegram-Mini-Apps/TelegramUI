@@ -6,13 +6,10 @@ import { Keys } from 'helpers/accessibility';
 import { clamp } from 'helpers/math';
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
-export const BiometricType = {
-  FACEID: 'faceid',
-  FINGERPRINT: 'fingerprint',
-} as const;
-
-// eslint-disable-next-line @typescript-eslint/no-redeclare
-export type BiometricType = typeof BiometricType[keyof typeof BiometricType];
+export enum BiometricType {
+  FACEID = 'faceid',
+  FINGERPRINT = 'fingerprint',
+}
 
 interface UsePinInputProps {
   pinCount: number;
@@ -22,8 +19,25 @@ interface UsePinInputProps {
   biometricType?: BiometricType;
 }
 
-export const BIOMETRIC_AUTH = 'BIOMETRIC_AUTH';
-export const BASE_PINS = [1, 2, 3, 4, 5, 6, 7, 8, 9, BIOMETRIC_AUTH, 0, Keys.BACKSPACE];
+export const BIOMETRIC_AUTH_BUTTON_VALUE = 'BiometricAuth';
+export const DEFAULT_PINS = [1, 2, 3, 4, 5, 6, 7, 8, 9, BIOMETRIC_AUTH_BUTTON_VALUE, 0, Keys.BACKSPACE];
+
+/**
+ * Returns the available pins based on whether biometric authentication is enabled.
+ */
+export const getAvailablePins = (biometricType?: BiometricType) => {
+  const pins = [...DEFAULT_PINS];
+
+  // Remove BIOMETRIC_AUTH if biometricType is not provided
+  if (!biometricType) {
+    const biometricIndex = pins.indexOf(BIOMETRIC_AUTH_BUTTON_VALUE);
+    if (biometricIndex !== -1) {
+      pins.splice(biometricIndex, 1);
+    }
+  }
+
+  return pins;
+};
 
 export const usePinInput = ({
   pinCount,
@@ -32,16 +46,7 @@ export const usePinInput = ({
   onBiometricAuth,
   biometricType = undefined,
 }: UsePinInputProps) => {
-// Create AVAILABLE_PINS array dynamically based on biometricType
-  const AVAILABLE_PINS = [...BASE_PINS];
-
-  // Remove BIOMETRIC_AUTH if biometricType is not provided
-  if (!biometricType) {
-    const biometricIndex = AVAILABLE_PINS.indexOf(BIOMETRIC_AUTH);
-    if (biometricIndex !== -1) {
-      AVAILABLE_PINS.splice(biometricIndex, 1);
-    }
-  }
+  const PINS = getAvailablePins(biometricType);
   const inputRefs = useRef<HTMLLabelElement[]>([]).current;
   const [value, setValue] = useCustomEnsuredControl({
     defaultValue: valueProp,
@@ -83,7 +88,7 @@ export const usePinInput = ({
 
   const handleButton = useCallback((index: number, button: string) => {
     const numButton = Number(button);
-    if (!Number.isNaN(numButton) && AVAILABLE_PINS.includes(numButton)) {
+    if (!Number.isNaN(numButton) && PINS.includes(numButton)) {
       setValueByIndex(index, numButton);
       focusByIndex(index + 1);
     }
@@ -121,6 +126,6 @@ export const usePinInput = ({
     handleClickBackspace,
     handleBiometricAuth,
     handleButton,
-    AVAILABLE_PINS,
+    PINS,
   };
 };
