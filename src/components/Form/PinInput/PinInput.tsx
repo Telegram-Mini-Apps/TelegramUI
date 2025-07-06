@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, ReactNode } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import styles from './PinInput.module.css';
 
 import { Keys } from 'helpers/accessibility';
@@ -7,12 +7,15 @@ import { classNames } from 'helpers/classNames';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { Icon36Backspace } from 'icons/36/backspace';
+import { Icon36FaceId } from 'icons/36/face_id';
+import { Icon36FingerPrint } from 'icons/36/fingerprint';
+import { Icon36ScanFace } from 'icons/36/scan_face';
 
 import { PinInputButton } from 'components/Form/PinInput/components/PinInputButton/PinInputButton';
 import { RootRenderer } from 'components/Service/RootRenderer/RootRenderer';
 import { Headline } from 'components/Typography/Headline/Headline';
 import { PinInputCell } from './components/PinInputCell/PinInputCell';
-import { AVAILABLE_PINS, usePinInput } from './hooks/usePinInput';
+import { BiometricType, usePinInput } from './hooks/usePinInput';
 
 export interface PinInputProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
   /** Text label displayed above the pin input cells. */
@@ -23,6 +26,10 @@ export interface PinInputProps extends Omit<HTMLAttributes<HTMLElement>, 'onChan
   value?: number[];
   /** Callback function triggered when the pin values change. */
   onChange?: (value: number[]) => void;
+  /** Callback function triggered when the biometric authentication button is clicked. */
+  onBiometricAuth?: () => void;
+  /** Type of biometric authentication to display. If undefined, no biometric button will be shown. */
+  biometricType?: BiometricType;
 }
 
 const PIN_MIN_COUNT = 2;
@@ -36,22 +43,45 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
   className,
   value: valueProp = [],
   onChange,
+  onBiometricAuth,
+  biometricType,
   ...restProps
 }, ref) => {
   const platform = usePlatform();
   const normalizedPinCount = Math.max(PIN_MIN_COUNT, pinCount);
 
   const {
-    handleClickValue,
-    handleClickBackspace,
     setInputRefByIndex,
     value,
     handleButton,
+    onElementClick,
+    PINS,
   } = usePinInput({
     value: valueProp,
     onChange,
+    onBiometricAuth,
+    biometricType,
     pinCount: normalizedPinCount,
   });
+
+  const getActionButtonComponent = (element: string | number, type?: BiometricType) => {
+    if (typeof element === 'number') {
+      return null;
+    }
+
+    if (element === Keys.BACKSPACE) {
+      return Icon36Backspace;
+    }
+
+    switch (type) {
+      case BiometricType.FACEID:
+        return platform === 'ios' ? Icon36FaceId : Icon36ScanFace;
+      case BiometricType.FINGERPRINT:
+        return Icon36FingerPrint;
+      default:
+        return null;
+    }
+  };
 
   return (
     <RootRenderer>
@@ -84,20 +114,21 @@ export const PinInput = forwardRef<HTMLElement, PinInputProps>(({
           </div>
         </header>
         <div className={styles.buttonWrapper}>
-          {createChunks(AVAILABLE_PINS, 3).map((rows) => (
-            <div key={rows.toString()} className={styles.row}>
+          {createChunks(PINS, 3).map((rows) => (
+            <div key={rows.toString()} className={classNames(
+              styles.row,
+              biometricType === undefined && styles['row--no-biometric'],
+            )}>
               {rows.map((element) => {
-                let children: ReactNode = element;
-                let clickFunction = () => handleClickValue(Number(element));
-
-                if (element === Keys.BACKSPACE) {
-                  clickFunction = () => handleClickBackspace();
-                  children = <Icon36Backspace className={styles.backspaceIcon} />;
-                }
+                // Only get action button component for backspace or biometric auth
+                const ActionButtonComponent = getActionButtonComponent(element, biometricType);
 
                 return (
-                  <PinInputButton key={element} onClick={clickFunction}>
-                    {children}
+                  <PinInputButton
+                    key={String(element)}
+                    onClick={() => onElementClick(element)}
+                  >
+                    {ActionButtonComponent ? <ActionButtonComponent className={styles.actionButton} /> : element}
                   </PinInputButton>
                 );
               })}

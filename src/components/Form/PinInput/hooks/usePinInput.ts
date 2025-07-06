@@ -6,19 +6,43 @@ import { Keys } from 'helpers/accessibility';
 import { clamp } from 'helpers/math';
 import { useCustomEnsuredControl } from 'hooks/useEnsureControl';
 
+export enum BiometricType {
+  FACEID = 'faceid',
+  FINGERPRINT = 'fingerprint',
+}
+
 interface UsePinInputProps {
   pinCount: number;
   value?: number[];
   onChange?(value: number[]): void;
+  onBiometricAuth?(): void;
+  biometricType?: BiometricType;
 }
 
-export const AVAILABLE_PINS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, Keys.BACKSPACE];
+const BIOMETRIC_AUTH_BUTTON_VALUE = 'BiometricAuth';
+export const DEFAULT_PINS = [1, 2, 3, 4, 5, 6, 7, 8, 9, BIOMETRIC_AUTH_BUTTON_VALUE, 0, Keys.BACKSPACE];
+
+export const getAvailablePins = (biometricType?: BiometricType) => {
+  const pins = [...DEFAULT_PINS];
+
+  if (!biometricType) {
+    const biometricIndex = pins.indexOf(BIOMETRIC_AUTH_BUTTON_VALUE);
+    if (biometricIndex !== -1) {
+      pins.splice(biometricIndex, 1);
+    }
+  }
+
+  return pins;
+};
 
 export const usePinInput = ({
   pinCount,
   value: valueProp = [],
   onChange,
+  onBiometricAuth,
+  biometricType = undefined,
 }: UsePinInputProps) => {
+  const PINS = getAvailablePins(biometricType);
   const inputRefs = useRef<HTMLLabelElement[]>([]).current;
   const [value, setValue] = useCustomEnsuredControl({
     defaultValue: valueProp,
@@ -52,9 +76,16 @@ export const usePinInput = ({
     removeLastValue(value.length - 1);
   }, [value]);
 
+  const handleBiometricAuth = useCallback(() => {
+    if (onBiometricAuth) {
+      onBiometricAuth();
+    }
+  }, [onBiometricAuth]);
+
   const handleButton = useCallback((index: number, button: string) => {
-    if (AVAILABLE_PINS.includes(Number(button))) {
-      setValueByIndex(index, Number(button));
+    const numButton = Number(button);
+    if (!Number.isNaN(numButton) && PINS.includes(numButton)) {
+      setValueByIndex(index, numButton);
       focusByIndex(index + 1);
     }
 
@@ -84,11 +115,25 @@ export const usePinInput = ({
     inputRefs[index] = ref;
   }, []);
 
+  const onElementClick = useCallback((element: string | number) => {
+    if (element === Keys.BACKSPACE) {
+      handleClickBackspace();
+      return;
+    }
+
+    if (element === BIOMETRIC_AUTH_BUTTON_VALUE) {
+      handleBiometricAuth();
+      return;
+    }
+
+    handleClickValue(Number(element));
+  }, [handleClickValue, handleClickBackspace, handleBiometricAuth]);
+
   return {
     value,
     setInputRefByIndex,
-    handleClickValue,
-    handleClickBackspace,
+    onElementClick,
     handleButton,
+    PINS,
   };
 };

@@ -76,16 +76,22 @@
 }
 
 .row:last-child {
-  margin-left: calc(var(--tgui--pin_input--buttons-gap) * 2);
   justify-content: flex-end;
 }
 
+.row--no-biometric:last-child {
+  margin-left: calc(var(--tgui--pin_input--buttons-gap) * 2);
+}
+
 .wrapper--ios .row:last-child {
-  margin-left: calc(var(--tgui--pin_input--button-width) + var(--tgui--pin_input--buttons-gap));
   justify-content: center;
 }
 
-.backspaceIcon {
+.wrapper--ios .row--no-biometric:last-child {
+  margin-left: calc(var(--tgui--pin_input--button-width) + var(--tgui--pin_input--buttons-gap));
+}
+
+.actionButton {
   display: block;
   margin: auto;
   color: var(--tgui--link_color);
