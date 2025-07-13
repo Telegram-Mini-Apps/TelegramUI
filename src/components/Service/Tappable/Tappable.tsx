@@ -4,6 +4,7 @@ import { AllHTMLAttributes, ElementType, forwardRef } from 'react';
 import styles from './Tappable.module.css';
 
 import { classNames } from 'helpers/classNames';
+import { callMultiple } from 'helpers/function';
 import { usePlatform } from 'hooks/usePlatform';
 
 import { useRipple } from './components/Ripple/hooks/useRipple';
@@ -21,10 +22,16 @@ export const Tappable = forwardRef(({
   className,
   interactiveAnimation = 'background',
   readOnly,
+  onPointerDown,
+  onPointerCancel,
   ...restProps
 }: TappableProps, ref) => {
   const platform = usePlatform();
-  const { clicks, onPointerCancel, onPointerDown } = useRipple();
+  const { clicks, onPointerCancel: handleRipplePointerCancel, onPointerDown: handleRipplePointerDown } = useRipple();
+
+  const handlePointerDown = callMultiple(onPointerDown, handleRipplePointerDown);
+
+  const handlePointerCancel = callMultiple(onPointerCancel, handleRipplePointerCancel);
 
   const hasRippleEffect = platform === 'base' && interactiveAnimation === 'background' && !readOnly;
   return (
@@ -36,8 +43,8 @@ export const Tappable = forwardRef(({
         interactiveAnimation === 'opacity' && styles['wrapper--opacity'],
         className,
       )}
-      onPointerCancel={onPointerCancel}
-      onPointerDown={onPointerDown}
+      onPointerCancel={handlePointerCancel}
+      onPointerDown={handlePointerDown}
       readOnly={readOnly}
       {...restProps}
     >
