@@ -4,6 +4,9 @@
 }
 
 .wrapper--ios .body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5px;
   border-radius: 12px;
   background: var(--tgui--section_bg_color);
 }
